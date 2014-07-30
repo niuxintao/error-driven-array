@@ -129,10 +129,10 @@ Changhai Nie\\
 % 3rd. author'
 \alignauthor
 JiaXi Xu\\
-       \affaddr{State Key Laboratory for Novel Software Technology}\\
-       \affaddr{Nanjing University}\\
-       \affaddr{China, 210023}\\
-       \email{changhainie@nju.edu.cn}
+       \affaddr{School of Mathematics and Information Technology}\\
+       \affaddr{Nanjing Xiaozhuang University}\\
+       \affaddr{China, 211171}\\
+       \email{xujiaxi@126.com}
 }
 % There's nothing stopping you putting the seventh, eighth, etc.
 % author on the opening page (as the 'third row') but we ask,
@@ -143,7 +143,8 @@ JiaXi Xu\\
 % number that will appear in the \additionalauthors section.
 \maketitle
 \begin{abstract}
-Combinatorial testing(CT) is proven to be effective to reveal the potential failures caused by the interaction of the inputs or options of the System Under Test(SUT). A key problem in CT is to isolate the failure-inducing combinations of the related failure as it can facilitate the debugging efforts by reducing the scope of code that needs to be inspected. Many algorithms has been proposed to identify such combinations, however, most of these studies either just consider the condition of one fault or ignore masking effects among multiple faults which can bias their identified results. In this paper, we analysed how the masking effect of multiple faults affect on the isolation of failure-inducing combinations. We further give a strategy of selecting test cases to alleviate this impact, which works by pruning these test cases that may trigger masking effect and replacing them with no-masking-effect ones. The test case selecting process repeated until we get enough information to isolate the failure-inducing combinations. We conducted some empirical studies on several open-source software. The result of the studies shows that multiple faults as well as the masking effects do exist in real software and our approach can assist combinatorial-based failure-inducing identifying methods to get a better result when handling multiple faults in SUT.
+When the system under test(SUT) is suffered from interations faults such as option compliant, testers want to design. As . Efficenet test space is desired when . To handle this problem, the art of  is to design a t-way covering array, which can cover all the t-way , just using small size of test cases. In this paper, however, we conjecture that the covering array is somewhat reduntant with respect to fault locating. The main reason for the reduntant is the we find is the framework it takes,  is that when we
+%Combinatorial testing(CT) is proven to be effective to reveal the potential failures caused by the interaction of the inputs or options of the System Under Test(SUT). A key problem in CT is to isolate the failure-inducing combinations of the related failure as it can facilitate the debugging efforts by reducing the scope of code that needs to be inspected. Many algorithms has been proposed to identify such combinations, however, most of these studies either just consider the condition of one fault or ignore masking effects among multiple faults which can bias their identified results. In this paper, we analysed how the masking effect of multiple faults affect on the isolation of failure-inducing combinations. We further give a strategy of selecting test cases to alleviate this impact, which works by pruning these test cases that may trigger masking effect and replacing them with no-masking-effect ones. The test case selecting process repeated until we get enough information to isolate the failure-inducing combinations. We conducted some empirical studies on several open-source software. The result of the studies shows that multiple faults as well as the masking effects do exist in real software and our approach can assist combinatorial-based failure-inducing identifying methods to get a better result when handling multiple faults in SUT.
 \end{abstract}
 
 % A category with the (minimum) three required fields
