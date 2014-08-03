@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.10.25)  31 JUL 2014 03:20
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.10.25)  4 AUG 2014 01:34
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -358,11 +358,12 @@ Requested font "aeti9" at 9.0pt
 
 Underfull \vbox (badness 1389) has occurred while \output is active []
 
-\c@definition=\count123
  [1
 
 
 ]
+\c@definition=\count123
+
 No file ErrorLocatingDrivenArray.bbl.
 [2] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) )
  
@@ -373,6 +374,6 @@ Here is how much of TeX's memory you used:
  5815 multiletter control sequences out of 15000+200000
  39815 words of font info for 51 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,10n,26p,1486b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,26p,1485b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on ErrorLocatingDrivenArray.pdf (2 pages).
