@@ -159,9 +159,15 @@ Combinatorial testing(CT) seeks to handle potential faults caused by various int
 
 \section{Introduction}
 
+Modern software is designed modular, platform-cross, language-cross and configurable. Although the sophisticated design can make the system more flexible and more powerful, it also makes the testing task a challenging work. This is because the candidate factors that can influence the system's behaviour, e.g., possible configuration options, system inputs, message events and the like, increases rapidly, and what's worse, the interactions between these factors can also crash the system, e.g., the compatibility problems. In consideration of the scale of the possible configurations, inputs, events, and their possible interactions(we call them the interactions space) of the real industrial software, to test all the possible combination of all the possible factors is not feasible, and even it is possible, 
+
+Empirical studies shows that the effective interaction space is not that enough
+
 Software system are growing more and more complexity, the testing is needed. Nowadays, the bugs are not the single factor-bug, that is, it is . To detect and isolate such a is hard, for we could not easily know which interaction of from so many. The first, how to detect, the second, even if we have detected, .
 
-Combinatorial testing is a proposing testing technique to handle such problem. The testing object-- covering array is a well designed test suite, which can cover each possible interaction with just a small or reasonable size. When one or more test cases trigger some fault, it take the isolating.
+
+
+Combinatorial testing is a proposing testing technique to handle such problem. The testing object-- covering array is a well designed test suite, which can cover each possible interaction with just a small or reasonable size. When one or more test cases trigger some fault, it take the isolating.asdlajsdlas-d=
 
 In CT it is a pri-critira that the test suite must be , and then using to trigger. This framework is straight and simple, however, we conjecture in this paper that this would be more redundant inspect of fault debugging. Through a series experiment on empirical study, we observe that, there is two main : right . wrong .   This redundant can make the tester to test more unnecessary test cases, which is a wasting of computing resource.
 

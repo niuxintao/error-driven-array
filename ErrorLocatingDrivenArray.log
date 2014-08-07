@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.23)  5 AUG 2014 13:20
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.23)  7 AUG 2014 23:39
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -355,7 +355,13 @@ Requested font "aebx9" at 9.0pt
  -> aebx9
 Requested font "aeti9" at 9.0pt
  -> aeti9
- [1
+
+Overfull \hbox (21.52232pt too wide) in paragraph at lines 162--163
+[]\T1/aer/m/n/9 Modern soft-ware is de-signed mod-u-lar, platform-cross, langua
+ge-
+ []
+
+[1
 
 
 ]
@@ -367,7 +373,7 @@ No file ErrorLocatingDrivenArray.bbl.
 Here is how much of TeX's memory you used:
  2710 strings out of 430478
  30412 string characters out of 3191502
- 86532 words of memory out of 3000000
+ 87532 words of memory out of 3000000
  5815 multiletter control sequences out of 15000+200000
  39815 words of font info for 51 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
