@@ -159,23 +159,30 @@ Combinatorial testing(CT) seeks to handle potential faults caused by various int
 
 \section{Introduction}
 
-Modern software is designed modular, platform-cross, language-cross and configurable. Although the sophisticated design can make the system more flexible and more powerful, it also makes the testing task a challenging work. This is because the candidate factors that can influence the system's behaviour, e.g., possible configuration options, system inputs, message events and the like, increases rapidly, and what's worse, the interactions between these factors can also crash the system, e.g., the compatibility problems. In consideration of the scale of the possible configurations, inputs, events, and their possible interactions(we call them the interactions space) of the real industrial software, to test all the possible combination of all the possible factors is not feasible, and even it is possible, 
+Modern software is designed modular, platform-cross, language-cross and configurable. Although the sophisticated design can make the system more flexible and more powerful, it also makes the testing task a challenging work. This is because the candidate factors that can influence the system's behaviour, e.g., possible configuration options, system inputs, message events and the like, increases rapidly, and what's worse, the interactions between these factors can also crash the system, e.g., the compatibility problems. In consideration of the scale of the possible configurations, inputs, events, and their possible interactions(we call them the interactions space) of the real industrial software, to test all the possible combination of all the possible factors is not feasible, and even it is possible, it is also wasting as numerous interactions do not provide any useful information.
 
-Empirical studies shows that the effective interaction space is not that enough
+Many empirical studies shows that in real software systems, the effective interaction space, i.e., targeting fault defects, makes up only a small proportion of the overall interaction space. What's more, the number of factors involved in these effective interactions is relatively small, of which 4-6 is usually the upper bonds. With this observation, applying CT in 
+ Cohen[] studies the , and find 70 ~ 100 can be. []Shows that to get a some coverage, only a small subset of all the configuration is needed. To this aim,
 
-Software system are growing more and more complexity, the testing is needed. Nowadays, the bugs are not the single factor-bug, that is, it is . To detect and isolate such a is hard, for we could not easily know which interaction of from so many. The first, how to detect, the second, even if we have detected, .
+Typically, when applying CT in practice, there are four testing stages that should be cated as in figure. At the very early of the testing work, engineers should characterize which options and what inputs , i.e., to identify the factors and their possible values. This stage is labor-consuming, at least in the initial testing. The second stage is to generate a bunch of test cases to meet some criteria. In CT, the most common scenario is to cover all the iterations with the factors in the interactions no more than a prior fixed number -- t, in such way, the test suites of CT is also called the t-way covering array.  The third testing stage is to fault localization, i.e., to isolate the failure-inducing interactions which owes to those failures triggered in those test cases in these test cases. The final stage is to evaluate the quality of the test cases.
+
+This conventional CT framework is simple and straight forward, however, we conjecture, it is not he suiable choices and not the choices for most test engineers.  The first,   Second, and most importantly, is.
+
+For this, we.
+
+%Software system are growing more and more complexity, the testing is needed. Nowadays, the bugs are not the single factor-bug, that is, it is . To detect and isolate such a is hard, for we could not easily know which interaction of from so many. The first, how to detect, the second, even if we have detected, .
 
 
-
-Combinatorial testing is a proposing testing technique to handle such problem. The testing object-- covering array is a well designed test suite, which can cover each possible interaction with just a small or reasonable size. When one or more test cases trigger some fault, it take the isolating.asdlajsdlas-d=
-
-In CT it is a pri-critira that the test suite must be , and then using to trigger. This framework is straight and simple, however, we conjecture in this paper that this would be more redundant inspect of fault debugging. Through a series experiment on empirical study, we observe that, there is two main : right . wrong .   This redundant can make the tester to test more unnecessary test cases, which is a wasting of computing resource.
-
-So in this paper, we propose a new and really intuial CT fault detecting and isolating framework (CTDI), which combine the more tightly. In detail our framework, handles two main . For we find . we make it as constraint, and feedback to the generating. The second, as we can generate many extra test cases, for these passing test cases, we use them as seed to let them in the generating process. The ended criteria is some coverage is reached.
-
-Our new CT is .
-
-We have imply , and find our approach can .
+%
+%Combinatorial testing is a proposing testing technique to handle such problem. The testing object-- covering array is a well designed test suite, which can cover each possible interaction with just a small or reasonable size. When one or more test cases trigger some fault, it take the isolating.asdlajsdlas-d=
+%
+%In CT it is a pri-critira that the test suite must be , and then using to trigger. This framework is straight and simple, however, we conjecture in this paper that this would be more redundant inspect of fault debugging. Through a series experiment on empirical study, we observe that, there is two main : right . wrong .   This redundant can make the tester to test more unnecessary test cases, which is a wasting of computing resource.
+%
+%So in this paper, we propose a new and really intuial CT fault detecting and isolating framework (CTDI), which combine the more tightly. In detail our framework, handles two main . For we find . we make it as constraint, and feedback to the generating. The second, as we can generate many extra test cases, for these passing test cases, we use them as seed to let them in the generating process. The ended criteria is some coverage is reached.
+%
+%Our new CT is .
+%
+%We have imply , and find our approach can .
 
 
 
