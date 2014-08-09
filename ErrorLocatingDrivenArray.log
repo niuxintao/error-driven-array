@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.23)  8 AUG 2014 14:00
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.23)  9 AUG 2014 20:00
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -365,18 +365,26 @@ ge-
 
 
 ]
-\c@definition=\count123
+File: CT_lifecircle.eps Graphic file (type eps)
+ <CT_lifecircle.eps>
+Overfull \hbox (12.94499pt too wide) in paragraph at lines 199--200
+[][] 
+ []
 
+\c@definition=\count123
+[2]
 No file ErrorLocatingDrivenArray.bbl.
-[2] (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux
-) ) 
+[3
+
+] (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) 
+) 
 Here is how much of TeX's memory you used:
- 2710 strings out of 430478
- 30412 string characters out of 3191502
- 87532 words of memory out of 3000000
- 5815 multiletter control sequences out of 15000+200000
+ 2716 strings out of 430478
+ 30480 string characters out of 3191502
+ 88532 words of memory out of 3000000
+ 5819 multiletter control sequences out of 15000+200000
  39815 words of font info for 51 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,10n,26p,1486b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,26p,1698b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ErrorLocatingDrivenArray.pdf (2 pages).
+Output written on ErrorLocatingDrivenArray.pdf (3 pages).

@@ -163,16 +163,43 @@ Modern software is designed modular, platform-cross, language-cross and configur
 
 Many empirical studies shows that in real software systems, the effective interaction space, i.e., targeting fault defects, makes up only a small proportion of the overall interaction space. What's more, the number of factors involved in these effective interactions is relatively small, of which 4-6 is usually the upper bonds. With this observation, applying CT in practice is appealing, as it is proven to be effective to handle the interaction faults between the system.
 
-A typical CT life-circle is listed as Figure, in which there are four main testing stages. At the very beginning of the testing, engineers should extract the specific model of the software under test. In detail, it is to 
+A typical CT life-circle is listed as Figure \ref{ct-life}, in which there are four main testing stages. At the very beginning of the testing, engineers should extract the specific model of the software under test. In detail, they should identify the factors, such as user inputs, configure options, environment states and the like that could affect the system's behavior. Next, which values each factor can take should also be determined to maximize the chances to expose the potential faults in the system. More efforts will be needed to describe the constraints and dependencies between each factor and corresponding values to make the testing work valid. After the modeling stage, a bunch of test cases should be generated and executed to test the system and try to detect some . In CT, one test case is a set of assignment of all the factors that we modeled before. Thus, when such a test case is executed, the is deemed to be validated. The main target of this stage is to using a relatively small size of test cases to get some coverage, for CT the most common coverage is to cover all the possible interactions with the number of factors no more than a fixed number : \emph{t}. The third testing stage in this circle is the fault localization, which is responsible for diagnosing the root cause of the failure we detect in the previous stage. To characterize such root cause, i.e., failure-inducing interactions of corresponding factors and values is important for future bug fixing, as it will reduce the suspicious code scope that needed to inspect. The last testing stage of CT is evaluation. It aims at assessing the quality of this testing,
 
- Cohen[] studies the , and find 70 ~ 100 can be. []Shows that to get a some coverage, only a small subset of all the configuration is needed. To this aim,
+Although this conventional CT framework is simple and straightforward, however in terms of the test cases generation and fault localization testing stages, we conjecture that the first-generation-then-localization is not the proper choice for most test engineers. This is because, first, it is not realistic for testers wait for all the needed test cases are generated before they can diagnosis and fix some failures during testing, second, and the most important, utilizing the early determined failure-inducing interactions can guide the following test cases generations, such that many unnecessary and invalid test cases will be avoided. For this we get to the most key idea of this paper:
 
-Typically, when applying CT in practice, there are four testing stages that should be cated as in figure. At the very early of the testing work, engineers should characterize which options and what inputs , i.e., to identify the factors and their possible values. This stage is labor-consuming, at least in the initial testing. The second stage is to generate a bunch of test cases to meet some criteria. In CT, the most common scenario is to cover all the iterations with the factors in the interactions no more than a prior fixed number -- t, in such way, the test suites of CT is also called the t-way covering array.  The third testing stage is to fault localization, i.e., to isolate the failure-inducing interactions which owes to those failures triggered in those test cases in these test cases. The final stage is to evaluate the quality of the test cases.
+\emph{Generation and Localization process should be integrated more tightly.}
 
-This conventional CT framework is simple and straight forward, however, we conjecture, it is not he suiable choices and not the choices for most test engineers.  The first,   Second, and most importantly, is.
+Based on the idea, we propose a new CT framework, which modifies. To this aim, we remodel the generation and localization modular to make them better adapt to this newly framework. In specific, our generation adopts the one-test-one-time strategy, i.e., generate and execute one test case in one iteration. Rather than generating the overall needed test cases, this strategy is more flexible so that it allows for terminating at any time during generation, no matter whether the coverage is met or not. With this strategy, we can let the generation stops at the point we detect some failures, and then after localization we can utilize the information got by localization to change some coverage criteria, e.g., the interactions related to the failure-inducing interactions do not need to cover any more. Then the generation goes on the process repeats. For the fault localization, we will also take use of the test cases generation before, this will shows in the extra test case. Fault localization will need more.
 
-For this, we.
+We conducted a series empirical studies on several open-source software to evaluate our newly framework. In short, we take two main comparion, one is for  , and another is for. The results shows that our approach can and significantly reduced the needed test cases to detect and locate the failure-inducing interactions in the system under test, and our approach can than the traditional ones.
 
+The main contributions of this paper:
+
+ \begin{enumerate}
+ \item  we propose a newly CT framework.
+ \item  we propose two modification to the generation and localization to make them adapt to the newly framework.
+ \item  A series empirical studies is conducted.
+\end{enumerate}
+
+
+The reset of the paper is organised as follows: Section 2 presents the preliminary background of some definitions of the CT.  Section 3 gives 
+Section 4 
+
+
+% Cohen[] studies the , and find 70 ~ 100 can be. []Shows that to get a some coverage, only a small subset of all the configuration is needed. To this aim,
+%
+%Typically, when applying CT in practice, there are four testing stages that should be cated as in figure. At the very early of the testing work, engineers should characterize which options and what inputs , i.e., to identify the factors and their possible values. This stage is labor-consuming, at least in the initial testing. The second stage is to generate a bunch of test cases to meet some criteria. In CT, the most common scenario is to cover all the iterations with the factors in the interactions no more than a prior fixed number -- t, in such way, the test suites of CT is also called the t-way covering array.  The third testing stage is to fault localization, i.e., to isolate the failure-inducing interactions which owes to those failures triggered in those test cases in these test cases. The final stage is to evaluate the quality of the test cases.
+%
+%This conventional CT framework is simple and straight forward, however, we conjecture, it is not he suiable choices and not the choices for most test engineers.  The first,   Second, and most importantly, is.
+%
+%For this, we.
+
+
+\begin{figure}
+ \includegraphics[width=3.5in]{CT_lifecircle.eps}
+\caption{The life circle of CT}
+\label{ct-life}
+\end{figure}
 %Software system are growing more and more complexity, the testing is needed. Nowadays, the bugs are not the single factor-bug, that is, it is . To detect and isolate such a is hard, for we could not easily know which interaction of from so many. The first, how to detect, the second, even if we have detected, .
 
 
