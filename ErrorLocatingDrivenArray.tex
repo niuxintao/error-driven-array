@@ -159,7 +159,7 @@ Combinatorial testing(CT) seeks to handle potential faults caused by various int
 
 \section{Introduction}
 
-Modern software is designed modular, platform-cross, language-cross and configurable. Although the sophisticated design can make the system more flexible and more powerful, it also makes the testing task a challenging work. This is because the candidate factors that can influence the system's behaviour, e.g., possible configuration options, system inputs, message events and the like, increases rapidly, and what's worse, the interactions between these factors can also crash the system, e.g., the compatibility problems. In consideration of the scale of the possible configurations, inputs, events, and their possible interactions(we call them the interactions space) of the real industrial software, to test all the possible combination of all the possible factors is not feasible, and even it is possible, it is also wasting as numerous interactions do not provide any useful information.
+Modern software is developed more sophisticatedly and intelligently than before. To test such software is challenging, as the candidate factors that can influence the system's behaviour, e.g., configuration options, system inputs, message events, are enormous. Even worse, the interactions between these factors can also crash the system, e.g., the compatibility problems. In consideration of the scale of the real industrial software, to test all the possible combination of all the factors (we call them the interaction space) is not feasible, and even it is possible, it is not recommended to test exhaustive interactions for most of them do not provide any useful information.
 
 Many empirical studies shows that in real software systems, the effective interaction space, i.e., targeting fault defects, makes up only a small proportion of the overall interaction space. What's more, the number of factors involved in these effective interactions is relatively small, of which 4-6 is usually the upper bonds. With this observation, applying CT in practice is appealing, as it is proven to be effective to handle the interaction faults in the system.
 
@@ -169,7 +169,7 @@ Although this conventional CT framework is simple and straightforward, however i
 
 \emph{Generation and Localization process should be organised in a more tightly way.}
 
-Based on the idea, we propose a new CT framework, which instead of dividing the generation and localization into two independent stages, it integrate this two stages into one. We call this new one the Generation-Localization stage, which allows for both generation and localization better share each other's testing information. To this aim, we remodel the generation and localization modular to make them better adapt to this newly framework. In specific, our generation adopts the one-test-one-time strategy, i.e., generate and execute one test case in one iteration. Rather than generating the overall needed test cases in one time, this strategy is more flexible so that it allows for terminating at any time during generation, no matter whether the coverage is reached or not. With this strategy, we can let the generation stops at the point we detect some failures, and then after localization we can utilize the diagnosing result to change the coverage criteria, e.g., the interactions related to the failure-inducing interactions do not need to be checked any more. Then based on the new coverage criteria, the generation process goes on. 
+Based on the idea, we propose a new CT framework, which instead of dividing the generation and localization into two independent stages, it integrate this two stages into one. We call this new one the Generation-Localization stage, which allows for both generation and localization better share each other's testing information. To this aim, we remodel the generation and localization modular to make them better adapt to this newly framework. In specific, our generation adopts the one-test-one-time strategy, i.e., generate and execute one test case in one iteration. Rather than generating the overall needed test cases in one time, this strategy is more flexible so that it allows for terminating at any time during generation, no matter whether the coverage is reached or not. With this strategy, we can let the generation stops at the point we detect some failures, and then after localization we can utilize the diagnosing result to change the coverage criteria, e.g., the interactions related to the failure-inducing interactions do not need to be checked any more. Then based on the new coverage criteria, the generation process goes on.
 
 %For the fault localization, we augment this process with a test case . instead of independently generating extra test cases, we add a new process to let it can get a guide . we will also take use of the test cases generation before, this will shows in the extra test case. Fault localization will need more.
 
@@ -197,7 +197,7 @@ The reset of the paper is organised as follows: Section 2 presents the prelimina
 
 
 \begin{figure}
- \includegraphics[width=3.5in]{CT_lifecircle.eps}
+ \includegraphics[width=3.4in]{CT_lifecircle.eps}
 \caption{The life circle of CT}
 \label{ct-life}
 \end{figure}
@@ -222,15 +222,15 @@ The reset of the paper is organised as follows: Section 2 presents the prelimina
 %
 %Once failures are detected, it is desired to isolate the failure-inducing combinations in these failing test cases. This task is important in CT as it can facilitate the debugging efforts by reducing the code scope that needed to inspected.
 
-\section{Motivating example}
-Combinatorial testing can effectively detect the failures caused by the interactions between various options or inputs of the SUT. Covering arrays, the test suite generated by this technique can cover each combination of the options at least once. We conjecture, however, although covering array can effectively, in practice, covering array was too much for detecting and locating the error in particular software.
-
-As an motivating example, we looked through the following scenarios for detecting and locating the errors in the SUT.
-
-Too much redundant fault test cases:
-
-
-Too much redundant right test cases:
+%\section{Motivating example}
+%Combinatorial testing can effectively detect the failures caused by the interactions between various options or inputs of the SUT. Covering arrays, the test suite generated by this technique can cover each combination of the options at least once. We conjecture, however, although covering array can effectively, in practice, covering array was too much for detecting and locating the error in particular software.
+%
+%As an motivating example, we looked through the following scenarios for detecting and locating the errors in the SUT.
+%
+%Too much redundant fault test cases:
+%
+%
+%Too much redundant right test cases:
 
 \section{Background}
 This section presents some definitions and propositions to give a formal model for the FCI problem.

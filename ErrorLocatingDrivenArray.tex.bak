@@ -169,21 +169,22 @@ Although this conventional CT framework is simple and straightforward, however i
 
 \emph{Generation and Localization process should be organised in a more tightly way.}
 
-Based on the idea, we propose a new CT framework, which instead of dividing the generation and localization into two independent stages, it integrate this two stage into a  allows for , the at any time and at any point. To this aim, we remodel the generation and localization modular to make them better adapt to this newly framework. In specific, our generation adopts the one-test-one-time strategy, i.e., generate and execute one test case in one iteration. Rather than generating the overall needed test cases in one time, this strategy is more flexible so that it allows for terminating at any time during generation, no matter whether the coverage is reached or not. With this strategy, we can let the generation stops at the point we detect some failures, and then after localization we can utilize the diagnosing result to change the coverage criteria, e.g., the interactions related to the failure-inducing interactions do not need to be checked any more. Then based on the new coverage criteria, the generation process goes on the process repeats. For the fault localization, we will also take use of the test cases generation before, this will shows in the extra test case. Fault localization will need more.
+Based on the idea, we propose a new CT framework, which instead of dividing the generation and localization into two independent stages, it integrate this two stages into one. We call this new one the Generation-Localization stage, which allows for both generation and localization better share each other's testing information. To this aim, we remodel the generation and localization modular to make them better adapt to this newly framework. In specific, our generation adopts the one-test-one-time strategy, i.e., generate and execute one test case in one iteration. Rather than generating the overall needed test cases in one time, this strategy is more flexible so that it allows for terminating at any time during generation, no matter whether the coverage is reached or not. With this strategy, we can let the generation stops at the point we detect some failures, and then after localization we can utilize the diagnosing result to change the coverage criteria, e.g., the interactions related to the failure-inducing interactions do not need to be checked any more. Then based on the new coverage criteria, the generation process goes on. 
 
-We conducted a series empirical studies on several open-source software to evaluate our newly framework. In short, we take two main comparison, one is for  , and another is for. The results shows that our approach can and significantly reduced the needed test cases to detect and locate the failure-inducing interactions in the system under test, and our approach can than the traditional ones.
+%For the fault localization, we augment this process with a test case . instead of independently generating extra test cases, we add a new process to let it can get a guide . we will also take use of the test cases generation before, this will shows in the extra test case. Fault localization will need more.
+
+We conducted a series empirical studies on several open-source software to evaluate our newly framework. In short, we take two main comparisons, one is to compare our new framework with the traditional one, which first generate a complete set of test cases and then perform the fault localization. Another one is to compare with the Error locating array, which is a well-designed set of test cases that can be used directly detect and isolate the failure-inducing interactions. The results shows that in terms of test case generation and fault diagnosis, our approach can and significantly reduced the overall needed test cases and can more quickly isolate the root cause of the system under test.
 
 The main contributions of this paper:
 
  \begin{enumerate}
- \item  we propose a newly CT framework.
- \item  we propose two modification to the generation and localization to make them adapt to the newly framework.
- \item  A series empirical studies is conducted.
+ \item  We propose a newly CT framework which combine the test cases generation and fault localization more closely.
+ \item  We augment the traditional CT test cases generation and fault localization process to make them adapt to the newly framework.
+ \item  A series comparisons with traditional CT is conducted and the result of the empirical studies are discussed.
 \end{enumerate}
 
 
-The reset of the paper is organised as follows: Section 2 presents the preliminary background of some definitions of the CT.  Section 3 gives
-Section 4
+The reset of the paper is organised as follows: Section 2 presents the preliminary background of some definitions of the CT.  Section 3 describes our newly framework and a simple case study is also given. Section 4 presents the empirical studies and the results are discussed. Section 5 shows the related works. Section 6 concludes the paper and propose some further works.
 
 
 % Cohen[] studies the , and find 70 ~ 100 can be. []Shows that to get a some coverage, only a small subset of all the configuration is needed. To this aim,
