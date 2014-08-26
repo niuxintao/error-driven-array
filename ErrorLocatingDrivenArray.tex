@@ -334,10 +334,14 @@ This isolation process mutate one factor of the original test case one time to g
 
 
 \section{The Integrated Generation Fault Localization Process}
-As we discussed previously, the generation and localization process is the most key work in CT life-circle. How to to the maximal extent utilize this two process is of interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-isolation is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
+As we discussed previously, the generation and localization is the most key work in CT life-circle. How to utilize this two work in the CT life-circle is of importance as it is closely related to the quality and cost of overall software testing. In fact, most works in CT focus on this two fields, however, they are almost discussed independently, i.e., either only aims to improve the generation efficiency or only devote to refining the localization process.
 
-\subsection{traditional isolation process}
-To isolate the failure-inducing schemas in SUT, a typical traditional life-circle is to generate a t-way covering array to detect if there exists some failures that triggered by some particular . And after the generation and execution, if we detect some failures, we should isolate the failure-inducing schemas in the SUT. And further diagnosis operation should be taken to bug fixing.
+focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-isolation is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
+
+\subsection{traditional generation-isolation process}
+To isolate the failure-inducing schemas in SUT, a typical traditional generation-isolation life-circle is to generate a $t$-way covering array to detect if there exists some failures that triggered by some particular schemas. And after the generation and execution, if we detect some failures, we should isolate the failure-inducing schemas in the SUT. And further diagnosis operation should be taken to bug fixing. 
+
+As listed in Table, which. 
 
 Such life-circle is not the proper choice. The first reason we had discussed previous, which is the engineers should be too patient to wait for bug fixing. And also as we discussed previously, the second reason should be the most important, which we use an example to illustrate the reason. A typical example is like the following,
 for which we can find some duplicated. It is noted that some duplicated test cases can be avoided by . Thus, a more effective and efficient framework is desired.

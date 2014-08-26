@@ -276,42 +276,67 @@ If all test cases contain a combination, say $c$, trigger a particular fault, sa
 In fact, MFS and \emph{minimal faulty combinations} are identical to the failure-inducing combinations we discussed previously. Figuring it out can eliminate all details that are irrelevant for causing the failure and hence facilitate the debugging efforts.
 
 \subsection{Detect the failure-inducing schemas}
-When applying CT on software testing, the most important work is to determine whether the SUT is suffering from the interaction faults or not, i.e., to  detect the existence of the MFS. Rather than impractically executing exhaustive test cases, CT commonly design a relatively small size of test cases to cover all the schemas with the degree no more than a prior fixed number, $t$. Such a set of test cases is calling the covering array.  If some test cases in the covering array failed during testing, then the interaction faults is regard to be detected.
+When applying CT on software testing, the most important work is to determine whether the SUT is suffering from the interaction faults or not, i.e., to  detect the existence of the MFS. Rather than impractically executing exhaustive test cases, CT commonly design a relatively small size of test cases to cover all the schemas with the degree no more than a prior fixed number, $t$. Such a set of test cases is calling the covering array.  If some test cases in the covering array failed after execution, then the interaction faults is regard to be detected.
 
 Many studies in CT field focus on how to generate such a test suite with the aim that making the size of the test suite as small as possible. In general, most of these studies can be classified into three categories according to the construction way of the covering array:
 
-1) One test case one time : generate a completed test case to cover 
+1) One test case one time : This strategy repeats generating one test case as one row of the covering array and counting the covered schemas so far until no more schemas is needed to be covered.
 
-2) A overall set of test cases one time: generate the each time,
+%  generate a completed test case to cover
 
-3) Others :
+2) A overall set of test cases one time:  This strategy first generates a set of test cases with the size of the set fixed in prior. Then through some operation such as mutation of the some cells, increase or decrease the size of the set of test cases, regeneration some test cases to make the set of test cases to cover all the needed schemas with the size as small as possible.
 
-In this paper, we focus on the first one: One test case one time as it can allow for immediately
+3) Others :  This strategy differentiates from the previous two strategies at the point it does not first give completed test cases. It will first focus on assigning values to some  particular factors or parameters to cover the schemas that related to these factors, and then complement the remains to form completed test cases.
 
-To isolate the failure-inducing schemas and further bug fixing, the first step, is to detect them. To efficiently isolate the failure-inducing schemas, and to . Such a testing object, is covering array, which ,. Formally,
+In this paper, we focus on the first one: One test case one time as it can allow for immediately getting a completed test case such that the testers can execute and diagnosis in the early stage. And we will see later, with respect to the fault defeating, this strategy us the most flexible and efficient one comparing with the other two strategies.
 
-\begin{definition}
-Covering array.
-\end{definition}
+%To isolate the failure-inducing schemas and further bug fixing, the first step, is to detect them. To efficiently isolate the failure-inducing schemas, and to . Such a testing object, is covering array, which ,. Formally,
+%
+%\begin{definition}
+%Covering array.
+%\end{definition}
 
-Such a covering can , how to generate such a covering lying two facts.
-There are three different kinds of generation
+%Such a covering can , how to generate such a covering lying two facts.
+%There are three different kinds of generation
+%
+%Overall test
+%
+%one test one time
+%
+%other special testing object.
 
-Overall test
-
-one test one time
-
-other special testing object.
-
-In order to fulfil the testing target, we choose the second object, one test one time, as we can .
+%In order to fulfil the testing target, we choose the second object, one test one time, as we can .
 
 \subsection{Isolate the failure-inducing schemas}
-Isolating such failure-inducing schema is not easy. It is because that there are $2^n$ candidate suspicious. It is not realistic to completely and preciously to determine which one is as we could use a extreme large number of extra test cases.  Thus, existed works just
+To detect the existence of MFS in the SUT is still far from figuring out the root cause of the failure. As we do not know exactly which one or some schemas in the failed test cases should be responsible for the failure. In fact, for a failing test case, there can be at most $2^{k} - 1$ possible schemas can be the MFS. Hence, further fault diagnosis is desired, i.e., more test cases should be generated to isolate the MFS.
+
+A typical MFS isolating process is as Table \ref{ofot-identify}. This example assumes the SUT has 3 parameters, each can take 2 values. And assume the test case (1, 1, 1) failed. Then in Table \ref{ofot-identify}, as test case \emph{t} failed, and OFOT mutated one factor of the \emph{t} one time to generate new test cases: $t_{1}$ -- $t_{3}$, It found the the $t_{1}$ passed, which indicates that this test case break the MFS in the original test case \emph{t}. So the (1,-,-) should be one failure-causing factor, and as other mutating process all failed, which means no other failure-inducing factors were broken, therefore, the MFS in \emph{t} is (1,-,-).
+
+\begin{table}[h]
+\caption{OFOT with our strategy}
+\label{ofot-identify}
+\center
+\begin{tabular}{llllll}
+\multicolumn{5}{c}{\bfseries original test case} & \bfseries Outcome \\
+ $t$ & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  1 } & Fail \\
+ \hline
+\multicolumn{5}{c}{\bfseries observed} &  \\
+$t_{1}$ &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  1 }& Pass \\
+$t_{2}$ &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  1 } & Fail \\
+$t_{3}$ &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  0 } & Fail \\
+\end{tabular}
+\end{table}
+
+This isolation process mutate one factor of the original test case one time to generate extra test cases. And then according to the outcome of the test cases execution result, it will identify the MFS of the original failing test cases. It is calling the OFOT method, which is the well-known fault diagnosis method in CT. In this paper, we will focus on this isolation method. It is noted that our following proposed new CT framework can be easily applied on other CT fault diagnosis methods.
+
+%Isolating such failure-inducing schema is not easy. It is because that there are $2^n$ candidate suspicious. It is not realistic to completely and preciously to determine which one is as we could use a extreme large number of extra test cases.  Thus, existed works just
 
 
 
 \section{The Integrated Generation Fault Localization Process}
-This two life-circle is important, how to utilize this two process is of interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-isolation is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
+As we discussed previously, the generation and localization is the most key work in CT life-circle. How to utilize this two work in the CT life-circle is of importance as it is closely related to the quality and cost of overall software testing. In fact, most works in CT focus on this two fields, however, they are almost discussed independently, i.e., either only aims to improve the generation efficiency or only devote to refining the localization process.
+
+focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-isolation is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
 
 \subsection{traditional isolation process}
 To isolate the failure-inducing schemas in SUT, a typical traditional life-circle is to generate a t-way covering array to detect if there exists some failures that triggered by some particular . And after the generation and execution, if we detect some failures, we should isolate the failure-inducing schemas in the SUT. And further diagnosis operation should be taken to bug fixing.
@@ -347,7 +372,8 @@ Our new framework is as illustrated.
 \subsubsection{Result and discussion}
 
 
-\subsection{Performance of our approach}
+\subsection{Comparing with Error locating Array}
+Erray locating array is a well-desinged test cases.
 
 %, and then we applied these augmented approaches to identify the failure-inducing combinations in the prepared subjects.
 
