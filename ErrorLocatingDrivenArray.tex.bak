@@ -334,21 +334,68 @@ This isolation process mutate one factor of the original test case one time to g
 
 
 \section{The Integrated Generation Fault Localization Process}
-As we discussed previously, the generation and localization is the most key work in CT life-circle. How to utilize this two work in the CT life-circle is of importance as it is closely related to the quality and cost of overall software testing. In fact, most works in CT focus on this two fields, however, they are almost discussed independently, i.e., either only aims to improve the generation efficiency or only devotes to refining the localization process.
+As we discussed previously, the generation and localization is the most key work in CT life-circle. How to utilize this two works in the CT life-circle is of importance as it is closely related to the quality and cost of overall software testing. In fact, most works in CT focus on this two fields, in which they are almost discussed independently, i.e., either only aims to improve the generation efficiency or only devotes to refining the localization process. The justification for not discussing how to cooperate this two works is that they think the first-generation-then-isolation is so natural and straightforward. As we will show below, however, that the generation and localization is so tightly correlated and how to cooperate this two works do have an significant impact on the effectiveness and efficiencies of the testing work.
 
-focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-isolation is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
+%focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-isolation is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
 
 \subsection{traditional generation-isolation process}
-To isolate the failure-inducing schemas in SUT, a typical traditional generation-isolation life-circle is to generate a $t$-way covering array to detect if there exists some failures that triggered by some particular schemas. And after the generation and execution, if we detect some failures, we should isolate the failure-inducing schemas in the SUT. And further diagnosis operation should be taken to bug fixing.
+A typical traditional generation-isolation life-circle is to first generate a $t$-way covering array to detect if there exists some failures that triggered by some particular schemas. Then if we detect some failures, we should isolate the failure-inducing schemas in the SUT for further bug fixing.
 
-As listed in Table, which.
+As an example, Table \ref{tradition-gi}, which .
 
-Such life-circle is not the proper choice. The first reason we had discussed previous, which is the engineers should be too patient to wait for bug fixing. And also as we discussed previously, the second reason should be the most important, which we use an example to illustrate the reason. A typical example is like the following,
+\begin{table}[h]
+\caption{traditional generation-isolation life-circle}
+\label{tradition-gi}
+\center
+\begin{tabular}{llllll}
+\multicolumn{6}{c}{\bfseries generation and execution} \\
+\multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
+ $t_{1}$* & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0 } & Fail \\
+ $t_{2}$* & \multicolumn{4}{l}{0 \ \ \ \ 1 \ \ \ \  1 } & Fail \\
+ $t_{3}$* & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  0 } & Pass \\
+ $t_{4}$* & \multicolumn{4}{l}{1 \ \ \ \ 0 \ \ \ \  1 } & Pass \\
+ \hline
+\multicolumn{6}{c}{\bfseries localization}  \\
+\multicolumn{5}{c}{\bfseries for $t1$--- 0 0 0} &  \\
+$t_{5}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  0 }& Pass \\
+$t_{6}$* &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 } & Fail \\
+$t_{7}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  1 } & Fail \\
+\multicolumn{6}{c}{\bfseries result --  (0, -, -)}  \\
+\multicolumn{5}{c}{\bfseries for $t2$ --- 0 1 1} &  \\
+$t_{8}$* &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  1 }& Pass \\
+$t_{9}$ &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  1 } & Fail \\
+$t_{10}$ &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 } & Fail \\
+\multicolumn{6}{c}{\bfseries result --  (0, -, -)}  \\
+\end{tabular}
+\end{table}
+
+Such life-circle is not the proper choice in practice. The first reason we had discussed previously is that the engineers should be too patient to wait for bug fixing. And also as we discussed previously, the second reason should be the most important, is. With respect to the example of the 
+which we use an example to illustrate the reason. A typical example is like the following,
 for which we can find some duplicated. It is noted that some duplicated test cases can be avoided by . Thus, a more effective and efficient framework is desired.
 
 \subsection{the new framework}
 Our new framework is as illustrated.
 
+Then the generation should not include, the characterzation is should.
+
+To implement such framework, the most important is to share the inforamtion. In specific, to, we use the SAT solver. And when , we should change the coverage information. Our detail implementation for this framework is list in Alogirthm.
+
+With this newly framework, when we re-consider the example in Table \ref{tradition-gi} we can get the following result listed in Table \ref{new-gi}.
+\begin{table}[h]
+\caption{newly generation-isolation life-circle}
+\label{new-gi}
+\center
+\begin{tabular}{llllll}
+\multicolumn{6}{c}{\bfseries generation and execution} \\
+\multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
+ $t$ & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  1 } & Fail \\
+ \hline
+\multicolumn{5}{c}{\bfseries observed} &  \\
+$t_{1}$ &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  1 }& Pass \\
+$t_{2}$ &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  1 } & Fail \\
+$t_{3}$ &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  0 } & Fail \\
+\end{tabular}
+\end{table}
 
 \subsection{Description}
 
