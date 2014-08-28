@@ -341,7 +341,7 @@ As we discussed previously, the generation and localization is the most key work
 \subsection{traditional generation-isolation process}
 A typical traditional generation-isolation life-circle is to first generate a $t$-way covering array to detect if there exists some failures that triggered by some particular schemas. Then if we detect some failures, we should isolate the failure-inducing schemas in the SUT for further bug fixing.
 
-As an example, Table \ref{tradition-gi}, which .
+As an example, Table \ref{tradition-gi}, which illustrate the process of testing the System with 3 parameters and each parameter has two values. It first generated and executed the 2-way covering array ($t_{1}$ -- $t_{4}$). And after finding that $t_{1}$ and $t_{2}$ fails during testing, it then respectively isolate the MFS in the $t_{1}$ and $t_{2}$. For the $t_{1}$, it uses OFOT method generates three additional test cases ($t_{5}$ -- $t_{7}$), and identified the MFS of $t_{1}$ is (0, - , -) as only when changing the first factor of $t_{1}$ it will pass. Then it will do the same thing to $t_{2}$, and found that (0, -, -) is also the MFS of $t_{2}$. It must be noted that, when isolating the MFS of $t_{2}$, the generated extra test cases $t_{9}$ and $t_{10}$ has appeared before, so we can just reuse the previous result. After all, for detecting and isolate the MFS in this example SUT, we have use 8 test cases(marked with star).
 
 \begin{table}[h]
 \caption{traditional generation-isolation life-circle}
@@ -369,16 +369,24 @@ $t_{10}$ &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 } & Fail \\
 \end{tabular}
 \end{table}
 
-Such life-circle is not the proper choice in practice. The first reason we had discussed previously is that the engineers should be too patient to wait for bug fixing. And also as we discussed previously, the second reason should be the most important, is. With respect to the example of the .
-which we use an example to illustrate the reason. A typical example is like the following,
-for which we can find some duplicated. It is noted that some duplicated test cases can be avoided by . Thus, a more effective and efficient framework is desired.
+Such life-circle is not the proper choice in practice. The first reason we had discussed previously is that the engineers normally cannot be so patient to wait for fault localization when failure is found. The early bug fixing is appealing and can give the engineers confidence to keep on improving the quality of the software. The second reason, which is also the most important, is such life-circle can generate many redundant and unnecessary test cases. This can be reflected in the following two aspects:
+
+1) The test cases generated in the localization stage can also contribute some coverage, i.e.,  the schemas appear in the passing test cases in the localization stage may have already been covered in the test cases generation and execution stage.  For example, when we identify the MFS of $t_{1}$ in Table \ref{tradition-gi}, the schema (-, 1, 0) contained in the extra passing test case $t_{6}$ -- (0 1 0) has already been appeared in the passing test case $t_{3}$ -- (1 1 0). In another word, if we firstly isolate the MFS of $t_{1}$, then the $t_{3}$ is not the good choice as it doesn't covered as many as possible 2-value schemas, say, (1 1 1) is better than this test case at contributing more coverage.
+
+2)The identified MFS should not appeared in the following generated test cases.  This is because for the definition of MFS, each test case contain this schema will trigger a failure, i.e., to generate and execute more than one test case contained the MFS makes no sense for the failure detecting. Worse more, such test case will cause some masking effects, as it such test case may make other schemas in the test case omitted in the testing for the failure it trigged.  For example, when we identify the MFS of $t_{1}$ and find that (0 - -) is the failure-inducing schema, we should not generate the test case $t_{2}$, because it also contain this schema, it must also fail during testing as expected. And since we should not generate $t_{2}$, then the test cases generated for identified the MFS in $t_{2}$ is also needless.
+
+For all of this, a more effective and efficient framework is desired.
 
 \subsection{the new framework}
-Our new framework is as illustrated.
+To handle such deficiencies in traditional CT, we propose a new CT generation-localization framework. Our new framework aims at strengthening the interaction of generation and localization to reduce the unnecessary and invalid test cases discussed previously. The basic outline of our framework is illustrated in Figure \ref{new-life}.
+\begin{figure}
+ \includegraphics[width=3.4in]{baicOutline.eps}
+\caption{New Framework of CT}
+\label{new-life}
+\end{figure}
+Then the generation should not include, the characterization is should.
 
-Then the generation should not include, the characterzation is should.
-
-To implement such framework, the most important is to share the inforamtion. In specific, to, we use the SAT solver. And when , we should change the coverage information. Our detail implementation for this framework is list in Alogirthm.
+To implement such framework, the most important is to share the information. In specific, to, we use the SAT solver. And when , we should change the coverage information. Our detail implementation for this framework is list in Algorithm.
 
 With this newly framework, when we re-consider the example in Table \ref{tradition-gi} we can get the following result listed in Table \ref{new-gi}.
 \begin{table}[h]
