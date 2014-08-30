@@ -378,7 +378,14 @@ Such life-circle is not the proper choice in practice. The first reason we had d
 For all of this, a more effective and efficient framework is desired.
 
 \subsection{the new framework}
-To handle such deficiencies in traditional CT, we propose a new CT generation-localization framework. Our new framework aims at strengthening the interaction of generation and localization to reduce the unnecessary and invalid test cases discussed previously. The basic outline of our framework is illustrated in Figure .
+To handle such deficiencies in traditional CT, we propose a new CT generation-localization framework. Our new framework aims at strengthening the interaction of generation and localization to reduce the unnecessary and invalid test cases discussed previously. The basic outline of our framework is illustrated in Figure \ref{new-life}.
+\begin{figure}
+ \includegraphics[width=3.4in]{baicOutline.eps}
+\caption{New Framework of CT}
+\label{new-life}
+\end{figure}
+
+In specific, this new framework works as follows: First, it 
 
 Then the generation should not include, the characterization is should.
 
