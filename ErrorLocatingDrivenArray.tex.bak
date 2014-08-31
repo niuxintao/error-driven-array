@@ -385,7 +385,7 @@ To handle such deficiencies in traditional CT, we propose a new CT generation-lo
 \label{new-life}
 \end{figure}
 
-In specific, this new framework works as follows: First, it 
+In specific, this new framework works as follows: First, it will check whether all the needed schemas is covered or not. Commonly the target of CT is to cover all the $t$-valued schemas, with $t$ normally be assigned to be 2 or 3. Then if the coverage currently is not satisfied, it will generate a new test case to cover the schemas that is still not be covered as more as possible. When such a test case is generated, it will execute this test case with the outcome of the execution either pass (executed normally, i.e., doesn't triggered an exception, violate the expected oracle or the like) or fail (on the contrary). When the test case pass the execution, we will recompute the coverage state, as all the schemas in the passing test case are regarded as the error-, hence we have determined the schemas that is still uncovered . If the test case fails, then , we will starts MFS identify modula, to isolate the MFS in this failing test case.
 
 Then the generation should not include, the characterization is should.
 

@@ -1,32 +1,32 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.23)  30 AUG 2014 22:13
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.10.25)  31 AUG 2014 12:54
 entering extended mode
 **ErrorLocatingDrivenArray.tex
-(C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
-(C:\Users\niuxintao\Desktop\error-driven-array\sig-alternate.cls
-(D:\CTEX\MiKTeX\tex\latex\graphics\epsfig.sty
+(C:\Users\xintao\Desktop\error-driven-array\sig-alternate.cls
+(F:\CTEX\MiKTeX\tex\latex\graphics\epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
-(D:\CTEX\MiKTeX\tex\latex\graphics\graphicx.sty
+(F:\CTEX\MiKTeX\tex\latex\graphics\graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(D:\CTEX\MiKTeX\tex\latex\graphics\keyval.sty
+(F:\CTEX\MiKTeX\tex\latex\graphics\keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(D:\CTEX\MiKTeX\tex\latex\graphics\graphics.sty
+(F:\CTEX\MiKTeX\tex\latex\graphics\graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(D:\CTEX\MiKTeX\tex\latex\graphics\trig.sty
+(F:\CTEX\MiKTeX\tex\latex\graphics\trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(D:\CTEX\MiKTeX\tex\latex\00miktex\graphics.cfg
+(F:\CTEX\MiKTeX\tex\latex\00miktex\graphics.cfg
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: xetex.def on input line 91.
 
-(D:\CTEX\MiKTeX\tex\xelatex\xetex-def\xetex.def
+(F:\CTEX\MiKTeX\tex\xelatex\xetex-def\xetex.def
 File: xetex.def 2009/11/22 v0.94 LaTeX color/graphics driver for XeTeX (RRM/JK)
 
 ))
@@ -36,10 +36,10 @@ File: xetex.def 2009/11/22 v0.94 LaTeX color/graphics driver for XeTeX (RRM/JK)
 \epsfxsize=\dimen104
 \epsfysize=\dimen105
 )
-(D:\CTEX\MiKTeX\tex\latex\amsfonts\amssymb.sty
+(F:\CTEX\MiKTeX\tex\latex\amsfonts\amssymb.sty
 Package: amssymb 2009/06/22 v3.00
 
-(D:\CTEX\MiKTeX\tex\latex\amsfonts\amsfonts.sty
+(F:\CTEX\MiKTeX\tex\latex\amsfonts\amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \@emptytoks=\toks15
 \symAMSa=\mathgroup4
@@ -47,24 +47,24 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-(D:\CTEX\MiKTeX\tex\latex\ams\math\amsmath.sty
+(F:\CTEX\MiKTeX\tex\latex\ams\math\amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip41
 
 For additional information on amsmath, use the `?' option.
-(D:\CTEX\MiKTeX\tex\latex\ams\math\amstext.sty
+(F:\CTEX\MiKTeX\tex\latex\ams\math\amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(D:\CTEX\MiKTeX\tex\latex\ams\math\amsgen.sty
+(F:\CTEX\MiKTeX\tex\latex\ams\math\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen106
 ))
-(D:\CTEX\MiKTeX\tex\latex\ams\math\amsbsy.sty
+(F:\CTEX\MiKTeX\tex\latex\ams\math\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen107
 )
-(D:\CTEX\MiKTeX\tex\latex\ams\math\amsopn.sty
+(F:\CTEX\MiKTeX\tex\latex\ams\math\amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count80
@@ -167,7 +167,7 @@ Requested font "ptmr8t" at 8.0pt
 \titleboxnoteflag=\count100
 Document Class: sig-alternate 2012/05/23 - V2.5 - based on acmproc.cls V1.3 <No
 v. 30 '99>
-(D:\CTEX\MiKTeX\tex\latex\base\latexsym.sty
+(F:\CTEX\MiKTeX\tex\latex\base\latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
@@ -201,20 +201,20 @@ LaTeX Info: Redefining \cite on input line 1211.
 \acmcopyr=\toks33
 \boilerplate=\toks34
 \copyrightetc=\toks35
-(D:\CTEX\MiKTeX\tex\latex\base\fontenc.sty
+(F:\CTEX\MiKTeX\tex\latex\base\fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(D:\CTEX\MiKTeX\tex\latex\base\t1enc.def
+(F:\CTEX\MiKTeX\tex\latex\base\t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 )
 LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
- (D:\CTEX\MiKTeX\tex\latex\ae\t1aer.fd
+ (F:\CTEX\MiKTeX\tex\latex\ae\t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 )
 Requested font "aer9" at 9.0pt
  -> aer9
-)) (D:\CTEX\MiKTeX\tex\latex\ulem\ulem.sty
+)) (F:\CTEX\MiKTeX\tex\latex\ulem\ulem.sty
 \UL@box=\box30
 \UL@hyphenbox=\box31
 \UL@skip=\skip44
@@ -228,13 +228,13 @@ Requested font "lasy6" scaled 1000
 Package: ulem 2011/03/18
 \ULdepth=\dimen125
 )
-(D:\CTEX\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty
+(F:\CTEX\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty
 Package: algpseudocode 
 
-(D:\CTEX\MiKTeX\tex\latex\base\ifthen.sty
+(F:\CTEX\MiKTeX\tex\latex\base\ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(D:\CTEX\MiKTeX\tex\latex\algorithmicx\algorithmicx.sty
+(F:\CTEX\MiKTeX\tex\latex\algorithmicx\algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
@@ -250,12 +250,12 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip47
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (D:\CTEX\MiKTeX\tex\latex\algorithms\algorithm.sty
+) (F:\CTEX\MiKTeX\tex\latex\algorithms\algorithm.sty
 Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
-(D:\CTEX\MiKTeX\tex\latex\float\float.sty
+(F:\CTEX\MiKTeX\tex\latex\float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count117
 \float@exts=\toks37
@@ -266,7 +266,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@every@algorithm=\toks39
 \c@algorithm=\count118
 )
-(D:\CTEX\MiKTeX\tex\latex\subfigure\subfigure.sty
+(F:\CTEX\MiKTeX\tex\latex\subfigure\subfigure.sty
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfigtopskip=\skip48
 \subfigcapskip=\skip49
@@ -282,16 +282,16 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
-(D:\CTEX\MiKTeX\tex\latex\subfigure\subfigure.cfg)
+(F:\CTEX\MiKTeX\tex\latex\subfigure\subfigure.cfg)
 \subfig@top=\skip52
 \subfig@bottom=\skip53
 )
-(D:\CTEX\MiKTeX\tex\latex\mdwtools\footnote.sty
+(F:\CTEX\MiKTeX\tex\latex\mdwtools\footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box35
 \fn@width=\dimen128
 )
-(C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux)
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
@@ -322,7 +322,7 @@ Requested font "cmex7" at 5.0pt
  -> cmex7
 LaTeX Font Info:    Try loading font information for U+msa on input line 144.
 
-(D:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
+(F:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 Requested font "msam10" at 9.0pt
@@ -333,7 +333,7 @@ Requested font "msam5" at 5.0pt
  -> msam5
 LaTeX Font Info:    Try loading font information for U+msb on input line 144.
 
-(D:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
+(F:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 Requested font "msbm10" at 9.0pt
@@ -344,7 +344,7 @@ Requested font "msbm5" at 5.0pt
  -> msbm5
 LaTeX Font Info:    Try loading font information for U+lasy on input line 144.
 
-(D:\CTEX\MiKTeX\tex\latex\base\ulasy.fd
+(F:\CTEX\MiKTeX\tex\latex\base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 Requested font "lasy9" at 9.0pt
@@ -385,11 +385,10 @@ Underfull \vbox (badness 1173) has occurred while \output is active []
 No file ErrorLocatingDrivenArray.bbl.
 [5
 
-] (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) 
-) 
+] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
  2724 strings out of 430478
- 30577 string characters out of 3191502
+ 30565 string characters out of 3191501
  89532 words of memory out of 3000000
  5826 multiletter control sequences out of 15000+200000
  39815 words of font info for 51 fonts, out of 3000000 for 9000
