@@ -397,7 +397,7 @@ As for the identify modula, it keeps almost the same as traditional independent 
 
 Next we will specifically describe the two important parts in this framework:
 
-1) \emph{Generation} : 
+1) \emph{Generation} :
 We adopt the one-test-case-one-time method as the basic skeleton of the generation process. And as shown in Figure \ref{ct-life}, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden tuples. Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of this modula is described in Algorithm 1.
 
 \begin{algorithm}
@@ -405,36 +405,40 @@ We adopt the one-test-case-one-time method as the basic skeleton of the generati
   \begin{algorithmic}[1]
      \Require
      $Param$ \Comment{values set that each option can take}
-          
+
      $S_{MFS}$ \Comment{the set of MFS that currently isolated}
 
      $t_{uncovered}$ \Comment{the schemas that are still uncovered}
      %$s_{fixed}$ \Comment{fixed part}
 
      \Ensure  $test$ \Comment{the generate test case}
-
-     \While{\textbf{not} MeetEndCriteria()}
-       \State $s_{mutant} \leftarrow t_{original} - s_{fixed}$
-       \ForAll {$opt \in s_{mutant}$}
-          \State $i = getIndex(Param,opt) $
-          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+      
+     \While{\textbf{not} $t_{uncovered}$ is not empty}
+      \While{\textbf{not} $test$ is satisfied }
+       \State $test \leftarrow emptyArray(Param.size)$
+       \ForAll {$factor \in test$}
+            \While{\textbf{not} $SAT-Check(test, S_{MFS})$}
+              \State $value \leftarrow select(Param,opt) $
+           \EndWhile
        \EndFor
-       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
-       \State $result \leftarrow execute(t_{new})$
-       \If {$result == PASS\ or\ result ==  F_{m}$}
-         \State \Return $t_{new}$
-       \Else
-         \State continue
-       \EndIf
-     \EndWhile
+       \EndWhile
+%       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
+%       \State $result \leftarrow execute(t_{new})$
+%       \If {$result == PASS\ or\ result ==  F_{m}$}
+%         \State \Return $t_{new}$
+%       \Else
+%         \State continue
+%       \EndIf
+    \EndWhile
 
-     \State \Return \emph{null}
+     \State \Return \emph{test}
   \end{algorithmic}
 \end{algorithm}
 
-In this paper as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspried by the Constraint AETG work by Cohen, we .
+In this paper as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
 
 2) \emph{Isolation} :
+Isolation is still the same as before: 1) the additional test case should not contain the MFS, if cannot find, set the test as . 2) when update the MFS set. and coverage set.
 
 \begin{algorithm}
   \caption{replace test cases triggering unexpected faults}
