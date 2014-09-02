@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.23)  1 SEP 2014 23:15
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.23)  2 SEP 2014 21:46
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -382,7 +382,16 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 383--384
 Underfull \vbox (badness 1173) has occurred while \output is active []
 
  [4]
-Overfull \hbox (12.2617pt too wide) in paragraph at lines 437--437
+Overfull \hbox (9.8895pt too wide) in paragraph at lines 400--402
+[]\T1/aer/m/n/9 1) \T1/aer/m/it/9 Gen-er-a-tion \T1/aer/m/n/9 : We adop-t the o
+ne-test-case-one-time method
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (12.2617pt too wide) in paragraph at lines 509--509
 []\secfnt Compare with Tra-di-tion-al First-Gen-Latter-
  []
 
@@ -390,12 +399,12 @@ No file ErrorLocatingDrivenArray.bbl.
 [5] (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux
 ) ) 
 Here is how much of TeX's memory you used:
- 2724 strings out of 430478
- 30577 string characters out of 3191502
- 90532 words of memory out of 3000000
- 5826 multiletter control sequences out of 15000+200000
+ 2753 strings out of 430478
+ 31021 string characters out of 3191502
+ 91532 words of memory out of 3000000
+ 5855 multiletter control sequences out of 15000+200000
  39815 words of font info for 51 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,10n,26p,2155b,277s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,26p,2155b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on ErrorLocatingDrivenArray.pdf (5 pages).
