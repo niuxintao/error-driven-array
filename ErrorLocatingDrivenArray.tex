@@ -466,16 +466,22 @@ The isolation process will also be appropriately modified to adapt for the new C
 
 %     \Ensure  $t_{new}$ \Comment{the regenerate test case}
 
+
      \While{\textbf{not} FindMFS()}
        \State $s_{mutant} \leftarrow t_{original} - s_{fixed}$
+       \State $test \leftarrow initial(s_{fixed})$
        \ForAll {$opt \in s_{mutant}$}
           \State $i = getIndex(Param,opt) $
           \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+          \While{\textbf{not} $CheckSat(test, S_{MFS})$}
+              \State $value \leftarrow repick(Param,i) $
+           \EndWhile
+           \State $test.set(factor, value)$
        \EndFor
        \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
        \State $result \leftarrow execute(t_{new})$
-       \If {$result == PASS\ or\ result ==  F_{m}$}
-         \State \Return $t_{new}$
+       \If {$result == PASS$}
+         \State  $Update(t_{uncovered})$
        \Else
          \State continue
        \EndIf
