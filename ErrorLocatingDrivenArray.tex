@@ -412,16 +412,21 @@ We adopt the one-test-case-one-time method as the basic skeleton of the generati
      %$s_{fixed}$ \Comment{fixed part}
 
      \Ensure  $test$ \Comment{the generate test case}
-      
-     \While{\textbf{not} $t_{uncovered}$ is not empty}
-      \While{\textbf{not} $test$ is satisfied }
+
+    % \While{\textbf{not} $t_{uncovered}$ is not empty}
+      \State $Candidate_{test} \leftarrow empty Set$
+      \While{$Candidate_{test}.size$ is not satisfied}
        \State $test \leftarrow emptyArray(Param.size)$
        \ForAll {$factor \in test$}
-            \While{\textbf{not} $SAT-Check(test, S_{MFS})$}
-              \State $value \leftarrow select(Param,opt) $
+           \State   $value \leftarrow select(t_{uncovered},Param,opt)$
+            \While{\textbf{not} $CheckSat(test, S_{MFS})$}
+              \State $value \leftarrow repick(t_{uncovered},Param,opt) $
            \EndWhile
+           \State $test.set(factor, value)$
        \EndFor
+        \State $Candidate_{test}.append(test)$
        \EndWhile
+       \State $best \leftarrow select(Candidate_{test})$
 %       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
 %       \State $result \leftarrow execute(t_{new})$
 %       \If {$result == PASS\ or\ result ==  F_{m}$}
@@ -429,34 +434,39 @@ We adopt the one-test-case-one-time method as the basic skeleton of the generati
 %       \Else
 %         \State continue
 %       \EndIf
-    \EndWhile
+ %   \EndWhile
 
-     \State \Return \emph{test}
+     \State \Return $best$
   \end{algorithmic}
 \end{algorithm}
 
-In this paper as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
+This algorithm first gives a candidate set which initially is set to be empty(line 1). We lastly will fill up the set and select a best test case according to some criteria(line 13). For greedy algorithms like AETG this criteria may be the test case which contain the most uncovered schemas. For each test case that will be appended in this candidate set, it must satisfied two conditions: 1. The value each factor be assigned should optimize some coverage criteria (line 5), 2. The values currently be assigned to corresponding factors should \textbf{not} lead the test case eventually contain the some MFS (line 6 - 8).
+
+It is noted that we didn't specify that in which order these factors should be assigned and the value selection criteria for each factor is also not shown. This is because for different One-test-one-time generation methods, these metrics varies from each other. Another point that needs to be noted is that the constraints checking part(line 6 - 8) of our algorithm does not aim to optimising for the performance like running-time, iteration number or the like. Some studies, like Cohen in, by exploiting the SAT history or setting the threshold, can significantly improve such performance. In this paper, however, we will not discuss the details for those techniques. Instead, we want to make the overall generation process more general and fit for the framework listed in Figure \ref{new-life}.
+
+%However, our algorithm is powerful enough and properly adaptively to the framework we proposed.
+% as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
 
 2) \emph{Isolation} :
-Isolation is still the same as before: 1) the additional test case should not contain the MFS, if cannot find, set the test as . 2) when update the MFS set. and coverage set.
+The isolation process will also be appropriately modified to adapt for the new CT life-circle. is still the same as before: 1) the additional test case should not contain the MFS, if cannot find, set the test as . 2) when update the MFS set. and coverage set.
 
 \begin{algorithm}
   \caption{replace test cases triggering unexpected faults}
   \begin{algorithmic}[1]
      \Require
 
-     $t_{original}$ \Comment{original test case}
+     $t_{original}$ \Comment{original failing test case}
 
-     $F_{m}$ \Comment{fault type}
+     $S_{MFS}$ \Comment{previously identified MFS}
 
-     $s_{fixed}$ \Comment{fixed part}
+    $t_{uncovered}$ \Comment{the schemas that are still uncovered}
 
      $Param$ \Comment{values set that each option can take}
 
 
-     \Ensure  $t_{new}$ \Comment{the regenerate test case}
+%     \Ensure  $t_{new}$ \Comment{the regenerate test case}
 
-     \While{\textbf{not} MeetEndCriteria()}
+     \While{\textbf{not} FindMFS()}
        \State $s_{mutant} \leftarrow t_{original} - s_{fixed}$
        \ForAll {$opt \in s_{mutant}$}
           \State $i = getIndex(Param,opt) $
@@ -471,7 +481,9 @@ Isolation is still the same as before: 1) the additional test case should not co
        \EndIf
      \EndWhile
 
-     \State \Return \emph{null}
+     \State $S_{MFS}.append(newMFS)$.
+     \State $t_{newCovered} \leftarrow FindingTschemas(S_{MFS})$
+     \State $t_{uncovered}.reduce(t_{newCovered})$
   \end{algorithmic}
 \end{algorithm}
 
