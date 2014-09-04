@@ -387,7 +387,7 @@ To handle such deficiencies in traditional CT, we propose a new CT generation-lo
 
 In specific, this new framework works as follows: First, it will check whether all the needed schemas is covered or not. Commonly the target of CT is to cover all the $t$-valued schemas, with $t$ normally be assigned to be 2 or 3. Then if the coverage currently is not satisfied, it will generate a new test case to cover the schemas that is still not be covered as more as possible. After that, it will execute this test case with the outcome of the execution either be pass (executed normally, i.e., doesn't triggered an exception, violate the expected oracle or the like) or fail (on the contrary). When the test case pass the execution, we will recompute the coverage state, as all the schemas in the passing test case are regarded as the error-irrelevant. As a result, the schemas that wasn't covered before will be determined to be covered if it is contained in this newly generated test case. Otherwise if the test case fails, then we will start the MFS identify modula, to isolate the MFS in this failing test case. One point that needs to be noted is that if the test case fails, we will not change the coverage state, as we can not figure out which schemas are responsible to this failure among all the schemas in this test case until we isolate them.
 
-As for the identify modula, it keeps almost the same as traditional independent MFS identify process, i.e., repeats generating and executing additional test cases until it can get enough information to diagnosis the MFS in the original failing test case. The only difference from traditional MFS identifying process is that we augment it by counting the coverage this modula have to the overall coverage. In detail, when the additional test case passes, we will label the schemas in these test cases as covered if it is not covered yet. And when the MFS is found at the end of this modula, we will first set them as forbidden schemas that latter generated test cases should not contained,(Otherwise the test case must fail and it cannot contribute to more coverage), second all the schemas that contain this MFS will be set as covered. (As the MFS will not appear again, these schemas contain this MFS will also not be generated, so we will make them as covered to let the generation process stoppable)
+As for the identify modula, it keeps almost the same as traditional independent MFS identify process, i.e., repeats generating and executing additional test cases until it can get enough information to diagnosis the MFS in the original failing test case. The only difference from traditional MFS identifying process is that we augment it by counting the coverage this modula have to the overall coverage. In detail, when the additional test case passes, we will label the schemas in these test cases as covered if it is not covered yet. And when the MFS is found at the end of this modula, we will first set them as forbidden schemas that latter generated test cases should not contained,(Otherwise the test case must fail and it cannot contribute to more coverage), second all the schemas that will lead to this MFS will be set as covered  (For example, the schemas that contain some MFS should be set as covered, as the MFS will not appear again, these schemas contain this MFS will also not be generated, so we will make them as covered to let the generation process stoppable).
 % based on the outcomes of these additional test cases; The only difference is that
 %
 %we just augment this modula with counting the coverage this modula have contributed to the overall coverage. In detail, we will count the uncovered schemas in the passing additional test cases as previously generated passing test cases. We still don't count the schemas in these failing additional test cases, instead, we will handle these identified MFS
@@ -398,7 +398,7 @@ As for the identify modula, it keeps almost the same as traditional independent 
 Next we will specifically describe the two important parts in this framework:
 
 1) \emph{Generation} :
-We adopt the one-test-case-one-time method as the basic skeleton of the generation process. And as shown in Figure \ref{ct-life}, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden tuples. Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of this modula is described in Algorithm 1.
+We adopt the one-test-case-one-time method as the basic skeleton of the generation process. And as shown in Figure \ref{ct-life}, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden tuples. Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
 
 \begin{algorithm}
   \caption{Generate One test Case}
@@ -440,46 +440,70 @@ We adopt the one-test-case-one-time method as the basic skeleton of the generati
   \end{algorithmic}
 \end{algorithm}
 
-This algorithm first gives a candidate set which initially is set to be empty(line 1). We lastly will fill up the set and select a best test case according to some criteria(line 13). For greedy algorithms like AETG this criteria may be the test case which contain the most uncovered schemas. For each test case that will be appended in this candidate set, it must satisfied two conditions: 1.The value each factor should be assigned should optimize some coverage criteria (line 5), 2. The values currently be assigned to corresponding factors should not lead the test case to contain the MFS (line 6 - 8).
+This algorithm first gives a candidate set which initially is set to be empty(line 1). We lastly will fill up the set and select a best test case according to some criteria(line 13). For greedy algorithms like AETG this criteria may be the test case which contain the most uncovered schemas. For each test case that will be appended in this candidate set, it must satisfied two conditions: 1. The value each factor be assigned should optimize some coverage criteria (line 5), 2. The values currently be assigned to corresponding factors should \textbf{not} lead the test case eventually contain the some MFS (line 6 - 8).
 
-It is noted that we didn't specific in which order these factors should be assigned and the value selection criteria for each factor as for different One-test-one-time generation methods, these should varies. Another point that needs to be noted is that our algorithm is not aims to optimising the time cost or the like. Some studies, like Cohen, give many approaches to improve the performance when handling the constraints, especially the time-cost. However, our algorithm is powerful engouth and properly adaptively to the framework we proposed.
+It is noted that we didn't specify that in which order these factors should be assigned and the value selection criteria for each factor is also not shown. This is because for different One-test-one-time generation methods, these metrics varies from each other. Another point that needs to be noted is that the constraints checking part(line 6 - 8) of our algorithm does not aim to optimising for the performance like running-time, iteration number or the like. Some studies, like Cohen in, by exploiting the SAT history or setting the threshold, can significantly improve such performance. In this paper, however, we will not discuss the details for those techniques. Instead, we want to make the overall generation process more general and fit for the framework listed in Figure \ref{new-life}.
+
+%However, our algorithm is powerful enough and properly adaptively to the framework we proposed.
 % as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
 
 2) \emph{Isolation} :
-Isolation is still the same as before: 1) the additional test case should not contain the MFS, if cannot find, set the test as . 2) when update the MFS set. and coverage set.
+The isolation process will also be appropriately modified to adapt for the new CT life-circle. From the Figure \ref{new-life}, we can find some part of this process to isolate the MFS is similar to the $generation$ modula, i.e., repeat generating test cases until reach some criteria. As for the additional test case, we should also take care that it should not contain the previously isolated MFS. To achieve this goal, the constraints checking process is needed as Algorithm 1, which will not be specified again. Another important modification of the isolation process happens after the MFS is isolated, aiming to change the schemas' coverage because of the forbidden of the appearance of these MFS. It is noted that when we find some MFS, not only the MFS themselves will not be appeared again, but also some schemas that has some relationship with these MFS will aslo be forbidden. For example, when the ()
 
+ So we just to find the different, that is, when finding is still the same as before: 1) the additional test case should not contain the MFS, if cannot find, set the test as . 2) when update the MFS set. and coverage set.
+ 
+ Algorithm 2 lists the detail of how to handle the MFS. 
 \begin{algorithm}
   \caption{replace test cases triggering unexpected faults}
   \begin{algorithmic}[1]
      \Require
 
-     $t_{original}$ \Comment{original test case}
-
-     $F_{m}$ \Comment{fault type}
-
-     $s_{fixed}$ \Comment{fixed part}
-
-     $Param$ \Comment{values set that each option can take}
+    % $t_{original}$ \Comment{original failing test case}
+     $S_{isolated}$ \Comment{currently identified MFS}
 
 
-     \Ensure  $t_{new}$ \Comment{the regenerate test case}
+     $S_{MFS}$ \Comment{previously identified MFS}
 
-     \While{\textbf{not} MeetEndCriteria()}
-       \State $s_{mutant} \leftarrow t_{original} - s_{fixed}$
-       \ForAll {$opt \in s_{mutant}$}
-          \State $i = getIndex(Param,opt) $
-          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-       \EndFor
-       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
-       \State $result \leftarrow execute(t_{new})$
-       \If {$result == PASS\ or\ result ==  F_{m}$}
-         \State \Return $t_{new}$
+     $t_{uncovered}$ \Comment{the schemas that are still uncovered}
+
+   %  $Param$ \Comment{values set that each option can take}
+
+
+%     \Ensure  $t_{new}$ \Comment{the regenerate test case}
+
+     \ForAll  {$s \in S_{isolated}$}
+       \State $S_{MFS}.append(s)$
+     \EndFor
+     \ForAll {$t \in t_{uncovered}$}
+       \If {\textbf{not} $checkSAT(t, S_{MFS})$}
+         \State  $t_{uncovered}.remove(t)$
        \Else
          \State continue
        \EndIf
-     \EndWhile
-
-     \State \Return \emph{null}
+     \EndFor
+    % \While{\textbf{not} FindMFS()}
+%       \State $s_{mutant} \leftarrow t_{original} - s_{fixed}$
+%       \State $test \leftarrow initial(s_{fixed})$
+%       \ForAll {$opt \in s_{mutant}$}
+%          \State $i = getIndex(Param,opt) $
+%          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+%          \While{\textbf{not} $CheckSat(test, S_{MFS})$}
+%              \State $value \leftarrow repick(Param,i) $
+%           \EndWhile
+%           \State $test.set(factor, value)$
+%       \EndFor
+%       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
+%       \State $result \leftarrow execute(t_{new})$
+%       \If {$result == PASS$}
+%         \State  $Update(t_{uncovered})$
+%       \Else
+%         \State continue
+%       \EndIf
+%     \EndWhile
+%
+%     \State $S_{MFS}.append(newMFS)$.
+%     \State $t_{newCovered} \leftarrow FindingTschemas(S_{MFS})$
+%     \State $t_{uncovered}.reduce(t_{newCovered})$
   \end{algorithmic}
 \end{algorithm}
 
