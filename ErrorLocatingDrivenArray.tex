@@ -348,24 +348,41 @@ As an example, Table \ref{tradition-gi}, which illustrate the process of testing
 \label{tradition-gi}
 \center
 \begin{tabular}{llllll}
-\multicolumn{6}{c}{\bfseries generation and execution} \\
+\hline
+\multicolumn{6}{c}{\bfseries generation} \\
+\hline
 \multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
- $t_{1}$* & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0 } & Fail \\
- $t_{2}$* & \multicolumn{4}{l}{0 \ \ \ \ 1 \ \ \ \  1 } & Fail \\
- $t_{3}$* & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  0 } & Pass \\
- $t_{4}$* & \multicolumn{4}{l}{1 \ \ \ \ 0 \ \ \ \  1 } & Pass \\
+ $t_{1}$* & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0\ \ \ \ 0} & Fail \\
+ $t_{2}$* & \multicolumn{4}{l}{0 \ \ \ \ 1 \ \ \ \  1\ \ \ \ 1} & Pass \\
+ $t_{3}$* & \multicolumn{4}{l}{0 \ \ \ \ 2 \ \ \ \  2\ \ \ \ 2} & Pass \\
+ $t_{4}$* & \multicolumn{4}{l}{1 \ \ \ \ 0 \ \ \ \  1\ \ \ \ 2} & Fail \\
+ $t_{5}$* & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  2\ \ \ \ 0} & Pass \\
+ $t_{6}$* & \multicolumn{4}{l}{1 \ \ \ \ 2 \ \ \ \  0\ \ \ \ 1} & Pass \\
+ $t_{7}$* & \multicolumn{4}{l}{2 \ \ \ \ 0 \ \ \ \  2\ \ \ \ 1} & Fail \\
+ $t_{8}$* & \multicolumn{4}{l}{2 \ \ \ \ 1 \ \ \ \  0\ \ \ \ 2} & Pass \\
+ $t_{9}$* & \multicolumn{4}{l}{2 \ \ \ \ 2 \ \ \ \  1\ \ \ \ 0} & Pass \\
  \hline
 \multicolumn{6}{c}{\bfseries localization}  \\
-\multicolumn{5}{c}{\bfseries for $t1$--- 0 0 0} &  \\
-$t_{5}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  0 }& Pass \\
-$t_{6}$* &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 } & Fail \\
-$t_{7}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  1 } & Fail \\
-\multicolumn{6}{c}{\bfseries result --  (0, -, -)}  \\
-\multicolumn{5}{c}{\bfseries for $t2$ --- 0 1 1} &  \\
-$t_{8}$* &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  1 }& Pass \\
-$t_{9}$ &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  1 } & Fail \\
-$t_{10}$ &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 } & Fail \\
-\multicolumn{6}{c}{\bfseries result --  (0, -, -)}  \\
+\hline
+\multicolumn{5}{c}{\bfseries for $t1$--- 0 0 0 0} &  \\
+$t_{10}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  0 \ \ \ \  0} & Fail \\
+$t_{11}$* &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 \ \ \ \  0} & Pass \\
+$t_{12}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  1  \ \ \ \ 0} & Fail \\
+$t_{13}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  0  \ \ \ \ 1} & Fail \\
+\multicolumn{6}{c}{\bfseries result --  (-, 0, -, -)}  \\
+\multicolumn{5}{c}{\bfseries for $t4$--- 1 0 1 2} &  \\
+$t_{14}$* &\multicolumn{4}{l}{2  \ \ \ \  0 \ \ \ \  1 \ \ \ \  2} & Fail \\
+$t_{15}$* &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  1 \ \ \ \  2} & Pass \\
+$t_{16}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  2  \ \ \ \ 2} & Fail \\
+$t_{17}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  1  \ \ \ \ 0} & Fail \\
+\multicolumn{6}{c}{\bfseries result --  (-, 0, -, -)}  \\
+\multicolumn{5}{c}{\bfseries for $t7$--- 2 0 2 1} &  \\
+$t_{18}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  2 \ \ \ \  1} & Fail \\
+$t_{19}$* &\multicolumn{4}{l}{2  \ \ \ \  1 \ \ \ \  2 \ \ \ \  1} & Pass \\
+$t_{20}$* &\multicolumn{4}{l}{2  \ \ \ \  0 \ \ \ \  0  \ \ \ \ 1} & Fail \\
+$t_{21}$* &\multicolumn{4}{l}{2  \ \ \ \  0 \ \ \ \  2  \ \ \ \ 2} & Fail \\
+\multicolumn{6}{c}{\bfseries result --  (-, 0, -, -)}  \\
+\hline
 \end{tabular}
 \end{table}
 
@@ -448,7 +465,64 @@ It is noted that we didn't specify that in which order these factors should be a
 % as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
 
 2) \emph{Isolation} :
-The isolation process will also be appropriately modified to adapt for the new CT life-circle. From the Figure \ref{new-life}, we can find some part of this process to isolate the MFS is similar to the $generation$ modula, i.e., repeat generating test cases until reach some criteria. As for the additional test case, we should also take care that it should not contain the previously isolated MFS. To achieve this goal, the constraints checking process is needed as Algorithm 1, which will not be specified again. Another important modification of the isolation process happens after the MFS is isolated, aiming to change the schemas' coverage because of the forbidden of the appearance of these MFS. It is noted that when we find some MFS, not only the MFS themselves will not be appeared again, but also some schemas that has some relationship with these MFS will also be forbidden.
+The isolation process will also be appropriately modified to adapt for the new CT life-circle. From the Figure \ref{new-life}, we can find some part of this process to isolate the MFS is similar to the $generation$ modula, i.e., repeat generating test cases until reach some criteria. As for the additional test case, we should also take care that it should not contain the previously isolated MFS. To achieve this goal, the constraints checking process is needed as Algorithm 1. Another point that need to noted is that the overall test process is to make the coverage to be reached as soon as possible, the connection between generation and isoaltion is that the addtioanl test cases generated in the isoaltion can aslo contribute the coverage, so if we let the generation to be cover more uncovered tuples, the overal testing process can be stopped early. Alogirhthm 2 lists the approach that can make the isoaltion to generate more uncovered tuples as well as to not contain the previous isoalted MFS.
+
+\begin{algorithm}
+  \caption{Generating additional test case in the isolation process}
+  \begin{algorithmic}[1]
+     \Require
+
+    % $t_{original}$ \Comment{original failing test case}
+     $S_{isolated}$ \Comment{currently identified MFS}
+
+
+     $S_{MFS}$ \Comment{previously identified MFS}
+
+     $t_{uncovered}$ \Comment{the schemas that are still uncovered}
+
+   %  $Param$ \Comment{values set that each option can take}
+
+
+%     \Ensure  $t_{new}$ \Comment{the regenerate test case}
+
+     \ForAll  {$s \in S_{isolated}$}
+       \State $S_{MFS}.append(s)$
+     \EndFor
+     \ForAll {$t \in t_{uncovered}$}
+       \If {\textbf{not} $canAvoid(t, S_{MFS})$}
+         \State  $t_{uncovered}.remove(t)$
+       \Else
+         \State continue
+       \EndIf
+     \EndFor
+    % \While{\textbf{not} FindMFS()}
+%       \State $s_{mutant} \leftarrow t_{original} - s_{fixed}$
+%       \State $test \leftarrow initial(s_{fixed})$
+%       \ForAll {$opt \in s_{mutant}$}
+%          \State $i = getIndex(Param,opt) $
+%          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+%          \While{\textbf{not} $CheckSat(test, S_{MFS})$}
+%              \State $value \leftarrow repick(Param,i) $
+%           \EndWhile
+%           \State $test.set(factor, value)$
+%       \EndFor
+%       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
+%       \State $result \leftarrow execute(t_{new})$
+%       \If {$result == PASS$}
+%         \State  $Update(t_{uncovered})$
+%       \Else
+%         \State continue
+%       \EndIf
+%     \EndWhile
+%
+%     \State $S_{MFS}.append(newMFS)$.
+%     \State $t_{newCovered} \leftarrow FindingTschemas(S_{MFS})$
+%     \State $t_{uncovered}.reduce(t_{newCovered})$
+  \end{algorithmic}
+\end{algorithm}
+ 
+ 
+ Another important modification of the isolation process happens after the MFS is isolated, aiming to change the schemas' coverage because of the forbidden of the appearance of these MFS. It is noted that when we find some MFS, not only the MFS themselves will not be appeared again, but also some schemas that has some relationship with these MFS will also be forbidden.
 
 For example, consider the system has three parameters, and each parameter has two values that can be assigned, when we find the (0 1 -) and (1 - 0) are the MFS for this system, the schema (- 1 0) should also not appear, as when we generate test case that contain (- 1 0), i.e., either it contain MFS (0 1 -) for test case (0 1 0) or contain the MFS (1 - 0) for test case (1 1 0). And if we find the lower degree MFS like (0 - -), the forbidden schemas will be even more, as all the two-degree schemas contain this 1-degree schema should set to be covered. This problem is called the implicit constraints, firstly proposed by Cohen.
 
@@ -526,7 +600,7 @@ With this newly framework, when we re-consider the example in Table \ref{traditi
 \begin{tabular}{llllll|llllll}
  & \multicolumn{4}{c}{\bfseries generation}& & \multicolumn{6}{c}{\bfseries isolation} \\
 %\multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
-$t_{1}$* & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0 } & Fail & \multicolumn{6}{l}{}\\
+$t_{1}$* & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0  \ \ \ \  0 } & Fail & \multicolumn{6}{l}{}\\
 \multicolumn{5}{l}{}& & $t_{2}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  0 }& Pass \\
 \multicolumn{5}{l}{}& &$t_{3}$* &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 } & Fail \\
 \multicolumn{5}{l}{}& &$t_{4}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  1 } & Fail \\
@@ -537,9 +611,9 @@ $t_{7}$* &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  0 } & Pass & \multicolumn{6}
 \end{tabular}
 \end{table}
 
-This table consists of two main columns, where the left indicates the generation part while the right column indicates the isolation process. We . 
+This table consists of two main columns, where the left indicates the generation part while the right column indicates the isolation process. We .
 
-Up to now, all the 2-degree schemas are covered, in detail, (1  1 -) (1 - 1) (- 1 1) are covered by passing test case (1 1 1), (1 0 -) (1 - 0) (- 0 0) are covered by passing test case (1 0 0), (- 0 1) and (- 1 0) are covered by test case (1 0 1) and (1 1 0) respectively. Those schemas related to (0 - -) such as (0 - 1), (0 0 -) will not be covered as the (0 - -) is the MFS.  All the generated 7 test cases are not duplicated with each other (all marked *), we can find the overall generated test case are one less than the traditional approaches in Table \ref{tradition-gi}. Another advances of our approach is that our approach provide a stronger covering critira than traditional covering array.
+Up to now, all the 2-degree schemas are covered, in detail, (1  1 -) (1 - 1) (- 1 1) are covered by passing test case (1 1 1), (1 0 -) (1 - 0) (- 0 0) are covered by passing test case (1 0 0), (- 0 1) and (- 1 0) are covered by test case (1 0 1) and (1 1 0) respectively. Those schemas related to (0 - -) such as (0 - 1), (0 0 -) will not be covered as the (0 - -) is the MFS.  All the generated 7 test cases are not duplicated with each other (all marked *), we can find the overall generated test case are one less than the traditional approaches in Table \ref{tradition-gi}. Another advances of our approach is that our approach provide a stronger covering criteria than traditional covering array.
 
 %\subsection{Description}
 %

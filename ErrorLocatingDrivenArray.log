@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.23)  4 SEP 2014 16:47
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2013.4.23)  7 SEP 2014 15:16
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -374,7 +374,7 @@ Overfull \hbox (11.468pt too wide) in paragraph at lines 336--336
 [3]
 File: baicOutline.eps Graphic file (type eps)
  <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 383--384
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 400--401
 [][] 
  []
 
@@ -382,25 +382,26 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 383--384
 Underfull \vbox (badness 1173) has occurred while \output is active []
 
  [4]
-Overfull \hbox (9.8895pt too wide) in paragraph at lines 400--402
+Overfull \hbox (9.8895pt too wide) in paragraph at lines 417--419
 []\T1/aer/m/n/9 1) \T1/aer/m/it/9 Gen-er-a-tion \T1/aer/m/n/9 : We adop-t the o
 ne-test-case-one-time method
  []
 
-[5]
-Overfull \hbox (12.2617pt too wide) in paragraph at lines 551--551
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+Overfull \hbox (12.2617pt too wide) in paragraph at lines 625--625
 []\secfnt Compare with Tra-di-tion-al First-Gen-Latter-
  []
 
 No file ErrorLocatingDrivenArray.bbl.
-[6
-
-] (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) 
-) 
+[6] (C:\Users\niuxintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux
+) ) 
 Here is how much of TeX's memory you used:
  2758 strings out of 430478
  31105 string characters out of 3191502
- 93532 words of memory out of 3000000
+ 92532 words of memory out of 3000000
  5860 multiletter control sequences out of 15000+200000
  39815 words of font info for 51 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191

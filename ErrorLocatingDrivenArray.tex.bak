@@ -350,10 +350,10 @@ As an example, Table \ref{tradition-gi}, which illustrate the process of testing
 \begin{tabular}{llllll}
 \multicolumn{6}{c}{\bfseries generation and execution} \\
 \multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
- $t_{1}$* & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0 } & Fail \\
- $t_{2}$* & \multicolumn{4}{l}{0 \ \ \ \ 1 \ \ \ \  1 } & Fail \\
- $t_{3}$* & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  0 } & Pass \\
- $t_{4}$* & \multicolumn{4}{l}{1 \ \ \ \ 0 \ \ \ \  1 } & Pass \\
+ $t_{1}$* & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0\ \ \ \ } & Fail \\
+ $t_{2}$* & \multicolumn{4}{l}{0 \ \ \ \ 1 \ \ \ \  1\ \ \ \ } & Fail \\
+ $t_{3}$* & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  0\ \ \ \ } & Pass \\
+ $t_{4}$* & \multicolumn{4}{l}{1 \ \ \ \ 0 \ \ \ \  1\ \ \ \ } & Pass \\
  \hline
 \multicolumn{6}{c}{\bfseries localization}  \\
 \multicolumn{5}{c}{\bfseries for $t1$--- 0 0 0} &  \\
@@ -448,13 +448,15 @@ It is noted that we didn't specify that in which order these factors should be a
 % as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
 
 2) \emph{Isolation} :
-The isolation process will also be appropriately modified to adapt for the new CT life-circle. From the Figure \ref{new-life}, we can find some part of this process to isolate the MFS is similar to the $generation$ modula, i.e., repeat generating test cases until reach some criteria. As for the additional test case, we should also take care that it should not contain the previously isolated MFS. To achieve this goal, the constraints checking process is needed as Algorithm 1, which will not be specified again. Another important modification of the isolation process happens after the MFS is isolated, aiming to change the schemas' coverage because of the forbidden of the appearance of these MFS. It is noted that when we find some MFS, not only the MFS themselves will not be appeared again, but also some schemas that has some relationship with these MFS will aslo be forbidden. For example, when the ()
+The isolation process will also be appropriately modified to adapt for the new CT life-circle. From the Figure \ref{new-life}, we can find some part of this process to isolate the MFS is similar to the $generation$ modula, i.e., repeat generating test cases until reach some criteria. As for the additional test case, we should also take care that it should not contain the previously isolated MFS. To achieve this goal, the constraints checking process is needed as Algorithm 1, which will not be specified again. Another important modification of the isolation process happens after the MFS is isolated, aiming to change the schemas' coverage because of the forbidden of the appearance of these MFS. It is noted that when we find some MFS, not only the MFS themselves will not be appeared again, but also some schemas that has some relationship with these MFS will also be forbidden.
 
- So we just to find the different, that is, when finding is still the same as before: 1) the additional test case should not contain the MFS, if cannot find, set the test as . 2) when update the MFS set. and coverage set.
- 
- Algorithm 2 lists the detail of how to handle the MFS. 
+For example, consider the system has three parameters, and each parameter has two values that can be assigned, when we find the (0 1 -) and (1 - 0) are the MFS for this system, the schema (- 1 0) should also not appear, as when we generate test case that contain (- 1 0), i.e., either it contain MFS (0 1 -) for test case (0 1 0) or contain the MFS (1 - 0) for test case (1 1 0). And if we find the lower degree MFS like (0 - -), the forbidden schemas will be even more, as all the two-degree schemas contain this 1-degree schema should set to be covered. This problem is called the implicit constraints, firstly proposed by Cohen.
+
+%So we just to find the different, that is, when finding is still the same as before: 1) the additional test case should not contain the MFS, if cannot find, set the test as . 2) when update the MFS set. and coverage set.
+
+ Algorithm 2 lists the detail of how to handle the MFS.
 \begin{algorithm}
-  \caption{replace test cases triggering unexpected faults}
+  \caption{Dealing after the isolation of MFS}
   \begin{algorithmic}[1]
      \Require
 
@@ -475,7 +477,7 @@ The isolation process will also be appropriately modified to adapt for the new C
        \State $S_{MFS}.append(s)$
      \EndFor
      \ForAll {$t \in t_{uncovered}$}
-       \If {\textbf{not} $checkSAT(t, S_{MFS})$}
+       \If {\textbf{not} $canAvoid(t, S_{MFS})$}
          \State  $t_{uncovered}.remove(t)$
        \Else
          \State continue
@@ -507,6 +509,7 @@ The isolation process will also be appropriately modified to adapt for the new C
   \end{algorithmic}
 \end{algorithm}
 
+In this algorithm, we first append the newly isolated MFS into the global MFS set (line 1 - 3)to share them latter for both the generation and isolation processes. Then we search through the uncovered schemas set (line 4), to eliminate these schemas that cannot avoid some MFS when extend these schemas into a test case(line 5 - 7).
 %3) Setting constraint, and change coverage.
 
 
@@ -515,27 +518,33 @@ The isolation process will also be appropriately modified to adapt for the new C
 
 %To implement such framework, the most important is to share the information. In specific, to, we use the SAT solver. And when , we should change the coverage information. Our detail implementation for this framework is list in Algorithm.
 
-With this newly framework, when we re-consider the example in Table \ref{tradition-gi} we can get the following result listed in Table \ref{new-gi}.
+With this newly framework, when we re-consider the example in Table \ref{tradition-gi} in section 3.1,  we can get the following result listed in Table \ref{new-gi}.
 \begin{table}[h]
 \caption{newly generation-isolation life-circle}
 \label{new-gi}
 \center
-\begin{tabular}{llllll}
-\multicolumn{6}{c}{\bfseries generation and execution} \\
-\multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
- $t$ & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  1 } & Fail \\
- \hline
-\multicolumn{5}{c}{\bfseries observed} &  \\
-$t_{1}$ &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  1 }& Pass \\
-$t_{2}$ &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  1 } & Fail \\
-$t_{3}$ &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  0 } & Fail \\
+\begin{tabular}{llllll|llllll}
+ & \multicolumn{4}{c}{\bfseries generation}& & \multicolumn{6}{c}{\bfseries isolation} \\
+%\multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
+$t_{1}$* & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0 } & Fail & \multicolumn{6}{l}{}\\
+\multicolumn{5}{l}{}& & $t_{2}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  0 }& Pass \\
+\multicolumn{5}{l}{}& &$t_{3}$* &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 } & Fail \\
+\multicolumn{5}{l}{}& &$t_{4}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  1 } & Fail \\
+\multicolumn{5}{l}{}& &\multicolumn{6}{l}{ \bfseries{MFS}: $(0, - , -)$ }  \\
+$t_{5}$* &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  1 } & Pass & \multicolumn{6}{l}{}\\
+$t_{6}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  1 } & Pass & \multicolumn{6}{l}{}\\
+$t_{7}$* &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  0 } & Pass & \multicolumn{6}{l}{}\\
 \end{tabular}
 \end{table}
 
-\subsection{Description}
+This table consists of two main columns, where the left indicates the generation part while the right column indicates the isolation process. We .
 
+Up to now, all the 2-degree schemas are covered, in detail, (1  1 -) (1 - 1) (- 1 1) are covered by passing test case (1 1 1), (1 0 -) (1 - 0) (- 0 0) are covered by passing test case (1 0 0), (- 0 1) and (- 1 0) are covered by test case (1 0 1) and (1 1 0) respectively. Those schemas related to (0 - -) such as (0 - 1), (0 0 -) will not be covered as the (0 - -) is the MFS.  All the generated 7 test cases are not duplicated with each other (all marked *), we can find the overall generated test case are one less than the traditional approaches in Table \ref{tradition-gi}. Another advances of our approach is that our approach provide a stronger covering criteria than traditional covering array.
 
-\subsection{A case study}
+%\subsection{Description}
+%
+%
+%\subsection{A case study}
 
 \section{empirical studies}
 
