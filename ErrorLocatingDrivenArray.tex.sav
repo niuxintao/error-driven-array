@@ -113,20 +113,31 @@
 % e-mail address with \email.
 %
 % 1st. author
-\alignauthor
-Xintao Niu\\
-       \affaddr{State Key Laboratory for Novel Software Technology}\\
-       \affaddr{Nanjing University}\\
-       \affaddr{China, 210023}\\
-       \email{niuxintao@gmail.com}
+\and
+ Xintao Niu and Changhai Nie\\
+       \affaddr{State Key Laboratory for Novel}\\
+       \affaddr{ Software Technology}\\
+       \affaddr{Nanjing University, China}\\
+%       \affaddr{China, 210023}\\
+       \email{niuxintao@gmail.com}\\
+       \email{changhainie@nju.edu.cn}
+  %     \email{changhainie@nju.edu.cn}
 % 2nd. author
 \alignauthor
-Changhai Nie\\
-       \affaddr{State Key Laboratory for Novel Software Technology}\\
-       \affaddr{Nanjing University}\\
-       \affaddr{China, 210023}\\
-       \email{changhainie@nju.edu.cn}
+Hareton Leung \\
+       \affaddr{Department of computing}\\
+       \affaddr{Hong Kong Polytechnic University}\\
+       \affaddr{Kowloon, Hong Kong}\\
+       \email{ cshleung@comp.polyu.edu.hk}
 % 3rd. author'
+%\alignauthor
+%Jeff Lei\\
+%       \affaddr{Department of Computer Science and Engineering }\\
+%       \affaddr{The University of Texas at Arlington}\\
+%       \affaddr{Arlington, Texas}\\
+%       \email{ylei@cse.uta.edu }
+% 3rd. author'
+%\and
 \alignauthor
 JiaXi Xu\\
        \affaddr{School of Mathematics and Information Technology}\\
@@ -169,7 +180,7 @@ Although this conventional CT framework is simple and straightforward, however i
 
 \emph{Generation and Localization process should be organised in a more tightly way.}
 
-Based on the idea, we propose a new CT framework, which instead of dividing the generation and localization into two independent stages, it integrate this two stages into one. We call this new one the Generation-Localization stage, which allows for both generation and localization better share each other's testing information. To this aim, we remodel the generation and localization modular to make them better adapt to this newly framework. In specific, our generation adopts the one-test-one-time strategy, i.e., generate and execute one test case in one iteration. Rather than generating the overall needed test cases in one time, this strategy is more flexible so that it allows for terminating at any time during generation, no matter whether the coverage is reached or not. With this strategy, we can let the generation stops at the point we detect some failures, and then after localization we can utilize the diagnosing result to change the coverage criteria, e.g., the interactions related to the failure-inducing interactions do not need to be checked any more. Then based on the new coverage criteria, the generation process goes on.
+Based on the idea, we propose a new CT framework, which instead of dividing the generation and localization into two independent stages, it integrate this two stages into one. We call this new one the Generation-Localization stage, which allows for both generation and localization better share each other's testing information. To this aim, we remodel the generation and localization module to make them better adapt to this newly framework. In specific, our generation adopts the one-test-one-time strategy, i.e., generate and execute one test case in one iteration. Rather than generating the overall needed test cases in one time, this strategy is more flexible so that it allows for terminating at any time during generation, no matter whether the coverage is reached or not. With this strategy, we can let the generation stops at the point we detect some failures, and then after localization we can utilize the diagnosing result to change the coverage criteria, e.g., the interactions related to the failure-inducing interactions do not need to be checked any more. Then based on the new coverage criteria, the generation process goes on.
 
 %For the fault localization, we augment this process with a test case . instead of independently generating extra test cases, we add a new process to let it can get a guide . we will also take use of the test cases generation before, this will shows in the extra test case. Fault localization will need more.
 
@@ -286,9 +297,9 @@ Many studies in CT field focus on how to generate such a test suite with the aim
 
 2) A overall set of test cases one time:  This strategy first generates a set of test cases with the size of the set fixed in prior. Then through some operation such as mutation of the some cells, increase or decrease the size of the set of test cases, regeneration some test cases to make the set of test cases to cover all the needed schemas with the size as small as possible.
 
-3) Others :  This strategy differentiates from the previous two strategies at the point it does not first give completed test cases. It will first focus on assigning values to some  particular factors or parameters to cover the schemas that related to these factors, and then complement the remains to form completed test cases.
+3) Others :  This strategy differentiates from the previous two strategies at the point it does not first give completed test cases \cite{lei2008ipog}. It will first focus on assigning values to some  particular factors or parameters to cover the schemas that related to these factors, and then complement the remaining part to form completed test cases.
 
-In this paper, we focus on the first one: One test case one time as it can allow for immediately getting a completed test case such that the testers can execute and diagnosis in the early stage. And we will see later, with respect to the fault defeating, this strategy us the most flexible and efficient one comparing with the other two strategies.
+In this paper, we focus on the first one: One test case one time as it can allow for immediately getting a completed test case such that the testers can execute and diagnosis in the early stage. And we will see later, with respect to the fault defeating, this strategy is the most flexible and efficient one comparing with the other two strategies.
 
 %To isolate the failure-inducing schemas and further bug fixing, the first step, is to detect them. To efficiently isolate the failure-inducing schemas, and to . Such a testing object, is covering array, which ,. Formally,
 %
@@ -334,48 +345,366 @@ This isolation process mutate one factor of the original test case one time to g
 
 
 \section{The Integrated Generation Fault Localization Process}
-As we discussed previously, the generation and localization is the most key work in CT life-circle. How to utilize this two work in the CT life-circle is of importance as it is closely related to the quality and cost of overall software testing. In fact, most works in CT focus on this two fields, however, they are almost discussed independently, i.e., either only aims to improve the generation efficiency or only devote to refining the localization process.
+As we discussed previously, the generation and localization is the most key work in CT life-circle. How to utilize this two works in the CT life-circle is of importance as it is closely related to the quality and cost of overall software testing. In fact, most studies in CT focus on this two fields. But rather than as a whole, generation and localization are discussed independently. The justification for not discussing how to cooperate this two works is that they think the first-generation-then-isolation is so natural and straightforward. As we will show below, however, that the generation and localization is so tightly correlated and how to cooperate this two works do have an significant impact on the effectiveness and efficiencies of the testing work.
 
-focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-isolation is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
+%focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-isolation is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
 
-\subsection{traditional isolation process}
-To isolate the failure-inducing schemas in SUT, a typical traditional life-circle is to generate a t-way covering array to detect if there exists some failures that triggered by some particular . And after the generation and execution, if we detect some failures, we should isolate the failure-inducing schemas in the SUT. And further diagnosis operation should be taken to bug fixing.
+\subsection{Traditional generation-isolation process}
+A typical traditional generation-isolation life-circle is to first generate a $t$-way covering array to detect if there exists some failures that triggered by some particular schemas. Then if we detect some failures, we should isolate the failure-inducing schemas in the SUT for further bug fixing.
 
-Such life-circle is not the proper choice. The first reason we had discussed previous, which is the engineers should be too patient to wait for bug fixing. And also as we discussed previously, the second reason should be the most important, which we use an example to illustrate the reason. A typical example is like the following,
-for which we can find some duplicated. It is noted that some duplicated test cases can be avoided by . Thus, a more effective and efficient framework is desired.
+As an example, Table \ref{tradition-gi}, which illustrate the process of testing the System with 4 parameters and each parameter has two values. It first generated and executed the 2-way covering array ($t_{1}$ -- $t_{9}$). And after finding that $t_{1}$, $t_{2}$, and $t_{7}$ failed during testing, it then respectively isolated the MFS in the $t_{1}$ ,$t_{2}$, and $t_{7}$. For the $t_{1}$, it uses OFOT method generates four additional test cases ($t_{10}$ -- $t_{13}$), and identified the MFS of $t_{1}$ is (-, 0, - , -) as only when changing the second factor of $t_{1}$ it will pass. Then it will do the same thing to $t_{2}$ and $t_{7}$, and found that (-,0, -, -) is also the MFS of $t_{2}$ and $t_{7}$.  After all, for detecting and isolate the MFS in this example SUT, we have generated 12 additional test cases(marked with star).
+%It must be noted that, when isolating the MFS of $t_{2}$, the generated extra test cases $t_{9}$ and $t_{10}$ has appeared before, so we can just reuse the previous result.
 
-\subsection{the new framework}
-Our new framework is as illustrated.
+\begin{table}[h]
+\caption{traditional generation-isolation life-circle}
+\label{tradition-gi}
+\center
+\begin{tabular}{llllll}
+\hline
+\multicolumn{6}{c}{\bfseries generation} \\
+\hline
+\multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
+ $t_{1}$ & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0\ \ \ \ 0} & Fail \\
+ $t_{2}$ & \multicolumn{4}{l}{0 \ \ \ \ 1 \ \ \ \  1\ \ \ \ 1} & Pass \\
+ $t_{3}$ & \multicolumn{4}{l}{0 \ \ \ \ 2 \ \ \ \  2\ \ \ \ 2} & Pass \\
+ $t_{4}$ & \multicolumn{4}{l}{1 \ \ \ \ 0 \ \ \ \  1\ \ \ \ 2} & Fail \\
+ $t_{5}$ & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  2\ \ \ \ 0} & Pass \\
+ $t_{6}$ & \multicolumn{4}{l}{1 \ \ \ \ 2 \ \ \ \  0\ \ \ \ 1} & Pass \\
+ $t_{7}$ & \multicolumn{4}{l}{2 \ \ \ \ 0 \ \ \ \  2\ \ \ \ 1} & Fail \\
+ $t_{8}$ & \multicolumn{4}{l}{2 \ \ \ \ 1 \ \ \ \  0\ \ \ \ 2} & Pass \\
+ $t_{9}$ & \multicolumn{4}{l}{2 \ \ \ \ 2 \ \ \ \  1\ \ \ \ 0} & Pass \\
+ \hline
+\multicolumn{6}{c}{\bfseries localization}  \\
+\hline
+\multicolumn{5}{c}{\bfseries for $t1$--- 0 0 0 0} &  \\
+$t_{10}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  0 \ \ \ \  0} & Fail \\
+$t_{11}$* &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 \ \ \ \  0} & Pass \\
+$t_{12}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  1  \ \ \ \ 0} & Fail \\
+$t_{13}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  0  \ \ \ \ 1} & Fail \\
+\multicolumn{6}{c}{\bfseries result --  (-, 0, -, -)}  \\
+\multicolumn{5}{c}{\bfseries for $t4$--- 1 0 1 2} &  \\
+$t_{14}$* &\multicolumn{4}{l}{2  \ \ \ \  0 \ \ \ \  1 \ \ \ \  2} & Fail \\
+$t_{15}$* &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  1 \ \ \ \  2} & Pass \\
+$t_{16}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  2  \ \ \ \ 2} & Fail \\
+$t_{17}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  1  \ \ \ \ 0} & Fail \\
+\multicolumn{6}{c}{\bfseries result --  (-, 0, -, -)}  \\
+\multicolumn{5}{c}{\bfseries for $t7$--- 2 0 2 1} &  \\
+$t_{18}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  2 \ \ \ \  1} & Fail \\
+$t_{19}$* &\multicolumn{4}{l}{2  \ \ \ \  1 \ \ \ \  2 \ \ \ \  1} & Pass \\
+$t_{20}$* &\multicolumn{4}{l}{2  \ \ \ \  0 \ \ \ \  0  \ \ \ \ 1} & Fail \\
+$t_{21}$* &\multicolumn{4}{l}{2  \ \ \ \  0 \ \ \ \  2  \ \ \ \ 2} & Fail \\
+\multicolumn{6}{c}{\bfseries result --  (-, 0, -, -)}  \\
+\hline
+\end{tabular}
+\end{table}
+
+Such life-circle is not the proper choice in practice. The first reason we had discussed previously is that the engineers normally cannot be so patient to wait for fault localization when failure is found. The early bug fixing is appealing and can give the engineers confidence to keep on improving the quality of the software. The second reason, which is also the most important, is such life-circle can generate many redundant and unnecessary test cases. This can be reflected in the following two aspects:
+
+1) The test cases generated in the localization stage can also contribute some coverage, i.e., the schemas appear in the passing test cases in the localization stage may have already been covered in the test cases generation stage.  For example, when we identify the MFS of $t_{1}$ in Table \ref{tradition-gi}, the schema (0, 1, -, -) contained in the extra passing test case $t_{11}$ -- (0, 0, 1, 0) has already been appeared in the passing test case $t_{2}$ -- (0, 1, 1, 1). In another word, if we firstly isolate the MFS of $t_{1}$, then the $t_{2}$ is not the good choice as it doesn't covered as many as possible 2-value schemas, say, (1, 1, 1, 1) is better than this test case at contributing more coverage.
+
+2)The identified MFS should not appeared in the following generated test cases.  This is because according to the definition of MFS, each test case contain this schema will trigger a failure, i.e., to generate and execute more than one test case contained the MFS makes no sense for the failure detecting. Worse more, such test case may suffer from the \emph{masking effects} \cite{yilmaz2013reducing}, as failures caused by the already identified MFS can prevent the test case from normally checking (e.g., failures that can trigger an unexpected halt of the execution), as a result some schemas in these test cases that are supposed to be examined will actually skip the testing. Take the example in Table \ref{tradition-gi}, after identifying the MFS -- (-, 0, -, -) of $t_{1}$, we should not generate the test case $t_{4}$ and $t_{7}$. This because they also contain the identified MFS (-, 0, -, -), which will result in them failing as expected. Surely the expected failure caused by MFS (-, 0, -, -) makes $t_{4}$ and $t_{7}$ are superfluous for error-detection, and worse more some other schemas in $t_{4}$ or $t_{7}$  may be masked, as those schemas can potentially trigger other failures but will not be observed. And since we should not generate $t_{4}$ and $t_{7}$, then the additional test cases ($t_{14}$ to $t_{21}$)generated for identified the MFS in $t_{4}$ and $t_{7}$ are also not necessary.
+
+For all of this, a more effective and efficient framework is desired.
+
+\subsection{New framework}
+To handle such deficiencies in traditional CT, we propose a new CT generation-localization framework. Our new framework aims at enhancing the interaction of generation and localization to reduce the unnecessary and invalid test cases discussed previously. The basic outline of our framework is illustrated in Figure \ref{new-life}.
+\begin{figure}
+ \includegraphics[width=3.4in]{baicOutline.eps}
+\caption{New Framework of CT}
+\label{new-life}
+\end{figure}
+
+In specific, this new framework works as follows: First, it will check whether all the needed schemas is covered or not. Commonly the target of CT is to cover all the $t$-valued schemas, with $t$ normally be assigned to be 2 or 3. Then if the coverage currently is not satisfied, it will generate a new test case to cover the schemas that is still not be covered as more as possible. After that, it will execute this test case with the outcome of the execution either be pass (executed normally, i.e., doesn't triggered an exception, violate the expected oracle or the like) or fail (on the contrary). When the test case pass the execution, we will recompute the coverage state, as all the schemas in the passing test case are regarded as error-irrelevant. As a result, the schemas that wasn't covered before will be determined to be covered if it is contained in this newly generated test case. Otherwise if the test case fails, then we will start the MFS identify module, to isolate the MFS in this failing test case. One point that needs to be noted is that if the test case fails, we will not change the coverage state, as we can not figure out which schemas are responsible to this failure among all the schemas in this test case until we isolate them.
+
+The identify module works almost the same way as traditional independent MFS identify process, i.e., repeats generating and executing additional test cases until it can get enough information to diagnose the MFS in the original failing test case. The only difference from traditional MFS identifying process is that we augment it by counting the coverage this module have contributed to the overall coverage. In detail, when the additional test case passes, we will label the schemas in these test cases as covered if it had not been covered before. And when the MFS is found at the end of this module, we will first set them as forbidden schemas that latter generated test cases should not contain them (Otherwise the test case must fail and it cannot contribute to more coverage), second all the $t$-value schemas that are \emph{related} to these MFS will be set as covered. Here the \emph{related} indicates the following three types of $t$-value schemas:
+
+First, the MFS \textbf{themselves}. Note that we haven't change the coverage state after the generated test case fails (both for the generation and identify module ), so these MFS will never be covered as they always appear in these failing test cases.
+
+Second, the schemas that are the \textbf{parent-schemas} of these MFS. By definition of the parent-schemas (Definition 3), we can find if the test case contain the parent-schemas, it must also contain all its sub-schemas. So every test case contain the parent-schemas of the MFS must fail after execution. As a result, they will never be covered as we don't change coverage state for failing test cases.
+
+Third, those \textbf{implicit forbidden} schemas, which was first introduced in \cite{cohen2007interaction}.  This type of schemas are caused by the conjunction of multiple MFS. For example, for a SUT with three parameters, and each parameter has two values, i.e., SUT(2, 2, 2). If there are two MFS for this SUT, which are (1, -, 1) and (0, 1, -). Then the schema (-, 1, 1) is the implicit forbidden schema. This is because for any test case that contain this schema, it must contain either (1, -, 1) or (0, 1, -). As a result, (-, 1, 1) will never be covered as all the test cases contain this schema will fail and so that we will not change the coverage state. In fact, by Definition 4, they can be deemed as faulty combinations.
+
+As we all know, the terminating condition of the CT framework is to cover all the $t$-value schemas. Then since the three types of schemas will never be covered in our new CT framework, we must force to set them as covered after the execution of the identify module, so that the overall process can stop.
+
+%This is because this MFS will be forbidden to appear in the following generated test cases, so its parent-schemas and itself will never be covered next. And if some of them are $t$-value schemas, then the generation process will never stop as these schemas will never be covered. So to avoid this, we force to label them to be covered in prior.
+% based on the outcomes of these additional test cases; The only difference is that
+%
+%we just augment this module with counting the coverage this module have contributed to the overall coverage. In detail, we will count the uncovered schemas in the passing additional test cases as previously generated passing test cases. We still don't count the schemas in these failing additional test cases, instead, we will handle these identified MFS
+%  Another important connection is that when we find the MFS in the failing test cases, there are two work needed to be completed: 1) we should make them as the constraint, such that the latter generated test cases should not contained this MFS. 2) the coverage this MFS and the schemas that related to this MFS should also set to be covered, as since we should not contain the MFS, then these schemas will not be covered. Then to make the overall generation process stop, we need to set them as "covered".
 
 
-\subsection{Description}
+More details of these two important parts are as follows:
+
+1) \emph{Generation} :
+We adopt the one-test-case-one-time method as the basic skeleton of the generation process. And as shown in Figure \ref{ct-life}, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden tuples. Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
+
+\begin{algorithm}
+  \caption{Generate One test Case}
+  \begin{algorithmic}[1]
+     \Require
+     $Param$ \Comment{values set that each option can take}
+
+     $S_{MFS}$ \Comment{the set of MFS that currently isolated}
+
+     $T_{uncovered}$ \Comment{the schemas that are still uncovered}
+     %$s_{fixed}$ \Comment{fixed part}
+
+     \Ensure  $test$ \Comment{the generate test case}
+
+    % \While{\textbf{not} $t_{uncovered}$ is not empty}
+      \State $Candidate_{test} \leftarrow empty Set$
+      \While{$Candidate_{test}.size$ is not satisfied}
+       \State $test \leftarrow emptyArray(Param.size)$
+       \ForAll {$factor \in test$}
+           \State   $value \leftarrow select(T_{uncovered},Param,opt)$
+            \While{\textbf{not} $CheckSat(test, S_{MFS})$}
+              \State $value \leftarrow repick(T_{uncovered},Param,opt) $
+           \EndWhile
+           \State $test.set(factor, value)$
+       \EndFor
+        \State $Candidate_{test}.append(test)$
+       \EndWhile
+       \State $best \leftarrow select(Candidate_{test})$
+%       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
+%       \State $result \leftarrow execute(t_{new})$
+%       \If {$result == PASS\ or\ result ==  F_{m}$}
+%         \State \Return $t_{new}$
+%       \Else
+%         \State continue
+%       \EndIf
+ %   \EndWhile
+
+     \State \Return $best$
+  \end{algorithmic}
+\end{algorithm}
+
+This algorithm first gives a candidate set which initially is set to be empty (line 1). We lastly will fill up the set and select a best test case according to some criteria (line 13). For greedy algorithms like AETG \cite{cohen1997aetg} this criteria may be the test case which contain the most uncovered schemas.  A candidate test case in this set is constructed by assigning specific values to each parameter in this test case. It is noted that we didn't specify that in which order these factors should be assigned, as this order varies with different One-test-one-time generation methods.  For each parameter under assignment (line 4), the value that is selected must satisfy two conditions: first, it should ensure that the test case under construction could cover as many uncovered schemas as possible (line 5); second, it must ensure the currently assigned parameters should \textbf{not} lead to that the test case eventually contain the some MFS (line 6 - 8).
+
+The first condition is usually through some greedy , such that, cover more uncovered schemas. Usually through some criteria, The second condition is usually through some constraints satisfaction solver. To this aim, this problem must first be formulated as a constraints satisfaction problem. The checking process is actually an satisfaction problem. Let the currently set of values is set {},  We can model the problem in the following formula:
+
+%\begin{displaymath}
+%$P_{1}, P_{2}, P_{3}, P_{n}$
+%\end{displaymath} the value selection criteria for each factor is also not shown.
 
 
-\subsection{A case study}
+. Another point that needs to be noted is that the constraints checking part(line 6 - 8) of our algorithm does not aim to optimising for the performance like running-time, iteration number or the like. Some study \cite{cohen2008constructing}, by exploiting the SAT history or setting the threshold, can significantly improve such performance. In this paper, however, we will not discuss the details for those techniques. Instead, we want to make the overall generation process more general and fit for the framework listed in Figure \ref{new-life}.
+
+%However, our algorithm is powerful enough and properly adaptively to the framework we proposed.
+% as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
+
+2) \emph{Isolation} : 
+
+%只选fixed，然后其余相似，然后重点说明一下fixed
+The isolation process should also be adjusted to adapt to the new CT framework. From Figure \ref{new-life}, we can find some part of this process to isolate the MFS is similar to that of the $generation$ module, i.e., they all need to repeat generating test cases until reach some criteria. As for the additional test cases generated in the isolation process, we should also take care that it should not contain the previously isolated MFS. To achieve this goal, the constraints checking process is also needed like Algorithm 1. Another point that needs to be noted is that the additional test cases generated in the isolation process can also contribute the coverage. As the overall testing process aims to cover all the $t$-value schemas, so if those additional test cases can cover more uncovered $t$-value schemas, the overall testing process can stop earlier.  As a result, the overall test cases generated can be reduced. Based on the two points, the test cases generated in Algorithm 2 lists the approach that can make the isolation to generate more uncovered tuples as well as to not contain the previous isolated MFS.
+
+\begin{algorithm}
+  \caption{New isolation process}
+  \begin{algorithmic}[1]
+     \Require
+
+     $f_{original}$ \Comment{original failing test case}
+  %   $S_{isolated}$ \Comment{currently identified MFS}
+
+
+     $S_{MFS}$ \Comment{previously identified MFS}
+
+     $s_{fixed}$ \Comment{fixed part that should not be changed}
+
+     $T_{uncovered}$ \Comment{the schemas that are still uncovered}
+
+    $Param$ \Comment{values set that each option can take}
+
+
+%     \Ensure  $t_{new}$ \Comment{the regenerate test case}
+
+     \Ensure  $t_{new}$ \Comment{the regenerate test case}
+     
+     \State $Candidate_{test} \leftarrow empty Set$
+     
+      \While{$Candidate_{test}.size$ is not satisfied}
+       \State $test \leftarrow emptyArray(Param.size)$
+           \State $s_{mutant} \leftarrow f_{original} - s_{fixed}$
+       \ForAll {$opt \in s_{mutant}$}
+          \State $i = getIndex(Param,opt) $
+          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+          \While{ \textbf{not} CheckSat(test, $S_{MFS}$)}
+            \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+          \EndWhile
+       \EndFor
+       
+       \ForAll {$factor \in test$}
+           \State   $value \leftarrow select(T_{uncovered},Param,opt)$
+            \While{\textbf{not} $CheckSat(test, S_{MFS})$}
+              \State $value \leftarrow repick(T_{uncovered},Param,opt) $
+           \EndWhile
+           \State $test.set(factor, value)$
+       \EndFor
+        \State $Candidate_{test}.append(test)$
+       \EndWhile
+       \State $best \leftarrow select(Candidate_{test})$
+
+     \While{\textbf{not} MeetEndCriteria()}
+       \State $s_{mutant} \leftarrow f_{original} - s_{fixed}$
+       \ForAll {$opt \in s_{mutant}$}
+          \State $i = getIndex(Param,opt) $
+          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+          \While{ \textbf{not} CheckSat(test, $S_{MFS}$)}
+            \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+          \EndWhile
+       \EndFor
+       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
+       \State $result \leftarrow execute(t_{new})$
+       \If {$result == PASS\ or\ result ==  F_{m}$}
+         \State \Return $t_{new}$
+       \Else
+         \State continue
+       \EndIf
+     \EndWhile
+
+     \State \Return \emph{null}
+    % \While{\textbf{not} FindMFS()}
+%       \State $s_{mutant} \leftarrow t_{original} - s_{fixed}$
+%       \State $test \leftarrow initial(s_{fixed})$
+%       \ForAll {$opt \in s_{mutant}$}
+%          \State $i = getIndex(Param,opt) $
+%          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+%          \While{\textbf{not} $CheckSat(test, S_{MFS})$}
+%              \State $value \leftarrow repick(Param,i) $
+%           \EndWhile
+%           \State $test.set(factor, value)$
+%       \EndFor
+%       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
+%       \State $result \leftarrow execute(t_{new})$
+%       \If {$result == PASS$}
+%         \State  $Update(t_{uncovered})$
+%       \Else
+%         \State continue
+%       \EndIf
+%     \EndWhile
+%
+%     \State $S_{MFS}.append(newMFS)$.
+%     \State $t_{newCovered} \leftarrow FindingTschemas(S_{MFS})$
+%     \State $t_{uncovered}.reduce(t_{newCovered})$
+  \end{algorithmic}
+\end{algorithm}
+
+In this algorithm,
+
+
+
+After the MFS are identified, some related schemas should be set as covered, i.e., these three types of schemas as we discussed before. The algorithm that seeks to handling these three types of schemas is listed in Algorithm 3.
+
+%For example, consider the system has three parameters, and each parameter has two values that can be assigned, when we find the (0 1 -) and (1 - 0) are the MFS for this system, the schema (- 1 0) should also not appear, as when we generate test case that contain (- 1 0), i.e., either it contain MFS (0 1 -) for test case (0 1 0) or contain the MFS (1 - 0) for test case (1 1 0). And if we find the lower degree MFS like (0 - -), the forbidden schemas will be even more, as all the two-degree schemas contain this 1-degree schema should set to be covered. This problem is called the implicit constraints, firstly proposed by Cohen.
+
+%So we just to find the different, that is, when finding is still the same as before: 1) the additional test case should not contain the MFS, if cannot find, set the test as . 2) when update the MFS set. and coverage set.
+
+\begin{algorithm}
+  \caption{Changing coverage after identification of MFS}
+  \begin{algorithmic}[1]
+     \Require
+
+    % $t_{original}$ \Comment{original failing test case}
+     $S_{isolated}$ \Comment{currently identified MFS}
+
+
+     $S_{MFS}$ \Comment{previously identified MFS}
+
+     $T_{uncovered}$ \Comment{the schemas that are still uncovered}
+
+   %  $Param$ \Comment{values set that each option can take}
+
+
+%     \Ensure  $t_{new}$ \Comment{the regenerate test case}
+     \ForAll  {$s \in S_{isolated}$}
+       \State $S_{MFS}.append(s)$
+     \EndFor
+
+
+     \ForAll {$s  \in  S_{isolated}$}
+       \If {$s$\ is\ $t$-degree\ schema}
+          \State $T_{uncovered}.remove(s)$
+       \EndIf
+       \ForAll {$s_{p}$\ is\ parent-schema\ of\ $s$}
+         \If {$s_{p}$\ is\ $t$-degree\ schema}
+          \State $T_{uncovered}.remove(s_{p})$
+         \EndIf
+       \EndFor
+     \EndFor
+%           % \State $S_{MFS}.append(s)$
+%     \EndFor
+%     \ForAll {$s$ \in S_{isolated}}
+%       \If {$s$\ is\ $t$-degree\ schema}
+%          \State set $s$ covered
+%       \Endif
+           % \State $S_{MFS}.append(s)$
+%     \EndFor
+     \ForAll {$t \in T_{uncovered}$}
+       \If {\textbf{not} $CheckSat(t, S_{MFS})$}
+         \State  $T_{uncovered}.remove(t)$
+       \EndIf
+     \EndFor
+  \end{algorithmic}
+\end{algorithm}
+
+ In this algorithm, we firstly append the newly isolated MFS into the global MFS set (line 1 - 3), so that we can use them in the following generation and isolation processes. Then for each newly isolated MFS, we will set them as covered, i.e., remove them from the uncovered set, if they are $t$-degree schemas (line 4 - 7). This is the first type of schemas --\emph{themselves}. For each $t$-degree parent-schema of these newly isolated MFS, we will also remove them from the uncovered set (line 8 - 12), as they are the second type of schemas --  \emph{parent-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 14), and judge if it is the implicit forbidden schema (line 16) by sat checking. This checking process is the same as we discussed in the generation and isolation process.
+
+% To find them from the uncovered set, we use a sat solver to
+%he uncovetred  search through the uncovered schemas set (line 4), to eliminate these schemas that cannot avoid some MFS when extend these schemas into a test case(line 5 - 7).
+
+%3) Setting constraint, and change coverage.
+
+
+
+%Then the generation should not include, the characterization is should.
+
+%To implement such framework, the most important is to share the information. In specific, to, we use the SAT solver. And when , we should change the coverage information. Our detail implementation for this framework is list in Algorithm.
+
+With this newly framework, when we re-consider the example in Table \ref{tradition-gi} in section 3.1,  we can get the following result listed in Table \ref{new-gi}.
+\begin{table}[h]
+\caption{newly generation-isolation life-circle}
+\label{new-gi}
+\center
+\begin{tabular}{llllll|llllll}
+ & \multicolumn{4}{c}{\bfseries generation}& & \multicolumn{6}{c}{\bfseries isolation} \\
+%\multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
+$t_{1}$* & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0  \ \ \ \  0 } & Fail & \multicolumn{6}{l}{}\\
+\multicolumn{5}{l}{}& & $t_{2}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  0 }& Pass \\
+\multicolumn{5}{l}{}& &$t_{3}$* &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  0 } & Fail \\
+\multicolumn{5}{l}{}& &$t_{4}$* &\multicolumn{4}{l}{0  \ \ \ \  0 \ \ \ \  1 } & Fail \\
+\multicolumn{5}{l}{}& &\multicolumn{6}{l}{ \bfseries{MFS}: $(0, - , -)$ }  \\
+$t_{5}$* &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  1 } & Pass & \multicolumn{6}{l}{}\\
+$t_{6}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  1 } & Pass & \multicolumn{6}{l}{}\\
+$t_{7}$* &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  0 } & Pass & \multicolumn{6}{l}{}\\
+\end{tabular}
+\end{table}
+
+This table consists of two main columns, where the left indicates the generation part while the right column indicates the isolation process.
+
+Up to now, all the 2-degree schemas are covered, in detail, (1  1 -) (1 - 1) (- 1 1) are covered by passing test case (1 1 1), (1 0 -) (1 - 0) (- 0 0) are covered by passing test case (1 0 0), (- 0 1) and (- 1 0) are covered by test case (1 0 1) and (1 1 0) respectively. Those schemas related to (0 - -) such as (0 - 1), (0 0 -) will not be covered as the (0 - -) is the MFS.  All the generated 7 test cases are not duplicated with each other (all marked *), we can find the overall generated test case are one less than the traditional approaches in Table \ref{tradition-gi}. Another advances of our approach is that our approach provide a stronger covering criteria than traditional covering array.
+
+%\subsection{Description}
+%
+%
+%\subsection{A case study}
 
 \section{empirical studies}
 
-
-\subsection{The existence of }
-
+\subsection{Compare with Traditional First-Gen-Latter-Identify}
 
 \subsubsection{Study setup}
-
 
 \subsubsection{Result and discussion}
 
-
-\subsection{Performance of the traditional algorithms}
+\subsection{Compare with the FDA-CIT}
 
 \subsubsection{Study setup}
+
 
 \subsubsection{Result and discussion}
 
 
 \subsection{Comparing with Error locating Array}
-Erray locating array is a well-desinged test cases.
-
-%, and then we applied these augmented approaches to identify the failure-inducing combinations in the prepared subjects.
+Erray locating array \cite{colbourn2008locating,martinez2009locating} is a well-designed set of test cases, such that it can support not only failure detection, but also the identification for the MFS of the failure.
 
 \subsubsection{Study setup}
 

@@ -1,0 +1,62 @@
+\begin{thebibliography}{1}
+
+\bibitem{cohen1997aetg}
+D.~M. Cohen, S.~R. Dalal, M.~L. Fredman, and G.~C. Patton.
+\newblock The aetg system: An approach to testing based on combinatorial
+  design.
+\newblock {\em Software Engineering, IEEE Transactions on}, 23(7):437--444,
+  1997.
+
+\bibitem{cohen2003augmenting}
+M.~B. Cohen, C.~J. Colbourn, and A.~C. Ling.
+\newblock Augmenting simulated annealing to build interaction test suites.
+\newblock In {\em Software Reliability Engineering, 2003. ISSRE 2003. 14th
+  International Symposium on}, pages 394--405. IEEE, 2003.
+
+\bibitem{cohen2007interaction}
+M.~B. Cohen, M.~B. Dwyer, and J.~Shi.
+\newblock Interaction testing of highly-configurable systems in the presence of
+  constraints.
+\newblock In {\em Proceedings of the 2007 international symposium on Software
+  testing and analysis}, pages 129--139. ACM, 2007.
+
+\bibitem{cohen2008constructing}
+M.~B. Cohen, M.~B. Dwyer, and J.~Shi.
+\newblock Constructing interaction test suites for highly-configurable systems
+  in the presence of constraints: A greedy approach.
+\newblock {\em Software Engineering, IEEE Transactions on}, 34(5):633--650,
+  2008.
+
+\bibitem{colbourn2008locating}
+C.~J. Colbourn and D.~W. McClary.
+\newblock Locating and detecting arrays for interaction faults.
+\newblock {\em Journal of combinatorial optimization}, 15(1):17--48, 2008.
+
+\bibitem{lei2008ipog}
+Y.~Lei, R.~Kacker, D.~R. Kuhn, V.~Okun, and J.~Lawrence.
+\newblock Ipog/ipog-d: efficient test generation for multi-way combinatorial
+  testing.
+\newblock {\em Software Testing, Verification and Reliability}, 18(3):125--148,
+  2008.
+
+\bibitem{martinez2009locating}
+C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
+\newblock Locating errors using elas, covering arrays, and adaptive testing
+  algorithms.
+\newblock {\em SIAM Journal on Discrete Mathematics}, 23(4):1776--1799, 2009.
+
+\bibitem{yilmaz2013reducing}
+C.~Yilmaz, E.~Dumlu, M.~Cohen, and A.~Porter.
+\newblock Reducing masking effects in combinatorialinteraction testing: A
+  feedback drivenadaptive approach.
+\newblock {\em Software Engineering, IEEE Transactions on}, 40(1):43--66, Jan
+  2014.
+
+\bibitem{yoo2013fault}
+S.~Yoo, M.~Harman, and D.~Clark.
+\newblock Fault localization prioritization: Comparing information-theoretic
+  and coverage-based approaches.
+\newblock {\em ACM Transactions on Software Engineering and Methodology
+  (TOSEM)}, 22(3):19, 2013.
+
+\end{thebibliography}
