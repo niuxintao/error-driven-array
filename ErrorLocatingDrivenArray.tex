@@ -361,7 +361,7 @@ As an example, Table \ref{tradition-gi}, which illustrate the process of testing
 \center
 \begin{tabular}{llllll}
 \hline
-\multicolumn{6}{c}{\bfseries generation} \\
+\multicolumn{6}{c}{\bfseries \emph{generation}} \\
 \hline
 \multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
  $t_{1}$ & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0\ \ \ \ 0} & Fail \\
@@ -374,7 +374,7 @@ As an example, Table \ref{tradition-gi}, which illustrate the process of testing
  $t_{8}$ & \multicolumn{4}{l}{2 \ \ \ \ 1 \ \ \ \  0\ \ \ \ 2} & Pass \\
  $t_{9}$ & \multicolumn{4}{l}{2 \ \ \ \ 2 \ \ \ \  1\ \ \ \ 0} & Pass \\
  \hline
-\multicolumn{6}{c}{\bfseries localization}  \\
+\multicolumn{6}{c}{\bfseries \emph{localization}}  \\
 \hline
 \multicolumn{5}{c}{\bfseries for $t1$--- 0 0 0 0} &  \\
 $t_{10}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  0 \ \ \ \  0} & Fail \\
@@ -673,7 +673,9 @@ With this newly framework, when we re-consider the example in Table \ref{traditi
 \label{new-gi}
 \center
 \begin{tabular}{llllll|llllll}
- & \multicolumn{4}{c}{\bfseries generation}& & \multicolumn{6}{c}{\bfseries isolation} \\
+\hline
+ & \multicolumn{4}{c}{\bfseries \emph{generation}}& & \multicolumn{6}{c}{\bfseries \emph{isolation}} \\
+ \hline
 %\multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
 $t_{1}$ & \multicolumn{4}{l}{0 \ \ \ 0 \ \ \ 0  \ \ \  0 } & Fail & \multicolumn{6}{l}{}\\
 \multicolumn{5}{l}{}& & $t_{2}$* &\multicolumn{4}{l}{1  \ \ \  0 \ \ \  0 \ \ \  0 }& Fail \\
@@ -689,13 +691,16 @@ $t_{10}$ &\multicolumn{4}{l}{1  \ \ \   2 \ \ \   0 \ \ \ 1} & Pass & \multicolu
 $t_{11}$ &\multicolumn{4}{l}{2  \ \ \   1 \ \ \ 2  \ \ \  1 } & Pass & \multicolumn{6}{l}{}\\
 $t_{12}$ &\multicolumn{4}{l}{2  \ \ \   1 \ \ \ 0  \ \ \  2 } & Pass & \multicolumn{6}{l}{}\\
 $t_{13}$ &\multicolumn{4}{l}{2  \ \ \   2 \ \ \ 1  \ \ \  0 } & Pass & \multicolumn{6}{l}{}\\
+\hline
 \end{tabular}
 \end{table}
 
-This table consists of two main columns, where the left indicates the generation part while the right column indicates the isolation process.
+This table consists of two main columns, where the left indicates the generation part while the right column indicates the isolation process. We can find that after isolating the MFS (-, 0, -, -) for $t_{1}$. The following test cases ($t_{6}$ to $t_{13}$) will not contain this schema. Correspondingly, all the 2-degree schemas that are related to this schema, e.g. (0, 0, -, -), (-, 0, 1, -), etc, will also not appear in the following test cases. Additionally, the passing test case $t_{3}$ generated in the isolation process cover 6 2-degree schemas, i.e., (0, 1, -, -), (0, -, 0, -), (0, -, -, 0), (-, 1, 0, -) and (-, 1, -, 0) respectively, so that it is not necessary to generate more test cases to cover them.  Above all, with the new CT framework,  the overall generated test case are 8 less than that of the traditional CT framework in Table \ref{tradition-gi}.
 
-Up to now, all the 2-degree schemas are covered, in detail, (1  1 -) (1 - 1) (- 1 1) are covered by passing test case (1 1 1), (1 0 -) (1 - 0) (- 0 0) are covered by passing test case (1 0 0), (- 0 1) and (- 1 0) are covered by test case (1 0 1) and (1 1 0) respectively. Those schemas related to (0 - -) such as (0 - 1), (0 0 -) will not be covered as the (0 - -) is the MFS.  All the generated 7 test cases are not duplicated with each other (all marked *), we can find the overall generated test case are one less than the traditional approaches in Table \ref{tradition-gi}. Another advances of our approach is that our approach provide a stronger covering criteria than traditional covering array.
+%Besides the cost reducing, our new CT framework actually provide a stronger coverage criteria than traditional covering array. This is because
 
+
+%Up to now, all the 2-degree schemas are covered, in detail, (1  1 -) (1 - 1) (- 1 1) are covered by passing test case (1 1 1), (1 0 -) (1 - 0) (- 0 0) are covered by passing test case (1 0 0), (- 0 1) and (- 1 0) are covered by test case (1 0 1) and (1 1 0) respectively. Those schemas related to (0 - -) such as (0 - 1), (0 0 -) will not be covered as the (0 - -) is the MFS.  All the generated 7 test cases are not duplicated with each other (all marked *), we can find the overall generated test case are one less than the traditional approaches in Table \ref{tradition-gi}.
 %\subsection{Description}
 %
 %
@@ -709,12 +714,12 @@ Up to now, all the 2-degree schemas are covered, in detail, (1  1 -) (1 - 1) (- 
 
 \subsubsection{Result and discussion}
 
-\subsection{Compare with the FDA-CIT}
-
-\subsubsection{Study setup}
-
-
-\subsubsection{Result and discussion}
+%\subsection{Compare with the FDA-CIT}
+%
+%\subsubsection{Study setup}
+%
+%
+%\subsubsection{Result and discussion}
 
 
 \subsection{Comparing with Error locating Array}

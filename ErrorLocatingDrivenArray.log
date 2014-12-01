@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  2 DEC 2014 06:00
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  2 DEC 2014 06:21
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -381,6 +381,8 @@ Overfull \hbox (11.468pt too wide) in paragraph at lines 347--347
  []
 
 [3]
+Requested font "aebxti10" at 9.0pt
+ -> aebxti10
 File: baicOutline.eps Graphic file (type eps)
  <baicOutline.eps>
 Overfull \hbox (5.71754pt too wide) in paragraph at lines 412--413
@@ -425,7 +427,7 @@ Overfull \hbox (6.50392pt too wide) in paragraph at lines 603--604
  []
 
 [6]
-Overfull \hbox (12.2617pt too wide) in paragraph at lines 706--706
+Overfull \hbox (12.2617pt too wide) in paragraph at lines 711--711
 []\secfnt Compare with Tra-di-tion-al First-Gen-Latter-
  []
 
@@ -433,12 +435,12 @@ Overfull \hbox (12.2617pt too wide) in paragraph at lines 706--706
 [7] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) )
  
 Here is how much of TeX's memory you used:
- 2768 strings out of 430478
- 31355 string characters out of 3191502
+ 2770 strings out of 430478
+ 31377 string characters out of 3191502
  93532 words of memory out of 3000000
- 5868 multiletter control sequences out of 15000+200000
- 39815 words of font info for 51 fonts, out of 3000000 for 9000
+ 5869 multiletter control sequences out of 15000+200000
+ 41611 words of font info for 52 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,10n,26p,2155b,290s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,26p,2155b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on ErrorLocatingDrivenArray.pdf (7 pages).
