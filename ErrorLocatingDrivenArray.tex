@@ -176,7 +176,7 @@ Many empirical studies shows that in real software systems, the effective intera
 
 A typical CT life-circle is listed as Figure \ref{ct-life}, in which there are four main testing stages. At the very beginning of the testing, engineers should extract the specific model of the software under test. In detail, they should identify the factors, such as user inputs, configure options, environment states and the like that could affect the system's behavior. Next, which values each factor can take should also be determined. Further efforts will be needed to figure out the constraints and dependencies between each factor and corresponding values to make the testing work valid. After the modeling stage, a bunch of test cases should be generated and executed to expose the potential faults in the system. In CT, one test case is a set of assignment of all the factors that we modeled before. Thus, when such a test case is executed, all the interactions contained in the test case are deemed to be checked. The main target of this stage is to design a relatively small size of test cases to get some specific coverage, for CT the most common coverage is to check all the possible interactions with the number of factors no more than a prior fixed integer, i.e., strength \emph{t}. The third testing stage in this circle is the fault localization, which is responsible for diagnosing the root cause of the failure we detected before. To characterize such root cause, i.e., failure-inducing interactions of corresponding factors and values is important for future bug fixing, as it will reduce the suspicious code scope that needed to inspect. The last testing stage of CT is evaluation. In this stage, testers will assess the quality of the previously conducted testing tasks, many metrics such as whether the failure-inducing interactions can reflect the failures detected, whether the generated test cases is adequate to expose all the behaviors of the system,  will be validated. And if the assessment result shows that the previous testing process does not fulfil the testing requirement, some testing stages should be made some improvement, and sometimes, may even need to be re-conducted.
 
-Although this conventional CT framewbach2004pairwiseork is simple and straightforward, however in terms of the test cases generation and fault localization stages, we conjecture that the first-generation-then-localization is not the proper choice for most test engineers. This is because, first, it is not realistic for testers wait for all the needed test cases are generated before they can diagnosis and fix the failures that haven been detected \cite{yoo2013fault}; second, and the most important, utilizing the early determined failure-inducing interactions can guide the following test cases generations, such that many unnecessary and invalid test cases will be avoided. For this we get to the most key idea of this paper:
+Although this conventional CT framework is simple and straightforward, however in terms of the test cases generation and fault localization stages, we conjecture that the first-generation-then-localization is not the proper choice for most test engineers. This is because, first, it is not realistic for testers wait for all the needed test cases are generated before they can diagnosis and fix the failures that haven been detected \cite{yoo2013fault}; second, and the most important, utilizing the early determined failure-inducing interactions can guide the following test cases generations, such that many unnecessary and invalid test cases will be avoided. For this we get to the most key idea of this paper:
 
 \emph{Generation and Localization process should be organised in a more tightly way.}
 
@@ -723,7 +723,7 @@ This table consists of two main columns, where the left indicates the generation
 
 
 \subsection{Comparing with Error locating Array}
-Erray locating array \cite{colbourn2008locating,martinez2009locating} is a well-designed set of test cases, such that it can support not only failure detection, but also the identification for the MFS of the failure.
+Error locating array \cite{colbourn2008locating,martinez2009locating} is a well-designed set of test cases, such that it can support not only failure detection, but also the identification for the MFS of the failure.
 
 \subsubsection{Study setup}
 
@@ -736,10 +736,17 @@ Erray locating array \cite{colbourn2008locating,martinez2009locating} is a well-
 \subsection{Threats to validity}
 
 
+
 \section{related works}
 
 
+
 \section{Conclusions}
+Combinatorial testing is an effective testing technique at detecting and diagnosis the failure-inducing schemas in the SUT. Traditional CT works separately studied test cases generation and MFS isolation. In this paper, we proposed a new CT framework that organised these two important testing stages as a whole, which allows for both generation and localization better share each other¡¯s testing information. As a result, our new CT framework can provide a more efficient testing than traditional CT.
+
+Empirical studies were conducted on several open-source software. The results showed that with our new CT framework, there is an significant reducing on the number of generated test cases when compared to traditional first-generation-then-isolation process, while there is no decline in the quality of the identified MFS. Further, when comparing with the ELA \cite{martinez2009locating,martinez2008algorithms}, our appraoch also performed better, especially at the cost of the number of test cases.
+
+As a future work, we need to extend our new CT framework with more test cases generation and MFS isolation algorithms, to see the extent on which our new CT framework can enhance those different CT-based algorithms. Another interesting work is to make our new CT framework more closer to the source code testing, so that it can provide more useful information for developers to debug the system.
 
 
 %\end{document}  % This is where a 'short' article might terminate

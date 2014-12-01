@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{cohen1997aetg}
 D.~M. Cohen, S.~R. Dalal, M.~L. Fredman, and G.~C. Patton.
@@ -38,6 +38,12 @@ Y.~Lei, R.~Kacker, D.~R. Kuhn, V.~Okun, and J.~Lawrence.
   testing.
 \newblock {\em Software Testing, Verification and Reliability}, 18(3):125--148,
   2008.
+
+\bibitem{martinez2008algorithms}
+C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
+\newblock Algorithms to locate errors using covering arrays.
+\newblock In {\em LATIN 2008: Theoretical Informatics}, pages 504--519.
+  Springer, 2008.
 
 \bibitem{martinez2009locating}
 C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.

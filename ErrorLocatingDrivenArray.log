@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  2 DEC 2014 06:21
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  2 DEC 2014 06:59
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -364,12 +364,8 @@ Requested font "aeti9" at 9.0pt
 
 
 ]
-Overfull \hbox (6.2978pt too wide) in paragraph at lines 179--180
-[]\T1/aer/m/n/9 Although this con-ven-tion-al C-T framew-bach2004pairwiseork
- []
-
 File: CT_lifecircle.eps Graphic file (type eps)
-<CT_lifecircle.eps>
+ <CT_lifecircle.eps>
 Overfull \hbox (5.71754pt too wide) in paragraph at lines 211--212
 [][] 
  []
@@ -431,16 +427,24 @@ Overfull \hbox (12.2617pt too wide) in paragraph at lines 711--711
 []\secfnt Compare with Tra-di-tion-al First-Gen-Latter-
  []
 
-(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl)
-[7] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) )
- 
+
+Overfull \hbox (2.02298pt too wide) in paragraph at lines 747--748
+\T1/aer/m/n/9 at-ed test cas-es when com-pared to tra-di-tion-al first-generati
+on-
+ []
+
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
+[7]) [8
+
+]
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2770 strings out of 430478
- 31377 string characters out of 3191502
- 93532 words of memory out of 3000000
- 5869 multiletter control sequences out of 15000+200000
+ 2771 strings out of 430478
+ 31401 string characters out of 3191502
+ 94532 words of memory out of 3000000
+ 5870 multiletter control sequences out of 15000+200000
  41611 words of font info for 52 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,10n,26p,2155b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ErrorLocatingDrivenArray.pdf (7 pages).
+Output written on ErrorLocatingDrivenArray.pdf (8 pages).
