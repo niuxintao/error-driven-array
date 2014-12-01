@@ -172,11 +172,11 @@ Combinatorial testing(CT) seeks to handle potential faults caused by various int
 
 Modern software is developed more sophisticatedly and intelligently than before. To test such software is challenging, as the candidate factors that can influence the system's behaviour, e.g., configuration options, system inputs, message events, are enormous. Even worse, the interactions between these factors can also crash the system, e.g., the compatibility problems. In consideration of the scale of the real industrial software, to test all the possible combination of all the factors (we call them the interaction space) is not feasible, and even it is possible, it is not recommended to test exhaustive interactions for most of them do not provide any useful information.
 
-Many empirical studies shows that in real software systems, the effective interaction space, i.e., targeting fault defects, makes up only a small proportion of the overall interaction space. What's more, the number of factors involved in these effective interactions is relatively small, of which 4-6 is usually the upper bonds. With this observation, applying CT in practice is appealing, as it is proven to be effective to handle the interaction faults in the system.
+Many empirical studies shows that in real software systems, the effective interaction space, i.e., targeting fault defects, makes up only a small proportion of the overall interaction space. What's more, the number of factors involved in these effective interactions is relatively small, of which 4 to 6 is usually the upper bonds. With this observation, applying CT in practice is appealing, as it is proven to be effective to handle the interaction faults in the system.
 
 A typical CT life-circle is listed as Figure \ref{ct-life}, in which there are four main testing stages. At the very beginning of the testing, engineers should extract the specific model of the software under test. In detail, they should identify the factors, such as user inputs, configure options, environment states and the like that could affect the system's behavior. Next, which values each factor can take should also be determined. Further efforts will be needed to figure out the constraints and dependencies between each factor and corresponding values to make the testing work valid. After the modeling stage, a bunch of test cases should be generated and executed to expose the potential faults in the system. In CT, one test case is a set of assignment of all the factors that we modeled before. Thus, when such a test case is executed, all the interactions contained in the test case are deemed to be checked. The main target of this stage is to design a relatively small size of test cases to get some specific coverage, for CT the most common coverage is to check all the possible interactions with the number of factors no more than a prior fixed integer, i.e., strength \emph{t}. The third testing stage in this circle is the fault localization, which is responsible for diagnosing the root cause of the failure we detected before. To characterize such root cause, i.e., failure-inducing interactions of corresponding factors and values is important for future bug fixing, as it will reduce the suspicious code scope that needed to inspect. The last testing stage of CT is evaluation. In this stage, testers will assess the quality of the previously conducted testing tasks, many metrics such as whether the failure-inducing interactions can reflect the failures detected, whether the generated test cases is adequate to expose all the behaviors of the system,  will be validated. And if the assessment result shows that the previous testing process does not fulfil the testing requirement, some testing stages should be made some improvement, and sometimes, may even need to be re-conducted.
 
-Although this conventional CT framework is simple and straightforward, however in terms of the test cases generation and fault localization stages, we conjecture that the first-generation-then-localization is not the proper choice for most test engineers. This is because, first, it is not realistic for testers wait for all the needed test cases are generated before they can diagnosis and fix the failures that haven been detected, second, and the most important, utilizing the early determined failure-inducing interactions can guide the following test cases generations, such that many unnecessary and invalid test cases will be avoided. For this we get to the most key idea of this paper:
+Although this conventional CT framewbach2004pairwiseork is simple and straightforward, however in terms of the test cases generation and fault localization stages, we conjecture that the first-generation-then-localization is not the proper choice for most test engineers. This is because, first, it is not realistic for testers wait for all the needed test cases are generated before they can diagnosis and fix the failures that haven been detected \cite{yoo2013fault}; second, and the most important, utilizing the early determined failure-inducing interactions can guide the following test cases generations, such that many unnecessary and invalid test cases will be avoided. For this we get to the most key idea of this paper:
 
 \emph{Generation and Localization process should be organised in a more tightly way.}
 
@@ -287,7 +287,7 @@ If all test cases contain a combination, say $c$, trigger a particular fault, sa
 In fact, MFS and \emph{minimal faulty combinations} are identical to the failure-inducing combinations we discussed previously. Figuring it out can eliminate all details that are irrelevant for causing the failure and hence facilitate the debugging efforts.
 
 \subsection{Detect the failure-inducing schemas}
-When applying CT on software testing, the most important work is to determine whether the SUT is suffering from the interaction faults or not, i.e., to  detect the existence of the MFS. Rather than impractically executing exhaustive test cases, CT commonly design a relatively small size of test cases to cover all the schemas with the degree no more than a prior fixed number, $t$. Such a set of test cases is calling the covering array.  If some test cases in the covering array failed after execution, then the interaction faults is regard to be detected.
+When applying CT on software testing, the most important work is to determine whether the SUT is suffering from the interaction faults or not, i.e., to  detect the existence of the MFS. Rather than impractically executing exhaustive test cases, CT commonly design a relatively small size of test cases to cover all the schemas with the degree no more than a prior fixed number, $t$. Such a set of test cases is calling the \emph{covering array}.  If some test cases in the covering array failed after execution, then the interaction faults is regard to be detected.
 
 Many studies in CT field focus on how to generate such a test suite with the aim that making the size of the test suite as small as possible. In general, most of these studies can be classified into three categories according to the construction way of the covering array:
 
@@ -295,7 +295,7 @@ Many studies in CT field focus on how to generate such a test suite with the aim
 
 %  generate a completed test case to cover
 
-2) A overall set of test cases one time:  This strategy first generates a set of test cases with the size of the set fixed in prior. Then through some operation such as mutation of the some cells, increase or decrease the size of the set of test cases, regeneration some test cases to make the set of test cases to cover all the needed schemas with the size as small as possible.
+2) A overall set of test cases one time:  This strategy first generates a set of test cases with the size of the set fixed in prior. Then through some operation such as mutation of the some cells, increase or decrease the size of the set of test cases, regeneration some test cases to make the set of test cases to cover all the needed schemas with the size as small as possible \cite{cohen2003augmenting}.
 
 3) Others :  This strategy differentiates from the previous two strategies at the point it does not first give completed test cases \cite{lei2008ipog}. It will first focus on assigning values to some  particular factors or parameters to cover the schemas that related to these factors, and then complement the remaining part to form completed test cases.
 
@@ -436,7 +436,7 @@ As we all know, the terminating condition of the CT framework is to cover all th
 More details of these two important parts are as follows:
 
 1) \emph{Generation} :
-We adopt the one-test-case-one-time method as the basic skeleton of the generation process. And as shown in Figure \ref{ct-life}, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden tuples. Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
+We adopt the one-test-case-one-time method as the basic skeleton of the generation process. And as discussed in section 3.1, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden tuples. Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
 
 \begin{algorithm}
   \caption{Generate One test Case}
@@ -456,9 +456,9 @@ We adopt the one-test-case-one-time method as the basic skeleton of the generati
       \While{$Candidate_{test}.size$ is not satisfied}
        \State $test \leftarrow emptyArray(Param.size)$
        \ForAll {$factor \in test$}
-           \State   $value \leftarrow select(T_{uncovered},Param,opt)$
-            \While{\textbf{not} $CheckSat(test, S_{MFS})$}
-              \State $value \leftarrow repick(T_{uncovered},Param,opt) $
+           \State   $value \leftarrow select(T_{uncovered},Param,factor)$
+            \While{\textbf{not} $CheckCS(value, S_{MFS})$}
+              \State $value \leftarrow repick(T_{uncovered},Param,factor) $
            \EndWhile
            \State $test.set(factor, value)$
        \EndFor
@@ -478,27 +478,29 @@ We adopt the one-test-case-one-time method as the basic skeleton of the generati
   \end{algorithmic}
 \end{algorithm}
 
-This algorithm first gives a candidate set which initially is set to be empty (line 1). We lastly will fill up the set and select a best test case according to some criteria (line 13). For greedy algorithms like AETG \cite{cohen1997aetg} this criteria may be the test case which contain the most uncovered schemas.  A candidate test case in this set is constructed by assigning specific values to each parameter in this test case. It is noted that we didn't specify that in which order these factors should be assigned, as this order varies with different One-test-one-time generation methods.  For each parameter under assignment (line 4), the value that is selected must satisfy two conditions: first, it should ensure that the test case under construction could cover as many uncovered schemas as possible (line 5); second, it must ensure the currently assigned parameters should \textbf{not} lead to that the test case eventually contain the some MFS (line 6 - 8).
-
-The first condition is usually through some greedy , such that, cover more uncovered schemas. Usually through some criteria, The second condition is usually through some constraints satisfaction solver. To this aim, this problem must first be formulated as a constraints satisfaction problem. The checking process is actually an satisfaction problem. Let the currently set of values is set {},  We can model the problem in the following formula:
-
-%\begin{displaymath}
-%$P_{1}, P_{2}, P_{3}, P_{n}$
-%\end{displaymath} the value selection criteria for each factor is also not shown.
+This algorithm first gives a candidate set which initially is set to be empty (line 1). We lastly will fill up the set and select a best test case according to some criteria (line 13). For greedy algorithms like AETG \cite{cohen1997aetg} this criteria may be the test case which contain the most uncovered schemas.  A candidate test case in this set is constructed by assigning specific values to each parameter in this test case. It is noted that we didn't specify that in which order these factors should be assigned, as this varies with different One-test-one-time generation methods. For each parameter under assignment (line 4), the value that is selected must satisfy two requirements: first, it should ensure that the test case under construction could cover as many uncovered schemas as possible (line 5); second, it must ensure that the test case under construction should \textbf{not} contain any MFS (line 6 - 8).
 
 
-. Another point that needs to be noted is that the constraints checking part(line 6 - 8) of our algorithm does not aim to optimising for the performance like running-time, iteration number or the like. Some study \cite{cohen2008constructing}, by exploiting the SAT history or setting the threshold, can significantly improve such performance. In this paper, however, we will not discuss the details for those techniques. Instead, we want to make the overall generation process more general and fit for the framework listed in Figure \ref{new-life}.
+The first requirement is usually fulfilled by some heuristic selection, e.g., to choose the value for the parameter that is contained in the most uncovered schemas \cite{cohen1997aetg}. To fulfill the second requirement, a constraint satisfaction modeling is needed. A general model is as following:
+
+\begin{alignat}{2}
+& X = { P_{1}, P_{2}, P_{3}, P_{n} } \\
+& D = { D_{1}, D_{2}, ... D_{n} } \\
+& C = {C_{assignment}, C_{MFS}}
+%\end{aligned}
+\end{alignat}
+
+In this formula, $X$ is the parameters in the SUT and $D$ is a set of the respective domains of values that each each parameter can take. $C$ is the set of constraints. Then this model evaluates that whether a test case can be found, i.e., each parameter $P_{i}$ takes a specific value  $D_{i}$, so that it will not violate any constraint in $C$. For the constraints in $C$, $C_{assignment}$ indicates these parameters that have been assigned values. For example, if we have assigned parameter $P_{i}$ with value $d_{i}$, and $P_{j}$ with $d_{j}$, then this constraint will be formulated as $(P_{i} = d_{i}\ \&\&\ P_{j} == d_{j})$. $C_{MFS}$ modeled those identified MFS will be modeled as forbidden tuples of parameter values. For example, if (- 1 - 0) is the MFS, it will be transformed as forbidden rule $\urcorner ( P_{2} = 1\ \&\&\ P_{4} == 0)$.
+
+So when using this model, we can check whether a value should be assigned to the current parameter(line 6) by putting it into the $C_{assignment}$. Note that the constraints checking part of our algorithm does not aim to optimising for the performance like running-time, iteration number or the like. Some study \cite{cohen2008constructing}, by exploiting the SAT history or setting the threshold, can significantly improve such performance. In this paper, however, we will not discuss the details for those techniques. Instead, we want to make the overall generation process more general and fit for the framework listed in Figure \ref{new-life}.
 
 %However, our algorithm is powerful enough and properly adaptively to the framework we proposed.
 % as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
 
-2) \emph{Isolation} : 
-
-%只选fixed，然后其余相似，然后重点说明一下fixed
-The isolation process should also be adjusted to adapt to the new CT framework. From Figure \ref{new-life}, we can find some part of this process to isolate the MFS is similar to that of the $generation$ module, i.e., they all need to repeat generating test cases until reach some criteria. As for the additional test cases generated in the isolation process, we should also take care that it should not contain the previously isolated MFS. To achieve this goal, the constraints checking process is also needed like Algorithm 1. Another point that needs to be noted is that the additional test cases generated in the isolation process can also contribute the coverage. As the overall testing process aims to cover all the $t$-value schemas, so if those additional test cases can cover more uncovered $t$-value schemas, the overall testing process can stop earlier.  As a result, the overall test cases generated can be reduced. Based on the two points, the test cases generated in Algorithm 2 lists the approach that can make the isolation to generate more uncovered tuples as well as to not contain the previous isolated MFS.
-
+2) \emph{Isolation} : %只选fixed，然后其余相似，然后重点说明一下fixed
+The isolation process should also be adjusted to adapt to the new CT framework. From Figure \ref{new-life}, we can find some part of this process to isolate the MFS is similar to that of the $generation$ module, i.e., they all need to repeat generating test cases until reach some criteria. As for the additional test cases generated in the isolation process, we should also take care that it should not contain the previously isolated MFS. To achieve this goal, the constraints checking process is also needed like Algorithm 1. Another point that needs to be noted is that the additional test cases generated in the isolation process can also contribute the coverage. As the overall testing process aims to cover all the $t$-value schemas, so if those additional test cases can cover more uncovered $t$-value schemas, the overall testing process can stop earlier.  As a result, the overall test cases generated can be reduced. Based on the two points, the additional test cases generation in the CT isolation should be refined as in Algorithm 2.
 \begin{algorithm}
-  \caption{New isolation process}
+  \caption{Test Case generation in isolation process}
   \begin{algorithmic}[1]
      \Require
 
@@ -518,50 +520,52 @@ The isolation process should also be adjusted to adapt to the new CT framework. 
 %     \Ensure  $t_{new}$ \Comment{the regenerate test case}
 
      \Ensure  $t_{new}$ \Comment{the regenerate test case}
-     
+
      \State $Candidate_{test} \leftarrow empty Set$
-     
+
       \While{$Candidate_{test}.size$ is not satisfied}
        \State $test \leftarrow emptyArray(Param.size)$
            \State $s_{mutant} \leftarrow f_{original} - s_{fixed}$
-       \ForAll {$opt \in s_{mutant}$}
-          \State $i = getIndex(Param,opt) $
-          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-          \While{ \textbf{not} CheckSat(test, $S_{MFS}$)}
-            \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+       \ForAll {$factor \in s_{mutant}$}
+           \State   $value \leftarrow select(T_{uncovered},Param,factor)$
+       %    \While{}
+%           \EndWile{}
+       %   \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+          \While{ \textbf{not} CheckCS(value, $S_{MFS}$) || value ==  GetValue(factor, $f_{original}) $}
+            \State  $value \leftarrow repick(T_{uncovered},Param,factor)$
           \EndWhile
        \EndFor
-       
-       \ForAll {$factor \in test$}
-           \State   $value \leftarrow select(T_{uncovered},Param,opt)$
-            \While{\textbf{not} $CheckSat(test, S_{MFS})$}
-              \State $value \leftarrow repick(T_{uncovered},Param,opt) $
-           \EndWhile
-           \State $test.set(factor, value)$
-       \EndFor
+
+%       \ForAll {$factor \in test$}
+%           \State   $value \leftarrow select(T_{uncovered},Param,opt)$
+%            \While{\textbf{not} $CheckSat(test, S_{MFS})$}
+%              \State $value \leftarrow repick(T_{uncovered},Param,opt) $
+%           \EndWhile
+%           \State $test.set(factor, value)$
+%       \EndFor
         \State $Candidate_{test}.append(test)$
        \EndWhile
        \State $best \leftarrow select(Candidate_{test})$
 
-     \While{\textbf{not} MeetEndCriteria()}
-       \State $s_{mutant} \leftarrow f_{original} - s_{fixed}$
-       \ForAll {$opt \in s_{mutant}$}
-          \State $i = getIndex(Param,opt) $
-          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-          \While{ \textbf{not} CheckSat(test, $S_{MFS}$)}
-            \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-          \EndWhile
-       \EndFor
-       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
-       \State $result \leftarrow execute(t_{new})$
-       \If {$result == PASS\ or\ result ==  F_{m}$}
-         \State \Return $t_{new}$
-       \Else
-         \State continue
-       \EndIf
-     \EndWhile
+ %    \While{\textbf{not} MeetEndCriteria()}
+%       \State $s_{mutant} \leftarrow f_{original} - s_{fixed}$
+%       \ForAll {$opt \in s_{mutant}$}
+%          \State $i = getIndex(Param,opt) $
+%          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+%          \While{ \textbf{not} CheckSat(test, $S_{MFS}$)}
+%            \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
+%          \EndWhile
+%       \EndFor
+%       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
+%       \State $result \leftarrow execute(t_{new})$
+%       \If {$result == PASS\ or\ result ==  F_{m}$}
+%         \State \Return $t_{new}$
+%       \Else
+%         \State continue
+%       \EndIf
+%     \EndWhile
 
-     \State \Return \emph{null}
+     \State \Return \emph{best}
     % \While{\textbf{not} FindMFS()}
 %       \State $s_{mutant} \leftarrow t_{original} - s_{fixed}$
 %       \State $test \leftarrow initial(s_{fixed})$
@@ -588,8 +592,9 @@ The isolation process should also be adjusted to adapt to the new CT framework. 
   \end{algorithmic}
 \end{algorithm}
 
-In this algorithm,
+We can observe that this algorithm is very similar to Algorithm 1. This can be easily understood, as the the target of Algorithm 2 is also to make the additional test cases to cover more uncovered schemas as well as to not contain the previous isolated MFS. The only difference from Algorithm 1 is that this algorithm introduce the variables $ f_{original}$ and $s_{fixed}$. The first varible indicates the Two different parts are:
 
+This is mainly based on the fact that the machinaim of MFS isoaltion is \emph{comparing}, that is, to compare the different schemas between the passing and failing test cases. And the fixed part is refer to the common part that is validated to error-irrelevant or not.
 
 
 After the MFS are identified, some related schemas should be set as covered, i.e., these three types of schemas as we discussed before. The algorithm that seeks to handling these three types of schemas is listed in Algorithm 3.
@@ -639,14 +644,14 @@ After the MFS are identified, some related schemas should be set as covered, i.e
            % \State $S_{MFS}.append(s)$
 %     \EndFor
      \ForAll {$t \in T_{uncovered}$}
-       \If {\textbf{not} $CheckSat(t, S_{MFS})$}
+       \If {\textbf{not} $CheckCS(t, S_{MFS})$}
          \State  $T_{uncovered}.remove(t)$
        \EndIf
      \EndFor
   \end{algorithmic}
 \end{algorithm}
 
- In this algorithm, we firstly append the newly isolated MFS into the global MFS set (line 1 - 3), so that we can use them in the following generation and isolation processes. Then for each newly isolated MFS, we will set them as covered, i.e., remove them from the uncovered set, if they are $t$-degree schemas (line 4 - 7). This is the first type of schemas --\emph{themselves}. For each $t$-degree parent-schema of these newly isolated MFS, we will also remove them from the uncovered set (line 8 - 12), as they are the second type of schemas --  \emph{parent-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 14), and judge if it is the implicit forbidden schema (line 16) by sat checking. This checking process is the same as we discussed in the generation and isolation process.
+ In this algorithm, we firstly append the newly isolated MFS into the global MFS set (line 1 - 3), so that we can use them in the following generation and isolation processes. Then for each newly isolated MFS, we will set them as covered, i.e., remove them from the uncovered set, if they are $t$-degree schemas (line 4 - 7). This is the first type of schemas --\emph{themselves}. For each $t$-degree parent-schema of these newly isolated MFS, we will also remove them from the uncovered set (line 8 - 12), as they are the second type of schemas --  \emph{parent-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 14), and judge if it is the implicit forbidden schema (line 16) by constraints checking. This checking process is the same as we discussed in the Algorithm 1 and Algorithm 2.
 
 % To find them from the uncovered set, we use a sat solver to
 %he uncovetred  search through the uncovered schemas set (line 4), to eliminate these schemas that cannot avoid some MFS when extend these schemas into a test case(line 5 - 7).

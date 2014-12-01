@@ -352,7 +352,7 @@ As we discussed previously, the generation and localization is the most key work
 \subsection{Traditional generation-isolation process}
 A typical traditional generation-isolation life-circle is to first generate a $t$-way covering array to detect if there exists some failures that triggered by some particular schemas. Then if we detect some failures, we should isolate the failure-inducing schemas in the SUT for further bug fixing.
 
-As an example, Table \ref{tradition-gi}, which illustrate the process of testing the System with 4 parameters and each parameter has two values. It first generated and executed the 2-way covering array ($t_{1}$ -- $t_{9}$). And after finding that $t_{1}$, $t_{2}$, and $t_{7}$ failed during testing, it then respectively isolated the MFS in the $t_{1}$ ,$t_{2}$, and $t_{7}$. For the $t_{1}$, it uses OFOT method generates four additional test cases ($t_{10}$ -- $t_{13}$), and identified the MFS of $t_{1}$ is (-, 0, - , -) as only when changing the second factor of $t_{1}$ it will pass. Then it will do the same thing to $t_{2}$ and $t_{7}$, and found that (-,0, -, -) is also the MFS of $t_{2}$ and $t_{7}$.  After all, for detecting and isolate the MFS in this example SUT, we have generated 12 additional test cases(marked with star).
+As an example, Table \ref{tradition-gi}, which illustrate the process of testing the System with 4 parameters and each parameter has two values. It first generated and executed the 2-way covering array ($t_{1}$ -- $t_{9}$). Note that  And after finding that $t_{1}$, $t_{2}$, and $t_{7}$ failed during testing, it then respectively isolated the MFS in the $t_{1}$ ,$t_{2}$, and $t_{7}$. For the $t_{1}$, it uses OFOT method generates four additional test cases ($t_{10}$ -- $t_{13}$), and identified the MFS of $t_{1}$ is (-, 0, - , -) as only when changing the second factor of $t_{1}$ it will pass. Then it will do the same thing to $t_{2}$ and $t_{7}$, and found that (-,0, -, -) is also the MFS of $t_{2}$ and $t_{7}$.  After all, for detecting and isolate the MFS in this example SUT, we have generated 12 additional test cases(marked with star).
 %It must be noted that, when isolating the MFS of $t_{2}$, the generated extra test cases $t_{9}$ and $t_{10}$ has appeared before, so we can just reuse the previous result.
 
 \begin{table}[h]
@@ -457,7 +457,7 @@ We adopt the one-test-case-one-time method as the basic skeleton of the generati
        \State $test \leftarrow emptyArray(Param.size)$
        \ForAll {$factor \in test$}
            \State   $value \leftarrow select(T_{uncovered},Param,factor)$
-            \While{\textbf{not} $CheckSat(value, S_{MFS})$}
+            \While{\textbf{not} $CheckCS(value, S_{MFS})$}
               \State $value \leftarrow repick(T_{uncovered},Param,factor) $
            \EndWhile
            \State $test.set(factor, value)$
@@ -490,9 +490,9 @@ The first requirement is usually fulfilled by some heuristic selection, e.g., to
 %\end{aligned}
 \end{alignat}
 
-In this formula, $X$ is the parameters in the SUT and $D$ is a set of the respective domains of values that each each parameter can take. $C$ is the set of constraints. Then this model evaluates that whether a test case can be found, i.e., each parameter $P_{i}$ takes a specific value  $D_{i}$, so that it will not violate any constraint in $C$. For the constraints in $C$, $C_{assignment}$ indicates these parameters that have been assigned values. For example, if we have assigned parameter $P_{i}$ with value $d_{i}$, and $P_{j}$ with $d_{j}$, then this constraint will be formulated as $(P_{i} = d_{i}\ \&\&\ P_{j} == d_{j})$. it ensures these corresponding parameters must take the assigned values. $C_{MFS}$ modeled those identified MFS will be modeled as forbidden tuples of parameter values. For example, if (- 1 - 0) is the MFS, it will be transformed as forbidden rule $\urcorner ( P_{2} = 1\ \&\&\ P_{4} == 0)$.
+In this formula, $X$ is the parameters in the SUT and $D$ is a set of the respective domains of values that each each parameter can take. $C$ is the set of constraints. Then this model evaluates that whether a test case can be found, i.e., each parameter $P_{i}$ takes a specific value  $D_{i}$, so that it will not violate any constraint in $C$. For the constraints in $C$, $C_{assignment}$ indicates these parameters that have been assigned values. For example, if we have assigned parameter $P_{i}$ with value $d_{i}$, and $P_{j}$ with $d_{j}$, then this constraint will be formulated as $(P_{i} = d_{i}\ \&\&\ P_{j} == d_{j})$. $C_{MFS}$ modeled those identified MFS will be modeled as forbidden tuples of parameter values. For example, if (- 1 - 0) is the MFS, it will be transformed as forbidden rule $\urcorner ( P_{2} = 1\ \&\&\ P_{4} == 0)$.
 
-So when using this model, we can check whether a value. Note that the constraints checking part (line 6 - 8) of our algorithm does not aim to optimising for the performance like running-time, iteration number or the like. Some study \cite{cohen2008constructing}, by exploiting the SAT history or setting the threshold, can significantly improve such performance. In this paper, however, we will not discuss the details for those techniques. Instead, we want to make the overall generation process more general and fit for the framework listed in Figure \ref{new-life}.
+So when using this model, we can check whether a value should be assigned to the current parameter(line 6) by putting it into the $C_{assignment}$. Note that the constraints checking part of our algorithm does not aim to optimising for the performance like running-time, iteration number or the like. Some study \cite{cohen2008constructing}, by exploiting the SAT history or setting the threshold, can significantly improve such performance. In this paper, however, we will not discuss the details for those techniques. Instead, we want to make the overall generation process more general and fit for the framework listed in Figure \ref{new-life}.
 
 %However, our algorithm is powerful enough and properly adaptively to the framework we proposed.
 % as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
@@ -531,7 +531,7 @@ The isolation process should also be adjusted to adapt to the new CT framework. 
        %    \While{}
 %           \EndWile{}
        %   \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-          \While{ \textbf{not} CheckSat(value, $S_{MFS}$) || value ==  GetValue(factor, $f_{original}) $}
+          \While{ \textbf{not} CheckCS(value, $S_{MFS}$) || value ==  GetValue(factor, $f_{original}) $}
             \State  $value \leftarrow repick(T_{uncovered},Param,factor)$
           \EndWhile
        \EndFor
@@ -592,12 +592,15 @@ The isolation process should also be adjusted to adapt to the new CT framework. 
   \end{algorithmic}
 \end{algorithm}
 
-We can observe that this algorithm is very similar to Algorithm 1. This can be easily understood, as the the target of Algorithm 2 is also the approach that can make the isolation to generate more uncovered tuples as well as to not contain the previous isolated MFS. Two different parts are:
+We can observe that this algorithm is very similar to Algorithm 1, except that this algorithm introduce the variables $ f_{original}$ and $s_{fixed}$. These two variables are important to MFS isolation. Generally, the target of the MFS isolation process is to distinguish the failure-inducing schemas from those error-irrelevant schemas in a failing test case. For this, the MFS isolation process need to generate and execute additional test cases to compare to original failing test case $f_{original}$. The additional test case must contain some fixed schema $s_{fixed}$ in the $f_{original}$, and other part of the additional test case must be different from $f_{original}$ (line 4).  By doing this, this isolation process can check whether the $fixed$ are failure-inducing or not. For example, in Table \ref{ofot-identify}, the original failing test case is (1, 1, 1 ) and the fixed part for additional test case $t_{1}$ (0, 1, 1) is (-, 1, 1). After the $t_{1}$ passed during testing, we can get that the fixed schema (-, 1, 1) should not be the failure-inducing schema.
 
-This is mainly based on the fact that the machinaim of MFS isoaltion is \emph{comparing}, that is, to compare the different schemas between the passing and failing test cases. And the fixed part is refer to the common part that is validated to error-irrelevant or not.
+Traditional MFS isolation process just need to ensure that the $mutant$ part have different values from original failing test cases. We augmented this by selecting values that can cover as more uncovered schemas as possible (line 6) and to ensure the test case does not contain some identified MFS (line 7 - 8).
+%
+% The first varible indicates the Two different parts are:
+%
+%This is mainly based on the fact that the machinaim of MFS isoaltion is \emph{comparing}, that is, to compare the different schemas between the passing and failing test cases. And the fixed part is refer to the common part that is validated to error-irrelevant or not.
 
-
-After the MFS are identified, some related schemas should be set as covered, i.e., these three types of schemas as we discussed before. The algorithm that seeks to handling these three types of schemas is listed in Algorithm 3.
+After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS themselves}, \emph{parent-schemas} and \emph{implicit forbidden schemas}, should be set as covered to make the overall CT process stoppable. The algorithm that seeks to handling these three types of schemas is listed in Algorithm 3.
 
 %For example, consider the system has three parameters, and each parameter has two values that can be assigned, when we find the (0 1 -) and (1 - 0) are the MFS for this system, the schema (- 1 0) should also not appear, as when we generate test case that contain (- 1 0), i.e., either it contain MFS (0 1 -) for test case (0 1 0) or contain the MFS (1 - 0) for test case (1 1 0). And if we find the lower degree MFS like (0 - -), the forbidden schemas will be even more, as all the two-degree schemas contain this 1-degree schema should set to be covered. This problem is called the implicit constraints, firstly proposed by Cohen.
 
@@ -644,14 +647,14 @@ After the MFS are identified, some related schemas should be set as covered, i.e
            % \State $S_{MFS}.append(s)$
 %     \EndFor
      \ForAll {$t \in T_{uncovered}$}
-       \If {\textbf{not} $CheckSat(t, S_{MFS})$}
+       \If {\textbf{not} $CheckCS(t, S_{MFS})$}
          \State  $T_{uncovered}.remove(t)$
        \EndIf
      \EndFor
   \end{algorithmic}
 \end{algorithm}
 
- In this algorithm, we firstly append the newly isolated MFS into the global MFS set (line 1 - 3), so that we can use them in the following generation and isolation processes. Then for each newly isolated MFS, we will set them as covered, i.e., remove them from the uncovered set, if they are $t$-degree schemas (line 4 - 7). This is the first type of schemas --\emph{themselves}. For each $t$-degree parent-schema of these newly isolated MFS, we will also remove them from the uncovered set (line 8 - 12), as they are the second type of schemas --  \emph{parent-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 14), and judge if it is the implicit forbidden schema (line 16) by sat checking. This checking process is the same as we discussed in the generation and isolation process.
+ In this algorithm, we firstly append the newly isolated MFS into the global MFS set (line 1 - 3), so that we can use them in the following generation and isolation processes. Then for each newly isolated MFS, we will set them as covered, i.e., remove them from the uncovered set, if they are $t$-degree schemas (line 4 - 7). This is the first type of schemas --\emph{themselves}. For each $t$-degree parent-schema of these newly isolated MFS, we will also remove them from the uncovered set (line 8 - 12), as they are the second type of schemas --  \emph{parent-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 14), and judge if it is the implicit forbidden schema (line 16) by constraints checking. This checking process is the same as we discussed in the Algorithm 1 and Algorithm 2.
 
 % To find them from the uncovered set, we use a sat solver to
 %he uncovetred  search through the uncovered schemas set (line 4), to eliminate these schemas that cannot avoid some MFS when extend these schemas into a test case(line 5 - 7).
