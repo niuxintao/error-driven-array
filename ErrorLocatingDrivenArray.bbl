@@ -1,5 +1,18 @@
 \begin{thebibliography}{10}
 
+\bibitem{bryce2006prioritized}
+R.~C. Bryce and C.~J. Colbourn.
+\newblock Prioritized interaction testing for pair-wise coverage with seeding
+  and constraints.
+\newblock {\em Information and Software Technology}, 48(10):960--970, 2006.
+
+\bibitem{bryce2005framework}
+R.~C. Bryce, C.~J. Colbourn, and M.~B. Cohen.
+\newblock A framework of greedy methods for constructing interaction test
+  suites.
+\newblock In {\em Proceedings of the 27th international conference on Software
+  engineering}, pages 146--155. ACM, 2005.
+
 \bibitem{cohen1997aetg}
 D.~M. Cohen, S.~R. Dalal, M.~L. Fredman, and G.~C. Patton.
 \newblock The aetg system: An approach to testing based on combinatorial
@@ -32,12 +45,36 @@ C.~J. Colbourn and D.~W. McClary.
 \newblock Locating and detecting arrays for interaction faults.
 \newblock {\em Journal of combinatorial optimization}, 15(1):17--48, 2008.
 
+\bibitem{dumlu2011feedback}
+E.~Dumlu, C.~Yilmaz, M.~B. Cohen, and A.~Porter.
+\newblock Feedback driven adaptive combinatorial testing.
+\newblock In {\em Proceedings of the 2011 International Symposium on Software
+  Testing and Analysis}, pages 243--253. ACM, 2011.
+
+\bibitem{fouche2009incremental}
+S.~Fouch{\'e}, M.~B. Cohen, and A.~Porter.
+\newblock Incremental covering array failure characterization in large
+  configuration spaces.
+\newblock In {\em Proceedings of the eighteenth international symposium on
+  Software testing and analysis}, pages 177--188. ACM, 2009.
+
+\bibitem{kuhn2010practical}
+D.~R. Kuhn, R.~N. Kacker, and Y.~Lei.
+\newblock Practical combinatorial testing.
+\newblock {\em NIST Special Publication}, 800:142, 2010.
+
 \bibitem{lei2008ipog}
 Y.~Lei, R.~Kacker, D.~R. Kuhn, V.~Okun, and J.~Lawrence.
 \newblock Ipog/ipog-d: efficient test generation for multi-way combinatorial
   testing.
 \newblock {\em Software Testing, Verification and Reliability}, 18(3):125--148,
   2008.
+
+\bibitem{li2012improved}
+J.~Li, C.~Nie, and Y.~Lei.
+\newblock Improved delta debugging based on combinatorial testing.
+\newblock In {\em Quality Software (QSIC), 2012 12th International Conference
+  on}, pages 102--105. IEEE, 2012.
 
 \bibitem{martinez2008algorithms}
 C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
@@ -50,6 +87,29 @@ C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
 \newblock Locating errors using elas, covering arrays, and adaptive testing
   algorithms.
 \newblock {\em SIAM Journal on Discrete Mathematics}, 23(4):1776--1799, 2009.
+
+\bibitem{nie2011minimal}
+C.~Nie and H.~Leung.
+\newblock The minimal failure-causing schema of combinatorial testing.
+\newblock {\em ACM Transactions on Software Engineering and Methodology
+  (TOSEM)}, 20(4):15, 2011.
+
+\bibitem{nie2011survey}
+C.~Nie and H.~Leung.
+\newblock A survey of combinatorial testing.
+\newblock {\em ACM Computing Surveys (CSUR)}, 43(2):11, 2011.
+
+\bibitem{nie2013adaptive}
+C.~Nie, H.~Leung, and K.-Y. Cai.
+\newblock Adaptive combinatorial testing.
+\newblock In {\em Quality Software (QSIC), 2013 13th International Conference
+  on}, pages 284--287. IEEE, 2013.
+
+\bibitem{yilmaz2013test}
+C.~Yilmaz.
+\newblock Test case-aware combinatorial interaction testing.
+\newblock {\em Software Engineering, IEEE Transactions on}, 39(5):684--706,
+  2013.
 
 \bibitem{yilmaz2013reducing}
 C.~Yilmaz, E.~Dumlu, M.~Cohen, and A.~Porter.

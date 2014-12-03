@@ -379,11 +379,12 @@ ISSN={0098-5589}
   year={2013},
   publisher={ACM}
 }
-@inproceedings{cohen2003augmenting,
-  title={Augmenting simulated annealing to build interaction test suites},
-  author={Cohen, Myra B and Colbourn, Charles J and Ling, Alan CH},
-  booktitle={Software Reliability Engineering, 2003. ISSRE 2003. 14th International Symposium on},
-  pages={394--405},
-  year={2003},
-  organization={IEEE}
+
+@article{kuhn2010practical,
+  title={Practical combinatorial testing},
+  author={Kuhn, D Richard and Kacker, Raghu N and Lei, Yu},
+  journal={NIST Special Publication},
+  volume={800},
+  pages={142},
+  year={2010}
 }
