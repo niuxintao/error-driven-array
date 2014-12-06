@@ -708,6 +708,8 @@ This table consists of two main columns, where the left indicates the generation
 
 \section{empirical studies}
 
+\subsection{The modeling of open-source objects}
+
 \subsection{Compare with Traditional First-Gen-Latter-Identify}
 
 \subsubsection{Study setup}
@@ -738,29 +740,27 @@ Error locating array \cite{colbourn2008locating,martinez2009locating} is a well-
 
 
 \section{related works}
-Combinatorial testing is an important black-box testing technique, and have been widely applied in practice \cite{kuhn2010practical}. Particular testing scenarios are configuration testing, programming input testing and sequence testing. Changhai nie \cite{nie2011survey} comprehensively took a survey on the studies about different aspects of combinatorial testing, and based on which, we can learn that many works in CT focus on seperately aspects, i.e. either focus on generation, or on evaluation or on fault localization, or on building models .
+Combinatorial testing has been an widely applied in practice \cite{kuhn2010practical}, especially on domains like configuration testing \cite{yilmaz2006covering,cohen2006testing,qu2008configuration,fouche2009incremental} and software inputs testing \cite{cohen1997aetg,borazjany2012combinatorial,ghandehari2013applying,garn2014eris}. A recent survey \cite{nie2011survey} comprehensively studied existing works in CT and classified those works into eight categories according to the testing procedure. Based on which, we can learn that test cases generation and fault diagnosis are two most important key part in CT studies.
+%took a survey on the studies about different aspects of combinatorial testing, and based on which, we can learn that many works in CT focus on separately aspects, i.e. either focus on generation, or on evaluation or on fault localization, or on building models .
 
-To avoid this, 
-the methodology, notions and in CT.
-On this filed, most works separately discussed , such as.
+Although CT has been proven to be effective at detecting and localizing the interaction failures in SUT, however, to directly applied them in practice can be inefficient and some times even not work at all. Some problems, e.g., constraints of parameters values in SUT \cite{cohen2007exploiting,cohen2008constructing}, masking effects of multiple failures\cite{dumlu2011feedback,yilmaz2013reducing}, dynamic requirement for the strength of covering array \cite{fouche2009incremental}, will bring many troubles to CT process. To overcome these problems, some works made efforts to make CT more adaptive and flexible.
 
-JieLi \cite{li2012improved} that can utilize the previous test cases.  \cite{fouche2009incremental} introduce Incremental testing cases. \cite{yilmaz2013test} gives an test-aware testing.  \cite{bryce2006prioritized} gives both for generation and priozitation. \cite{dumlu2011feedback} gives and feedback . \cite{yilmaz2013reducing} based on this .
+%Tere are several drawbacks for traditional CT studies. First, not practical, not. To overcome this, several works are proposed to extend CT to make them better application.
+%To avoid this,
+%the methodology, notions and in CT.
+%On this filed, most works separately discussed , such as.
 
-Aiming to avoid the 顽固的，一成不变的模式，some works made efforts to change the , i.e., introducing the adaptvie machine,.
+JieLi \cite{li2012improved} augmented the MFS identifying algorithm by selecting one previous passing test cases for comparison, such that it can reduce some extra test cases when compared to another efficient MFS identifying algorithm \cite{zhang2011characterizing}. S.Fouch et al., $\acute{e}$ \cite{fouche2009incremental} introduced the notion of incremental covering. Different from traditional covering array, it did not need a fixed strength to guide the generation, instead, it can dynamically generate high-degree covering array based on existing low-degree covering array, which can support a flexible tradeoff between covering array strength and testing resources. Cohen \cite{cohen2007exploiting,cohen2008constructing} studied the impacts of constraints for CT, and proposed an SAT-based approach that can handle those constraints.  Bryce and Colbourn \cite{bryce2006prioritized} proposed an one-test-case-one-time greedy technique to not only generate test cases to cover all the $t$-way interactions, but also prioritize them according their importance.  E. Dumlu et al., \cite{dumlu2011feedback} developed a feedback driven
+combinatorial testing approach that can assist traditional covering in avoiding these masking effects between multiple failures. Yilmaz \cite{yilmaz2013reducing} extended that work by refining the MFS diagnosing method in it. Additionally, Nie \cite{nie2013adaptive} constructed an adaptive combinatorial testing framework, which can dynamically adjusted the inputs model, strength $t$ of covering array, and generation strategy during CT process.
 
-Additionally, Changhai nie \cite{nie2013adaptive} introduce the notion of adaptive combinatorial testing.
-
-
-Our work differs from them mainly at we proposed a new framework that tightly related the generation and localization in a more tiggt work. 
-
-
+Our work differs from them mainly at our work focus on combining two important techniques in CT, i.e., test cases generation and fault diagnosis, such that the overall cost of CT will be reduced and the identified MFS will be of higher quality.
 
 
 
 \section{Conclusions}
 Combinatorial testing is an effective testing technique at detecting and diagnosis the failure-inducing schemas in the SUT. Traditional CT works separately studied test cases generation and MFS isolation. In this paper, we proposed a new CT framework that organised these two important testing stages as a whole, which allows for both generation and localization better share each other’s testing information. As a result, our new CT framework can provide a more efficient testing than traditional CT.
 
-Empirical studies were conducted on several open-source software. The results showed that with our new CT framework, there is an significant reducing on the number of generated test cases when compared to traditional first-generation-then-isolation process, while there is no decline in the quality of the identified MFS. Further, when comparing with the ELA \cite{martinez2009locating,martinez2008algorithms}, our appraoch also performed better, especially at the cost of the number of test cases.
+Empirical studies were conducted on several open-source software. The results showed that with our new CT framework, there is an significant reducing on the number of generated test cases when compared to traditional first-generation-then-isolation process, while there is no decline in the quality of the identified MFS. Further, when comparing with the ELA \cite{martinez2009locating,martinez2008algorithms}, our approach also performed better, especially at the cost of the number of test cases.
 
 As a future work, we need to extend our new CT framework with more test cases generation and MFS isolation algorithms, to see the extent on which our new CT framework can enhance those different CT-based algorithms. Another interesting work is to make our new CT framework more closer to the source code testing, so that it can provide more useful information for developers to debug the system.
 

@@ -1,17 +1,16 @@
 \begin{thebibliography}{10}
 
+\bibitem{borazjany2012combinatorial}
+M.~N. Borazjany, L.~Yu, Y.~Lei, R.~Kacker, and R.~Kuhn.
+\newblock Combinatorial testing of acts: A case study.
+\newblock In {\em Software Testing, Verification and Validation (ICST), 2012
+  IEEE Fifth International Conference on}, pages 591--600. IEEE, 2012.
+
 \bibitem{bryce2006prioritized}
 R.~C. Bryce and C.~J. Colbourn.
 \newblock Prioritized interaction testing for pair-wise coverage with seeding
   and constraints.
 \newblock {\em Information and Software Technology}, 48(10):960--970, 2006.
-
-\bibitem{bryce2005framework}
-R.~C. Bryce, C.~J. Colbourn, and M.~B. Cohen.
-\newblock A framework of greedy methods for constructing interaction test
-  suites.
-\newblock In {\em Proceedings of the 27th international conference on Software
-  engineering}, pages 146--155. ACM, 2005.
 
 \bibitem{cohen1997aetg}
 D.~M. Cohen, S.~R. Dalal, M.~L. Fredman, and G.~C. Patton.
@@ -26,6 +25,13 @@ M.~B. Cohen, C.~J. Colbourn, and A.~C. Ling.
 \newblock In {\em Software Reliability Engineering, 2003. ISSRE 2003. 14th
   International Symposium on}, pages 394--405. IEEE, 2003.
 
+\bibitem{cohen2007exploiting}
+M.~B. Cohen, M.~B. Dwyer, and J.~Shi.
+\newblock Exploiting constraint solving history to construct interaction test
+  suites.
+\newblock In {\em Testing: Academic and Industrial Conference Practice and
+  Research Techniques-MUTATION, 2007.}, pages 121--132. IEEE, 2007.
+
 \bibitem{cohen2007interaction}
 M.~B. Cohen, M.~B. Dwyer, and J.~Shi.
 \newblock Interaction testing of highly-configurable systems in the presence of
@@ -39,6 +45,18 @@ M.~B. Cohen, M.~B. Dwyer, and J.~Shi.
   in the presence of constraints: A greedy approach.
 \newblock {\em Software Engineering, IEEE Transactions on}, 34(5):633--650,
   2008.
+
+\bibitem{cohen2003constructing}
+M.~B. Cohen, P.~B. Gibbons, W.~B. Mugridge, and C.~J. Colbourn.
+\newblock Constructing test suites for interaction testing.
+\newblock In {\em Software Engineering, 2003. Proceedings. 25th International
+  Conference on}, pages 38--48. IEEE, 2003.
+
+\bibitem{cohen2006testing}
+M.~B. Cohen, J.~Snyder, and G.~Rothermel.
+\newblock Testing across configurations: implications for combinatorial
+  testing.
+\newblock {\em ACM SIGSOFT Software Engineering Notes}, 31(6):1--9, 2006.
 
 \bibitem{colbourn2008locating}
 C.~J. Colbourn and D.~W. McClary.
@@ -57,6 +75,21 @@ S.~Fouch{\'e}, M.~B. Cohen, and A.~Porter.
   configuration spaces.
 \newblock In {\em Proceedings of the eighteenth international symposium on
   Software testing and analysis}, pages 177--188. ACM, 2009.
+
+\bibitem{garn2014eris}
+B.~Garn and D.~E. Simos.
+\newblock Eris: A tool for combinatorial testing of the linux system call
+  interface.
+\newblock In {\em Software Testing, Verification and Validation Workshops
+  (ICSTW), 2014 IEEE Seventh International Conference on}, pages 58--67. IEEE,
+  2014.
+
+\bibitem{ghandehari2013applying}
+L.~S.~G. Ghandehari, M.~N. Bourazjany, Y.~Lei, R.~N. Kacker, and D.~R. Kuhn.
+\newblock Applying combinatorial testing to the siemens suite.
+\newblock In {\em Software Testing, Verification and Validation Workshops
+  (ICSTW), 2013 IEEE Sixth International Conference on}, pages 362--371. IEEE,
+  2013.
 
 \bibitem{kuhn2010practical}
 D.~R. Kuhn, R.~N. Kacker, and Y.~Lei.
@@ -105,11 +138,24 @@ C.~Nie, H.~Leung, and K.-Y. Cai.
 \newblock In {\em Quality Software (QSIC), 2013 13th International Conference
   on}, pages 284--287. IEEE, 2013.
 
+\bibitem{qu2008configuration}
+X.~Qu, M.~B. Cohen, and G.~Rothermel.
+\newblock Configuration-aware regression testing: an empirical study of
+  sampling and prioritization.
+\newblock In {\em Proceedings of the 2008 international symposium on Software
+  testing and analysis}, pages 75--86. ACM, 2008.
+
 \bibitem{yilmaz2013test}
 C.~Yilmaz.
 \newblock Test case-aware combinatorial interaction testing.
 \newblock {\em Software Engineering, IEEE Transactions on}, 39(5):684--706,
   2013.
+
+\bibitem{yilmaz2006covering}
+C.~Yilmaz, M.~B. Cohen, and A.~A. Porter.
+\newblock Covering arrays for efficient fault characterization in complex
+  configuration spaces.
+\newblock {\em Software Engineering, IEEE Transactions on}, 32(1):20--34, 2006.
 
 \bibitem{yilmaz2013reducing}
 C.~Yilmaz, E.~Dumlu, M.~Cohen, and A.~Porter.
@@ -124,5 +170,12 @@ S.~Yoo, M.~Harman, and D.~Clark.
   and coverage-based approaches.
 \newblock {\em ACM Transactions on Software Engineering and Methodology
   (TOSEM)}, 22(3):19, 2013.
+
+\bibitem{zhang2011characterizing}
+Z.~Zhang and J.~Zhang.
+\newblock Characterizing failure-causing parameter interactions by adaptive
+  testing.
+\newblock In {\em Proceedings of the 2011 International Symposium on Software
+  Testing and Analysis}, pages 331--341. ACM, 2011.
 
 \end{thebibliography}

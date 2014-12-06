@@ -388,3 +388,20 @@ ISSN={0098-5589}
   pages={142},
   year={2010}
 }
+@inproceedings{nie2013adaptive,
+  title={Adaptive Combinatorial Testing},
+  author={Nie, Changhai and Leung, Hareton and Cai, Kai-Yuan},
+  booktitle={Quality Software (QSIC), 2013 13th International Conference on},
+  pages={284--287},
+  year={2013},
+  organization={IEEE}
+}@article{cohen2006testing,
+  title={Testing across configurations: implications for combinatorial testing},
+  author={Cohen, Myra B and Snyder, Joshua and Rothermel, Gregg},
+  journal={ACM SIGSOFT Software Engineering Notes},
+  volume={31},
+  number={6},
+  pages={1--9},
+  year={2006},
+  publisher={ACM}
+}
