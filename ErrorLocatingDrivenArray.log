@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  6 DEC 2014 21:25
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  10 DEC 2014 03:24
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -366,13 +366,13 @@ Requested font "aeti9" at 9.0pt
 ]
 File: CT_lifecircle.eps Graphic file (type eps)
  <CT_lifecircle.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 211--212
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 209--210
 [][] 
  []
 
 \c@definition=\count123
 [2]
-Overfull \hbox (11.468pt too wide) in paragraph at lines 347--347
+Overfull \hbox (11.468pt too wide) in paragraph at lines 345--345
 []\secfnt THE IN-TE-GRAT-ED GEN-ER-A-TION FAULT
  []
 
@@ -381,54 +381,48 @@ Requested font "aebxti10" at 9.0pt
  -> aebxti10
 File: baicOutline.eps Graphic file (type eps)
  <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 412--413
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 410--411
 [][] 
  []
 
-
-Underfull \vbox (badness 1558) has occurred while \output is active []
-
- [4]
+[4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (9.8895pt too wide) in paragraph at lines 438--440
+Overfull \hbox (9.8895pt too wide) in paragraph at lines 436--438
 []\T1/aer/m/n/9 1) \T1/aer/m/it/9 Gen-er-a-tion \T1/aer/m/n/9 : We adop-t the o
 ne-test-case-one-time method
  []
 
+[5]
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5]
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 500 replaced by U+FFFD.
-
-Overfull \hbox (6.50392pt too wide) in paragraph at lines 603--604
+Overfull \hbox (6.50392pt too wide) in paragraph at lines 601--602
 []\T1/aer/m/n/9 After the MF-S are i-den-ti-fied, some re-lat-ed $\OML/cmm/m/it
 /9 t$\T1/aer/m/n/9 -degree schemas,
  []
 
 [6]
-Overfull \hbox (12.2617pt too wide) in paragraph at lines 713--713
+Overfull \hbox (12.2617pt too wide) in paragraph at lines 762--762
 []\secfnt Compare with Tra-di-tion-al First-Gen-Latter-
  []
 
-[7]
-Overfull \hbox (2.02298pt too wide) in paragraph at lines 763--764
+[7] [8]
+Overfull \hbox (2.02298pt too wide) in paragraph at lines 836--837
 \T1/aer/m/n/9 at-ed test cas-es when com-pared to tra-di-tion-al first-generati
 on-
  []
@@ -436,17 +430,17 @@ on-
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8])
-[9
+ [9])
+[10
 
 ] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2789 strings out of 430478
- 31758 string characters out of 3191502
- 93532 words of memory out of 3000000
- 5888 multiletter control sequences out of 15000+200000
+ 2792 strings out of 430478
+ 31786 string characters out of 3191502
+ 94532 words of memory out of 3000000
+ 5891 multiletter control sequences out of 15000+200000
  41611 words of font info for 52 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,10n,26p,2155b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ErrorLocatingDrivenArray.pdf (9 pages).
+Output written on ErrorLocatingDrivenArray.pdf (10 pages).

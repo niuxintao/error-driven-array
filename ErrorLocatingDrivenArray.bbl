@@ -46,12 +46,6 @@ M.~B. Cohen, M.~B. Dwyer, and J.~Shi.
 \newblock {\em Software Engineering, IEEE Transactions on}, 34(5):633--650,
   2008.
 
-\bibitem{cohen2003constructing}
-M.~B. Cohen, P.~B. Gibbons, W.~B. Mugridge, and C.~J. Colbourn.
-\newblock Constructing test suites for interaction testing.
-\newblock In {\em Software Engineering, 2003. Proceedings. 25th International
-  Conference on}, pages 38--48. IEEE, 2003.
-
 \bibitem{cohen2006testing}
 M.~B. Cohen, J.~Snyder, and G.~Rothermel.
 \newblock Testing across configurations: implications for combinatorial
@@ -95,6 +89,18 @@ L.~S.~G. Ghandehari, M.~N. Bourazjany, Y.~Lei, R.~N. Kacker, and D.~R. Kuhn.
 D.~R. Kuhn, R.~N. Kacker, and Y.~Lei.
 \newblock Practical combinatorial testing.
 \newblock {\em NIST Special Publication}, 800:142, 2010.
+
+\bibitem{kuhn2006pseudo}
+D.~R. Kuhn and V.~Okun.
+\newblock Pseudo-exhaustive testing for software.
+\newblock In {\em Software Engineering Workshop, 2006. SEW'06. 30th Annual
+  IEEE/NASA}, pages 153--158. IEEE, 2006.
+
+\bibitem{le2010sat4j}
+D.~Le~Berre, A.~Parrain, et~al.
+\newblock The sat4j library, release 2.2, system description.
+\newblock {\em Journal on Satisfiability, Boolean Modeling and Computation},
+  7:59--64, 2010.
 
 \bibitem{lei2008ipog}
 Y.~Lei, R.~Kacker, D.~R. Kuhn, V.~Okun, and J.~Lawrence.
@@ -145,11 +151,12 @@ X.~Qu, M.~B. Cohen, and G.~Rothermel.
 \newblock In {\em Proceedings of the 2008 international symposium on Software
   testing and analysis}, pages 75--86. ACM, 2008.
 
-\bibitem{yilmaz2013test}
-C.~Yilmaz.
-\newblock Test case-aware combinatorial interaction testing.
-\newblock {\em Software Engineering, IEEE Transactions on}, 39(5):684--706,
-  2013.
+\bibitem{shakya2012isolating}
+K.~Shakya, T.~Xie, N.~Li, Y.~Lei, R.~Kacker, and R.~Kuhn.
+\newblock Isolating failure-inducing combinations in combinatorial testing
+  using test augmentation and classification.
+\newblock In {\em Software Testing, Verification and Validation (ICST), 2012
+  IEEE Fifth International Conference on}, pages 620--623. IEEE, 2012.
 
 \bibitem{yilmaz2006covering}
 C.~Yilmaz, M.~B. Cohen, and A.~A. Porter.

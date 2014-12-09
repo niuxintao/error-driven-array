@@ -395,7 +395,8 @@ ISSN={0098-5589}
   pages={284--287},
   year={2013},
   organization={IEEE}
-}@article{cohen2006testing,
+}
+@article{cohen2006testing,
   title={Testing across configurations: implications for combinatorial testing},
   author={Cohen, Myra B and Snyder, Joshua and Rothermel, Gregg},
   journal={ACM SIGSOFT Software Engineering Notes},
@@ -404,4 +405,36 @@ ISSN={0098-5589}
   pages={1--9},
   year={2006},
   publisher={ACM}
+}
+@inproceedings{qu2008configuration,
+  title={Configuration-aware regression testing: an empirical study of sampling and prioritization},
+  author={Qu, Xiao and Cohen, Myra B and Rothermel, Gregg},
+  booktitle={Proceedings of the 2008 international symposium on Software testing and analysis},
+  pages={75--86},
+  year={2008},
+  organization={ACM}
+}
+@inproceedings{ghandehari2013applying,
+  title={Applying Combinatorial Testing to the Siemens Suite},
+  author={Ghandehari, Laleh Shikh Gholamhossein and Bourazjany, Mehra N and Lei, Yu and Kacker, Raghu N and Kuhn, D Richard},
+  booktitle={Software Testing, Verification and Validation Workshops (ICSTW), 2013 IEEE Sixth International Conference on},
+  pages={362--371},
+  year={2013},
+  organization={IEEE}
+}
+@inproceedings{garn2014eris,
+  title={Eris: A Tool for Combinatorial Testing of the Linux System Call Interface},
+  author={Garn, Bernhard and Simos, Dimitris E},
+  booktitle={Software Testing, Verification and Validation Workshops (ICSTW), 2014 IEEE Seventh International Conference on},
+  pages={58--67},
+  year={2014},
+  organization={IEEE}
+}
+@inproceedings{borazjany2012combinatorial,
+  title={Combinatorial testing of ACTS: A case study},
+  author={Borazjany, Mehra N and Yu, Linbin and Lei, Yu and Kacker, Raghu and Kuhn, Rick},
+  booktitle={Software Testing, Verification and Validation (ICST), 2012 IEEE Fifth International Conference on},
+  pages={591--600},
+  year={2012},
+  organization={IEEE}
 }
