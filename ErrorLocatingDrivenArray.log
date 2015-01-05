@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  10 DEC 2014 15:54
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  5 JAN 2015 22:06
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -286,24 +286,27 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfig@top=\skip52
 \subfig@bottom=\skip53
 )
+(C:\CTEX\MiKTeX\tex\latex\multirow\multirow.sty
+\bigstrutjot=\dimen128
+)
 (C:\CTEX\MiKTeX\tex\latex\mdwtools\footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box35
-\fn@width=\dimen128
+\fn@width=\dimen129
 )
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
 Requested font "cmr6" at 6.0pt
  -> cmr6
 Requested font "cmmi9" at 9.0pt
@@ -320,7 +323,7 @@ Requested font "cmex7" at 6.0pt
  -> cmex7
 Requested font "cmex7" at 5.0pt
  -> cmex7
-LaTeX Font Info:    Try loading font information for U+msa on input line 155.
+LaTeX Font Info:    Try loading font information for U+msa on input line 175.
 
 (C:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
@@ -331,7 +334,7 @@ Requested font "msam7" at 6.0pt
  -> msam7
 Requested font "msam5" at 5.0pt
  -> msam5
-LaTeX Font Info:    Try loading font information for U+msb on input line 155.
+LaTeX Font Info:    Try loading font information for U+msb on input line 175.
 
 (C:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -342,7 +345,7 @@ Requested font "msbm7" at 6.0pt
  -> msbm7
 Requested font "msbm5" at 5.0pt
  -> msbm5
-LaTeX Font Info:    Try loading font information for U+lasy on input line 155.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 175.
 
 (C:\CTEX\MiKTeX\tex\latex\base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -352,7 +355,7 @@ Requested font "lasy9" at 9.0pt
 Requested font "lasy5" at 5.0pt
  -> lasy5
 
-Overfull \hbox (24.49828pt too wide) in paragraph at lines 155--155
+Overfull \hbox (24.49828pt too wide) in paragraph at lines 175--175
  []\eaddfnt cshleung@comp.polyu.edu.hk| 
  []
 
@@ -360,19 +363,25 @@ Requested font "aebx9" at 9.0pt
  -> aebx9
 Requested font "aeti9" at 9.0pt
  -> aeti9
-[1
+
+Underfull \vbox (badness 1478) has occurred while \output is active []
+
+ [1
 
 
 ]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 File: CT_lifecircle.eps Graphic file (type eps)
- <CT_lifecircle.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 209--210
+
+<CT_lifecircle.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 229--230
 [][] 
  []
 
 \c@definition=\count123
 [2]
-Overfull \hbox (11.468pt too wide) in paragraph at lines 345--345
+Overfull \hbox (11.468pt too wide) in paragraph at lines 365--365
 []\secfnt THE IN-TE-GRAT-ED GEN-ER-A-TION FAULT
  []
 
@@ -381,48 +390,65 @@ Requested font "aebxti10" at 9.0pt
  -> aebxti10
 File: baicOutline.eps Graphic file (type eps)
  <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 410--411
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 430--431
 [][] 
  []
 
-[4]
+
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+ [4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (9.8895pt too wide) in paragraph at lines 436--438
+Overfull \hbox (9.8895pt too wide) in paragraph at lines 456--458
 []\T1/aer/m/n/9 1) \T1/aer/m/it/9 Gen-er-a-tion \T1/aer/m/n/9 : We adop-t the o
 ne-test-case-one-time method
  []
 
 [5]
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 498 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 518 replaced by U+FFFD.
 
-Overfull \hbox (6.50392pt too wide) in paragraph at lines 601--602
+Overfull \hbox (6.50392pt too wide) in paragraph at lines 621--622
 []\T1/aer/m/n/9 After the MF-S are i-den-ti-fied, some re-lat-ed $\OML/cmm/m/it
 /9 t$\T1/aer/m/n/9 -degree schemas,
  []
 
-[6]
-Overfull \hbox (12.2617pt too wide) in paragraph at lines 762--762
+[6] [7]
+Overfull \hbox (2.72534pt too wide) in paragraph at lines 768--778
+ [] 
+ []
+
+
+Overfull \hbox (12.2617pt too wide) in paragraph at lines 782--782
 []\secfnt Compare with Tra-di-tion-al First-Gen-Latter-
  []
 
-[7] [8]
-Overfull \hbox (2.02298pt too wide) in paragraph at lines 841--842
+File: result.eps Graphic file (type eps)
+<result.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 882--883
+[][] 
+ []
+
+[8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9]
+Overfull \hbox (2.02298pt too wide) in paragraph at lines 918--919
 \T1/aer/m/n/9 at-ed test cas-es when com-pared to tra-di-tion-al first-generati
 on-
  []
@@ -430,17 +456,17 @@ on-
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9])
-[10
+ [10])
+[11
 
 ] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2792 strings out of 430478
- 31786 string characters out of 3191502
- 94532 words of memory out of 3000000
- 5891 multiletter control sequences out of 15000+200000
+ 2808 strings out of 430478
+ 32010 string characters out of 3191502
+ 99532 words of memory out of 3000000
+ 5903 multiletter control sequences out of 15000+200000
  41611 words of font info for 52 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,10n,26p,2155b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ErrorLocatingDrivenArray.pdf (10 pages).
+Output written on ErrorLocatingDrivenArray.pdf (11 pages).
