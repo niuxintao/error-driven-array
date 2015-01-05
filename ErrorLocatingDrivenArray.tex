@@ -817,6 +817,8 @@ The result is listed in Table \ref{cm_elda_fglt}.
 \hline
 \multirow{2}{*}{Subject} & \multirow{2}{*}{Method} & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2-way}            & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3-way}            & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4-way}               \\ \cline{3-14}
                          &                         & size   & precise & recall & f-measure & size   & precise & recall & f-measure & size    & precise & recall & f-measure   \\ \hline
+Tomcat                   & elda                    & 42.53   & 1    & 1    & 1      &  64.67  &0.97    & 0.96   & 0.96      & 114.23 &  0.93    &  0.91   &  0.92        \\
+                         & fglt                    & 114.33  & 0.73    & 0.74    & 0.73      & 289.97  & 0.75     & 1    & 0.86       & 676.83  & 0.75     & 1    & 0.86         \\ \hline
 Hsqldb                   & elda                    & 27.3   & 0.67    & 0.4    & 0.49      & 63.07  & 0.37    & 0.37   & 0.37      & 144.93  & 0.37    & 0.37   & 0.37        \\
                          & fglt                    & 26.43  & 0.55    & 0.3    & 0.38      & 80.77  & 0.5     & 0.5    & 0.5       & 233.13  & 0.5     & 0.5    & 0.5         \\ \hline
 Gcc                      & elda                    & 32.73   & 0.47    & 0.28   & 0.34      & 72.5   & 0.46    & 0.37   & 0.40      & 130.67  & 0.58    & 0.48  & 0.52        \\
@@ -863,6 +865,7 @@ The size and metric comparison.
 \begin{tabular}{|l|llll|}
 \hline
 subject & size   & precise & recall & f-measure \\ \hline
+Tomcat  & 210.8  & 1       & 1      & 1         \\
 HSQLDB  & 333.8  & 1       & 1      & 1         \\
 Gcc      & 860.4 & 1       & 1      & 1         \\
 Jflex   & 49.1   & 1       & 1      & 1         \\

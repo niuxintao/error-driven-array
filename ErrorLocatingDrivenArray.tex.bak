@@ -158,7 +158,7 @@ JiaXi Xu \\
        \email{xujiaxi@njxzc.edu.cn} \\
        %\email{wangyan@njxzc.edu.cn}
 \alignauthor
-JiaXi Xu \\
+Yan Wang \\
        \affaddr{ School of Information Engineering}\\
        \affaddr{Nanjing Xiaozhuang University}\\
        \affaddr{China, 211171}\\
@@ -819,6 +819,8 @@ The result is listed in Table \ref{cm_elda_fglt}.
                          &                         & size   & precise & recall & f-measure & size   & precise & recall & f-measure & size    & precise & recall & f-measure   \\ \hline
 Hsqldb                   & elda                    & 27.3   & 0.67    & 0.4    & 0.49      & 63.07  & 0.37    & 0.37   & 0.37      & 144.93  & 0.37    & 0.37   & 0.37        \\
                          & fglt                    & 26.43  & 0.55    & 0.3    & 0.38      & 80.77  & 0.5     & 0.5    & 0.5       & 233.13  & 0.5     & 0.5    & 0.5         \\ \hline
+Gcc                      & elda                    & 32.73   & 0.47    & 0.28   & 0.34      & 72.5   & 0.46    & 0.37   & 0.40      & 130.67  & 0.58    & 0.48  & 0.52        \\
+                         & fglt                    & 34.17   & 0.33    & 0.18   & 0.23      & 114.5  & 0.36    & 0.43   & 0.39      & 243.37  & 0.33     & 0.5    & 0.40      \\ \hline
 Jflex                    & elda                    & 29.97  & 1       & 1      & 1         & 63.3   & 1       & 1      & 1         & 159.77  & 1       & 1      & 1           \\
                          & fglt                    & 48.27  & 1       & 1      & 1         & 187.93 & 1       & 1      & 1         & 580.23  & 1       & 1      & 1           \\ \hline
 Tcas                     & elda                    & 108.63 & 0       & 0      & 0         & 426.77 & 0.03    & 0.0007 & 0.001     & 1638.23 & 0.07    & 0.001  & 0.0027      \\
@@ -854,7 +856,7 @@ As the results of our approach have been already collected in the previous secti
 The size and metric comparison.
 
 
-\begin{table}[h]
+\begin{table}[htbp]
 \center
 \caption{Compare with Error Locating Array}
 \label{cm_ela}
@@ -862,6 +864,8 @@ The size and metric comparison.
 \hline
 subject & size   & precise & recall & f-measure \\ \hline
 HSQLDB  & 333.8  & 1       & 1      & 1         \\
+HSQLDB  & 333.8  & 1       & 1      & 1         \\
+Gcc      & 860.4 & 1       & 1      & 1         \\
 Jflex   & 49.1   & 1       & 1      & 1         \\
 Tcas    & 460800 & 1       & 1      & 1         \\ \hline
 \end{tabular}
@@ -872,6 +876,14 @@ Tcas    & 460800 & 1       & 1      & 1         \\ \hline
 
 
 To summary, there are two shortcomings for the ELA, first, it needed much more test cases that ours, second, it needs to know the number of MFS and the maximal degree of them, which is usually not available in practice.
+
+The figure is shown in \ref{cm_performance}.
+
+\begin{figure}
+ \includegraphics[width=3.4in]{result.eps}
+\caption{performance comparison}
+\label{cm_performance}
+\end{figure}
 
 \subsection{Threats to validity}
 

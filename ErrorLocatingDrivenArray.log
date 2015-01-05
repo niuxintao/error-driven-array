@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  5 JAN 2015 22:06
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  6 JAN 2015 00:53
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -440,15 +440,12 @@ Overfull \hbox (12.2617pt too wide) in paragraph at lines 782--782
 
 File: result.eps Graphic file (type eps)
 <result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 882--883
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 885--886
 [][] 
  []
 
-[8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9]
-Overfull \hbox (2.02298pt too wide) in paragraph at lines 918--919
+[8] [9]
+Overfull \hbox (2.02298pt too wide) in paragraph at lines 921--922
 \T1/aer/m/n/9 at-ed test cas-es when com-pared to tra-di-tion-al first-generati
 on-
  []
