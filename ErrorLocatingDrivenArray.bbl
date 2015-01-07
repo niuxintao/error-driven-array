@@ -85,6 +85,12 @@ L.~S.~G. Ghandehari, M.~N. Bourazjany, Y.~Lei, R.~N. Kacker, and D.~R. Kuhn.
   (ICSTW), 2013 IEEE Sixth International Conference on}, pages 362--371. IEEE,
   2013.
 
+\bibitem{tomcatconnector}
+K.~Kolinko.
+\newblock {The HTTP Connector}.
+\newblock \url{http://tomcat.apache.org/tomcat-7.0-doc/config/http.html}, 2014.
+\newblock [Online; accessed 3-Nov-2014].
+
 \bibitem{kuhn2010practical}
 D.~R. Kuhn, R.~N. Kacker, and Y.~Lei.
 \newblock Practical combinatorial testing.
@@ -143,6 +149,13 @@ C.~Nie, H.~Leung, and K.-Y. Cai.
 \newblock Adaptive combinatorial testing.
 \newblock In {\em Quality Software (QSIC), 2013 13th International Conference
   on}, pages 284--287. IEEE, 2013.
+
+\bibitem{niu2013identifying}
+X.~Niu, C.~Nie, Y.~Lei, and A.~T. Chan.
+\newblock Identifying failure-inducing combinations using tuple relationship.
+\newblock In {\em Software Testing, Verification and Validation Workshops
+  (ICSTW), 2013 IEEE Sixth International Conference on}, pages 271--280. IEEE,
+  2013.
 
 \bibitem{qu2008configuration}
 X.~Qu, M.~B. Cohen, and G.~Rothermel.

@@ -54,6 +54,7 @@
 \usepackage{graphicx}
 \usepackage{subfigure}
 \usepackage{multirow}
+ \usepackage{url}
 
 \usepackage{footnote}
 \makesavenoteenv{tabular}
@@ -284,25 +285,25 @@ We consider the fact that the abnormally executing test cases as a \emph{fault}.
 %Figuring out the execution outcomes of test cases must reveal the presence of faulty interactions among those considered. However, the location and magnitude of the fault is still far from clear, especially when there are too many parameters we need to care in this test case. Hence, we need to study some subsets of this test case, which can help isolate the cause of failures.
 
 \begin{definition}
-For the SUT, the \emph{n}-tuple (-,$v_{n_{1}}$,...,$v_{n_{k}}$,...)is called a \emph{k}-value \emph{combination} ($0 < k \leq n $) when some k parameters have fixed values and the others can take on their respective allowable values, represented as ``-".
+For the SUT, the \emph{n}-tuple (-,$v_{n_{1}}$,...,$v_{n_{k}}$,...)is called a \emph{k}-degree \emph{schema} ($0 < k \leq n $) when some k parameters have fixed values and the others can take on their respective allowable values, represented as ``-".
 
-In effect a test case itself is a k-value \emph{combination}, when k = n. Furthermore, if a test case contain a \emph{combination}, i.e., every fixed value in the combination is in this test case, we say this test case \emph{hits} the \emph{combination}.
+In effect a test case itself is a k-degree \emph{schema}, when k = n. Furthermore, if a test case contain a \emph{schema}, i.e., every fixed value in the schema is in this test case, we say this test case \emph{hits} the \emph{schema}.
 %, which can be denoted as $k-value\  combination \in T$
 \end{definition}
 
 \begin{definition}
-let $c_{l}$ be a \emph{l}-value combination, $c_{m}$ be an \emph{m}-value combination in SUT and $l < m$. If all the fixed parameter values in $c_{l}$ are also in $c_{m}$, then $c_{m}$ \emph{subsumes} $c_{l}$. In this case we can also say that $c_{l}$ is a \emph{sub-combination} of $c_{m}$ and $c_{m}$ is a \emph{parent-combination} of $c_{l}$, which can be denoted as $c_{l} \prec  c_{m}$.
+let $c_{l}$ be a \emph{l}-value schema, $c_{m}$ be an \emph{m}-value schema in SUT and $l < m$. If all the fixed parameter values in $c_{l}$ are also in $c_{m}$, then $c_{m}$ \emph{subsumes} $c_{l}$. In this case we can also say that $c_{l}$ is a \emph{sub-schema} of $c_{m}$ and $c_{m}$ is a \emph{parent-schema} of $c_{l}$, which can be denoted as $c_{l} \prec  c_{m}$.
 \end{definition}
 
-For example,  the 2-value combination (-, 4, 4, -) is a sub-combination of the 3-value combination (-, 4, 4, 5), that is, (-,4,4,-) $\prec$ (-,4,4,5).
+For example,  the 2-value schema (-, 4, 4, -) is a sub-schema of the 3-value schema (-, 4, 4, 5), that is, (-,4,4,-) $\prec$ (-,4,4,5).
 
 \begin{definition}
-If all test cases contain a combination, say $c$, trigger a particular fault, say $F$, then we call this combination $c$ the \emph{faulty combination} for $F$. Additionally, if none sub-combination of $c$ is the \emph{faulty combination} for $F$, we then call the combination $c$ the \emph{minimal faulty combination} for $F$ (It is also called Minimal failure-causing schema(MFS) in \cite{nie2011minimal}).
+If all test cases contain a schema, say $c$, trigger a particular fault, say $F$, then we call this schema $c$ the \emph{faulty schema} for $F$. Additionally, if none sub-schema of $c$ is the \emph{faulty schema} for $F$, we then call the schema $c$ the \emph{minimal failure-causing schema} \cite{nie2011minimal} for $F$.
 
 %Based on this, if a test case $t$ hit such a failure-inducing combination, say $c(F)$, it should trigger the fault $F$, for which the test case can be put as $t(F)$
 \end{definition}
 
-In fact, MFS and \emph{minimal faulty combinations} are identical to the failure-inducing combinations we discussed previously. Figuring it out can eliminate all details that are irrelevant for causing the failure and hence facilitate the debugging efforts.
+In fact, MFS  are identical to the failure-inducing combinations we discussed previously. Figuring it out can eliminate all details that are irrelevant for causing the failure and hence facilitate the debugging efforts.
 
 \subsection{Detect the failure-inducing schemas}
 When applying CT on software testing, the most important work is to determine whether the SUT is suffering from the interaction faults or not, i.e., to  detect the existence of the MFS. Rather than impractically executing exhaustive test cases, CT commonly design a relatively small size of test cases to cover all the schemas with the degree no more than a prior fixed number, $t$. Such a set of test cases is called the \emph{covering array}.  If some test cases in the covering array failed in execution, then the interaction faults is regard to be detected.
@@ -716,6 +717,8 @@ $t_{13}$ &\multicolumn{4}{l}{2  \ \ \   2 \ \ \ 1  \ \ \  0 } & Pass & \multicol
 
 This table consists of two main columns, where the left indicates the generation part while the right column indicates the isolation process. We can find that after isolating the MFS (-, 0, -, -) for $t_{1}$. The following test cases ($t_{6}$ to $t_{13}$) will not contain this schema. Correspondingly, all the 2-degree schemas that are related to this schema, e.g. (0, 0, -, -), (-, 0, 1, -), etc, will also not appear in the following test cases. Additionally, the passing test case $t_{3}$ generated in the isolation process cover 6 2-degree schemas, i.e., (0, 1, -, -), (0, -, 0, -), (0, -, -, 0), (-, 1, 0, -) and (-, 1, -, 0) respectively, so that it is not necessary to generate more test cases to cover them.  Above all, with the new CT framework,  the overall generated test case are 8 less than that of the traditional CT framework in Table \ref{tradition-gi}.
 
+Note that this example only lists the condition of a single lower-degree MFS, under which some \emph{parent-schemas} will do not need to be covered.  When there are multiple MFS with higher degrees, \emph{themselves} and \emph{implicit forbidden} schemas will be computed and set to be covered.
+
 %Besides the cost reducing, our new CT framework actually provide a stronger coverage criteria than traditional covering array. This is because
 
 
@@ -729,7 +732,7 @@ This table consists of two main columns, where the left indicates the generation
 To evaluate the effectiveness and efficiency of our new CT framework, we conducted a series empirical experiments on several open-source software.
 
 \subsection{Subject programs}
-The subject programs used in our experiments are five open-source software as listed in Table \ref{subject}. Column ``Subjects" indicates the specific software. Column ``version" indicates the specific version that are used in the following experiments. Column ``LOC" shows the number of source code lines for each software. Column ``faults" presents the fault ID, which can used as the index to fetch the original fault description at each bug tracker for that software. Column ``lan" shows the programming language for each software.
+The subject programs used in our experiments are five open-source software as listed in Table \ref{subject}. Column ``Subjects" indicates the specific software. Column ``version" indicates the specific version that are used in the following experiments. Column ``LOC" shows the number of source code lines for each software. Column ``faults" presents the fault ID, which can used as the index to fetch the original fault description at each bug tracker for that software. Column ``lan" shows the programming language for each software (Only the main programming language are shown).
 
 \begin{table}[ht]
 \caption{Subject programs}
@@ -739,24 +742,24 @@ The subject programs used in our experiments are five open-source software as li
 \hline
 Subjects & version & LOC & faults &  lan \\
 \hline
-Tomcat   &         &     &        &  \\
+Tomcat   &   7.0.40      & 296138    &   \#55905   & java  \\
 HSQLDB   &   2.0rc8  &   139425   &    \#981     & Java \\
-GCC      &         &     &        &  \\
+GCC      &   4.7.2      &  2231564   & \#55459       &  c\\
 JFlex    &    1.4.1     & 10040    &    \#87    & Java \\
-Tcas     & \#1     &   173  &    \#Seed  & c
+Tcas     & \#1     &   173  &    \#Seed  & c \\ \hline
 \end{tabular}
 
 \end{table}
 
-In these software, tomcat is a web server for java servlet, hsqldb is a pure-java relational database engine, gcc is the c programming language compiler, jflex is a lexical analyzer generator, and tcas is a module of an aircraft collision avoidance system. We take these software as subjects program because their behaviours are influenced by various combinations of configuration options or inputs. For example, tomcat has millions options, numerous options. Even for program tcas, although in a relatively small size (only lines), it also has 12 parameters with their values ranged from 2 to 10. As a result, the overall input space for tcas reached to 1036800 \cite{shakya2012isolating,kuhn2006pseudo}.
+In these software, tomcat is a web server for java servlet, hsqldb is a pure-java relational database engine, gcc is the c programming language compiler, jflex is a lexical analyzer generator, and tcas is a module of an aircraft collision avoidance system. We take these software as subjects program because their behaviours are influenced by various combinations of configuration options or inputs. For example, one component \emph{connector} of tomcat is influenced by more than 151 attributes \cite{tomcatconnector}. For program tcas, although with a relatively small size (only 173 lines), it also has 12 parameters with their values ranged from 2 to 10. As a result, the overall input space for tcas has reached to 1036800 \cite{shakya2012isolating,kuhn2006pseudo}.
 
-As the target of our empirical studies is to compare the ability of fault defecting between our approach with traditional ones. We firstly must known these faults in prior, such that we can determine whether the MFS identified by those approaches are accurate or not.  For this, We looked through the bug tracker forum of each software and focused on the bugs which are caused by the options combination. Then for each such bug, we will derive its MFS by analysing the bug description report and the associated test file which can reproduce the bug. For tcas, as it does not contain any fault for the original source file, we took an mutation version for that file with injected fault. The mutation was the same as that in \cite{kuhn2006pseudo}, which is usually as a benchmark for the fault defeating studies.
+As the target of our empirical studies is to compare the ability of fault defecting between our approach with traditional ones. We firstly must know these faults in prior, such that we can determine whether the MFS identified by those approaches are accurate or not.  For this, We looked through the bug tracker forum of each software and focused on the bugs which are caused by the options combination. Then for each such bug, we will derive its MFS by analysing the bug description report and the associated test file which can reproduce the bug. For tcas, as it does not contain any fault for the original source file, we took an mutation version for that file with injected fault. The mutation was the same as that in \cite{kuhn2006pseudo}, which is usually as a experiment object for the fault defeating studies.
 
 %To make the testing process can definitely find failing test cases (otherwise we may not detect any fault and then there is no difference between our approach with traditional approach), we prepared fault version of these software in prior. There are four software, we take the real failures, for each failure, there bug tracker can be find .  The last one is the injected failure, which is originally injected in .
 
 
 \subsubsection{specific inputs models}
-To apply the CT on the prepared software, we need to firstly model their input parameters. As we discussed before, the whole configuration options is extremely large so that we cannot conclude all of them in our model in consideration of the experiment time and computing resource. Instead, a moderate samll set of these configuration options will be selected.  It is noted that the options that are caused the specific fault in Table \ref{subject} will be included as so the test cases generated by CT will detect that fault. Additional options are selected to make some noise for the MFS identifying approach. These options are selected by random. The inputs model as well as the corresponding MFS (degree) are listed as Table \ref{inputs}.
+To apply the CT on the prepared software, we need to firstly model their input parameters. As we discussed before, the whole configuration options is extremely large so that we cannot conclude all of them in our model in consideration of the experiment time and computing resource. Instead, a moderate small set of these configuration options will be selected.  It is noted that the options that are caused the specific fault in Table \ref{subject} will be included as so the test cases generated by CT will detect that fault. Additional options are selected to make some noise for the MFS identifying approach. These options are selected by random. The inputs model as well as the corresponding MFS (degree) are listed as Table \ref{inputs}.
 
 %As our study is focus on combinatorial testing,
 % we must take the faults,  Some faults we collected are it. To let our CT model more applied. We add some additional options that can happen interactive events to them. We let them . To get the real MFS, note that the additional , we need to exhaustive execute all the test cases, so that we limited them at a moderate level.
@@ -769,31 +772,43 @@ To apply the CT on the prepared software, we need to firstly model their input p
 \hline
 Subjects & inputs & MFS \\
 \hline
-Tomcat   &         &   \\
+Tomcat   &  $2^{8} \times 3^{1} \times 4^{1}$       & 1(1) 2(2)  \\
 HSQLDB   &   $2^{9} \times 3^{2} \times 4^{1}$      &  3(2) \\
 GCC      &   $2^{11} \times 3^{1}$      &    3(4)  \\
 JFlex    & $2^{10} \times 3^{2} \times 4^{1} $        &   2(1)   \\
-Tcas     &  $2^{7} \times 3^{2} \times 4^{1} \times 10^{2} $ &9(16)\ 10(8)\ 11(16)\ 12(8)
+Tcas     &  $2^{7} \times 3^{2} \times 4^{1} \times 10^{2} $ &9(16)\ 10(8)\ 11(16)\ 12(8) \\ \hline
 \end{tabular}
 
 \end{table}
 In this table, Column ``inputs" depicts the input model for each version of the software, presented in the abbreviated form $\#values^{\#number\ of\ parameters} \times ...$, e.g., $2^{9} \times 3^{2} \times 4^{1}$ indicates the software has 9 parameters that can take 2 values, 2 parameters can take 3 values, and only one parameter that can take 4 values. Column ``MFS" shows the degrees of each MFS and the corresponding number which are listed in the parentheses.
 
-\subsection{Compare with Traditional First-Gen-Latter-Identify}
+\subsection{Compare with Traditional First-Generating-Then-Identifying approach}
 
-After preparing the subjects software, next we will construct the experiment that can evaluate the efficiency and effectiveness of our approach. To this aim, we need to firstly compare our framework with the traditional CT framework, i.e., firstly generate covering array then identifying the MFS, and to see if our new framework have any advantage.
+After preparing the subjects software, next we will construct the experiment that can evaluate the efficiency and effectiveness of our approach. To this aim, we need to compare our framework with the traditional CT framework to see if our new framework have any advantage.
 
-The covering array generation algorithm used in the experiment are AETG \cite{cohen1997aetg}, for this is the most famous one-test-case-one-time generation algorithm. And the MFS identifying algorithm is the OFOT \cite{nie2011minimal} as we discussed before. The constraints handling solver is a java SAT solver -- SAT4j \cite{le2010sat4j}.
+The covering array generating algorithm used in the experiment are AETG \cite{cohen1997aetg}, for this is the most famous one-test-case-one-time generation algorithm. And the MFS identifying algorithm is the OFOT \cite{nie2011minimal} as we discussed before. The constraints handling solver is a java SAT solver -- SAT4j \cite{le2010sat4j}.
 
 
 \subsubsection{Study setup}
-It is known that the generated test cases vary for different runs of AETG algorithm. So to avoid the biases of randomness, we conduct each experiment 30 times and evaluate the results.  In another word, for each subject software, we will repeatedly execute traditional approach and our approach 30 times to detect and isolate the MFS. There are two metrics we care in this experiment. First, the overall test cases that each approach needed. This metric indicates the cost that each approach will take. Second, the quality of the identified MFS, i.e., how accurately the schema each approach identified when compared with the real MFS we figured out in prior.  To assess this metric, we define the similarity between two schemas as follows:
+In this experiment, we focus on three coverage criteria, i.e., 2-way , 3-way and 4-way, respectively. It is known that the generated test cases vary for different runs of AETG algorithm. So to avoid the biases of randomness, we conduct each experiment 30 times and evaluate the results.  In other word, for each subject software, we will repeatedly execute traditional approach and our approach 30 times to detect and isolate the MFS.
+% For each %run of the experiment, we respectively set the coverage criteria, 2-way, 3-way and 4-way.
 
-\begin{displaymath} Similarity(S_{A},S_{B})= \frac{the\ same\ elements\ in\ S_{A}\ and\ S_{B}}{\max (Degree(S_{A}),Degree(S_{B})) } \end{displaymath}.
+To evaluate the results of the two approaches, one metric is the cost, i.e., the overall test cases that each approach needs. Apart from this, another important metric is the quality of their identified MFS. For this, we used standard metrics: \emph{precise} and \emph{recall}, which are defined as following:
 
-The numerator of this formula shows the same elements of two schemas ($S_{A}$ and $S_{B}$), and the denominator normalizes the overall metric.  For example, the similarity of  (- 1\ 2 - 3) and  (- 2\ 2 - 3) is $\frac{2}{3}$. This is because the same elements of these two schemas are the third and last elements, and both schemas are three-degree.
+$$precise =  \frac{\#the\ num\ of\ correctly\ identified\  MFS}{\#the\ num\ of\ all\ the\ identified\ schemas}$$
+and
+$$recall  =  \frac{\#the\ num\ of\ correctly\ identified\  MFS}{\#the\ num\ of\ all\ the\ real\ MFS} $$
 
-With this metric, we can qualify the quality of the MFS that each approach identified.
+\emph{Precise} shows the accurateness of the identified schemas when comparing to the real MFS. \emph{Recall} measures how well the real MFS are detected and isolated. The combination of them is F-measure, which is
+$$F-measure = \frac{2 \times precise \times recall}{precise + recall}$$
+%
+%There are two metrics we care in this experiment. First, the overall test cases that each approach needed. This metric indicates the cost that each approach will take. Second, the quality of the identified MFS, i.e., how accurately the schema each approach identified when compared with the real MFS we figured out in prior.  To assess this metric, we define the similarity between two schemas as follows:
+%
+%\begin{displaymath} Similarity(S_{A},S_{B})= \frac{the\ same\ elements\ in\ S_{A}\ and\ S_{B}}{\max (Degree(S_{A}),Degree(S_{B})) } \end{displaymath}.
+%
+%The numerator of this formula shows the same elements of two schemas ($S_{A}$ and $S_{B}$), and the denominator normalizes the overall metric.  For example, the similarity of  (- 1\ 2 - 3) and  (- 2\ 2 - 3) is $\frac{2}{3}$. This is because the same elements of these two schemas are the third and last elements, and both schemas are three-degree.
+%
+%With this metric, we can qualify the quality of the MFS that each approach identified.
 
 
 %We will construct the . The comparison will be the similarity of the Real MFS and the additional test cases that each approach takes. As a comparative basic, we need to also to the traditional first-gen-later-identify
@@ -804,7 +819,7 @@ With this metric, we can qualify the quality of the MFS that each approach ident
 
 \subsubsection{Result and discussion}
 
-The result is listed in Table \ref{cm_elda_fglt}.
+The result is listed in Table \ref{cm_elda_fglt}. In Column `Method', \emph{elda} indicates our new CT framework and \emph{fglt} indicates the traditional first-gen-then-identify approach. The results of three coveing criteria, i.e., 2-way, 3-way, and 4-way are shown in three main columns. In each of them, the overall test cases (size), precise, recall, and f-measure and listed.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -817,20 +832,32 @@ The result is listed in Table \ref{cm_elda_fglt}.
 \hline
 \multirow{2}{*}{Subject} & \multirow{2}{*}{Method} & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2-way}            & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3-way}            & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4-way}               \\ \cline{3-14}
                          &                         & size   & precise & recall & f-measure & size   & precise & recall & f-measure & size    & precise & recall & f-measure   \\ \hline
-Hsqldb                   & elda                    & 27.3   & 0.67    & 0.4    & 0.49      & 63.07  & 0.37    & 0.37   & 0.37      & 144.93  & 0.37    & 0.37   & 0.37        \\
+Tomcat                   & elda                    & 42.53   & 1    & 1    & \textbf{1}      &  64.67  &0.97    & 0.96   & \textbf{0.96}      & 114.23 &  0.93    &  0.91   &  \textbf{0.92 }       \\
+                         & fglt                    & 114.33  & 0.73    & 0.74    & 0.73      & 289.97  & 0.75     & 1    & 0.86       & 676.83  & 0.75     & 1    & 0.86         \\ \hline
+Hsqldb                   & elda                    & 27.3   & 0.67    & 0.4    & \textbf{0.49}      & 63.07  & 0.37    & 0.37   & 0.37      & 144.93  & 0.37    & 0.37   & 0.37        \\
                          & fglt                    & 26.43  & 0.55    & 0.3    & 0.38      & 80.77  & 0.5     & 0.5    & 0.5       & 233.13  & 0.5     & 0.5    & 0.5         \\ \hline
-Gcc                      & elda                    & 32.73   & 0.47    & 0.28   & 0.34      & 72.5   & 0.46    & 0.37   & 0.40      & 130.67  & 0.58    & 0.48  & 0.52        \\
+Gcc                      & elda                    & 32.73   & 0.47    & 0.28   & \textbf{0.34 }     & 72.5   & 0.46    & 0.37   &\textbf{ 0.40}      & 130.67  & 0.58    & 0.48  &\textbf{ 0.52 }       \\
                          & fglt                    & 34.17   & 0.33    & 0.18   & 0.23      & 114.5  & 0.36    & 0.43   & 0.39      & 243.37  & 0.33     & 0.5    & 0.40      \\ \hline
 Jflex                    & elda                    & 29.97  & 1       & 1      & 1         & 63.3   & 1       & 1      & 1         & 159.77  & 1       & 1      & 1           \\
                          & fglt                    & 48.27  & 1       & 1      & 1         & 187.93 & 1       & 1      & 1         & 580.23  & 1       & 1      & 1           \\ \hline
-Tcas                     & elda                    & 108.63 & 0       & 0      & 0         & 426.77 & 0.03    & 0.0007 & 0.001     & 1638.23 & 0.07    & 0.001  & 0.0027      \\
+Tcas                     & elda                    & 108.63 & 0       & 0      & 0         & 426.77 & 0.03    & 0.0007 & \textbf{0.001  }   & 1638.23 & 0.07    & 0.001  &\textbf{ 0.0027 }     \\
                          & fglt                    & 109    & 0       & 0      & 0         & 426.83 & 0       & 0      & 0         & 1638.57 & 0.03    & 0.001  & 0.0026 \\ \hline
 \end{tabular}
 \end{table*}
 
-As not forbidden them, there is a chance that a test case will contain multiple MFS, which makes the identifying work challenging than single ones.
+One observation from this table is that the overall test cases generated by our approach are far less than that of the traditional approach. In fact, except for subject \emph{tcas}, our approach reduced about dozens of test cases for 2-way coverage, and hundreds test cases for 3-way and 4-way coverage. For \emph{tcas}, however, as the MFS are hard to detect (all of them have degrees than 9), so both two approaches nearly do not trigger errors (see the metric \emph{recall}). Under this condition, both the two approaches will be transferred to a normal covering array.
 
-To summary, there are two shortcomings for the traditional, first, it needed much more test cases that ours, second, it has an lower quality of the identified MFS .
+As for the quality of the identified MFS, we find that there is no apparent gap between them. For example, there are 9 cases under which our approach performed better than traditional one (marked in bold). But among these cases, the maximal gap are  0.26 (2-way for Tomcat), and the average gap are around 0.1, which is trivial.
+ %the better ones for the f-measure of our approach are marked in bold, form which we can learn that
+
+The reason of the similarity between the quality of these two approaches is that both of them have advantages and disadvantages. Specifically, our approach can reduce the impacts when a test case contain multiple MFS. Our previous study showed that multiple MFS in a test case can reduce the accurateness of the MFS identifying algorithms \cite{niu2013identifying}. As a result, our approach can improve the quality of the identified schemas. But as a side-effect, if the schemas identified at the early iteration of our approach are not correct, it will significantly impact the following iteration. This is because we will compute the coverage and  constraints based on previous identified MFS.   It was the other way around for traditional approach. Traditional one suffers from impacts when a test case contain multiple MFS, but correspondingly, previous identified MFS has little influence on the traditional approach. 
+%This is just the opposite of the traditional First-gen-then-identifying approach.
+
+%As not forbidden them, there is a chance that a test case will contain multiple MFS, which makes the identifying work challenging than single ones.
+
+In a sum, our approach needs much less test cases than traditional first-generating-then-identifying approach, and there is no decline in the quality of the identified MFS when comparing with traditional approach.
+  
+%  comparing there are two shortcomings for the traditional, first, it needed much more test cases that ours, second, it has an lower quality of the identified MFS .
 %\subsection{Compare with the FDA-CIT}
 %
 %\subsubsection{Study setup}
@@ -853,7 +880,7 @@ As the results of our approach have been already collected in the previous secti
 %Additionally, comparisons between the augmented approaches and three traditional ones will be quantified.
 
 \subsubsection{Result and discussion}
-The size and metric comparison.
+The overall test cases and the quality of the identified MFS are listed in Table \ref{cm_ela}. We can firstly observe that this approach needs much more test cases than the two approaches we discussed before. This is as expected, as this approach needs to generate a higher-way covering array than previous two approaches.  All the , this is can be easily understood from its .
 
 
 \begin{table}[htbp]
@@ -863,7 +890,7 @@ The size and metric comparison.
 \begin{tabular}{|l|llll|}
 \hline
 subject & size   & precise & recall & f-measure \\ \hline
-HSQLDB  & 333.8  & 1       & 1      & 1         \\
+Tomcat  & 210.8  & 1       & 1      & 1         \\
 HSQLDB  & 333.8  & 1       & 1      & 1         \\
 Gcc      & 860.4 & 1       & 1      & 1         \\
 Jflex   & 49.1   & 1       & 1      & 1         \\
@@ -873,23 +900,26 @@ Tcas    & 460800 & 1       & 1      & 1         \\ \hline
 
 
 %We further compare their execution time.
+To clearly compare their peformamce, we combined the quolity and the overall size ,The figure is shown in \ref{cm_performance}.
 
-
-To summary, there are two shortcomings for the ELA, first, it needed much more test cases that ours, second, it needs to know the number of MFS and the maximal degree of them, which is usually not available in practice.
-
-The figure is shown in \ref{cm_performance}.
-
-\begin{figure}
+\begin{figure}[htbp]
  \includegraphics[width=3.4in]{result.eps}
 \caption{performance comparison}
 \label{cm_performance}
 \end{figure}
 
+
+
+To summary, there are two shortcomings for the ELA, first, it needed much more test cases that ours, second, it needs to know the number of MFS and the maximal degree of them, which is usually not available in practice.
+
+
+
 \subsection{Threats to validity}
 
-There are several threats to validity in our empirical studies. First, our experiments are based on only 5 open-source software, more subject programs are desired to make the results more general. In fact, we must take comprehensive experiments on the partograms with parameters and MFS under control, such that the conclusion of our experiment can reduce the impact caused by specific input space and specific degree or location of the MFS.
+There are several threats to validity in our empirical studies. First, our experiments are based on only 5 open-source software, more subject programs are desired to make the results more general. In fact, we must take comprehensive experiments on the programs with parameters and MFS under control, such that the conclusion of our experiment can reduce the impact caused by specific input space and specific degree or location of the MFS.
 
-Second, many more generation algorithm and MFS isolation algorithms are needed. In our empirical studies, we just used the AETG \cite{cohen1997aetg} as test cases generation strategy, and OFOT \cite{nie2011minimal}as the MFS identification strategy. As the different generation and identification algorithms will significantly affect the performance our proposed CT framework, especially for the number of test cases. For test cases generation, .     But for OFOT, it can significantly accurateness.
+Second, many more generation algorithm and MFS isolation algorithms are needed. In our empirical studies, we just used the AETG \cite{cohen1997aetg} as test cases generation strategy, and OFOT \cite{nie2011minimal}as the MFS identification strategy. As the different generation and identification algorithms will significantly affect the performance our proposed CT framework, especially for the number of test cases. 
+%For test cases generation, .     But for OFOT, it can significantly accurateness.
 More studies for different test cases and MFS identification algorithms are desired to figure this impact out.
 
 Third, these empirical studies are all on the deterministic condition, i.e., the output of the software are deterministic if their inputs are given. When the output are affected by random events such that we can not determine the output by only one-time execution of the test case, then both the traditional CT process and our new framework do not work. In such a case, to conduct a test case multiple times or introduce some probability in the framework will be of interest.
