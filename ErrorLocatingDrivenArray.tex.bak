@@ -175,9 +175,9 @@ Yan Wang \\
 % number that will appear in the \additionalauthors section.
 \maketitle
 \begin{abstract}
-Combinatorial testing(CT) seeks to handle potential faults caused by various interactions of factors that can influence the Software systems. When applying CT, it is a common practice to first generate a bunch of test cases to cover each possible interaction and then to locate the failure-inducing interaction if any failure is detected. Although this conventional procedure is simple and straightforward, we conjecture that it is not the ideal choice in practice. This is because 1) testers desires to isolate the root cause of failures before all the needed test cases are generated and executed 2) the early located failure-inducing interactions can guide the remaining test cases generation, such that many unnecessary and invalidate test cases can be avoided. For this, we propose a novel CT framework that allows for both generation and localization process to better share each other's information, as a result, both this two testing stages will be more effectively and efficiently when handling the testing tasks. We conducted a series of empirical studies on several open-source software, of which the result shows that our framework can locate the failure-inducing interactions more quickly than traditional approaches, while just needing less test cases.
+Combinatorial testing(CT) seeks to handle potential faults caused by various interactions of factors that can influence the Software systems. When applying CT, it is a common practice to first generate a bunch of test cases to cover each possible interaction and then to locate the failure-inducing interaction if any failure is detected. Although this conventional procedure is simple and straightforward, we conjecture that it is not the ideal choice in practice. This is because 1) testers desires to localize the root cause of failures before all the needed test cases are generated and executed 2) the early located failure-inducing interactions can guide the remaining test cases generation, such that many unnecessary and invalid test cases can be avoided. For this, we propose a novel CT framework that allows for both generation and localization process to better share each other's information, as a result, both this two testing stages will be more effectively and efficiently when handling the testing tasks. We conducted a series of empirical studies on several open-source software, of which the result shows that our framework can locate the failure-inducing interactions more quickly than traditional approaches, while just needing less test cases.
 %When the system under test(SUT) is suffered from interations faults such as option compliant, testers want to design. As . Efficenet test space is desired when . To handle this problem, the art of  is to design a t-way covering array, which can cover all the t-way , just using small size of test cases. In this paper, however, we conjecture that the covering array is somewhat reduntant with respect to fault locating. The main reason for the reduntance the we find is the framework it takes is not efficent, traditional works will first generate a covering array to detect if any failing is triggered by any test case, and then pick these failing test case to further locating. In CT, most locating teachinques is just to generate addtional test cases to isolate the MFS. We find two shortcoming for this framework 1: if we had first identify some MFS, we do not need to generate any test case to conatin them, further, any combination contain this MFS will not need to be covered, 2: if we do not genrate, the extra test cases will support some coverage is that when we first already covered. So for this two points, in this paper, we propose a new framework to make the generating process and isolating process more tightly so that the isolating process and generating process will better utilize each other. We have done some emprical studies on several open-source software and found that our new frame work can significantly reduce the test cases.
-%Combinatorial testing(CT) is proven to be effective to reveal the potential failures caused by the interaction of the inputs or options of the System Under Test(SUT). A key problem in CT is to isolate the failure-inducing combinations of the related failure as it can facilitate the debugging efforts by reducing the scope of code that needs to be inspected. Many algorithms has been proposed to identify such combinations, however, most of these studies either just consider the condition of one fault or ignore masking effects among multiple faults which can bias their identified results. In this paper, we analysed how the masking effect of multiple faults affect on the isolation of failure-inducing combinations. We further give a strategy of selecting test cases to alleviate this impact, which works by pruning these test cases that may trigger masking effect and replacing them with no-masking-effect ones. The test case selecting process repeated until we get enough information to isolate the failure-inducing combinations. We conducted some empirical studies on several open-source software. The result of the studies shows that multiple faults as well as the masking effects do exist in real software and our approach can assist combinatorial-based failure-inducing identifying methods to get a better result when handling multiple faults in SUT.
+%Combinatorial testing(CT) is proven to be effective to reveal the potential failures caused by the interaction of the inputs or options of the System Under Test(SUT). A key problem in CT is to isolate the failure-inducing combinations of the related failure as it can facilitate the debugging efforts by reducing the scope of code that needs to be inspected. Many algorithms has been proposed to identify such combinations, however, most of these studies either just consider the condition of one fault or ignore masking effects among multiple faults which can bias their identified results. In this paper, we analysed how the masking effect of multiple faults affect on the localization of failure-inducing combinations. We further give a strategy of selecting test cases to alleviate this impact, which works by pruning these test cases that may trigger masking effect and replacing them with no-masking-effect ones. The test case selecting process repeated until we get enough information to isolate the failure-inducing combinations. We conducted some empirical studies on several open-source software. The result of the studies shows that multiple faults as well as the masking effects do exist in real software and our approach can assist combinatorial-based failure-inducing identifying methods to get a better result when handling multiple faults in SUT.
 \end{abstract}
 
 % A category with the (minimum) three required fields
@@ -203,14 +203,14 @@ Based on the idea, we propose a new CT framework, which instead of dividing the 
 
 %For the fault localization, we augment this process with a test case . instead of independently generating extra test cases, we add a new process to let it can get a guide . we will also take use of the test cases generation before, this will shows in the extra test case. Fault localization will need more.
 
-We conducted a series empirical studies on several open-source software to evaluate our newly framework. In short, we take two main comparisons, one is to compare our new framework with the traditional one, which first generate a complete set of test cases and then perform the fault localization. Another one is to compare with the Error locating array, which is a well-designed set of test cases that can be used directly detect and isolate the failure-inducing interactions. The results shows that in terms of test case generation and fault diagnosis, our approach can significantly reduced the overall needed test cases and as a result it can more quickly isolate the root cause of the system under test.
+We conducted a series empirical studies on several open-source software to evaluate our newly framework. In short, we take two main comparisons, one is to compare our new framework with the traditional one, which first generate a complete set of test cases and then perform the fault localization. The second one is to compare with the Error Locating Array \cite{martinez2008algorithms,martinez2009locating}, which is a well-designed set of test cases that can be used directly detect and localize the failure-inducing interactions. The results shows that in terms of test case generation and fault diagnosis, our approach can significantly reduced the overall needed test cases and as a result it can more quickly localize the root cause of the system under test.
 
 The main contributions of this paper:
 
  \begin{enumerate}
  \item  We propose a newly CT framework which combine the test cases generation and fault localization more closely.
  \item  We augment the traditional CT test cases generation and fault localization process to make them adapt to the newly framework.
- \item  A series comparisons with traditional CT is conducted and the result of the empirical studies are discussed.
+ \item  A series of comparisons with traditional CT and Error Locating Array is conducted and the result of the empirical studies are discussed.
 \end{enumerate}
 
 
@@ -267,11 +267,11 @@ This section presents some definitions and propositions to give a formal model f
 
 %\subsection{Failure-inducing combinations in CT}
 
-Assume that the SUT is influenced by \emph{n} parameters, and each parameter $p_{i}$ has $a_{i}$ discrete values from the finite set $V_{i}$, i.e., $a_{i}$ = $|V_{i}|$ ($i$ = 1,2,..n). Some of the definitions below are originally defined in \cite{nie2011minimal}.
+Assume that the SUT is influenced by \emph{n} parameters, and each parameter $p_{i}$ can take the values from the finite set $V_{i}$ ($i$ = 1,2,..n). Some of the definitions below are originally defined in \cite{nie2011minimal}.
 
 \newdef{definition}{Definition}
 \begin{definition}
-A \emph{test case} of the SUT is an array of \emph{n} values, one for each parameter of the SUT, which is denoted as a \emph{n}-tuple ($v_{1}$, $v_{2}$,...,$v_{n}$), where $v_{1}\in V_{1}$, $v_{2} \in V_{2}$ ... $v_{n} \in V_{n}$.
+A \emph{test case} of the SUT is an tuple of \emph{n} values, one for each parameter of the SUT, which is denoted as a \emph{n}-tuple ($v_{1}$, $v_{2}$,...,$v_{n}$), where $v_{1}\in V_{1}$, $v_{2} \in V_{2}$ ... $v_{n} \in V_{n}$.
 \end{definition}
 
 In practice, these parameters in the test case can represent many factors, such as input variables, run-time options, building options or various combination of them. We need to execute the SUT with these test cases to ensure the correctness of the behaviour of the software.
@@ -337,50 +337,54 @@ In this paper, we focus on the first one: One test case one time as it can allow
 
 %In order to fulfil the testing target, we choose the second object, one test one time, as we can .
 
-\subsection{Isolate the failure-inducing schemas}
-To detect the existence of MFS in the SUT is still far from figuring out the root cause of the failure. As we do not know exactly which one or some schemas in the failed test cases should be responsible for the failure. In fact, for a failing test case ($v_{1},v_{2},...,v_{n}$), there can be at most $2^{n} - 1$ possible schemas can be the MFS. Hence, further fault diagnosis is desired, i.e., more test cases should be generated to isolate the MFS.
+\subsection{Localize the failure-inducing schemas}
+To detect the existence of MFS in the SUT is still far from figuring out the root cause of the failure. As we do not know exactly which one or some schemas in the failed test cases should be responsible for the failure. In fact, for a failing test case ($v_{1},v_{2},...,v_{n}$), there can be at most $2^{n} - 1$ possible schemas can be the MFS. Hence, further fault diagnosis is desired, i.e., more test cases should be generated to localize the MFS.
 
-A typical MFS isolating process is as Table \ref{ofot-identify}. This example assumes the SUT has 3 parameters, each can take 2 values. And assume the test case (1, 1, 1) failed. Then in Table \ref{ofot-identify}, as test case \emph{t} failed, and OFOT mutated one factor of the \emph{t} one time to generate new test cases: $t_{1}$ -- $t_{3}$, It found the the $t_{1}$ passed, which indicates that this test case break the MFS in the original test case \emph{t}. So the (1,-,-) should be one failure-causing factor, and as other mutating process all failed, which means no other failure-inducing factors were broken, therefore, the MFS in \emph{t} is (1,-,-).
+A typical MFS localization process is as Table \ref{ofot-identify}. This example assumes the SUT has 3 parameters, each can take 2 values. And assume the test case (1, 1, 1) failed. Then in Table \ref{ofot-identify}, as test case \emph{t} failed, and OFOT mutated one factor of the \emph{t} one time to generate new test cases: $t_{1}$ -- $t_{3}$, It found the the $t_{1}$ passed, which indicates that this test case break the MFS in the original test case \emph{t}. So the (1,-,-) should be one failure-causing factor, and as other mutating process all failed, which means no other failure-inducing factors were broken, therefore, the MFS in \emph{t} is (1,-,-).
 
 \begin{table}[h]
 \caption{OFOT with our strategy}
 \label{ofot-identify}
 \center
 \begin{tabular}{llllll}
-\multicolumn{5}{c}{\bfseries original test case} & \bfseries Outcome \\
+ \hline
+\multicolumn{5}{c}{\bfseries Original test case} & \bfseries Outcome \\  \hline
  $t$ & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  1 } & Fail \\
  \hline
-\multicolumn{5}{c}{\bfseries observed} &  \\
+\multicolumn{5}{c}{\bfseries Additional  test cases} &  \\  \hline
 $t_{1}$ &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  1 }& Pass \\
 $t_{2}$ &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  1 } & Fail \\
 $t_{3}$ &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  0 } & Fail \\
+ \hline
 \end{tabular}
 \end{table}
 
-This isolation process mutate one factor of the original test case one time to generate extra test cases. And then according to the outcome of the test cases execution result, it will identify the MFS of the original failing test cases. It is calling the OFOT method, which is the well-known fault diagnosis method in CT. In this paper, we will focus on this isolation method. It is noted that our following proposed new CT framework can be easily applied on other CT fault diagnosis methods.
+This localization process mutate one factor of the original test case one time to generate extra test cases. And then according to the outcome of the test cases execution result, it will identify the MFS of the original failing test cases. It is calling the OFOT method, which is the well-known fault diagnosis method in CT. In this paper, we will focus on this localization method. It is noted that our following proposed new CT framework can be easily applied on other CT fault diagnosis methods.
 
 %Isolating such failure-inducing schema is not easy. It is because that there are $2^n$ candidate suspicious. It is not realistic to completely and preciously to determine which one is as we could use a extreme large number of extra test cases.  Thus, existed works just
+%\subsection{Detect and isolate with Error Locating Array}
+
 
 
 
 \section{The Integrated Generation Fault Localization Process}
-As we discussed previously, the generation and localization are the most important works in CT life-circle. How to utilize this two works in the CT life-circle is of importance as it is closely related to the quality and cost of overall software testing. In fact, most studies in CT focus on this two fields. But rather than as a whole, generation and localization are discussed independently. The justification for not discussing how to cooperate this two works is that they think the first-generation-then-isolation is so natural and straightforward. As we will show below, however, that the generation and localization is so tightly correlated and how to cooperate this two works do have an significant impact on the effectiveness and efficiencies of the testing work.
+As we discussed previously, the generation and localization are the most important works in CT life-circle. How to utilize this two works in the CT life-circle is of importance as it is closely related to the quality and cost of overall software testing. In fact, most studies in CT focus on this two fields. But rather than as a whole, generation and localization are discussed independently. The justification for not discussing how to cooperate this two works is that they think the first-generation-then-localization is so natural and straightforward. As we will show below, however, that the generation and localization is so tightly correlated and how to cooperate this two works do have an significant impact on the effectiveness and efficiencies of the testing work.
 
-%focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-isolation is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
+%focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-localization is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
 
-\subsection{Traditional generation-isolation process}
-A typical traditional generation-isolation life-circle is to first generate a $t$-way covering array to detect if there exists some failures that triggered by some particular schemas. Then if we detect some failures, we should isolate the failure-inducing schemas in the SUT for further bug fixing.
+\subsection{Traditional generation-localization process}
+A typical traditional generation-localization life-circle is to first generate a $t$-way covering array to detect if there exists some failures that triggered by some particular schemas. Then if we detect some failures, we should localize the failure-inducing schemas in the SUT for further bug fixing.
 
-As an example, Table \ref{tradition-gi}, which illustrate the process of testing the System with 4 parameters and each parameter has three values. It first generated and executed the 2-way covering array ($t_{1}$ -- $t_{9}$). Note that this covering array covered all the 2-way schemas for the SUT. And after finding that $t_{1}$, $t_{2}$, and $t_{7}$ failed during testing, it then respectively isolated the MFS in the $t_{1}$ ,$t_{2}$, and $t_{7}$. For the $t_{1}$, it uses OFOT method generates four additional test cases ($t_{10}$ -- $t_{13}$), and identified the MFS of $t_{1}$ is (-, 0, - , -) as only when changing the second factor of $t_{1}$ it will pass. Then it will do the same thing to $t_{2}$ and $t_{7}$, and found that (-,0, -, -) is also the MFS of $t_{2}$ and $t_{7}$.  After all, for detecting and isolate the MFS in this example SUT, we have generated 12 additional test cases(marked with star).
+As an example, Table \ref{tradition-gi}, which illustrate the process of testing the System with 4 parameters and each parameter has three values. It first generated and executed the 2-way covering array ($t_{1}$ -- $t_{9}$). Note that this covering array covered all the 2-way schemas for the SUT. And after finding that $t_{1}$, $t_{2}$, and $t_{7}$ failed during testing, it then respectively localized the MFS in the $t_{1}$ ,$t_{2}$, and $t_{7}$. For the $t_{1}$, it uses OFOT method generates four additional test cases ($t_{10}$ -- $t_{13}$), and identified the MFS of $t_{1}$ is (-, 0, - , -) as only when changing the second factor of $t_{1}$ it will pass. Then it will do the same thing to $t_{2}$ and $t_{7}$, and found that (-,0, -, -) is also the MFS of $t_{2}$ and $t_{7}$.  After all, for detecting and localizing the MFS in this example SUT, we have generated 12 additional test cases(marked with star).
 %It must be noted that, when isolating the MFS of $t_{2}$, the generated extra test cases $t_{9}$ and $t_{10}$ has appeared before, so we can just reuse the previous result.
 
 \begin{table}[h]
-\caption{traditional generation-isolation life-circle}
+\caption{traditional generation-localization life-circle}
 \label{tradition-gi}
 \center
 \begin{tabular}{llllll}
 \hline
-\multicolumn{6}{c}{\bfseries \emph{generation}} \\
+\multicolumn{6}{c}{\bfseries \emph{Generation}} \\
 \hline
 \multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
  $t_{1}$ & \multicolumn{4}{l}{0 \ \ \ \ 0 \ \ \ \  0\ \ \ \ 0} & Fail \\
@@ -393,7 +397,7 @@ As an example, Table \ref{tradition-gi}, which illustrate the process of testing
  $t_{8}$ & \multicolumn{4}{l}{2 \ \ \ \ 1 \ \ \ \  0\ \ \ \ 2} & Pass \\
  $t_{9}$ & \multicolumn{4}{l}{2 \ \ \ \ 2 \ \ \ \  1\ \ \ \ 0} & Pass \\
  \hline
-\multicolumn{6}{c}{\bfseries \emph{localization}}  \\
+\multicolumn{6}{c}{\bfseries \emph{Localization}}  \\
 \hline
 \multicolumn{5}{c}{\bfseries for $t1$--- 0 0 0 0} &  \\
 $t_{10}$* &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  0 \ \ \ \  0} & Fail \\
@@ -417,9 +421,9 @@ $t_{21}$* &\multicolumn{4}{l}{2  \ \ \ \  0 \ \ \ \  2  \ \ \ \ 2} & Fail \\
 \end{tabular}
 \end{table}
 
-Such life-circle is not the proper choice in practice. The first reason we had discussed previously is that the engineers normally cannot be so patient to wait for fault localization when failure is found. The early bug fixing is appealing and can give the engineers confidence to keep on improving the quality of the software. The second reason, which is also the most important, is such life-circle can generate many redundant and unnecessary test cases. This can be reflected in the following two aspects:
+Such life-circle is not the proper choice in practice. The first reason we had discussed previously is that the engineers normally cannot be so patient to wait for fault localization after all the test cases are executed. The early bug fixing is appealing and can give the engineers confidence to keep on improving the quality of the software. The second reason, which is also the most important, is such life-circle can generate many redundant and unnecessary test cases. This can be reflected in the following two aspects:
 
-1) The test cases generated in the localization stage can also contribute some coverage, i.e., the schemas appear in the passing test cases in the localization stage may have already been covered in the test cases generation stage.  For example, when we identify the MFS of $t_{1}$ in Table \ref{tradition-gi}, the schema (0, 1, -, -) contained in the extra passing test case $t_{11}$ -- (0, 0, 1, 0) has already been appeared in the passing test case $t_{2}$ -- (0, 1, 1, 1). In another word, if we firstly isolate the MFS of $t_{1}$, then the $t_{2}$ is not the good choice as it doesn't covered as many as possible 2-value schemas, say, (1, 1, 1, 1) is better than this test case at contributing more coverage.
+1) The test cases generated in the localization stage can also contribute some coverage, i.e., the schemas appear in the passing test cases in the localization stage may have already been covered in the test cases generation stage.  For example, when we identify the MFS of $t_{1}$ in Table \ref{tradition-gi}, the schema (0, 1, -, -) contained in the extra passing test case $t_{11}$ -- (0, 1, 0, 0) has already been appeared in the passing test case $t_{2}$ -- (0, 1, 1, 1). In another word, if we firstly localize the MFS of $t_{1}$, then the $t_{2}$ is not the good choice as it doesn't covered as many as possible 2-value schemas, say, (1, 1, 1, 1) is better than this test case at contributing more coverage.
 
 2)The identified MFS should not appeared in the following generated test cases.  This is because according to the definition of MFS, each test case contain this schema will trigger a failure, i.e., to generate and execute more than one test case contained the MFS makes no sense for the failure detecting. Worse more, such test case may suffer from the \emph{masking effects} \cite{yilmaz2013reducing}, as failures caused by the already identified MFS can prevent the test case from normally checking (e.g., failures that can trigger an unexpected halt of the execution), as a result some schemas in these test cases that are supposed to be examined will actually skip the testing. Take the example in Table \ref{tradition-gi}, after identifying the MFS -- (-, 0, -, -) of $t_{1}$, we should not generate the test case $t_{4}$ and $t_{7}$. This because they also contain the identified MFS (-, 0, -, -), which will result in them failing as expected. Surely the expected failure caused by MFS (-, 0, -, -) makes $t_{4}$ and $t_{7}$ are superfluous for error-detection, and worse more some other schemas in $t_{4}$ or $t_{7}$  may be masked, as those schemas can potentially trigger other failures but will not be observed. And since we should not generate $t_{4}$ and $t_{7}$, then the additional test cases ($t_{14}$ to $t_{21}$)generated for identified the MFS in $t_{4}$ and $t_{7}$ are also not necessary.
 
@@ -433,7 +437,7 @@ To handle such deficiencies in traditional CT, we propose a new CT generation-lo
 \label{new-life}
 \end{figure}
 
-In specific, this new framework works as follows: First, it will check whether all the needed schemas is covered or not. Commonly the target of CT is to cover all the $t$-valued schemas, with $t$ normally be assigned as 2 or 3. Then if the coverage currently is not satisfied, it will generate a new test case to cover as many uncovered combinations as possible. After that, it will execute this test case with the outcome of the execution either be pass (executed normally, i.e., doesn't triggered an exception, violate the expected oracle or the like) or fail (on the contrary). When the test case pass the execution, we will recompute the coverage state, as all the schemas in the passing test case are regarded as error-irrelevant. As a result, the schemas that wasn't covered before will be determined to be covered if it is contained in this newly generated test case. Otherwise if the test case fails, then we will start the MFS identify module, to isolate the MFS in this failing test case. One point that needs to be noted is that if the test case fails, we will not change the coverage state, as we can not figure out which schemas are responsible to this failure among all the schemas in this test case until we isolate them.
+In specific, this new framework works as follows: First, it will check whether all the needed schemas is covered or not. Commonly the target of CT is to cover all the $t$-valued schemas, with $t$ normally be assigned as 2 or 3. Then if the coverage currently is not satisfied, it will generate a new test case to cover as many uncovered combinations as possible. After that, it will execute this test case with the outcome of the execution either be pass (executed normally, i.e., doesn't triggered an exception, violate the expected oracle or the like) or fail (on the contrary). When the test case pass the execution, we will recompute the coverage state, as all the schemas in the passing test case are regarded as error-irrelevant. As a result, the schemas that wasn't covered before will be determined to be covered if it is contained in this newly generated test case. Otherwise if the test case fails, then we will start the MFS identify module, to localize the MFS in this failing test case. One point that needs to be noted is that if the test case fails, we will not directly change the coverage state, as we can not figure out which schemas are responsible to this failure among all the schemas in this test case until we localize them.
 
 The identify module works almost the same way as traditional independent MFS identify process, i.e., repeats generating and executing additional test cases until it can get enough information to diagnose the MFS in the original failing test case. The only difference from traditional MFS identifying process is that we augment it by counting the coverage this module have contributed to the overall coverage. In detail, when the additional test case passes, we will label the schemas in these test cases as covered if it had not been covered before. And when the MFS is found at the end of this module, we will first set them as forbidden schemas that latter generated test cases should not contain them (Otherwise the test case must fail and it cannot contribute to more coverage), second all the $t$-value schemas that are \emph{related} to these MFS will be set as covered. Here the \emph{related} indicates the following three types of $t$-value schemas:
 
@@ -455,31 +459,33 @@ As we all know, the terminating condition of the CT framework is to cover all th
 More details of these two important parts are as follows:
 
 1) \emph{Generation} :
-We adopt the one-test-case-one-time method as the basic skeleton of the generation process. And as discussed in section 3.1, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden tuples. Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
+We adopt the one-test-case-one-time method as the basic skeleton of the generation process. And as discussed in section 3.1, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden tuples. Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT \cite{cohen2007interaction,cohen2008constructing}, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
 
 \begin{algorithm}
   \caption{Generate One test Case}
   \begin{algorithmic}[1]
      \Require
-     $Param$ \Comment{values set that each option can take}
+     $Params$ \Comment{Parameters for the SUT}
 
-     $S_{MFS}$ \Comment{the set of MFS that currently isolated}
+     $Values$ \Comment{Corresponding values for each parameter}
+
+     $S_{MFS}$ \Comment{the set of MFS that currently localized}
 
      $T_{uncovered}$ \Comment{the schemas that are still uncovered}
      %$s_{fixed}$ \Comment{fixed part}
 
-     \Ensure  $best$ \Comment{the generate test case}
+     \Ensure  $best$ \Comment{the generated test case}
 
     % \While{\textbf{not} $t_{uncovered}$ is not empty}
       \State $Candidate_{test} \leftarrow empty Set$
-      \While{$Candidate_{test}.size$ is not satisfied}
-       \State $test \leftarrow emptyArray(Param.size)$
-       \ForAll {$factor \in test$}
-           \State   $value \leftarrow select(T_{uncovered},Param,factor)$
-            \While{\textbf{not} $CheckCS(value, S_{MFS})$}
-              \State $value \leftarrow repick(T_{uncovered},Param,factor) $
+      \While{$Candidate_{test}$ is full}
+       \State $test \leftarrow emptyTuple(Params.size)$
+       \ForAll {$p \in Params$}
+           \State   $v \leftarrow select(T_{uncovered},Values, p)$
+            \While{\textbf{not} $isSatisfied(v, S_{MFS})$}
+              \State $v \leftarrow repick(T_{uncovered},Values,p) $
            \EndWhile
-           \State $test.set(factor, value)$
+           \State $test.set(p, v)$
        \EndFor
         \State $Candidate_{test}.append(test)$
        \EndWhile
@@ -504,25 +510,28 @@ The first requirement is usually fulfilled by some heuristic selection, e.g., to
 
 \begin{alignat}{2}
 & X = { P_{1}, P_{2}, P_{3}, P_{n} } \\
-& D = { D_{1}, D_{2}, ... D_{n} } \\
+& D = { V_{1}, V_{2}, ... V_{n} } \\
 & C = {C_{assignment}, C_{MFS}}
 %\end{aligned}
 \end{alignat}
 
-In this formula, $X$ is the parameters in the SUT and $D$ is a set of the respective domains of values that each each parameter can take. $C$ is the set of constraints. Then this model evaluates that whether a test case can be found, i.e., each parameter $P_{i}$ takes a specific value  $D_{i}$, so that it will not violate any constraint in $C$. For the constraints in $C$, $C_{assignment}$ indicates these parameters that have been assigned values. For example, if we have assigned parameter $P_{i}$ with value $d_{i}$, and $P_{j}$ with $d_{j}$, then this constraint will be formulated as $(P_{i} = d_{i}\ \&\&\ P_{j} == d_{j})$. $C_{MFS}$ modeled those identified MFS will be modeled as forbidden tuples of parameter values. For example, if (- 1 - 0) is the MFS, it will be transformed as forbidden rule $\urcorner ( P_{2} = 1\ \&\&\ P_{4} == 0)$.
+In this formula, $X$ is the parameters in the SUT and $V$ is a set of the respective domains of values that each parameter can take. $C$ is the set of constraints. Then this model evaluates that whether a test case can be found, i.e., each parameter $P_{i}$ takes a specific value $v_{i}$ ($v_{i} \in V_{i}$), so that it will not violate any constraint in $C$. For the constraints in $C$, $C_{assignment}$ indicates these parameters that have been assigned values. For example, if we have assigned parameter $P_{i}$ with value $v_{i}$, and $P_{j}$ with $d_{j}$, then this constraint will be formulated as $(P_{i} = v_{i}\ \&\&\ P_{j} = v_{j})$. $C_{MFS}$ modeled those identified MFS will be modeled as forbidden tuples of parameter values. For example, if (- 1 - 0) is the MFS, it will be transformed as forbidden rule $\urcorner ( P_{2} = 1\ \&\&\ P_{4} = 0)$.
 
 So when using this model, we can check whether a value should be assigned to the current parameter(line 6) by putting it into the $C_{assignment}$. Note that the constraints checking part of our algorithm does not aim to optimising for the performance like running-time, iteration number or the like. Some study \cite{cohen2008constructing}, by exploiting the SAT history or setting the threshold, can significantly improve such performance. In this paper, however, we will not discuss the details for those techniques. Instead, we want to make the overall generation process more general and fit for the framework listed in Figure \ref{new-life}.
 
 %However, our algorithm is powerful enough and properly adaptively to the framework we proposed.
 % as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
 
-2) \emph{Isolation} : %只选fixed，然后其余相似，然后重点说明一下fixed
-The isolation process should also be adjusted to adapt to the new CT framework. From Figure \ref{new-life}, we can find some part of this process to isolate the MFS is similar to that of the $generation$ module, i.e., they all need to repeat generating test cases until reach some criteria. As for the additional test cases generated in the isolation process, we should also take care that it should not contain the previously isolated MFS. To achieve this goal, the constraints checking process is also needed like Algorithm 1. Another point that needs to be noted is that the additional test cases generated in the isolation process can also contribute the coverage. As the overall testing process aims to cover all the $t$-value schemas, so if those additional test cases can cover more uncovered $t$-value schemas, the overall testing process can stop earlier.  As a result, the overall test cases generated can be reduced. Based on the two points, the additional test cases generation in the CT isolation should be refined as in Algorithm 2.
+2) \emph{Localization} : %只选fixed，然后其余相似，然后重点说明一下fixed
+The localization process should also be adjusted to adapt to the new CT framework. From Figure \ref{new-life}, we can find some part of this process to localize the MFS is similar to that of the $generation$ module, i.e., they all need to repeat generating test cases until reach some criteria. As for the additional test cases generated in the localization process, we should also take care that it should not contain the previously localized MFS. To achieve this goal, the constraints checking process is also needed like Algorithm 1. Another point that needs to be noted is that the additional test cases generated in the localization process can also contribute the coverage. As the overall testing process aims to cover all the $t$-value schemas, so if those additional test cases can cover more uncovered $t$-value schemas, the overall testing process can stop earlier.  As a result, the overall test cases generated can be reduced. Based on the two points, the additional test cases generation in the CT localization should be refined as in Algorithm 2.
 \begin{algorithm}
-  \caption{Test Case generation in isolation process}
+  \caption{Test Case generation in localization process}
   \begin{algorithmic}[1]
      \Require
+     $Params$ \Comment{Parameters for the SUT}
 
+     $Values$ \Comment{Corresponding values for each parameter}
+     
      $f_{original}$ \Comment{original failing test case}
   %   $S_{isolated}$ \Comment{currently identified MFS}
 
@@ -532,8 +541,8 @@ The isolation process should also be adjusted to adapt to the new CT framework. 
      $s_{fixed}$ \Comment{fixed part that should not be changed}
 
      $T_{uncovered}$ \Comment{the schemas that are still uncovered}
-
-    $Param$ \Comment{values set that each option can take}
+%
+%    $Param$ \Comment{Parameters (and their values)}
 
 
 %     \Ensure  $t_{new}$ \Comment{the regenerate test case}
@@ -543,14 +552,14 @@ The isolation process should also be adjusted to adapt to the new CT framework. 
      \State $Candidate_{test} \leftarrow empty Set$
 
       \While{$Candidate_{test}.size$ is not satisfied}
-       \State $test \leftarrow emptyArray(Param.size)$
+       \State $test \leftarrow emptyTuple(Param.size)$
            \State $s_{mutant} \leftarrow f_{original} - s_{fixed}$
        \ForAll {$factor \in s_{mutant}$}
            \State   $value \leftarrow select(T_{uncovered},Param,factor)$
        %    \While{}
 %           \EndWile{}
        %   \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-          \While{ \textbf{not} CheckCS(value, $S_{MFS}$) || value ==  GetValue(factor, $f_{original}) $}
+          \While{ \textbf{not} isSatisfied(value, $S_{MFS}$) || value ==  GetValue(factor, $f_{original}) $}
             \State  $value \leftarrow repick(T_{uncovered},Param,factor)$
           \EndWhile
        \EndFor
@@ -611,9 +620,9 @@ The isolation process should also be adjusted to adapt to the new CT framework. 
   \end{algorithmic}
 \end{algorithm}
 
-We can observe that this algorithm is very similar to Algorithm 1, except that this algorithm introduce the variables $ f_{original}$ and $s_{fixed}$. These two variables are important to MFS isolation. Generally, the target of the MFS isolation process is to distinguish the failure-inducing schemas from those error-irrelevant schemas in a failing test case. For this, the MFS isolation process need to generate and execute additional test cases to compare to original failing test case $f_{original}$. The additional test case must contain some fixed schema $s_{fixed}$ in the $f_{original}$, and other part of the additional test case must be different from $f_{original}$ (line 4).  By doing this, this isolation process can check whether the $fixed$ are failure-inducing or not. For example, in Table \ref{ofot-identify}, the original failing test case is (1, 1, 1 ) and the fixed part for additional test case $t_{1}$ (0, 1, 1) is (-, 1, 1). After the $t_{1}$ passed during testing, we can get that the fixed schema (-, 1, 1) should not be the failure-inducing schema.
+We can observe that this algorithm is very similar to Algorithm 1, except that this algorithm introduce the variables $ f_{original}$ and $s_{fixed}$. These two variables are important to MFS localization. Generally, the target of the MFS localization process is to distinguish the failure-inducing schemas from those error-irrelevant schemas in a failing test case. For this, the MFS localization process need to generate and execute additional test cases to compare to original failing test case $f_{original}$. The additional test case must contain some fixed schema $s_{fixed}$ in the $f_{original}$, and other part of the additional test case must be different from $f_{original}$ (line 4).  By doing this, this localization process can check whether the $fixed$ are failure-inducing or not. For example, in Table \ref{ofot-identify}, the original failing test case is (1, 1, 1 ) and the fixed part for additional test case $t_{1}$ (0, 1, 1) is (-, 1, 1). After the $t_{1}$ passed during testing, we can get that the fixed schema (-, 1, 1) should not be the failure-inducing schema.
 
-Traditional MFS isolation process just need to ensure that the $mutant$ part have different values from original failing test cases. We augmented this by selecting values that can cover as more uncovered schemas as possible (line 6) and to ensure the test case does not contain some identified MFS (line 7 - 8).
+Traditional MFS localization process just need to ensure that the $mutant$ part have different values from original failing test cases. We augmented this by selecting values that can cover as more uncovered schemas as possible (line 6) and to ensure the test case does not contain some identified MFS (line 7 - 8).
 %
 % The first varible indicates the Two different parts are:
 %
@@ -631,7 +640,7 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
      \Require
 
     % $t_{original}$ \Comment{original failing test case}
-     $S_{isolated}$ \Comment{currently identified MFS}
+     $S_{localized}$ \Comment{currently localized MFS}
 
 
      $S_{MFS}$ \Comment{previously identified MFS}
@@ -643,12 +652,12 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
 
 
 %     \Ensure  $t_{new}$ \Comment{the regenerate test case}
-     \ForAll  {$s \in S_{isolated}$}
+     \ForAll  {$s \in S_{localized}$}
        \State $S_{MFS}.append(s)$
      \EndFor
 
 
-     \ForAll {$s  \in  S_{isolated}$}
+     \ForAll {$s  \in  S_{localized}$}
        \If {$s$\ is\ $t$-degree\ schema}
           \State $T_{uncovered}.remove(s)$
        \EndIf
@@ -667,14 +676,14 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
            % \State $S_{MFS}.append(s)$
 %     \EndFor
      \ForAll {$t \in T_{uncovered}$}
-       \If {\textbf{not} $CheckCS(t, S_{MFS})$}
+       \If {\textbf{not} $isSatisfied(t, S_{MFS})$}
          \State  $T_{uncovered}.remove(t)$
        \EndIf
      \EndFor
   \end{algorithmic}
 \end{algorithm}
 
- In this algorithm, we firstly append the newly isolated MFS into the global MFS set (line 1 - 3), so that we can use them in the following generation and isolation processes. Then for each newly isolated MFS, we will set them as covered, i.e., remove them from the uncovered set, if they are $t$-degree schemas (line 4 - 7). This is the first type of schemas --\emph{themselves}. For each $t$-degree parent-schema of these newly isolated MFS, we will also remove them from the uncovered set (line 8 - 12), as they are the second type of schemas --  \emph{parent-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 14), and judge if it is the implicit forbidden schema (line 16) by constraints checking. This checking process is the same as we discussed in the Algorithm 1 and Algorithm 2.
+ In this algorithm, we firstly append the newly localized MFS into the global MFS set (line 1 - 3), so that we can use them in the following generation and localization processes. Then for each newly localized MFS, we will set them as covered, i.e., remove them from the uncovered set, if they are $t$-degree schemas (line 4 - 7). This is the first type of schemas --\emph{themselves}. For each $t$-degree parent-schema of these newly localized MFS, we will also remove them from the uncovered set (line 8 - 12), as they are the second type of schemas --  \emph{parent-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 14), and judge if it is the implicit forbidden schema (line 16) by constraints checking. This checking process is the same as we discussed in the Algorithm 1 and Algorithm 2.
 
 % To find them from the uncovered set, we use a sat solver to
 %he uncovetred  search through the uncovered schemas set (line 4), to eliminate these schemas that cannot avoid some MFS when extend these schemas into a test case(line 5 - 7).
@@ -689,12 +698,12 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
 
 With this newly framework, when we re-consider the example in Table \ref{tradition-gi} in section 3.1,  we can get the following result listed in Table \ref{new-gi}.
 \begin{table}[h]
-\caption{newly generation-isolation life-circle}
+\caption{newly generation-localization life-circle}
 \label{new-gi}
 \center
 \begin{tabular}{llllll|llllll}
 \hline
- & \multicolumn{4}{c}{\bfseries \emph{generation}}& & \multicolumn{6}{c}{\bfseries \emph{isolation}} \\
+ & \multicolumn{4}{c}{\bfseries \emph{Generation}}& & \multicolumn{6}{c}{\bfseries \emph{Localization}} \\
  \hline
 %\multicolumn{5}{c}{\bfseries test case} & \bfseries Outcome \\
 $t_{1}$ & \multicolumn{4}{l}{0 \ \ \ 0 \ \ \ 0  \ \ \  0 } & Fail & \multicolumn{6}{l}{}\\
@@ -715,9 +724,9 @@ $t_{13}$ &\multicolumn{4}{l}{2  \ \ \   2 \ \ \ 1  \ \ \  0 } & Pass & \multicol
 \end{tabular}
 \end{table}
 
-This table consists of two main columns, where the left indicates the generation part while the right column indicates the isolation process. We can find that after isolating the MFS (-, 0, -, -) for $t_{1}$. The following test cases ($t_{6}$ to $t_{13}$) will not contain this schema. Correspondingly, all the 2-degree schemas that are related to this schema, e.g. (0, 0, -, -), (-, 0, 1, -), etc, will also not appear in the following test cases. Additionally, the passing test case $t_{3}$ generated in the isolation process cover 6 2-degree schemas, i.e., (0, 1, -, -), (0, -, 0, -), (0, -, -, 0), (-, 1, 0, -) and (-, 1, -, 0) respectively, so that it is not necessary to generate more test cases to cover them.  Above all, with the new CT framework,  the overall generated test case are 8 less than that of the traditional CT framework in Table \ref{tradition-gi}.
+This table consists of two main columns, where the left indicates the generation part while the right column indicates the localization process. We can find that after localizing the MFS (-, 0, -, -) for $t_{1}$. The following test cases ($t_{6}$ to $t_{13}$) will not contain this schema. Correspondingly, all the 2-degree schemas that are related to this schema, e.g. (0, 0, -, -), (-, 0, 1, -), etc, will also not appear in the following test cases. Additionally, the passing test case $t_{3}$ generated in the localization process cover 6 \emph{2}-degree schemas, i.e., (0, 1, -, -), (0, -, 0, -), (0, -, -, 0), (-, 1, 0, -), (-, 1, -, 0), and (-, -, 0, 0) respectively, so that it is not necessary to generate more test cases to cover them.  Above all, with the new CT framework,  the overall generated test case are 8 less than that of the traditional CT framework in Table \ref{tradition-gi}.
 
-Note that this example only lists the condition of a single lower-degree MFS, under which some \emph{parent-schemas} will do not need to be covered.  When there are multiple MFS with higher degrees, \emph{themselves} and \emph{implicit forbidden} schemas will be computed and set to be covered.
+Note that this example only lists the condition of a single MFS, under which some \emph{parent-schemas} or \emph{themselves} will do not need to be covered.  When there are multiple MFS, additional \emph{implicit forbidden} schemas will be computed and set to be covered.
 
 %Besides the cost reducing, our new CT framework actually provide a stronger coverage criteria than traditional covering array. This is because
 
@@ -732,7 +741,7 @@ Note that this example only lists the condition of a single lower-degree MFS, un
 To evaluate the effectiveness and efficiency of our new CT framework, we conducted a series empirical experiments on several open-source software.
 
 \subsection{Subject programs}
-The subject programs used in our experiments are five open-source software as listed in Table \ref{subject}. Column ``Subjects" indicates the specific software. Column ``version" indicates the specific version that are used in the following experiments. Column ``LOC" shows the number of source code lines for each software. Column ``faults" presents the fault ID, which can used as the index to fetch the original fault description at each bug tracker for that software. Column ``lan" shows the programming language for each software (Only the main programming language are shown).
+The subject programs used in our experiments are five open-source software as listed in Table \ref{subject}. Column ``Subjects" indicates the specific software. Column ``Version" indicates the specific version that are used in the following experiments. Column ``LOC" shows the number of source code lines for each software. Column ``Faults" presents the fault ID, which can used as the index to fetch the original fault description at each bug tracker for that software. Column ``Lan" shows the programming language for each software (Only the main programming language are shown).
 
 \begin{table}[ht]
 \caption{Subject programs}
@@ -740,20 +749,20 @@ The subject programs used in our experiments are five open-source software as li
 \center
 \begin{tabular}{l|l|l|l|l}
 \hline
-Subjects & version & LOC & faults &  lan \\
+Subjects & Version & LOC & Faults &  Lan \\
 \hline
 Tomcat   &   7.0.40      & 296138    &   \#55905   & java  \\
-HSQLDB   &   2.0rc8  &   139425   &    \#981     & Java \\
-GCC      &   4.7.2      &  2231564   & \#55459       &  c\\
-JFlex    &    1.4.1     & 10040    &    \#87    & Java \\
-Tcas     & \#1     &   173  &    \#Seed  & c \\ \hline
+Hsqldb   &   2.0rc8  &   139425   &    \#981     & Java \\
+Gcc      &   4.7.2      &  2231564   & \#55459       &  c\\
+Jflex    &    1.4.1     & 10040    &    \#87    & Java \\
+Tcas     & v1     &   173  &    \#Seed  & c \\ \hline
 \end{tabular}
 
 \end{table}
 
-In these software, tomcat is a web server for java servlet, hsqldb is a pure-java relational database engine, gcc is the c programming language compiler, jflex is a lexical analyzer generator, and tcas is a module of an aircraft collision avoidance system. We take these software as subjects program because their behaviours are influenced by various combinations of configuration options or inputs. For example, one component \emph{connector} of tomcat is influenced by more than 151 attributes \cite{tomcatconnector}. For program tcas, although with a relatively small size (only 173 lines), it also has 12 parameters with their values ranged from 2 to 10. As a result, the overall input space for tcas has reached to 1036800 \cite{shakya2012isolating,kuhn2006pseudo}.
+In these software, tomcat is a web server for java servlet, hsqldb is a pure-java relational database engine, gcc is the programming language compiler, jflex is a lexical analyzer generator, and tcas is a module of an aircraft collision avoidance system. We take these software as subjects program because their behaviours are influenced by various combinations of configuration options or inputs. For example, one component \emph{connector} of tomcat is influenced by more than 151 attributes \cite{tomcatconnector}. For program tcas, although with a relatively small size (only 173 lines), it also has 12 parameters with their values ranged from 2 to 10. As a result, the overall input space for tcas has reached to 1036800 \cite{shakya2012isolating,kuhn2006pseudo}.
 
-As the target of our empirical studies is to compare the ability of fault defecting between our approach with traditional ones. We firstly must know these faults in prior, such that we can determine whether the MFS identified by those approaches are accurate or not.  For this, We looked through the bug tracker forum of each software and focused on the bugs which are caused by the options combination. Then for each such bug, we will derive its MFS by analysing the bug description report and the associated test file which can reproduce the bug. For tcas, as it does not contain any fault for the original source file, we took an mutation version for that file with injected fault. The mutation was the same as that in \cite{kuhn2006pseudo}, which is usually as a experiment object for the fault defeating studies.
+As the target of our empirical studies is to compare the ability of fault defecting between our approach with traditional ones. We firstly must know these faults and their corresponding MFS in prior, such that we can determine whether the schemas identified by those approaches are accurate or not.  For this, We looked through the bug tracker forum of each software and focused on the bugs which are caused by the options combination. Then for each such bug, we will derive its MFS by analysing the bug description report and the associated test file which can reproduce the bug. For tcas, as it does not contain any fault for the original source file, we took an mutation version for that file with injected fault. The mutation was the same as that in \cite{kuhn2006pseudo}, which is usually as a experiment object for the fault defeating studies.
 
 %To make the testing process can definitely find failing test cases (otherwise we may not detect any fault and then there is no difference between our approach with traditional approach), we prepared fault version of these software in prior. There are four software, we take the real failures, for each failure, there bug tracker can be find .  The last one is the injected failure, which is originally injected in .
 
@@ -770,12 +779,12 @@ To apply the CT on the prepared software, we need to firstly model their input p
 \center
 \begin{tabular}{l|l|l}
 \hline
-Subjects & inputs & MFS \\
+Subjects & Inputs & MFS \\
 \hline
 Tomcat   &  $2^{8} \times 3^{1} \times 4^{1}$       & 1(1) 2(2)  \\
-HSQLDB   &   $2^{9} \times 3^{2} \times 4^{1}$      &  3(2) \\
-GCC      &   $2^{11} \times 3^{1}$      &    3(4)  \\
-JFlex    & $2^{10} \times 3^{2} \times 4^{1} $        &   2(1)   \\
+Hsqldb   &   $2^{9} \times 3^{2} \times 4^{1}$      &  3(2) \\
+Gcc      &   $2^{9} \times 6^{1}$      &    3(4)  \\
+Jflex    & $2^{10} \times 3^{2} \times 4^{1} $        &   2(1)   \\
 Tcas     &  $2^{7} \times 3^{2} \times 4^{1} \times 10^{2} $ &9(16)\ 10(8)\ 11(16)\ 12(8) \\ \hline
 \end{tabular}
 
@@ -786,11 +795,11 @@ In this table, Column ``inputs" depicts the input model for each version of the 
 
 After preparing the subjects software, next we will construct the experiment that can evaluate the efficiency and effectiveness of our approach. To this aim, we need to compare our framework with the traditional CT framework to see if our new framework have any advantage.
 
-The covering array generating algorithm used in the experiment are AETG \cite{cohen1997aetg}, for this is the most famous one-test-case-one-time generation algorithm. And the MFS identifying algorithm is the OFOT \cite{nie2011minimal} as we discussed before. The constraints handling solver is a java SAT solver -- SAT4j \cite{le2010sat4j}.
+The covering array generating algorithm used in the experiment are AETG \cite{cohen1997aetg}, for this is the most common one-test-case-one-time generation algorithm. And the MFS identifying algorithm is the OFOT \cite{nie2011minimal} as we discussed before. The constraints handling solver is a java SAT solver -- SAT4j \cite{le2010sat4j}.
 
 
 \subsubsection{Study setup}
-In this experiment, we focus on three coverage criteria, i.e., 2-way , 3-way and 4-way, respectively. It is known that the generated test cases vary for different runs of AETG algorithm. So to avoid the biases of randomness, we conduct each experiment 30 times and evaluate the results.  In other word, for each subject software, we will repeatedly execute traditional approach and our approach 30 times to detect and isolate the MFS.
+In this experiment, we focus on three coverage criteria, i.e., 2-way , 3-way and 4-way, respectively. It is known that the generated test cases vary for different runs of AETG algorithm. So to avoid the biases of randomness, we conduct each experiment 30 times and evaluate the results.  In other word, for each subject software, we will repeatedly execute traditional approach and our approach 30 times to detect and localize the MFS.
 % For each %run of the experiment, we respectively set the coverage criteria, 2-way, 3-way and 4-way.
 
 To evaluate the results of the two approaches, one metric is the cost, i.e., the overall test cases that each approach needs. Apart from this, another important metric is the quality of their identified MFS. For this, we used standard metrics: \emph{precise} and \emph{recall}, which are defined as following:
@@ -799,7 +808,7 @@ $$precise =  \frac{\#the\ num\ of\ correctly\ identified\  MFS}{\#the\ num\ of\ 
 and
 $$recall  =  \frac{\#the\ num\ of\ correctly\ identified\  MFS}{\#the\ num\ of\ all\ the\ real\ MFS} $$
 
-\emph{Precise} shows the accurateness of the identified schemas when comparing to the real MFS. \emph{Recall} measures how well the real MFS are detected and isolated. The combination of them is F-measure, which is
+\emph{Precise} shows the accurateness of the identified schemas when comparing to the real MFS. \emph{Recall} measures how well the real MFS are detected and localized. The combination of them is F-measure, which is
 $$F-measure = \frac{2 \times precise \times recall}{precise + recall}$$
 %
 %There are two metrics we care in this experiment. First, the overall test cases that each approach needed. This metric indicates the cost that each approach will take. Second, the quality of the identified MFS, i.e., how accurately the schema each approach identified when compared with the real MFS we figured out in prior.  To assess this metric, we define the similarity between two schemas as follows:
@@ -831,7 +840,7 @@ The result is listed in Table \ref{cm_elda_fglt}. In Column `Method', \emph{elda
 \begin{tabular}{|ll|llll|llll|llll|}
 \hline
 \multirow{2}{*}{Subject} & \multirow{2}{*}{Method} & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2-way}            & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3-way}            & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4-way}               \\ \cline{3-14}
-                         &                         & size   & precise & recall & f-measure & size   & precise & recall & f-measure & size    & precise & recall & f-measure   \\ \hline
+                         &                         & Size   & Precise & Recall & F-measure & Size   & Precise & Recall & F-measure & Size    & Precise & Recall & F-measure   \\ \hline
 Tomcat                   & elda                    & 42.53   & 1    & 1    & \textbf{1}      &  64.67  &0.97    & 0.96   & \textbf{0.96}      & 114.23 &  0.93    &  0.91   &  \textbf{0.92 }       \\
                          & fglt                    & 114.33  & 0.73    & 0.74    & 0.73      & 289.97  & 0.75     & 1    & 0.86       & 676.83  & 0.75     & 1    & 0.86         \\ \hline
 Hsqldb                   & elda                    & 27.3   & 0.67    & 0.4    & \textbf{0.49}      & 63.07  & 0.37    & 0.37   & 0.37      & 144.93  & 0.37    & 0.37   & 0.37        \\
@@ -847,16 +856,16 @@ Tcas                     & elda                    & 108.63 & 0       & 0      &
 
 One observation from this table is that the overall test cases generated by our approach are far less than that of the traditional approach. In fact, except for subject \emph{tcas}, our approach reduced about dozens of test cases for 2-way coverage, and hundreds test cases for 3-way and 4-way coverage. For \emph{tcas}, however, as the MFS are hard to detect (all of them have degrees than 9), so both two approaches nearly do not trigger errors (see the metric \emph{recall}). Under this condition, both the two approaches will be transferred to a normal covering array.
 
-As for the quality of the identified MFS, we find that there is no apparent gap between them. For example, there are 9 cases under which our approach performed better than traditional one (marked in bold). But among these cases, the maximal gap are  0.26 (2-way for Tomcat), and the average gap are around 0.1, which is trivial.
+As for the quality of the identified MFS, we find that there is no apparent gap between them. For example, there are 9 cases under which our approach performed better than traditional one (marked in bold). But among these cases, the maximal gap are  0.27 (2-way for Tomcat), and the average gap are around 0.1, which is trivial.
  %the better ones for the f-measure of our approach are marked in bold, form which we can learn that
 
-The reason of the similarity between the quality of these two approaches is that both of them have advantages and disadvantages. Specifically, our approach can reduce the impacts when a test case contain multiple MFS. Our previous study showed that multiple MFS in a test case can reduce the accurateness of the MFS identifying algorithms \cite{niu2013identifying}. As a result, our approach can improve the quality of the identified schemas. But as a side-effect, if the schemas identified at the early iteration of our approach are not correct, it will significantly impact the following iteration. This is because we will compute the coverage and  constraints based on previous identified MFS.   It was the other way around for traditional approach. Traditional one suffers from impacts when a test case contain multiple MFS, but correspondingly, previous identified MFS has little influence on the traditional approach. 
+The reason of the similarity between the quality of these two approaches is that both of them have advantages and disadvantages. Specifically, our approach can reduce the impacts when a test case contain multiple MFS. Our previous study showed that multiple MFS in a test case can reduce the accurateness of the MFS identifying algorithms \cite{niu2013identifying}. As a result, our approach can improve the quality of the identified schemas. But as a side-effect, if the schemas identified at the early iteration of our approach are not correct, it will significantly impact the following iteration. This is because we will compute the coverage and  constraints based on previous identified MFS.   It was the other way around for traditional approach. Traditional one suffers from impacts when a test case contain multiple MFS, but correspondingly, previous identified MFS has little influence on the traditional approach.
 %This is just the opposite of the traditional First-gen-then-identifying approach.
 
 %As not forbidden them, there is a chance that a test case will contain multiple MFS, which makes the identifying work challenging than single ones.
 
 In a sum, our approach needs much less test cases than traditional first-generating-then-identifying approach, and there is no decline in the quality of the identified MFS when comparing with traditional approach.
-  
+
 %  comparing there are two shortcomings for the traditional, first, it needed much more test cases that ours, second, it has an lower quality of the identified MFS .
 %\subsection{Compare with the FDA-CIT}
 %
@@ -867,10 +876,18 @@ In a sum, our approach needs much less test cases than traditional first-generat
 
 
 \subsection{Comparing with Error locating Array}
-Error locating array (ELA)\cite{colbourn2008locating,martinez2009locating} is a well-designed set of test cases, such that it can support not only failure detection, but also the identification for the MFS of the failure. To compare our approach with this CT-based array is meaningful, as both this two approaches have the same target. The relationship between our approach with the Error locating array can be deemed as the dynamic and static. In detail, our approach dynamically detect and isolated the MFS in the SUT, i.e., the test cases our approach are changed according to the specific MFS. While the ELA just generate a static covering array, and it can support MFS identification if the number and degrees of these schemas are known in prior.
+Error locating array\cite{colbourn2008locating,martinez2009locating} is a well-designed set of test cases, such that it can support not only failure detection, but also the localization of the MFS of the failure. It is known that only with a covering array sometimes is not sufficient to localize the MFS, thus additional test cases are needed. Mart{\'\i}nez et al.\cite{martinez2008algorithms} has proved that a $(t + d)$-way covering array can localize all the MFS with the number of them no more than \emph{d}, and degrees no more than \emph{t}.
+After executing all the test cases in the $t+d$-way covering array, the MFS can be obtained by keeping those t-degree or less than t-degree schemas that only appear in the failing test cases in the covering array.  So with the number \emph{d} and degrees \emph{t} known in prior, a $(t+d)$-way covering array is a \emph{Error Locating Array (ELA)}.
+
+
+To compare our approach with this CT-based array is meaningful, as both this two approaches have the same target. The relationship between our approach with the Error locating array can be deemed as the dynamic and static. In detail, our approach dynamically detect and localize the MFS in the SUT, i.e., the test cases generated by our approach are changed according to the specific MFS. On the contrary, ELA just generate a static covering array, and it can support MFS identification if the number and degrees of these schemas are known in prior.
+
+
 
 \subsubsection{Study setup}
-As the results of our approach have been already collected in the previous section, so in this section will just apply ELA to identify the MFS of the 5 prepared software in Table \ref{subject}. In fact, ELA \cite{martinez2009locating,martinez2008algorithms} is a particular covering array. When the maximum degree and number of the MFS are known in prior, say, $t$ and $d$ respectively, then a $(t + d)$-way covering array can support the MFS identification. However, this conclusion is based on that there must exist \emph{safe} values for each parameter of the SUT. A \emph{safe} value is the parameter value that is not the part of these MFS. In our experiment, all the five subject programs satisfies this condition. Based on this, we then applied the ELA to generate appropriate covering arrays for the each subject program and recorded the MFS they identified and as well as the overall test cases it generated. The covering array generation algorithm we adopted in this experiment is also AETG \cite{cohen1997aetg}, and similar as the previous experiment, will repeat this experiment 30 times.
+As the results of our approach have been already collected in the Section 4.2, so in this section will just apply ELA to identify the MFS of the 5 prepared software in Table \ref{subject}. It is noted that the conclusion that a \emph{t+d}-way covering array is an ELA 
+%In fact, ELA \cite{martinez2009locating,martinez2008algorithms} is a particular covering array. When the maximum degree and number of the MFS are known in prior, say, $t$ and $d$ respectively, then a $(t + d)$-way covering array can support the MFS identification. However, this conclusion
+ is based on that there must exist \emph{safe} values for each parameter of the SUT. A \emph{safe} value is the parameter value that is not the part of these MFS. In our experiment, all the five subject programs satisfies this condition. Based on this, we then applied the ELA to generate appropriate covering arrays for the each subject program and recorded the MFS they identified and as well as the overall test cases it generated. The covering array generation algorithm we adopted in this experiment is also AETG \cite{cohen1997aetg}, and similar as the previous experiment, will repeat this experiment 30 times.
 
 
 %Given a configuration space model known to have safe values, a strength t of the interactions to be tested, and an upper bound d on the number of faulty interactions, each of which is assumed to have at most t options, a static (t, d)-way ELA is a traditional (td)-way covering array. If the configuration space model has no safe values, then a static (t, d)-way ELA is a traditional t1-way covering array. Static ELAs, therefore, require that a priori information on the maximum number of faulty interactions is known, otherwise they can suffer from masking effects.
@@ -880,7 +897,7 @@ As the results of our approach have been already collected in the previous secti
 %Additionally, comparisons between the augmented approaches and three traditional ones will be quantified.
 
 \subsubsection{Result and discussion}
-The overall test cases and the quality of the identified MFS are listed in Table \ref{cm_ela}. We can firstly observe that this approach needs much more test cases than the two approaches we discussed before. This is as expected, as this approach needs to generate a higher-way covering array than previous two approaches.  All the , this is can be easily understood from its .
+The overall test cases and the quality of the identified MFS are listed in Table \ref{cm_ela}. We can firstly observe that this approach needs much more test cases than the two approaches we discussed before. This is as expected, as this approach needs to generate a higher-way covering array than previous two approaches. Apart from the high cost, this approach correctly identified all the real MFS. The accurateness has been proved in \cite{martinez2008algorithms,martinez2009locating}.  Note that this perfect MFS identification result is based on the fact that it knows the number and degrees of the MFS, which is usually not available in practice.
 
 
 \begin{table}[htbp]
@@ -889,9 +906,9 @@ The overall test cases and the quality of the identified MFS are listed in Table
 \label{cm_ela}
 \begin{tabular}{|l|llll|}
 \hline
-subject & size   & precise & recall & f-measure \\ \hline
+Subject & Size   & Precise & Recall & F-measure \\ \hline
 Tomcat  & 210.8  & 1       & 1      & 1         \\
-HSQLDB  & 333.8  & 1       & 1      & 1         \\
+Hsqldb  & 333.8  & 1       & 1      & 1         \\
 Gcc      & 860.4 & 1       & 1      & 1         \\
 Jflex   & 49.1   & 1       & 1      & 1         \\
 Tcas    & 460800 & 1       & 1      & 1         \\ \hline
@@ -900,7 +917,7 @@ Tcas    & 460800 & 1       & 1      & 1         \\ \hline
 
 
 %We further compare their execution time.
-To clearly compare their peformamce, we combined the quolity and the overall size ,The figure is shown in \ref{cm_performance}.
+As both the cost (number of test cases) and the quality of the identified schemas are important in practice. We combine the two metrics (\emph{size} and \emph{f-measure}) into a single one, by diving \emph{f-measure} by \emph{size}. The normalized result of this combination metric is listed in Fig.\ref{cm_performance}. In this figure, \emph{elda} and \emph{fglt} represent our new approach and traditional first-generating-then-identifying approach. \emph{Ela} indicates the error locating array approach.
 
 \begin{figure}[htbp]
  \includegraphics[width=3.4in]{result.eps}
@@ -908,9 +925,11 @@ To clearly compare their peformamce, we combined the quolity and the overall siz
 \label{cm_performance}
 \end{figure}
 
+We can learn that \emph{elda} performs better than \emph{fglt} at all the five subjects.  For \emph{ela}, our approach performs better than it at three subjects \emph{Tomcat}, \emph{Hsqldb}, and \emph{Gcc}. The reason that our approach does not perform as well as \emph{ela} at subject \emph{JFlex} is that the MFS for that object is a single 2-degree schema (see Table \ref{inputs}), under which ela just needs a 3-way covering array.  For subject \emph{Tcas}, with high-degree MFS as we discussed before, our approach is hard to trigger an errors with only \emph{2-way}, \emph{3-way}, and \emph{4-way} covering array. As a result, our approach can hardly identify the MFS. Apart from this two exception, our approach have an significant advantage over the ELA approach.
 
-
-To summary, there are two shortcomings for the ELA, first, it needed much more test cases that ours, second, it needs to know the number of MFS and the maximal degree of them, which is usually not available in practice.
+To summarize, ELA get the best at the quality of the MFS, but needs much more test cases than our approach. What's more, needing to know the number and degrees of the MFS in prior limiting the application of ELA in practice.
+%
+% there are two shortcomings for the ELA, first, it needed much more test cases that ours, second, it needs to know the number of MFS and the maximal degree of them, which is usually not available in practice.
 
 
 
@@ -918,7 +937,7 @@ To summary, there are two shortcomings for the ELA, first, it needed much more t
 
 There are several threats to validity in our empirical studies. First, our experiments are based on only 5 open-source software, more subject programs are desired to make the results more general. In fact, we must take comprehensive experiments on the programs with parameters and MFS under control, such that the conclusion of our experiment can reduce the impact caused by specific input space and specific degree or location of the MFS.
 
-Second, many more generation algorithm and MFS isolation algorithms are needed. In our empirical studies, we just used the AETG \cite{cohen1997aetg} as test cases generation strategy, and OFOT \cite{nie2011minimal}as the MFS identification strategy. As the different generation and identification algorithms will significantly affect the performance our proposed CT framework, especially for the number of test cases. 
+Second, many more generation algorithm and MFS localization algorithms are needed. In our empirical studies, we just used the AETG \cite{cohen1997aetg} as test cases generation strategy, and OFOT \cite{nie2011minimal} as the MFS identification strategy. As the different generation and identification algorithms will significantly affect the performance our proposed CT framework, especially for the number of test cases.
 %For test cases generation, .     But for OFOT, it can significantly accurateness.
 More studies for different test cases and MFS identification algorithms are desired to figure this impact out.
 
@@ -944,11 +963,11 @@ Our work differs from them mainly at our work focus on combining two important t
 
 
 \section{Conclusions}
-Combinatorial testing is an effective testing technique at detecting and diagnosis the failure-inducing schemas in the SUT. Traditional CT works separately studied test cases generation and MFS isolation. In this paper, we proposed a new CT framework that organised these two important testing stages as a whole, which allows for both generation and localization better share each other’s testing information. As a result, our new CT framework can provide a more efficient testing than traditional CT.
+Combinatorial testing is an effective testing technique at detecting and diagnosis the failure-inducing schemas in the SUT. Traditional CT works separately studied test cases generation and MFS localization. In this paper, we proposed a new CT framework that organised these two important testing stages as a whole, which allows for both generation and localization better share each other's testing information. As a result, our new CT framework can provide a more efficient testing than traditional CT.
 
-Empirical studies were conducted on several open-source software. The results showed that with our new CT framework, there is an significant reducing on the number of generated test cases when compared to traditional first-generation-then-isolation process, while there is no decline in the quality of the identified MFS. Further, when comparing with the ELA \cite{martinez2009locating,martinez2008algorithms}, our approach also performed better, especially at the cost of the number of test cases.
+Empirical studies were conducted on several open-source software. The results showed that with our new CT framework, there is an significant reducing on the number of generated test cases when compared to traditional first-generation-then-localization process, while there is no decline in the quality of the identified MFS. Further, when comparing with the ELA \cite{martinez2009locating,martinez2008algorithms}, our approach also performed better, especially at the cost of the number of test cases.
 
-As a future work, we need to extend our new CT framework with more test cases generation and MFS isolation algorithms, to see the extent on which our new CT framework can enhance those different CT-based algorithms. Another interesting work is to make our new CT framework more closer to the source code testing, so that it can provide more useful information for developers to debug the system.
+As a future work, we need to extend our new CT framework with more test cases generation and MFS localization algorithms, to see the extent on which our new CT framework can enhance those different CT-based algorithms. Another interesting work is to make our new CT framework more closer to the source code testing, so that it can provide more useful information for developers to debug the system.
 
 
 %\end{document}  % This is where a 'short' article might terminate
