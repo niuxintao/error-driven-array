@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  17 JAN 2015 21:41
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  18 JAN 2015 02:06
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -400,47 +400,36 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 457--458
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 546 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 545 replaced by U+FFFD.
 
-Overfull \hbox (6.50392pt too wide) in paragraph at lines 654--655
+Overfull \hbox (6.50392pt too wide) in paragraph at lines 653--654
 []\T1/aer/m/n/9 After the MF-S are i-den-ti-fied, some re-lat-ed $\OML/cmm/m/it
 /9 t$\T1/aer/m/n/9 -degree schemas,
  []
 
 [6] [7]
-Overfull \hbox (12.71768pt too wide) in paragraph at lines 818--818
-[]\secfnt Compare with Tra-di-tion-al First-Generation-
- []
-
-
-Overfull \hbox (10.08412pt too wide) in paragraph at lines 864--879
+Overfull \hbox (10.08412pt too wide) in paragraph at lines 863--878
  [] 
- []
-
-
-Overfull \hbox (1.0037pt too wide) in paragraph at lines 891--892
-\T1/aer/m/n/9 tra-di-tion-al first-generation-then-identification ap-proach, an
-d
  []
 
 [8]
 File: result.eps Graphic file (type eps)
  <result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 947--948
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 946--947
 [][] 
  []
 

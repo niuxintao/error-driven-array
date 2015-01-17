@@ -357,7 +357,7 @@ In this paper, we focus on the first strategy: One test case one time as it imme
 %In order to fulfil the testing target, we choose the second object, one test one time, as we can .
 
 \subsection{Identify the failure-inducing interactions}
-To detect the existence of MFS in the SUT is still far from figuring out the root cause of the failure. As we do not know exactly which schemas in the failed test cases should be responsible for the failure. In fact, for a failing test case ($v_{1},v_{2},...,v_{n}$), there can be at most $2^{n} - 1$ possible schemas for the MFS. Hence, more test cases should be generated to identify the MFS. In CT, the main work in fault localization is to identify the failure-inducing interactions. So in this paper we only focus on the MFS identification, and further works of fault localization such as isolating the defect inside the source code will not be discussed. 
+To detect the existence of MFS in the SUT is still far from figuring out the root cause of the failure. As we do not know exactly which schemas in the failed test cases should be responsible for the failure. In fact, for a failing test case ($v_{1},v_{2},...,v_{n}$), there can be at most $2^{n} - 1$ possible schemas for the MFS. Hence, more test cases should be generated to identify the MFS. In CT, the main work in fault localization is to identify the failure-inducing interactions. So in this paper we only focus on the MFS identification, and further works of fault localization such as isolating the defect inside the source code will not be discussed.
 
 A typical MFS identification process is shown in Table \ref{ofot-identify}. This example assumes the SUT has 3 parameters, each can take 2 values. And assume the test case (1, 1, 1) failed. Then in Table \ref{ofot-identify}, as test case \emph{t} failed, and OFOT mutated one factor of the \emph{t} one time to generate new test cases: $t_{1}$ -- $t_{3}$, It found that the $t_{1}$ passed, which indicates that this test case break the MFS in the original test case \emph{t}. So the (1,-,-) should be one failure-causing factor, and as other mutating process all failed, which means no other failure-inducing factors were broken, therefore, the MFS in \emph{t} is (1,-,-).
 
@@ -386,7 +386,7 @@ This identification process mutate one factor of the original test case at a tim
 
 \section{Motivation example}
 %This section presents the .
-
+As discussed previously, the generation and identification are the most important works in CT life-cycle. How best to utilize these two activities in the CT life-cycle is of importance as it is closely impact on the quality and cost of overall software testing. In fact, most studies in CT focus on these two fields. But rather than as a whole, generation and identification are applied independently. The justification for not discussing how to cooperate these two activities is that they think the first-generation-then-identification is so natural and straightforward. As we will show below, however, that the generation and identification is so tightly correlated that they have a significant impact on the effectiveness and efficiencies of testing.
 
 A typical traditional generation-identification life-cycle is to first generate a $t$-way covering array. If there exists some failures that triggered by some particular schemas, then we detect some failures and should identify the MFS in the SUT for further bug fixing.
 
@@ -444,21 +444,20 @@ We refer to such traditional life-cycle as \emph{\textbf{sequential CT}}. Howeve
 
 For all of this, a more effective and efficient framework is desired.
 \section{Interleaving Approach}
-As discussed previously, the generation and identification are the most important works in CT life-cycle. How best to utilize these two activities in the CT life-cycle is of importance as it is closely impact on the quality and cost of overall software testing. In fact, most studies in CT focus on these two fields. But rather than as a whole, generation and identification are applied independently. The justification for not discussing how to cooperate these two activities is that they think the first-generation-then-identification is so natural and straightforward. As we will show below, however, that the generation and identification is so tightly correlated that they have a significant impact on the effectiveness and efficiencies of testing.
 
+To overcome such deficiencies in traditional CT, we propose a new CT generation-identification framework -- \emph{\textbf{Interleaving CT}}. Our new framework aims at enhancing the interaction of generation and identification to reduce the unnecessary and invalid test cases discussed previously.
 %focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-localization is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
 
 %\subsection{Traditional generation-identification process}
 
 
 \subsection{Overall framework}
-To overcome such deficiencies in traditional CT, we propose a new CT generation-identification framework. Our new framework aims at enhancing the interaction of generation and identification to reduce the unnecessary and invalid test cases discussed previously. The basic outline of our framework is illustrated in Figure \ref{new-life}.
+ The basic outline of our framework is illustrated in Figure \ref{new-life}.
 \begin{figure}
  \includegraphics[width=3.4in]{baicOutline.eps}
-\caption{New Framework of CT}
+\caption{Interleaving CT}
 \label{new-life}
 \end{figure}
-
 In specific, this new framework works as follows: First, it will check whether all the needed schemas is covered or not. Commonly the target of CT is to cover all the $t$-degree schemas, with $t$ normally be assigned as 2 or 3. Then if the current coverage is not satisfied, it will generate a new test case to cover as many uncovered schemas as possible. After that, it will execute this test case with the outcome of the execution either be pass (executed normally, i.e., doesn't triggered an exception, violate the expected oracle or the like) or fail (on the contrary). When the test case passes the execution, we will recompute the coverage state, as all the schemas in the passing test case are regarded as error-irrelevant. As a result, the schemas that wasn't covered before will be determined to be covered if it is contained in this newly generated test case. Otherwise if the test case fails, then we will start the MFS identification module to identify the MFS in this failing test case. One point that needs to be noted is that if the test case fails, we will not directly change the coverage state, as we can not figure out which schemas are responsible to this failure among all the schemas in this test case until we identify them.
 
 The identification module works almost the same way as traditional independent MFS identify process, i.e., repeats generating and executing additional test cases until it can get enough information to diagnose the MFS in the original failing test case. The only difference from traditional MFS identifying process is that we augment it by counting the coverage this module have contributed to the overall coverage. In detail, when the additional test case passes, we will label the schemas in these test cases as covered if it had not been covered before. And when the MFS is found at the end of this module, we will first set them as forbidden schemas that latter generated test cases should not contain (Otherwise the test case must fail and it cannot contribute to more coverage), second all the $t$-degree schemas that are \emph{related} to these MFS will be set as covered. Here the \emph{related} schemas indicate the following three types of $t$-degree schemas:
@@ -476,7 +475,7 @@ As we all know, the terminating condition of the CT framework is to cover all th
 %
 %we just augment this module with counting the coverage this module have contributed to the overall coverage. In detail, we will count the uncovered schemas in the passing additional test cases as previously generated passing test cases. We still don't count the schemas in these failing additional test cases, instead, we will handle these identified MFS
 %  Another important connection is that when we find the MFS in the failing test cases, there are two work needed to be completed: 1) we should make them as the constraint, such that the latter generated test cases should not contained this MFS. 2) the coverage this MFS and the schemas that related to this MFS should also set to be covered, as since we should not contain the MFS, then these schemas will not be covered. Then to make the overall generation process stop, we need to set them as "covered".
-\subsection{Details}
+\subsection{Details of the augmentation of the two CT activities}
 
 More details of these two important parts are as follows:
 1) \emph{Generation} :
@@ -720,7 +719,7 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
 %To implement such framework, the most important is to share the information. In specific, to, we use the SAT solver. And when , we should change the coverage information. Our detail implementation for this framework is list in Algorithm.
 \subsection{A case study}
 
-With this newly framework, when we re-consider the example in Table \ref{tradition-gi} in section 3.1,  we can get the following result listed in Table \ref{new-gi}.
+With this new framework, when we re-consider the example in Table \ref{tradition-gi} in section 3.1,  we can get the following result listed in Table \ref{new-gi}.
 \begin{table}[h]
 \caption{newly generation-identification life-cycle}
 \label{new-gi}
@@ -748,7 +747,7 @@ $t_{13}$ &\multicolumn{4}{l}{2  \ \ \   2 \ \ \ 1  \ \ \  0 } & Pass & \multicol
 \end{tabular}
 \end{table}
 
-This table consists of two main columns, where the left indicates the generation part while the right column indicates the identification process. We can find that after identifying the MFS (-, 0, -, -) for $t_{1}$. The following test cases ($t_{6}$ to $t_{13}$) will not contain this schema. Correspondingly, all the 2-degree schemas that are related to this schema, e.g. (0, 0, -, -), (-, 0, 1, -), etc, will also not appear in the following test cases. Additionally, the passing test case $t_{3}$ generated in the identification process cover 6 \emph{2}-degree schemas, i.e., (0, 1, -, -), (0, -, 0, -), (0, -, -, 0), (-, 1, 0, -), (-, 1, -, 0), and (-, -, 0, 0) respectively, so that it is not necessary to generate more test cases to cover them.  Above all, with the new CT framework,  the overall generated test case are 8 less than that of the traditional CT framework in Table \ref{tradition-gi}.
+This table consists of two main columns, where the left indicates the generation part while the right column indicates the identification process. We can find that after identifying the MFS (-, 0, -, -) for $t_{1}$. The following test cases ($t_{6}$ to $t_{13}$) will not contain this schema. Correspondingly, all the 2-degree schemas that are related to this schema, e.g. (0, 0, -, -), (-, 0, 1, -), etc, will also not appear in the following test cases. Additionally, the passing test case $t_{3}$ generated in the identification process cover 6 \emph{2}-degree schemas, i.e., (0, 1, -, -), (0, -, 0, -), (0, -, -, 0), (-, 1, 0, -), (-, 1, -, 0), and (-, -, 0, 0) respectively, so that it is not necessary to generate more test cases to cover them.  Above all, when using the interleaving CT approach,  the overall generated test case are 8 less than that of the traditional sequential CT approach in Table \ref{tradition-gi}.
 
 Note that this example only lists the condition of a single MFS, under which some \emph{super-schemas} or \emph{themselves} will do not need to be covered.  When there are multiple MFS, additional \emph{implicit forbidden} schemas will be computed and set to be covered.
 
@@ -762,7 +761,7 @@ Note that this example only lists the condition of a single MFS, under which som
 %\subsection{A case study}
 
 \section{empirical studies}
-To evaluate the effectiveness and efficiency of our new CT framework, we conducted a series of empirical experiments on several open-source software.
+To evaluate the effectiveness and efficiency of the interleaving CT approach, we conducted a series of empirical experiments on several open-source software.
 
 \subsection{Subject programs}
 The subject programs used in our experiments are five open-source software as listed in Table \ref{subject}. Column ``Subjects" indicates the specific software. Column ``Version" indicates the specific version that are used in the following experiments. Column ``LOC" shows the number of source code lines for each software. Column ``Faults" presents the fault ID, which is used as the index to fetch the original fault description at each bug tracker for that software. Column ``Lan" shows the programming language for each software (Only the main programming language are shown).
@@ -815,9 +814,9 @@ Tcas     &  $2^{7} \times 3^{2} \times 4^{1} \times 10^{2} $ &9(16)\ 10(8)\ 11(1
 \end{table}
 In this table, Column ``inputs" depicts the input model for each version of the software, presented in the abbreviated form $\#values^{\#number\ of\ parameters} \times ...$, e.g., $2^{9} \times 3^{2} \times 4^{1}$ indicates the software has 9 parameters that can take 2 values, 2 parameters can take 3 values, and only one parameter that can take 4 values. Column ``MFS" shows the degrees of each MFS and the corresponding number which are listed in the parentheses.
 
-\subsection{Compare with Traditional First-Generation-Then-Identification approach}
+\subsection{Compare with sequential CT}
 
-After preparing the subjects software, next we will construct the experiment that can evaluate the efficiency and effectiveness of our approach. To this aim, we need to compare our framework with the traditional CT framework to see if our new framework have any advantage.
+After preparing the subjects software, next we will construct the experiment that can evaluate the efficiency and effectiveness of our approach. To this aim, we need to compare our framework with the traditional sequential CT approach to see if interleaving CT approach has any advantage.
 
 The covering array generating algorithm used in the experiment are AETG \cite{cohen1997aetg}, as it is the most common one-test-case-one-time generation algorithm. And the MFS identifying algorithm is the OFOT \cite{nie2011minimal} as discussed before. The constraints handling solver is a java SAT solver -- SAT4j \cite{le2010sat4j}.
 
@@ -852,7 +851,7 @@ $$F-measure = \frac{2 \times precise \times recall}{precise + recall}$$
 
 \subsubsection{Result and discussion}
 
-The result is listed in Table \ref{cm_elda_fglt}. In Column `Method', \emph{ncf} indicates our new CT framework and \emph{fgti} indicates the traditional first-generation-then-identification approach. The results of three coveing criteria, i.e., 2-way, 3-way, and 4-way are shown in three main columns. In each of them, the overall test cases (size), precise, recall, and f-measure are listed.
+The result is listed in Table \ref{cm_elda_fglt}. In Column `Method', \emph{ncf} indicates the interleaving CT approach and \emph{fgti} indicates the sequential CT approach. The results of three covering criteria, i.e., 2-way, 3-way, and 4-way are shown in three main columns. In each of them, the overall test cases (size), precise, recall, and f-measure are listed.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -888,7 +887,7 @@ The reason of the similarity between the quality of these two approaches is that
 
 %As not forbidden them, there is a chance that a test case will contain multiple MFS, which makes the identifying work challenging than single ones.
 
-In summary, our approach needs much less test cases than traditional first-generation-then-identification approach, and there is no decline in the quality of the identified MFS when comparing with traditional approach.
+In summary, our approach needs much less test cases than traditional sequential CT approach, and there is no decline in the quality of the identified MFS when comparing with traditional approach.
 
 %  comparing there are two shortcomings for the traditional, first, it needed much more test cases that ours, second, it has an lower quality of the identified MFS .
 %\subsection{Compare with the FDA-CIT}
@@ -941,7 +940,7 @@ Tcas    & 460800 & 1       & 1      & 1         \\ \hline
 
 
 %We further compare their execution time.
-As both the cost (number of test cases) and the quality of the identified schemas are important in practice. We combine the two metrics (\emph{size} and \emph{f-measure}) into a single one, by dividing \emph{f-measure} by \emph{size}. The normalized result of this combination metric is shown in Fig.\ref{cm_performance}. In this figure, \emph{ncf} and \emph{fglt} represent our new approach and traditional first-generation-then-identification approach. \emph{Ela} indicates the error locating array approach.
+As both the cost (number of test cases) and the quality of the identified schemas are important in practice. We combine the two metrics (\emph{size} and \emph{f-measure}) into a single one, by dividing \emph{f-measure} by \emph{size}. The normalized result of this combination metric is shown in Fig.\ref{cm_performance}. In this figure, \emph{ncf} and \emph{fglt} represent interleaving CT approach and traditional sequential CT approach. \emph{Ela} indicates the error locating array approach.
 
 \begin{figure}[htbp]
  \includegraphics[width=3.4in]{result.eps}
@@ -987,11 +986,11 @@ Our work differs from them mainly at our work focus on combining two important t
 
 
 \section{Conclusions}
-Combinatorial testing is an effective testing technique at detecting and diagnosis the failure-inducing interactions in the SUT. Traditional CT works separately at test cases generation and MFS identification. In this paper, we proposed a new CT framework that integrates these two important testing stages, which allows for both generation and identification better share each other's information. As a result, our new CT framework can provide a more efficient testing than traditional CT.
+Combinatorial testing is an effective testing technique at detecting and diagnosis the failure-inducing interactions in the SUT. Traditional CT works separately at test cases generation and MFS identification. In this paper, we proposed a new CT framework, i.e., \emph{interleaving CT}, that integrates these two important testing stages, which allows for both generation and identification better share each other's information. As a result, interleaving CT approach can provide a more efficient testing than traditional sequential CT.
 
-Empirical studies were conducted on five open-source software. The results showed that with our new CT framework, there is a significant reducing on the number of generated test cases when compared to the traditional first-generation-then-identification process, while there is no decline in the quality of the identified MFS. Further, when comparing with the ELA \cite{martinez2009locating,martinez2008algorithms}, our approach also performed better, especially with fewer test cases.
+Empirical studies were conducted on five open-source software. The results showed that with our new CT framework, there is a significant reducing on the number of generated test cases when compared to the traditional sequential CT approach, while there is no decline in the quality of the identified MFS. Further, when comparing with the ELA \cite{martinez2009locating,martinez2008algorithms}, our approach also performed better, especially with fewer test cases.
 
-As a future work, we need to extend our new CT framework with more test case generation and MFS identification algorithms, to see the extent on which our new CT framework can enhance those different CT-based algorithms. Another interesting work is to combine our new CT framework with white-box testing techniques, so that it can provide more useful information for developers to debug the system.
+As a future work, we need to extend our interleaving CT approach with more test case generation and MFS identification algorithms, to see the extent on which our new CT framework can enhance those different CT-based algorithms. Another interesting work is to combine interleaving CT approach with white-box testing techniques, so that it can provide more useful information for developers to debug the system.
 
 
 %\end{document}  % This is where a 'short' article might terminate

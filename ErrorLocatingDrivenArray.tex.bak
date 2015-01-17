@@ -357,7 +357,7 @@ In this paper, we focus on the first strategy: One test case one time as it imme
 %In order to fulfil the testing target, we choose the second object, one test one time, as we can .
 
 \subsection{Identify the failure-inducing interactions}
-To detect the existence of MFS in the SUT is still far from figuring out the root cause of the failure. As we do not know exactly which schemas in the failed test cases should be responsible for the failure. In fact, for a failing test case ($v_{1},v_{2},...,v_{n}$), there can be at most $2^{n} - 1$ possible schemas for the MFS. Hence, more test cases should be generated to identify the MFS. In CT, the main work in fault localization is to identify the failure-inducing interactions. further fault localization is desired, i.e.,
+To detect the existence of MFS in the SUT is still far from figuring out the root cause of the failure. As we do not know exactly which schemas in the failed test cases should be responsible for the failure. In fact, for a failing test case ($v_{1},v_{2},...,v_{n}$), there can be at most $2^{n} - 1$ possible schemas for the MFS. Hence, more test cases should be generated to identify the MFS. In CT, the main work in fault localization is to identify the failure-inducing interactions. So in this paper we only focus on the MFS identification, and further works of fault localization such as isolating the defect inside the source code will not be discussed.
 
 A typical MFS identification process is shown in Table \ref{ofot-identify}. This example assumes the SUT has 3 parameters, each can take 2 values. And assume the test case (1, 1, 1) failed. Then in Table \ref{ofot-identify}, as test case \emph{t} failed, and OFOT mutated one factor of the \emph{t} one time to generate new test cases: $t_{1}$ -- $t_{3}$, It found that the $t_{1}$ passed, which indicates that this test case break the MFS in the original test case \emph{t}. So the (1,-,-) should be one failure-causing factor, and as other mutating process all failed, which means no other failure-inducing factors were broken, therefore, the MFS in \emph{t} is (1,-,-).
 
@@ -385,10 +385,10 @@ This identification process mutate one factor of the original test case at a tim
 
 
 \section{Motivation example}
-This section presents the .
+%This section presents the .
+As discussed previously, the generation and identification are the most important works in CT life-cycle. How best to utilize these two activities in the CT life-cycle is of importance as it is closely impact on the quality and cost of overall software testing. In fact, most studies in CT focus on these two fields. But rather than as a whole, generation and identification are applied independently. The justification for not discussing how to cooperate these two activities is that they think the first-generation-then-identification is so natural and straightforward. As we will show below, however, that the generation and identification is so tightly correlated that they have a significant impact on the effectiveness and efficiencies of testing.
 
-
-A typical traditional generation-identification life-cycle is to first generate a $t$-way covering array. If there exists some failures that triggered by some particular schemas, then we detect some failures and should identify the failure-inducing schemas in the SUT for further bug fixing.
+A typical traditional generation-identification life-cycle is to first generate a $t$-way covering array. If there exists some failures that triggered by some particular schemas, then we detect some failures and should identify the MFS in the SUT for further bug fixing.
 
 As an example, Table \ref{tradition-gi} illustrates the process of testing a System with 4 parameters and each parameter has three values. It first generated and executed the 2-way covering array ($t_{1}$ -- $t_{9}$). Note that this covering array covered all the 2-way schemas for the SUT. And after finding that $t_{1}$, $t_{2}$, and $t_{7}$ failed during testing, it then respectively identified the MFS in $t_{1}$ ,$t_{2}$, and $t_{7}$. For $t_{1}$, it uses OFOT method to generate four additional test cases ($t_{10}$ -- $t_{13}$), and identified the MFS of $t_{1}$ is (-, 0, - , -) as only when changing the second factor of $t_{1}$ it will pass. Then it will do the same thing to $t_{2}$ and $t_{7}$, and found that (-,0, -, -) is also the MFS of $t_{2}$ and $t_{7}$.  After all, for detecting and identifying the MFS in this example SUT, we have generated 12 additional test cases(marked with star).
 %It must be noted that, when isolating the MFS of $t_{2}$, the generated extra test cases $t_{9}$ and $t_{10}$ has appeared before, so we can just reuse the previous result.
@@ -436,7 +436,7 @@ $t_{21}$* &\multicolumn{4}{l}{2  \ \ \ \  0 \ \ \ \  2  \ \ \ \ 2} & Fail \\
 \end{tabular}
 \end{table}
 
-Such life-cycle is not the best choice in practice. The first reason is that the engineers normally do not want to wait for fault localization after all the test cases are executed. The early bug fixing is appealing and can give the engineers confidence to keep on improving the quality of the software. The second reason, which is also the most important, is such life-cycle can generate many redundant and unnecessary test cases. This can be reflected in the following two aspects:
+We refer to such traditional life-cycle as \emph{\textbf{sequential CT}}. However, we think this is not the best choice in practice. The first reason is that the engineers normally do not want to wait for fault localization after all the test cases are executed. The early bug fixing is appealing and can give the engineers confidence to keep on improving the quality of the software. The second reason, which is also the most important, is such life-cycle can generate many redundant and unnecessary test cases. This can be reflected in the following two aspects:
 
 1) The test cases generated in the identification stage can also contribute some coverage, i.e., the schemas appear in the passing test cases in the identification stage may have already been covered in the test cases generation stage.  For example, when we identify the MFS of $t_{1}$ in Table \ref{tradition-gi}, the schema (0, 1, -, -) contained in the extra passing test case $t_{11}$ -- (0, 1, 0, 0) has already been appeared in the passing test case $t_{2}$ -- (0, 1, 1, 1). In other word, if we firstly identify the MFS of $t_{1}$, then $t_{2}$ is not a good choice as it doesn't covered as many 2-degree schemas as possible. For example, (1, 1, 1, 1) is better than this test case at contributing more coverage.
 
@@ -444,21 +444,20 @@ Such life-cycle is not the best choice in practice. The first reason is that the
 
 For all of this, a more effective and efficient framework is desired.
 \section{Interleaving Approach}
-As discussed previously, the generation and identification are the most important works in CT life-cycle. How best to utilize these two activities in the CT life-cycle is of importance as it is closely impact on the quality and cost of overall software testing. In fact, most studies in CT focus on these two fields. But rather than as a whole, generation and identification are applied independently. The justification for not discussing how to cooperate these two activities is that they think the first-generation-then-identification is so natural and straightforward. As we will show below, however, that the generation and identification is so tightly correlated that they have a significant impact on the effectiveness and efficiencies of testing.
 
+To overcome such deficiencies in traditional CT, we propose a new CT generation-identification framework -- \emph{\textbf{Interleaving CT}}. Our new framework aims at enhancing the interaction of generation and identification to reduce the unnecessary and invalid test cases discussed previously.
 %focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-localization is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
 
 %\subsection{Traditional generation-identification process}
 
 
 \subsection{Overall framework}
-To overcome such deficiencies in traditional CT, we propose a new CT generation-identification framework. Our new framework aims at enhancing the interaction of generation and identification to reduce the unnecessary and invalid test cases discussed previously. The basic outline of our framework is illustrated in Figure \ref{new-life}.
+ The basic outline of our framework is illustrated in Figure \ref{new-life}.
 \begin{figure}
  \includegraphics[width=3.4in]{baicOutline.eps}
-\caption{New Framework of CT}
+\caption{Interleaving CT}
 \label{new-life}
 \end{figure}
-
 In specific, this new framework works as follows: First, it will check whether all the needed schemas is covered or not. Commonly the target of CT is to cover all the $t$-degree schemas, with $t$ normally be assigned as 2 or 3. Then if the current coverage is not satisfied, it will generate a new test case to cover as many uncovered schemas as possible. After that, it will execute this test case with the outcome of the execution either be pass (executed normally, i.e., doesn't triggered an exception, violate the expected oracle or the like) or fail (on the contrary). When the test case passes the execution, we will recompute the coverage state, as all the schemas in the passing test case are regarded as error-irrelevant. As a result, the schemas that wasn't covered before will be determined to be covered if it is contained in this newly generated test case. Otherwise if the test case fails, then we will start the MFS identification module to identify the MFS in this failing test case. One point that needs to be noted is that if the test case fails, we will not directly change the coverage state, as we can not figure out which schemas are responsible to this failure among all the schemas in this test case until we identify them.
 
 The identification module works almost the same way as traditional independent MFS identify process, i.e., repeats generating and executing additional test cases until it can get enough information to diagnose the MFS in the original failing test case. The only difference from traditional MFS identifying process is that we augment it by counting the coverage this module have contributed to the overall coverage. In detail, when the additional test case passes, we will label the schemas in these test cases as covered if it had not been covered before. And when the MFS is found at the end of this module, we will first set them as forbidden schemas that latter generated test cases should not contain (Otherwise the test case must fail and it cannot contribute to more coverage), second all the $t$-degree schemas that are \emph{related} to these MFS will be set as covered. Here the \emph{related} schemas indicate the following three types of $t$-degree schemas:
@@ -643,7 +642,7 @@ The identification process should also be adjusted to adapt to the new CT framew
   \end{algorithmic}
 \end{algorithm}
 
-We can observe that this algorithm is very similar to Algorithm 1, except that this algorithm introduce the variables $ f_{original}$ and $s_{fixed}$. These two variables are important to MFS identification. Generally, the target of the MFS identification process is to distinguish the failure-inducing schemas from those error-irrelevant schemas in a failing test case. For this, the MFS identification process need to generate and execute additional test cases to compare to original failing test case $f_{original}$. The additional test case must contain some fixed schema $s_{fixed}$ in the $f_{original}$, and other part of the additional test case must be different from $f_{original}$ (line 4).  By doing this, this identification process can check whether the $fixed$ are failure-inducing or not. For example, in Table \ref{ofot-identify}, the original failing test case is (1, 1, 1 ) and the fixed part for additional test case $t_{1}$ (0, 1, 1) is (-, 1, 1). After the $t_{1}$ passed during testing, we can get that the fixed schema (-, 1, 1) should not be the failure-inducing schema.
+We can observe that this algorithm is very similar to Algorithm 1, except that this algorithm introduce the variables $ f_{original}$ and $s_{fixed}$. These two variables are important to MFS identification. Generally, the target of the MFS identification process is to distinguish the MFS from those error-irrelevant schemas in a failing test case. For this, the MFS identification process need to generate and execute additional test cases to compare to original failing test case $f_{original}$. The additional test case must contain some fixed schema $s_{fixed}$ in the $f_{original}$, and other part of the additional test case must be different from $f_{original}$ (line 4).  By doing this, this identification process can check whether the $fixed$ are failure-inducing or not. For example, in Table \ref{ofot-identify}, the original failing test case is (1, 1, 1 ) and the fixed part for additional test case $t_{1}$ (0, 1, 1) is (-, 1, 1). After the $t_{1}$ passed during testing, we can get that the fixed schema (-, 1, 1) should not be the MFS.
 
 Traditional MFS identification process just need to ensure that the $mutant$ part have different values from original failing test cases. We augmented this by selecting values that can cover as more uncovered schemas as possible (line 6) and to ensure the test case does not contain some identified MFS (line 7 - 8).
 %
@@ -815,7 +814,7 @@ Tcas     &  $2^{7} \times 3^{2} \times 4^{1} \times 10^{2} $ &9(16)\ 10(8)\ 11(1
 \end{table}
 In this table, Column ``inputs" depicts the input model for each version of the software, presented in the abbreviated form $\#values^{\#number\ of\ parameters} \times ...$, e.g., $2^{9} \times 3^{2} \times 4^{1}$ indicates the software has 9 parameters that can take 2 values, 2 parameters can take 3 values, and only one parameter that can take 4 values. Column ``MFS" shows the degrees of each MFS and the corresponding number which are listed in the parentheses.
 
-\subsection{Compare with Traditional First-Generation-Then-Identification approach}
+\subsection{Compare with sequential CT}
 
 After preparing the subjects software, next we will construct the experiment that can evaluate the efficiency and effectiveness of our approach. To this aim, we need to compare our framework with the traditional CT framework to see if our new framework have any advantage.
 
@@ -987,7 +986,7 @@ Our work differs from them mainly at our work focus on combining two important t
 
 
 \section{Conclusions}
-Combinatorial testing is an effective testing technique at detecting and diagnosis the failure-inducing schemas in the SUT. Traditional CT works separately at test cases generation and MFS identification. In this paper, we proposed a new CT framework that integrates these two important testing stages, which allows for both generation and identification better share each other's information. As a result, our new CT framework can provide a more efficient testing than traditional CT.
+Combinatorial testing is an effective testing technique at detecting and diagnosis the failure-inducing interactions in the SUT. Traditional CT works separately at test cases generation and MFS identification. In this paper, we proposed a new CT framework that integrates these two important testing stages, which allows for both generation and identification better share each other's information. As a result, our new CT framework can provide a more efficient testing than traditional CT.
 
 Empirical studies were conducted on five open-source software. The results showed that with our new CT framework, there is a significant reducing on the number of generated test cases when compared to the traditional first-generation-then-identification process, while there is no decline in the quality of the identified MFS. Further, when comparing with the ELA \cite{martinez2009locating,martinez2008algorithms}, our approach also performed better, especially with fewer test cases.
 
