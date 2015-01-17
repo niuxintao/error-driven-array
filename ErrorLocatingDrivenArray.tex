@@ -477,9 +477,28 @@ As we all know, the terminating condition of the CT framework is to cover all th
 %  Another important connection is that when we find the MFS in the failing test cases, there are two work needed to be completed: 1) we should make them as the constraint, such that the latter generated test cases should not contained this MFS. 2) the coverage this MFS and the schemas that related to this MFS should also set to be covered, as since we should not contain the MFS, then these schemas will not be covered. Then to make the overall generation process stop, we need to set them as "covered".
 \subsection{Details of the augmentation of the two CT activities}
 
-More details of these two important parts are as follows:
+%More details of these two important parts are as follows:
 1) \emph{Generation} :
 We adopt the one-test-case-one-time method as the basic skeleton of the generation process. And as discussed in section 3.1, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden tuples. Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT \cite{cohen2007interaction,cohen2008constructing}, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
+
+
+$$t \leftarrow  Construct (\mathcal{P},\Omega ,  \xi) $$
+
+The  three factors determine the. P determines the parameters and their values, which indicates a valid test case. $\Omega$ gives the uncovered schemas currently. Note that the is to . To the oppiste , each test case. It is noted that for a . Thus some random factor $xi$ is needed to the local optimization. 
+
+This will transfer to the 
+
+
+$$t \leftarrow  Construct (\mathcal{P},\Omega ,  \xi, \mathcal{M}) $$
+
+$\mathcal{M}$ indicates the MFS that are currently identified. And should not be contained.
+
+
+2) \emph{MFS identification} :
+
+$$t \leftarrow  mutant (\mathcal{P}, t_{o},\Delta ) $$
+
+ 
 
 \begin{algorithm}
   \caption{Generate One test Case}
