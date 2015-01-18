@@ -132,7 +132,7 @@
        \affaddr{ Software Technology}\\
        \affaddr{Nanjing University}\\
        \affaddr{China, 210023}\\
-       \email{changhainie@nju.edu.cn}\\
+       \email{niuxintao@gmail.com}\\
   %     \email{changhainie@nju.edu.cn}
 % 2nd. author
 %\alignauthor
@@ -478,12 +478,9 @@ As we all know, the terminating condition of the CT framework is to cover all th
 \subsection{The augmentation of the two CT activities}
 
 %More details of these two important parts are as follows:
-1) \emph{Generation} :
+(1) \emph{Generation} :
 We adopt the \emph{one test case one time} method as the basic skeleton of the generation process. Originally, the generation of one test case can be formulated in the \ref{eq1}.
-
 \begin{displaymath} t \leftarrow  select (\mathcal{T}_{all}, \Omega ,  \xi) \tag{EQ1} \label{eq1} \end{displaymath}
-
-
 
 There are three factors determine the selection of test case $t$. $\mathcal{T}_{all}$ represents all the valid test cases that can be selected to be executed. Usually the test cases that have been tested will not be included as they have no more contribution for the coverage. $\Omega$ indicates the set of schemas that have not been covered yet. $\xi$ is a random factor. Commonly the CT generation approaches prefer to select a test case that can cover as many uncovered schemas as possible. This greedy selection process does not guarantee an optimal solution, i.e., the final size of the set of test cases is not guaranteed to be minimal, so the random factor $\xi$ is used to help to escape from localization trap.
 
@@ -491,12 +488,11 @@ There are three factors determine the selection of test case $t$. $\mathcal{T}_{
 
 
 As discussed in section 3.1, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden schemas. In other words, the candidate test cases that can be selected are reduced, because those test cases that contain should not be appeared next. Formally,  let $\mathcal{T}_{MFS}$ indicates the set of test cases that contain the currently identified MFS, then the test case selection are augmented as \ref{eq2}.
-
 \begin{displaymath} t \leftarrow  select (\mathcal{T}_{all} - \mathcal{T}_{MFS}, \Omega ,  \xi ) \tag{EQ2} \label{eq2} \end{displaymath}
 
 In this formula, the only difference from \ref{eq1} is that the candidate test cases that can be selected are changed to be $\mathcal{T}_{all} - \mathcal{T}_{MFS}$, which excludes $\mathcal{T}_{MFS}$ from candidate test cases.
 
-In practice, it is impossible to thoroughly search the exhaustive candidate test cases $\mathcal{T}_{all}$ to get one test case $t$. Hence, some heuristic methods are used to simplify the selection. For example,  AETG \cite{cohen1997aetg} select each value to be . Correspondingly, approaches normally not , as a instead, they usually use a constraint solver to avoid the forbidden schemas, And like constraints handling Cohen's AETG-SAT \cite{cohen2007interaction,cohen2008constructing}.
+In practice, it is impossible to thoroughly search the exhaustive candidate test cases $\mathcal{T}_{all}$ to get one test case $t$. Hence, some heuristic methods are used to simplify the selection. For example, AETG \cite{cohen1997aetg} successively assigns the value to each parameter to form a test case (The order of assignment are by random). The value to be assigned is the one that appears in the greatest number of uncovered schemas. Correspondingly, when considering not generating the test cases in $\mathcal{T}_{MFS}$, it is common to utilize a constraint solver to avoid the forbidden schemas \cite{cohen2007interaction,cohen2008constructing}.
 
 %Our test case generation with consideration for constraints is inspired by the  based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
 
@@ -511,117 +507,14 @@ In practice, it is impossible to thoroughly search the exhaustive candidate test
 %$\mathcal{M}$ indicates the MFS that are currently identified. And should not be contained.
 
 
-2) \emph{MFS identification} :
+(2) \emph{MFS identification} : Traditional MFS identification aims at finding the MFS in one failing test case. As discussed before, . Originally, one additional test case generated in the identification process can be formulated as \ref{eq3}.
+\begin{displaymath}t \leftarrow  mutant (\mathcal{P}, t_{failing}, \Delta )  \tag{EQ3} \label{eq3} \end{displaymath}
+Normally, 
+\begin{displaymath}\mathcal{T}_{candidate} =  \{\ t\ |\ t \leftarrow  mutant (\mathcal{P}, t_{failing}, \Delta )\ \} \tag{EQ4} \label{eq4} \end{displaymath}
+\begin{displaymath}t \leftarrow  select (\mathcal{T}_{candidate} - \mathcal{T}_{MFS}, \Omega ,  \xi )  \tag{EQ5} \label{eq5} \end{displaymath}
 
-Normally, $$t \leftarrow  mutant (\mathcal{P}, t_{failing}, \Delta ) $$.
-
-
-To $$\mathcal{T}_{candidate} =  \{\ t\ |\ t \leftarrow  mutant (\mathcal{P}, t_{failing}, \Delta ) \}$$
-
-$$t \leftarrow  select (\mathcal{T}_{candidate} - \mathcal{T}_{MFS}, \Omega ,  \xi ) $$
-
-
-
-
-2) \emph{Identification} : %只选fixed，然后其余相似，然后重点说明一下fixed
 The identification process should also be adjusted to adapt to the new CT framework. From Figure \ref{new-life}, we can find some part of this process to identify the MFS is similar to that of the $generation$ module, i.e., they all need to repeat generating test cases until reach some criteria. As for the additional test cases generated in the identification process, we should also take care that it should not contain the previously identified MFS. To achieve this goal, the constraints checking process is also needed like Algorithm 1. Another point that needs to be noted is that the additional test cases generated in the identification process can also contribute the coverage. As the overall testing process aims to cover all the $t$-degree schemas, so if those additional test cases can cover more uncovered $t$-degree schemas, the overall testing process can stop earlier.  As a result, the overall test cases generated can be reduced. Based on the two points, the additional test cases generation in the CT identification should be refined as in Algorithm 2.
-%\begin{algorithm}
-%  \caption{Test Case generation in identification process}
-%  \begin{algorithmic}[1]
-%     \Require
-%     $Params$ \Comment{Parameters for the SUT}
-%
-%     $Values$ \Comment{Corresponding values for each parameter}
-%
-%     $f_{original}$ \Comment{original failing test case}
-%  %   $S_{isolated}$ \Comment{currently identified MFS}
-%
-%
-%     $S_{MFS}$ \Comment{previously identified MFS}
-%
-%     $s_{fixed}$ \Comment{fixed part that should not be changed}
-%
-%     $T_{uncovered}$ \Comment{the schemas that are still uncovered}
-%%
-%%    $Param$ \Comment{Parameters (and their values)}
-%
-%
-%%     \Ensure  $t_{new}$ \Comment{the regenerate test case}
-%
-%     \Ensure  $best$ \Comment{the generated additional test case}
-%
-%     \State $Candidate_{test} \leftarrow empty Set$
-%
-%      \While{$Candidate_{test}$ is not full}
-%       \State $test \leftarrow emptyTuple(Params.size)$
-%           \State $s_{mutant} \leftarrow f_{original} - s_{fixed}$
-%       \ForAll {$p \in s_{mutant}$}
-%           \State   $v \leftarrow select(T_{uncovered},Values,p)$
-%       %    \While{}
-%%           \EndWile{}
-%       %   \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-%           \WhileNoDo{(  \textbf{not} isSatisfied(v, $S_{MFS}$) }
-%    \StatexIndent[2]    || $f_{original}$.contain(p,v) )\algorithmicdo
-%   % \While{ }
-%            \State  $v \leftarrow repick(T_{uncovered},Values,p)$
-%          \EndWhile
-%       \EndFor
-%
-%%       \ForAll {$factor \in test$}
-%%           \State   $value \leftarrow select(T_{uncovered},Param,opt)$
-%%            \While{\textbf{not} $CheckSat(test, S_{MFS})$}
-%%              \State $value \leftarrow repick(T_{uncovered},Param,opt) $
-%%           \EndWhile
-%%           \State $test.set(factor, value)$
-%%       \EndFor
-%        \State $Candidate_{test}.append(test)$
-%       \EndWhile
-%       \State $best \leftarrow select(Candidate_{test})$
-%
-% %    \While{\textbf{not} MeetEndCriteria()}
-%%       \State $s_{mutant} \leftarrow f_{original} - s_{fixed}$
-%%       \ForAll {$opt \in s_{mutant}$}
-%%          \State $i = getIndex(Param,opt) $
-%%          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-%%          \While{ \textbf{not} CheckSat(test, $S_{MFS}$)}
-%%            \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-%%          \EndWhile
-%%       \EndFor
-%%       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
-%%       \State $result \leftarrow execute(t_{new})$
-%%       \If {$result == PASS\ or\ result ==  F_{m}$}
-%%         \State \Return $t_{new}$
-%%       \Else
-%%         \State continue
-%%       \EndIf
-%%     \EndWhile
-%
-%     \State \Return \emph{best}
-%    % \While{\textbf{not} FindMFS()}
-%%       \State $s_{mutant} \leftarrow t_{original} - s_{fixed}$
-%%       \State $test \leftarrow initial(s_{fixed})$
-%%       \ForAll {$opt \in s_{mutant}$}
-%%          \State $i = getIndex(Param,opt) $
-%%          \State $opt \leftarrow opt' \ s.t.\ opt' \in Param[i]\ and\ opt' != opt$
-%%          \While{\textbf{not} $CheckSat(test, S_{MFS})$}
-%%              \State $value \leftarrow repick(Param,i) $
-%%           \EndWhile
-%%           \State $test.set(factor, value)$
-%%       \EndFor
-%%       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
-%%       \State $result \leftarrow execute(t_{new})$
-%%       \If {$result == PASS$}
-%%         \State  $Update(t_{uncovered})$
-%%       \Else
-%%         \State continue
-%%       \EndIf
-%%     \EndWhile
-%%
-%%     \State $S_{MFS}.append(newMFS)$.
-%%     \State $t_{newCovered} \leftarrow FindingTschemas(S_{MFS})$
-%%     \State $t_{uncovered}.reduce(t_{newCovered})$
-%  \end{algorithmic}
-%\end{algorithm}
+
 
 We can observe that this algorithm is very similar to Algorithm 1, except that this algorithm introduce the variables $ f_{original}$ and $s_{fixed}$. These two variables are important to MFS identification. Generally, the target of the MFS identification process is to distinguish the MFS from those error-irrelevant schemas in a failing test case. For this, the MFS identification process need to generate and execute additional test cases to compare to original failing test case $f_{original}$. The additional test case must contain some fixed schema $s_{fixed}$ in the $f_{original}$, and other part of the additional test case must be different from $f_{original}$ (line 4).  By doing this, this identification process can check whether the $fixed$ are failure-inducing or not. For example, in Table \ref{ofot-identify}, the original failing test case is (1, 1, 1 ) and the fixed part for additional test case $t_{1}$ (0, 1, 1) is (-, 1, 1). After the $t_{1}$ passed during testing, we can get that the fixed schema (-, 1, 1) should not be the MFS.
 
@@ -631,7 +524,7 @@ Traditional MFS identification process just need to ensure that the $mutant$ par
 %
 %This is mainly based on the fact that the machinaim of MFS isoaltion is \emph{comparing}, that is, to compare the different schemas between the passing and failing test cases. And the fixed part is refer to the common part that is validated to error-irrelevant or not.
 
-After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS themselves}, \emph{super-schemas} and \emph{implicit forbidden schemas}, should be set as covered to make the overall CT process stoppable. The algorithm that seeks to handling these three types of schemas is listed in Algorithm 3.
+After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS themselves}, \emph{super-schemas} and \emph{implicit forbidden schemas}, should be set as covered to make the overall CT process stoppable. The algorithm that seeks to handling these three types of schemas is listed in Algorithm 1.
 
 %For example, consider the system has three parameters, and each parameter has two values that can be assigned, when we find the (0 1 -) and (1 - 0) are the MFS for this system, the schema (- 1 0) should also not appear, as when we generate test case that contain (- 1 0), i.e., either it contain MFS (0 1 -) for test case (0 1 0) or contain the MFS (1 - 0) for test case (1 1 0). And if we find the lower degree MFS like (0 - -), the forbidden schemas will be even more, as all the two-degree schemas contain this 1-degree schema should set to be covered. This problem is called the implicit constraints, firstly proposed by Cohen.
 
@@ -794,7 +687,7 @@ Tcas     &  $2^{7} \times 3^{2} \times 4^{1} \times 10^{2} $ &9(16)\ 10(8)\ 11(1
 \end{tabular}
 
 \end{table}
-In this table, Column ``inputs" depicts the input model for each version of the software, presented in the abbreviated form $\#values^{\#number\ of\ parameters} \times ...$, e.g., $2^{9} \times 3^{2} \times 4^{1}$ indicates the software has 9 parameters that can take 2 values, 2 parameters can take 3 values, and only one parameter that can take 4 values. Column ``MFS" shows the degrees of each MFS and the corresponding number which are listed in the parentheses.
+In this table, Column ``inputs" depicts the input model for each version of the software, presented in the abbreviated form $\#values^{\#number\ of\ parameters} \times ...$, e.g., $2^{9} \times 3^{2} \times 4^{1}$ indicates the software has 9 parameters that can take 2 values, 2 parameters can take 3 values, and only one parameter that can take 4 values. Column ``MFS" shows the degrees of each MFS and the corresponding number which are listed in the parentheses. The details of the specific options and fault information are posted in .
 
 \subsection{Compare with sequential CT}
 

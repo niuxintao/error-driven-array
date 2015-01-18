@@ -132,7 +132,7 @@
        \affaddr{ Software Technology}\\
        \affaddr{Nanjing University}\\
        \affaddr{China, 210023}\\
-       \email{changhainie@nju.edu.cn}\\
+       \email{niuxintao@gmail.com}\\
   %     \email{changhainie@nju.edu.cn}
 % 2nd. author
 %\alignauthor
@@ -478,32 +478,32 @@ As we all know, the terminating condition of the CT framework is to cover all th
 \subsection{The augmentation of the two CT activities}
 
 %More details of these two important parts are as follows:
-1) \emph{Generation} :
-We adopt the one-test-case-one-time method as the basic skeleton of the generation process. Originally, the generation of one test case can be formulated in the following formula:
+(1) \emph{Generation} :
+We adopt the \emph{one test case one time} method as the basic skeleton of the generation process. Originally, the generation of one test case can be formulated in the \ref{eq1}.
+
+\begin{displaymath} t \leftarrow  select (\mathcal{T}_{all}, \Omega ,  \xi) \tag{EQ1} \label{eq1} \end{displaymath}
 
 
 
-$$t \leftarrow  select (\mathcal{T}_{all}, \Omega ,  \xi) $$
-
-
-There are three factors determine the selection of test case $t$. $\mathcal{T}_{all}$ represents all the valid test cases that can be chosen to be executed. Usually the test cases that have been tested will not be included as they have no more contribution for the coverage. $\Omega$ indicates the set of schemas that have not been covered yet. $\xi$ is a random factor. Commonly the CT generation approaches prefer to select a test case that can cover as many uncovered schemas as possible. This greedy selection process does not guarantee an optimal solution, i.e., the final size of the set of test cases is not guaranteed to be minimal, so the random factor $\xi$ is used to help to escape from localization trap.
+There are three factors determine the selection of test case $t$. $\mathcal{T}_{all}$ represents all the valid test cases that can be selected to be executed. Usually the test cases that have been tested will not be included as they have no more contribution for the coverage. $\Omega$ indicates the set of schemas that have not been covered yet. $\xi$ is a random factor. Commonly the CT generation approaches prefer to select a test case that can cover as many uncovered schemas as possible. This greedy selection process does not guarantee an optimal solution, i.e., the final size of the set of test cases is not guaranteed to be minimal, so the random factor $\xi$ is used to help to escape from localization trap.
 
 %the parameters and their values, which indicates a valid test case. $\Omega$ gives the uncovered schemas currently. Note that the is to . To the oppiste , each test case. It is noted that for a . Thus some random factor $xi$ is needed to the local optimization.
 
 
-As discussed in section 3.1, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden schemas. In other words, the candidate test cases that can be selected are reduced, because those test cases that contain should not be appeared next. Formally, we 
-So it changed to
+As discussed in section 3.1, we should account for the MFS to let them not appear in the latter generated test cases, which should be handled as the constraints--forbidden schemas. In other words, the candidate test cases that can be selected are reduced, because those test cases that contain should not be appeared next. Formally,  let $\mathcal{T}_{MFS}$ indicates the set of test cases that contain the currently identified MFS, then the test case selection are augmented as \ref{eq2}.
 
-$$t \leftarrow  select (\mathcal{T}_{all} - \mathcal{T}_{MFS}, \Omega ,  \xi ) $$
+\begin{displaymath} t \leftarrow  select (\mathcal{T}_{all} - \mathcal{T}_{MFS}, \Omega ,  \xi ) \tag{EQ2} \label{eq2} \end{displaymath}
 
-In this formula, $\mathcal{T}_{MFS}$ represents those test cases that contain the currently identified MFS. So we just need to .
+In this formula, the only difference from \ref{eq1} is that the candidate test cases that can be selected are changed to be $\mathcal{T}_{all} - \mathcal{T}_{MFS}$, which excludes $\mathcal{T}_{MFS}$ from candidate test cases.
 
-Our test case generation with consideration for constraints is inspired by the Cohen's AETG-SAT \cite{cohen2007interaction,cohen2008constructing}, based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
+In practice, it is impossible to thoroughly search the exhaustive candidate test cases $\mathcal{T}_{all}$ to get one test case $t$. Hence, some heuristic methods are used to simplify the selection. For example, AETG \cite{cohen1997aetg} successively assigns the value to each parameter to form a test case (The order of assignment are by random). The value to be assigned is the one that appears in the greatest number of uncovered schemas. Correspondingly, the test cases $\mathcal{T}_{MFS}$  approaches normally not , as a instead, they usually use a constraint solver to avoid the forbidden schemas \cite{cohen2007interaction,cohen2008constructing}.
+
+%Our test case generation with consideration for constraints is inspired by the  based on which we give an more general approach that can be applied on more one-test-one-time generation methods.  The detail of how to generate one test case is described in Algorithm 1.
 
 
-
-
-This will transfer to the
+%
+%
+%This will transfer to the
 
 
 
@@ -511,79 +511,17 @@ This will transfer to the
 %$\mathcal{M}$ indicates the MFS that are currently identified. And should not be contained.
 
 
-2) \emph{MFS identification} :
+(2) \emph{MFS identification} :
 
 Normally, $$t \leftarrow  mutant (\mathcal{P}, t_{failing}, \Delta ) $$.
 
 
-To $$\mathcal{T}_{candidate} =  \{ t | t \leftarrow  mutant (\mathcal{P}, t_{failing}, \Delta ) \}$$
+To $$\mathcal{T}_{candidate} =  \{\ t\ |\ t \leftarrow  mutant (\mathcal{P}, t_{failing}, \Delta ) \}$$
 
 $$t \leftarrow  select (\mathcal{T}_{candidate} - \mathcal{T}_{MFS}, \Omega ,  \xi ) $$
 
 
 
-%\begin{algorithm}
-%  \caption{Generate One test Case}
-%  \begin{algorithmic}[1]
-%     \Require
-%     $Params$ \Comment{Parameters for the SUT}
-%
-%     $Values$ \Comment{Corresponding values for each parameter}
-%
-%     $S_{MFS}$ \Comment{the set of MFS that currently identified}
-%
-%     $T_{uncovered}$ \Comment{the schemas that are still uncovered}
-%     %$s_{fixed}$ \Comment{fixed part}
-%
-%     \Ensure  $best$ \Comment{the generated test case}
-%
-%    % \While{\textbf{not} $t_{uncovered}$ is not empty}
-%      \State $Candidate_{test} \leftarrow empty Set$
-%      \While{$Candidate_{test}$ is full}
-%       \State $test \leftarrow emptyTuple(Params.size)$
-%       \ForAll {$p \in Params$}
-%           \State   $v \leftarrow select(T_{uncovered},Values, p)$
-%            \While{\textbf{not} $isSatisfied(v, S_{MFS})$}
-%              \State $v \leftarrow repick(T_{uncovered},Values,p) $
-%           \EndWhile
-%           \State $test.set(p, v)$
-%       \EndFor
-%        \State $Candidate_{test}.append(test)$
-%       \EndWhile
-%       \State $best \leftarrow select(Candidate_{test})$
-%%       \State $t_{new} \leftarrow s_{fixed} \bigcup s_{mutant} $
-%%       \State $result \leftarrow execute(t_{new})$
-%%       \If {$result == PASS\ or\ result ==  F_{m}$}
-%%         \State \Return $t_{new}$
-%%       \Else
-%%         \State continue
-%%       \EndIf
-% %   \EndWhile
-%
-%     \State \Return $best$
-%  \end{algorithmic}
-%\end{algorithm}
-%
-%This algorithm first gives a candidate set which initially is set to be empty (line 1). We lastly will fill up the set and select a best test case according to some criteria (line 13). For greedy algorithms like AETG \cite{cohen1997aetg} this criteria may be the test case which contain the most uncovered schemas.  A candidate test case in this set is constructed by assigning specific values to each parameter in this test case. It is noted that we didn't specify that in which order these factors should be assigned, as this varies with different One-test-one-time generation methods. For each parameter under assignment (line 4), the value that is selected must satisfy two requirements: first, it should ensure that the test case under construction could cover as many uncovered schemas as possible (line 5); second, it must ensure that the test case under construction should \textbf{not} contain any MFS (line 6 - 8).
-
-
-%The first requirement is usually fulfilled by some heuristic selection, e.g., to choose the value for the parameter that is contained in the most uncovered schemas \cite{cohen1997aetg}. To fulfill the second requirement, a constraint satisfaction modeling is needed. A general model is as following:
-%
-%\begin{alignat}{2}
-%& X = { P_{1}, P_{2}, P_{3}, P_{n} } \\
-%& D = { V_{1}, V_{2}, ... V_{n} } \\
-%& C = { C_{MFS},C_{assignment}}
-%%\end{aligned}
-%\end{alignat}
-%
-%In this formula, $X$ is the parameters in the SUT and $V$ is a set of the respective domains of values that each parameter can take. $C$ is the set of constraints. Then this model evaluates that whether a test case can be found, i.e., each parameter $P_{i}$ takes a specific value $v_{i}$ ($v_{i} \in V_{i}$), so that it will not violate any constraint in $C$. For the constraints in $C$,  $C_{MFS}$ indicates those identified MFS that should not be contained in the test case.  For example, if (- 1 - 0) is the MFS, it will be transformed as forbidden rule $\urcorner ( P_{2} = 1\ \&\&\ P_{4} = 0)$. $C_{assignment}$ indicates these parameters that have been assigned values. For example, if we have assigned parameter $P_{i}$ with value $v_{i}$, and $P_{j}$ with $d_{j}$, then this constraint will be formulated as $(P_{i} = v_{i}\ \&\&\ P_{j} = v_{j})$. Note that if we can not find a test case that fulfill this constraint satisfaction formula, it means that the values that have been assigned to those parameters, i.e., $C_{assignment}$, are invalid.
-%
-%So when using this model, we can check whether a value should be assigned to the current parameter(line 6) by putting it into the $C_{assignment}$. Note that the constraints checking part of our algorithm does not aim to optimising for the performance like running-time, iteration number or the like. Some study \cite{cohen2008constructing}, by exploiting the SAT history or setting the threshold, can significantly improve such performance. In this paper, however, we will not discuss the details for those techniques. Instead, we want to make the overall generation process more general and fit for the framework listed in Figure \ref{new-life}.
-
-%However, our algorithm is powerful enough and properly adaptively to the framework we proposed.
-% as we think to ,  is the most ada way for . We adopt the Need constraint.  Inspired by the Constraint AETG work by Cohen, we .
-
-2) \emph{Identification} : %只选fixed，然后其余相似，然后重点说明一下fixed
 The identification process should also be adjusted to adapt to the new CT framework. From Figure \ref{new-life}, we can find some part of this process to identify the MFS is similar to that of the $generation$ module, i.e., they all need to repeat generating test cases until reach some criteria. As for the additional test cases generated in the identification process, we should also take care that it should not contain the previously identified MFS. To achieve this goal, the constraints checking process is also needed like Algorithm 1. Another point that needs to be noted is that the additional test cases generated in the identification process can also contribute the coverage. As the overall testing process aims to cover all the $t$-degree schemas, so if those additional test cases can cover more uncovered $t$-degree schemas, the overall testing process can stop earlier.  As a result, the overall test cases generated can be reduced. Based on the two points, the additional test cases generation in the CT identification should be refined as in Algorithm 2.
 %\begin{algorithm}
 %  \caption{Test Case generation in identification process}
