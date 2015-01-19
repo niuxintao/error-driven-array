@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  19 JAN 2015 21:27
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  20 JAN 2015 05:26
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -371,12 +371,6 @@ Requested font "aeti9" at 9.0pt
 
 
 ]
-Overfull \hbox (11.89375pt too wide) in paragraph at lines 214--215
-\T1/aer/m/n/9 fault lo-cal-iza-tion stages, we con-jec-ture that the first-gene
-ration-
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 File: CT_lifecircle.eps Graphic file (type eps)
@@ -396,28 +390,25 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 408--409
 [][] 
  []
 
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5]
+[4] [5]
 Overfull \hbox (6.50392pt too wide) in paragraph at lines 476--477
 []\T1/aer/m/n/9 After the MF-S are i-den-ti-fied, some re-lat-ed $\OML/cmm/m/it
 /9 t$\T1/aer/m/n/9 -degree schemas,
  []
 
 [6] [7]
-Overfull \hbox (10.08412pt too wide) in paragraph at lines 684--699
+Overfull \hbox (34.68054pt too wide) in paragraph at lines 686--701
  [] 
  []
 
+[8]
 File: result.eps Graphic file (type eps)
-<result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 767--768
+ <result.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 769--770
 [][] 
  []
 
-[8] [9]
-(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
+[9] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 LaTeX Font Info:    Try loading font information for T1+aett on input line 91.
 
 (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
@@ -428,17 +419,18 @@ Requested font "aett9" at 9.0pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [10])
-[11
+ [10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
+) [11]
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2910 strings out of 430478
- 33202 string characters out of 3191502
+ 2912 strings out of 430478
+ 33243 string characters out of 3191502
  98390 words of memory out of 3000000
- 5998 multiletter control sequences out of 15000+200000
+ 6000 multiletter control sequences out of 15000+200000
  41932 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,10n,26p,2116b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,26p,2053b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on ErrorLocatingDrivenArray.pdf (11 pages).

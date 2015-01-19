@@ -447,4 +447,18 @@ ISSN={0098-5589}
   year={2006},
   organization={IEEE}
 }
-http://tomcat.apache.org/tomcat-7.0-doc/config/http.html
+@inproceedings{kuhn2002investigation,
+  title={An investigation of the applicability of design of experiments to software testing},
+  author={Kuhn, D Richard and Reilly, Michael J},
+  booktitle={Software Engineering Workshop, 2002. Proceedings. 27th Annual NASA Goddard/IEEE},
+  pages={91--95},
+  year={2002},
+  organization={IEEE}
+}
+@misc{tomcatconnector,
+  author = {Konstantin Kolinko},
+  title = {{The HTTP Connector}},
+  howpublished = "\url{http://tomcat.apache.org/tomcat-7.0-doc/config/http.html}",
+  year = {2014},
+  note = "[Online; accessed 3-Nov-2014]"
+}

@@ -22,7 +22,7 @@ line_2, = plt.plot(x, y2, ls="--", marker="d", mfc="None",   color="k")
 line_3, = plt.plot(x, y3, ls="-.", marker="o", mfc="None",   color="k")
 
 #configure legend
-fig.legend([line_1, line_2, line_3], ['ncf', 'fglt','ela'] )
+fig.legend([line_1, line_2, line_3], ['ict', 'sct','ela'] )
 
 
 #configure axis

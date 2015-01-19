@@ -102,6 +102,19 @@ D.~R. Kuhn and V.~Okun.
 \newblock In {\em Software Engineering Workshop, 2006. SEW'06. 30th Annual
   IEEE/NASA}, pages 153--158. IEEE, 2006.
 
+\bibitem{kuhn2002investigation}
+D.~R. Kuhn and M.~J. Reilly.
+\newblock An investigation of the applicability of design of experiments to
+  software testing.
+\newblock In {\em Software Engineering Workshop, 2002. Proceedings. 27th Annual
+  NASA Goddard/IEEE}, pages 91--95. IEEE, 2002.
+
+\bibitem{kuhn2004software}
+D.~R. Kuhn, D.~R. Wallace, and J.~AM~Gallo.
+\newblock Software fault interactions and implications for software testing.
+\newblock {\em Software Engineering, IEEE Transactions on}, 30(6):418--421,
+  2004.
+
 \bibitem{le2010sat4j}
 D.~Le~Berre, A.~Parrain, et~al.
 \newblock The sat4j library, release 2.2, system description.
