@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  19 JAN 2015 20:29
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  19 JAN 2015 21:27
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -400,24 +400,24 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 408--409
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
-Overfull \hbox (6.50392pt too wide) in paragraph at lines 481--482
+Overfull \hbox (6.50392pt too wide) in paragraph at lines 476--477
 []\T1/aer/m/n/9 After the MF-S are i-den-ti-fied, some re-lat-ed $\OML/cmm/m/it
 /9 t$\T1/aer/m/n/9 -degree schemas,
  []
 
 [6] [7]
-Overfull \hbox (10.08412pt too wide) in paragraph at lines 689--704
+Overfull \hbox (10.08412pt too wide) in paragraph at lines 684--699
  [] 
  []
 
-[8]
 File: result.eps Graphic file (type eps)
- <result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 772--773
+<result.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 767--768
 [][] 
  []
 
-[9] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
+[8] [9]
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 LaTeX Font Info:    Try loading font information for T1+aett on input line 91.
 
 (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
@@ -435,7 +435,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Here is how much of TeX's memory you used:
  2910 strings out of 430478
  33202 string characters out of 3191502
- 97390 words of memory out of 3000000
+ 98390 words of memory out of 3000000
  5998 multiletter control sequences out of 15000+200000
  41932 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
