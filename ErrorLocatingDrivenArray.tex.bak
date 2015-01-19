@@ -193,13 +193,10 @@ Xiaoyin Wang \\
 \maketitle
 \begin{abstract}
 Combinatorial testing(CT) seeks to detect potential faults caused by various interactions of factors that can influence the Software systems. When applying CT, it is a common practice to first generate a set of test cases to cover each possible interaction and then to locate the failure-inducing interaction after a failure is detected. Although this conventional procedure is simple and straightforward, we conjecture that it is not the ideal choice in practice. This is because 1) testers desire to identify the root cause of failures before all the needed test cases are generated and executed 2) the early located failure-inducing interactions can guide the remaining test cases generation, such that many unnecessary and invalid test cases can be avoided. For this, we propose a novel CT framework that allows for both generation and identification process to better share each other's information. As a result, both testing stages will be done more effectively and efficiently. We conducted a series of empirical studies on several open-source software, of which the result shows that our framework can locate the failure-inducing interactions more quickly than traditional approaches, while requiring fewer test cases.
-%When the system under test(SUT) is suffered from interations faults such as option compliant, testers want to design. As . Efficenet test space is desired when . To handle this problem, the art of  is to design a t-way covering array, which can cover all the t-way , just using small size of test cases. In this paper, however, we conjecture that the covering array is somewhat reduntant with respect to fault locating. The main reason for the reduntance the we find is the framework it takes is not efficent, traditional works will first generate a covering array to detect if any failing is triggered by any test case, and then pick these failing test case to further locating. In CT, most locating teachinques is just to generate addtional test cases to isolate the MFS. We find two shortcoming for this framework 1: if we had first identify some MFS, we do not need to generate any test case to conatin them, further, any schema contain this MFS will not need to be covered, 2: if we do not genrate, the extra test cases will support some coverage is that when we first already covered. So for this two points, in this paper, we propose a new framework to make the generating process and isolating process more tightly so that the isolating process and generating process will better utilize each other. We have done some emprical studies on several open-source software and found that our new frame work can significantly reduce the test cases.
-%Combinatorial testing(CT) is proven to be effective to reveal the potential failures caused by the interaction of the inputs or options of the System Under Test(SUT). A key problem in CT is to isolate the failure-inducing interactions of the related failure as it can facilitate the debugging efforts by reducing the scope of code that needs to be inspected. Many algorithms has been proposed to identify such schemas, however, most of these studies either just consider the condition of one fault or ignore masking effects among multiple faults which can bias their identified results. In this paper, we analysed how the masking effect of multiple faults affect on the localization of failure-inducing interactions. We further give a strategy of selecting test cases to alleviate this impact, which works by pruning these test cases that may trigger masking effect and replacing them with no-masking-effect ones. The test case selecting process repeated until we get enough information to isolate the failure-inducing interactions. We conducted some empirical studies on several open-source software. The result of the studies shows that multiple faults as well as the masking effects do exist in real software and our approach can assist combinatorial-based failure-inducing identifying methods to get a better result when handling multiple faults in SUT.
+
 \end{abstract}
 
-% A category with the (minimum) three required fields
-%\category{H.4}{Information Systems Applications}{Miscellaneous}
-%A category including the fourth, optional field follows...
+
 \category{D.2.5}{Software Engineering}{Testing and debugging}[Debugging aids,testing tools]
 
 \terms{Reliability, Verification}
@@ -218,7 +215,6 @@ Although this conventional CT framework is simple and straightforward, in terms 
 
 Based on the idea, we propose a new CT framework, which instead of dividing the generation and identification into two independent stages, it integrates this two stages into one. We call this the Generation-Identification stage, which allows for both generation and identification better share each other's testing information. To this aim, we remodel the generation and identification module to make them better adapt to this new framework. Specifically, our generation adopts the one-test-one-time strategy, i.e., generate and execute one test case in one iteration. Rather than generating the all the needed test cases in one time, this strategy is more flexible so that it allows terminating at any time during generation, no matter whether the coverage is reached or not. With this strategy, we can let the generation stops at the point we detect some failures, and then after identification we can utilize the diagnosing result to change the coverage criteria, e.g., the interactions related to the failure-inducing interactions do not need to be checked any more. Then based on the new coverage criteria, the generation process goes on.
 
-%For the fault localization, we augment this process with a test case . instead of independently generating extra test cases, we add a new process to let it can get a guide . we will also take use of the test cases generation before, this will shows in the extra test case. Fault localization will need more.
 
 We conducted a series of empirical studies on several open-source software to evaluate our new framework. In short, we take two main comparisons, one is to compare our new framework with the traditional one, which first generates a complete set of test cases and then performs the fault localization. The second one is to compare with the Error Locating Array \cite{martinez2008algorithms,martinez2009locating}, which is a well-designed set of test cases that can be used directly detect and identify the failure-inducing interactions. The results shows that in terms of test case generation and failure-inducing interactions identification, our approach can significantly reduced the overall needed test cases and as a result it can more quickly identify the root cause of the system under test.
 
@@ -234,50 +230,14 @@ The main contributions of this paper:
 The rest of the paper is organised as follows: Section 2 presents the preliminary background of CT.  Section 3 describes our new framework and a simple case study is also given. Section 4 presents the empirical studies and the results are discussed. Section 5 shows the related works. Section 6 concludes the paper and propose some further work.
 
 
-% Cohen[] studies the , and find 70 ~ 100 can be. []Shows that to get a some coverage, only a small subset of all the configuration is needed. To this aim,
-%
-%Typically, when applying CT in practice, there are four testing stages that should be cated as in figure. At the very early of the testing work, engineers should characterize which options and what inputs , i.e., to identify the factors and their possible values. This stage is labor-consuming, at least in the initial testing. The second stage is to generate a bunch of test cases to meet some criteria. In CT, the most common scenario is to cover all the iterations with the factors in the interactions no more than a prior fixed number -- t, in such way, the test suites of CT is also called the t-way covering array.  The third testing stage is to fault localization, i.e., to isolate the failure-inducing interactions which owes to those failures triggered in those test cases in these test cases. The final stage is to evaluate the quality of the test cases.
-%
-%This conventional CT framework is simple and straight forward, however, we conjecture, it is not he suiable choices and not the choices for most test engineers.  The first,   Second, and most importantly, is.
-%
-%For this, we.
-
-
 \begin{figure}
  \includegraphics[width=3.4in]{CT_lifecircle.eps}
 \caption{The life cycle of CT}
 \label{ct-life}
 \end{figure}
-%Software system are growing more and more complexity, the testing is needed. Nowadays, the bugs are not the single factor-bug, that is, it is . To detect and isolate such a is hard, for we could not easily know which interaction of from so many. The first, how to detect, the second, even if we have detected, .
-
-
-%
-%Combinatorial testing is a proposing testing technique to handle such problem. The testing object-- covering array is a well designed test suite, which can cover each possible interaction with just a small or reasonable size. When one or more test cases trigger some fault, it take the isolating.asdlajsdlas-d=
-%
-%In CT it is a pri-critira that the test suite must be , and then using to trigger. This framework is straight and simple, however, we conjecture in this paper that this would be more redundant inspect of fault debugging. Through a series experiment on empirical study, we observe that, there is two main : right . wrong .   This redundant can make the tester to test more unnecessary test cases, which is a wasting of computing resource.
-%
-%So in this paper, we propose a new and really intuial CT fault detecting and isolating framework (CTDI), which combine the more tightly. In detail our framework, handles two main . For we find . we make it as constraint, and feedback to the generating. The second, as we can generate many extra test cases, for these passing test cases, we use them as seed to let them in the generating process. The ended criteria is some coverage is reached.
-%
-%Our new CT is .
-%
-%We have imply , and find our approach can .
 
 
 
-%
-%With the increasing complexity and size of modern software, many factors, such as input parameters and configuration options, can influence the behaviour of the SUT. The unexpected faults caused by the interaction among these factors can make testing such software a big challenge if the interaction space is too large. One remedy for this problem is combinatorial testing, which systematically sample the interaction space and select a relatively small set of test cases that cover all the valid iterations with the number of factors involved in the interaction no more than a prior fixed integer, i.e., the \emph{strength} of the interaction.
-%
-%Once failures are detected, it is desired to isolate the failure-inducing interactions in these failing test cases. This task is important in CT as it can facilitate the debugging efforts by reducing the code scope that needed to inspected.
-
-%\section{Motivating example}
-%Combinatorial testing can effectively detect the failures caused by the interactions between various options or inputs of the SUT. Covering arrays, the test suite generated by this technique can cover each combination of the options at least once. We conjecture, however, although covering array can effectively, in practice, covering array was too much for detecting and locating the error in particular software.
-%
-%As an motivating example, we looked through the following scenarios for detecting and locating the errors in the SUT.
-%
-%Too much redundant fault test cases:
-%
-%
-%Too much redundant right test cases:
 
 \section{Background}
 This section presents some definitions and propositions to give a formal model for CT.
@@ -297,9 +257,6 @@ In practice, these parameters in the test case can represent many factors, such 
 We consider any abnormally executing test case as a \emph{fault}. It can be a thrown exception, compilation error, assertion failure or constraint violation. When faults are triggered by some test cases, it is desired to figure out the cause of these faults. Some subsets of these test cases should be analysed.
 %\end{definition}
 
-%Figuring out the test case as well as the executing result is usually not enough to analyse the source of the bug, especially when there are too many parameters we need to care in this test case. In this circumstance, we need to study some subsets of this test case, so we need the following definition:
-
-%Figuring out the execution outcomes of test cases must reveal the presence of faulty interactions among those considered. However, the location and magnitude of the fault is still far from clear, especially when there are too many parameters we need to care in this test case. Hence, we need to study some subsets of this test case, which can help isolate the cause of failures.
 
 \begin{definition}
 For the SUT, the \emph{n}-tuple (-,$v_{n_{1}}$,...,$v_{n_{k}}$,...)is called a \emph{k}-degree \emph{schema} ($0 < k \leq n $) when some k parameters have fixed values and other irrelevant parameters are represented as "-".
@@ -357,7 +314,7 @@ In this paper, we focus on the first strategy: One test case one time as it imme
 %In order to fulfil the testing target, we choose the second object, one test one time, as we can .
 
 \subsection{Identify the failure-inducing interactions}
-To detect the existence of MFS in the SUT is still far from figuring out the root cause of the failure. As we do not know exactly which schemas in the failed test cases should be responsible for the failure. In fact, for a failing test case ($v_{1},v_{2},...,v_{n}$), there can be at most $2^{n} - 1$ possible schemas for the MFS. Hence, more test cases should be generated to identify the MFS. In CT, the main work in fault localization is to identify the failure-inducing interactions. So in this paper we only focus on the MFS identification, and further works of fault localization such as isolating the defect inside the source code will not be discussed.
+To detect the existence of MFS in the SUT is still far from figuring out the root cause of the failure. As we do not know exactly which schemas in the failed test cases should be responsible for the failure. In fact, for a failing test case ($v_{1},v_{2},...,v_{n}$), there can be at most $2^{n} - 1$ possible schemas for the MFS. Hence, more test cases should be generated to identify the MFS. In CT, the main work in fault localization is to identify the failure-inducing interactions. So in this paper we only focus on the MFS identification. Further works of fault localization such as isolating the defect inside the source code will not be discussed.
 
 A typical MFS identification process is shown in Table \ref{ofot-identify}. This example assumes the SUT has 3 parameters, each can take 2 values. And assume the test case (1, 1, 1) failed. Then in Table \ref{ofot-identify}, as test case \emph{t} failed, and OFOT mutated one factor of the \emph{t} one time to generate new test cases: $t_{1}$ -- $t_{3}$, It found that the $t_{1}$ passed, which indicates that this test case break the MFS in the original test case \emph{t}. So the (1,-,-) should be one failure-causing factor, and as other mutating process all failed, which means no other failure-inducing factors were broken, therefore, the MFS in \emph{t} is (1,-,-).
 
@@ -379,9 +336,6 @@ $t_{3}$ &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  0 } & Fail \\
 \end{table}
 
 This identification process mutate one factor of the original test case at a time to generate extra test cases. And then according to the outcome of the test cases execution result, it will identify the MFS of the original failing test cases. It is calling the OFOT method, which is a well-known MFS identification method in CT. In this paper, we will focus on this identification method. It is noted that the following proposed CT framework can be easily applied to other MFS identification methods.
-
-%Isolating such failure-inducing schema is not easy. It is because that there are $2^n$ candidate suspicious. It is not realistic to completely and preciously to determine which one is as we could use a extreme large number of extra test cases.  Thus, existed works just
-%\subsection{Detect and isolate with Error Locating Array}
 
 
 \section{Motivation example}
@@ -446,9 +400,6 @@ For all of this, a more effective and efficient framework is desired.
 \section{Interleaving Approach}
 
 To overcome such deficiencies in traditional CT, we propose a new CT generation-identification framework -- \emph{\textbf{Interleaving CT}}. Our new framework aims at enhancing the interaction of generation and identification to reduce the unnecessary and invalid test cases discussed previously.
-%focus interesting and many existed works should. However, most of these works is independently to describe, better improve. Less of them how to and when to use them together, they think it is of no sense, as the first-generation-then-localization is so natural and straightforward.  However, as we found the following, how to utilize them really make sense.
-
-%\subsection{Traditional generation-identification process}
 
 
 \subsection{Overall framework}
@@ -470,11 +421,6 @@ Third, those \textbf{implicit forbidden} schemas, which was first introduced in 
 
 As we all know, the terminating condition of the CT framework is to cover all the $t$-degree schemas. Then since the three types of schemas will never be covered in our new CT framework, we can set them as covered after the execution of the identify module, so that the overall process can stop.
 
-%This is because this MFS will be forbidden to appear in the following generated test cases, so its super-schemas and itself will never be covered next. And if some of them are $t$-value schemas, then the generation process will never stop as these schemas will never be covered. So to avoid this, we force to label them to be covered in prior.
-% based on the outcomes of these additional test cases; The only difference is that
-%
-%we just augment this module with counting the coverage this module have contributed to the overall coverage. In detail, we will count the uncovered schemas in the passing additional test cases as previously generated passing test cases. We still don't count the schemas in these failing additional test cases, instead, we will handle these identified MFS
-%  Another important connection is that when we find the MFS in the failing test cases, there are two work needed to be completed: 1) we should make them as the constraint, such that the latter generated test cases should not contained this MFS. 2) the coverage this MFS and the schemas that related to this MFS should also set to be covered, as since we should not contain the MFS, then these schemas will not be covered. Then to make the overall generation process stop, we need to set them as "covered".
 \subsection{The augmentation of the two CT activities}
 
 %More details of these two important parts are as follows:
@@ -507,28 +453,33 @@ In practice, it is impossible to thoroughly search the exhaustive candidate test
 %$\mathcal{M}$ indicates the MFS that are currently identified. And should not be contained.
 
 
-(2) \emph{MFS identification} : Traditional MFS identification aims at finding the MFS in a failing test case. As discussed before, . Originally, one additional test case generated in the identification process can be formulated as \ref{eq3}.
-\begin{displaymath}t \leftarrow  mutant (\mathcal{P}, t_{failing}, \Delta )  \tag{EQ3} \label{eq3} \end{displaymath}
-Normally,
-\begin{displaymath}\mathcal{T}_{candidate} =  \{\ t\ |\ t \leftarrow  mutant (\mathcal{P}, t_{failing}, \Delta )\ \} \tag{EQ4} \label{eq4} \end{displaymath}
-\begin{displaymath}t \leftarrow  select (\mathcal{T}_{candidate} - \mathcal{T}_{MFS}, \Omega ,  \xi )  \tag{EQ5} \label{eq5} \end{displaymath}
+(2) \emph{MFS identification} : Traditional MFS identification aims at finding the MFS in a failing test case. As discussed before, test cases in the covering array are not enough to identify the MFS. Hence, additional test cases are should be generated and executed in this CT activity. Normally, an additional test case is generated based on the original failing test case. By comparing the difference between the additional test cases and the original failing test cases, the failure-inducing parts can be determined. Take the OFOT approach as an example. In Table \ref{tradition-gi}, by comparing the original failing test case $t_{1}$ and the additional passing test case $t_{11}*$, we can determine the (-, 0, -, -) is the only difference, which should be the failure-inducing part. So an additional test case is usually generated by mutating some parts of the original failing test case, and keeping the remaining parts. Formally, let $t_{failing}$ be the original failing test case, $\Delta$ be the mutation parts, $\mathcal{P}$ be the parameters and their values, then the traditional additional test case generation can be formulated as \ref{eq3}.
+\begin{displaymath}t \leftarrow  mutate (\mathcal{P}, t_{failing}, \Delta )  \tag{EQ3} \label{eq3} \end{displaymath}
 
-The identification process should also be adjusted to adapt to the new CT framework. From Figure \ref{new-life}, we can find some part of this process to identify the MFS is similar to that of the $generation$ module, i.e., they all need to repeat generating test cases until reach some criteria. As for the additional test cases generated in the identification process, we should also take care that it should not contain the previously identified MFS. To achieve this goal, the constraints checking process is also needed like Algorithm 1. Another point that needs to be noted is that the additional test cases generated in the identification process can also contribute the coverage. As the overall testing process aims to cover all the $t$-degree schemas, so if those additional test cases can cover more uncovered $t$-degree schemas, the overall testing process can stop earlier.  As a result, the overall test cases generated can be reduced. Based on the two points, the additional test cases generation in the CT identification should be refined as in Algorithm 2.
+\ref{eq3} indicates that the test case $t$ are generated by mutating the part $\Delta$ of the original failing test case $t_{failing}$. Note that the mutated values may have many choices, as long as they are within the scope of $\mathcal{P}$ and different from those in $t_{failing}$.  Traditional MFS identification process just select one by random. However, when considering to adjust the MFS identification process to adapt to the new CT framework, there are two points to .
+
+First it should not contain the previously identified MFS. To achieve this goal, the constraints checking process is also needed like Algorithm 1. Another point that needs to be noted is that the additional test cases generated in the identification process can also contribute the coverage. As the overall testing process aims to cover all the $t$-degree schemas, so if those additional test cases can cover more uncovered $t$-degree schemas, the overall testing process can stop earlier.  As a result, the overall test cases generated can be reduced.
+
+it should the coverage and forbidden schemas, the we. should take care. To this aim, we need to select proper test cases from. Formally, let $\mathcal{T}_{candidate}$ be the all the candidate as \ref{eq4}. We later
+
+Normally,
+\begin{displaymath}\mathcal{T}_{candidate} =  \{\ t\ |\ t \leftarrow  mutate (\mathcal{P}, t_{failing}, \Delta )\ \} \tag{EQ4} \label{eq4} \end{displaymath}
+Then we just need to do the same thing as that in generation, i.e., . Formally as \ref{eq5}.
+\begin{displaymath}t \leftarrow  select (\mathcal{T}_{candidate} - \mathcal{T}_{MFS}, \Omega ,  \xi )  \tag{EQ5} \label{eq5} \end{displaymath}
+In this formula, we .
+
+The identification process should also . From Figure \ref{new-life}, we can find some part of this process to identify the MFS is similar to that of the $generation$
+
+module, i.e., they all need to repeat generating test cases until reach some criteria. As for the additional test cases generated in the identification process, Based on the two points, the additional test cases generation in the CT identification should be refined as in Algorithm 2.
 
 
 We can observe that this algorithm is very similar to Algorithm 1, except that this algorithm introduce the variables $ f_{original}$ and $s_{fixed}$. These two variables are important to MFS identification. Generally, the target of the MFS identification process is to distinguish the MFS from those error-irrelevant schemas in a failing test case. For this, the MFS identification process need to generate and execute additional test cases to compare to original failing test case $f_{original}$. The additional test case must contain some fixed schema $s_{fixed}$ in the $f_{original}$, and other part of the additional test case must be different from $f_{original}$ (line 4).  By doing this, this identification process can check whether the $fixed$ are failure-inducing or not. For example, in Table \ref{ofot-identify}, the original failing test case is (1, 1, 1 ) and the fixed part for additional test case $t_{1}$ (0, 1, 1) is (-, 1, 1). After the $t_{1}$ passed during testing, we can get that the fixed schema (-, 1, 1) should not be the MFS.
 
 Traditional MFS identification process just need to ensure that the $mutant$ part have different values from original failing test cases. We augmented this by selecting values that can cover as more uncovered schemas as possible (line 6) and to ensure the test case does not contain some identified MFS (line 7 - 8).
-%
-% The first varible indicates the Two different parts are:
-%
-%This is mainly based on the fact that the machinaim of MFS isoaltion is \emph{comparing}, that is, to compare the different schemas between the passing and failing test cases. And the fixed part is refer to the common part that is validated to error-irrelevant or not.
+
 
 After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS themselves}, \emph{super-schemas} and \emph{implicit forbidden schemas}, should be set as covered to make the overall CT process stoppable. The algorithm that seeks to handling these three types of schemas is listed in Algorithm 1.
 
-%For example, consider the system has three parameters, and each parameter has two values that can be assigned, when we find the (0 1 -) and (1 - 0) are the MFS for this system, the schema (- 1 0) should also not appear, as when we generate test case that contain (- 1 0), i.e., either it contain MFS (0 1 -) for test case (0 1 0) or contain the MFS (1 - 0) for test case (1 1 0). And if we find the lower degree MFS like (0 - -), the forbidden schemas will be even more, as all the two-degree schemas contain this 1-degree schema should set to be covered. This problem is called the implicit constraints, firstly proposed by Cohen.
-
-%So we just to find the different, that is, when finding is still the same as before: 1) the additional test case should not contain the MFS, if cannot find, set the test as . 2) when update the MFS set. and coverage set.
 
 \begin{algorithm}
   \caption{Changing coverage after identification of MFS}

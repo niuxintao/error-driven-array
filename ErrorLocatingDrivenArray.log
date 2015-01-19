@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  19 JAN 2015 03:19
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  19 JAN 2015 20:29
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -371,7 +371,7 @@ Requested font "aeti9" at 9.0pt
 
 
 ]
-Overfull \hbox (11.89375pt too wide) in paragraph at lines 217--218
+Overfull \hbox (11.89375pt too wide) in paragraph at lines 214--215
 \T1/aer/m/n/9 fault lo-cal-iza-tion stages, we con-jec-ture that the first-gene
 ration-
  []
@@ -382,7 +382,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: CT_lifecircle.eps Graphic file (type eps)
 
 <CT_lifecircle.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 247--248
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 234--235
 [][] 
  []
 
@@ -392,7 +392,7 @@ Requested font "aebxti10" at 9.0pt
  -> aebxti10
 File: baicOutline.eps Graphic file (type eps)
  <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 457--458
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 408--409
 [][] 
  []
 
@@ -400,30 +400,27 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 457--458
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
-Overfull \hbox (6.50392pt too wide) in paragraph at lines 529--530
+Overfull \hbox (6.50392pt too wide) in paragraph at lines 481--482
 []\T1/aer/m/n/9 After the MF-S are i-den-ti-fied, some re-lat-ed $\OML/cmm/m/it
 /9 t$\T1/aer/m/n/9 -degree schemas,
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [6] [7]
-Overfull \hbox (10.08412pt too wide) in paragraph at lines 740--755
+Overfull \hbox (10.08412pt too wide) in paragraph at lines 689--704
  [] 
  []
 
 [8]
 File: result.eps Graphic file (type eps)
  <result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 823--824
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 772--773
 [][] 
  []
 
 [9] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
-[10]
 LaTeX Font Info:    Try loading font information for T1+aett on input line 91.
- (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
+
+(C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 Requested font "aett9" at 9.0pt
@@ -431,8 +428,10 @@ Requested font "aett9" at 9.0pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-) [11]
-(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
+ [10])
+[11
+
+] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
  2910 strings out of 430478
  33202 string characters out of 3191502
