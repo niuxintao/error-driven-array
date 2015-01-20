@@ -261,7 +261,7 @@ We consider any abnormally executing test case as a \emph{fault}. It can be a th
 \begin{definition}
 For the SUT, the \emph{n}-tuple (-,$v_{n_{1}}$,...,$v_{n_{k}}$,...)is called a \emph{k}-degree \emph{schema} ($0 < k \leq n $) when some k parameters have fixed values and other irrelevant parameters are represented as "-".
 
-In effect a test case itself is a k-degree \emph{schema}, when k = n. Furthermore, if a test case contains a \emph{schema}, i.e., every fixed value in the schema is in this test case, we say this test case \emph{hits} the \emph{schema}.
+In effect a test case itself is a k-degree \emph{schema}, when k = n. Furthermore, if a test case contains a \emph{schema}, i.e., every fixed value in the schema is in this test case, we say this test case \emph{contains} the \emph{schema}.
 %, which can be denoted as $k-value\  combination \in T$
 \end{definition}
 
@@ -486,13 +486,13 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
     % $t_{original}$ \Comment{original failing test case}
 
 
-     $\mathcal{S}_{MFS}$ \Comment{previously identified MFS}
+     $\mathcal{S}_{MFS}$ \Comment{currently identified MFS}
 
      $\Omega$ \Comment{the schemas that are still uncovered}
-     
+
 
      $\mathcal{T}_{all}$ \Comment{all the possible test cases}
-     
+
      $\mathcal{T}_{MFS}$ \Comment{all the test cases that contain the MFS}
 
 \Ensure  $void$ \Comment{do not need any output}
@@ -518,9 +518,12 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
   \end{algorithmic}
 \end{algorithm}
 
- In this algorithm, we firstly append the newly identified MFS into the global MFS set (line 1 - 3), so that we can use them in the following generation and identification processes. Then for each newly identified MFS, we will set them as covered, i.e., remove them from the uncovered set $\Omega$, if they are $t$-degree schemas (line 4 - 7). This is the first type of schemas --\emph{themselves}. For each $t$-degree super-schema of these newly identified MFS, we will also remove them from the uncovered set (line 8 - 12), as they are the second type of schemas --  \emph{super-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 14), and judge if it is the implicit forbidden schema (line 16) by constraints checking. Specifically, it checks whether the schema must exists with at least one . Then this schema will be set as \emph{implicit forbidden schemas} and set as covered.and the Constraints must be appeared in one
+ In this algorithm, we firstly check each MFS (line 1) to see if it is $t$-degree schema (line 2). We will set those $t$-degree MFS as covered and remove them from uncovered schemas set $\Omega$ (line 3). This is the first type of schemas --\emph{themselves}. For each $t$-degree super-schema of these MFS, we will also remove them from the uncovered schemas set (line 5 - 9), as they are the second type of schemas --  \emph{super-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 11), and check if it is the implicit forbidden schema (line 12). The checking process is actually to solve a satisfiability problem. Specifically, if we can find a test case that from  the set ($\mathcal{T}_{all} - \mathcal{T}_{MFS}$) (excluding those that contain MFS), such that it contain the schema under checking, then we can determine the schema is not the implicit forbidden schema, otherwise, this schema should be the implicit forbidden schema and needs to be removed from uncovered schemas set (line 13). In this paper, we utilize a SAT solver to conduct this checking process.
  
- Note that are executed each time a MFS is identified.
+ 
+% Specifically, it checks whether the schema must exists with at least one . Then this schema will be set as \emph{implicit forbidden schemas} and set as covered.and the Constraints must be appeared in one
+%
+% Note that are executed each time a MFS is identified.
 % This checking process is the same as we discussed in the Algorithm 1 and Algorithm 2.
 
 % To find them from the uncovered set, we use a sat solver to
