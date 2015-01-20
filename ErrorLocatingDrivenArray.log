@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  20 JAN 2015 16:41
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  20 JAN 2015 17:56
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -397,14 +397,14 @@ Overfull \hbox (6.50392pt too wide) in paragraph at lines 478--479
  []
 
 [6] [7]
-Overfull \hbox (34.68054pt too wide) in paragraph at lines 688--703
+Overfull \hbox (34.68054pt too wide) in paragraph at lines 681--696
  [] 
  []
 
 [8]
 File: result.eps Graphic file (type eps)
  <result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 771--772
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 764--765
 [][] 
  []
 
@@ -425,10 +425,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ) [11]
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2912 strings out of 430478
- 33243 string characters out of 3191502
+ 2910 strings out of 430478
+ 33212 string characters out of 3191502
  98390 words of memory out of 3000000
- 6000 multiletter control sequences out of 15000+200000
+ 5998 multiletter control sequences out of 15000+200000
  41932 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,10n,26p,2053b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
