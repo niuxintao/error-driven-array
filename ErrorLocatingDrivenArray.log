@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  20 JAN 2015 21:44
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  22 JAN 2015 02:55
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -396,41 +396,34 @@ Overfull \hbox (6.50392pt too wide) in paragraph at lines 478--479
 /9 t$\T1/aer/m/n/9 -degree schemas,
  []
 
-[6] [7]
-Overfull \hbox (34.68054pt too wide) in paragraph at lines 683--698
- [] 
- []
+[6]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 612.
 
-[8]
-File: result.eps Graphic file (type eps)
- <result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 766--767
-[][] 
- []
-
-[9] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
-LaTeX Font Info:    Try loading font information for T1+aett on input line 91.
-
-(C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
+ (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 Requested font "aett9" at 9.0pt
  -> aett9
+ [7] [8]
+File: result.eps Graphic file (type eps)
+ <result.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 789--790
+[][] 
+ []
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10]
+[9] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
+[10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ) [11]
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2910 strings out of 430478
- 33212 string characters out of 3191502
- 96390 words of memory out of 3000000
- 5998 multiletter control sequences out of 15000+200000
+ 2911 strings out of 430478
+ 33231 string characters out of 3191502
+ 101390 words of memory out of 3000000
+ 5999 multiletter control sequences out of 15000+200000
  41932 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,10n,26p,2053b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,26p,2057b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on ErrorLocatingDrivenArray.pdf (11 pages).
