@@ -676,11 +676,14 @@ One observation from this table is that the total number of test cases generated
 
 This gap of total number of test cases is mainly due to the difference of the number of test cases generated in \emph{MFS identification} activity. In fact, their results in the \emph{CT generation} are almost the same. Even for $4-way$ coverage criteria which may needs thousands test cases, the gap between them are no more than 10. 
 
-For \emph{MFS identification} activity, the interleaving approach only consumed a relatively small amount of test cases when comparing to the sequential approach. What's more, interleaving approach obtained almost the same result under the 2-way, 3-way, and 4-way coverage (see the cells in bold). This is as expected, as we will . 
+For \emph{MFS identification} activity, the interleaving approach only consumed a relatively small amount of test cases when comparing to the sequential approach. What's more, interleaving approach obtained almost the same results under the 2-way, 3-way, and 4-way coverage (see the cells in bold). This is as expected, as the MFS identification only happens after a test case fails in our interleaving approach. And after the identification process, the identified MFS will be set as forbidden schemas in the latter generated test cases. As a result, each MFS only needs to be identified once, no matter what the coverage is and how many test cases that are needed to be generated. 
 
-However, this is not for the sequtial approach. It will, . And this is why that when the coverage critier increases, the number . This is because the test cases generated in CT generation increased, and the possibligy they trigger fault increase, which result in more test cases in the identification activity.
+However, this is not for the sequential approach. As discussed before, sequential approach does not identify the MFS at early iteration, so that these MFS can appear in latter test cases. As a result, it needs many more test cases to identify the same MFS , which is a huge waste. Even worse, the more test cases generated in \emph{CT generation} activity, the more test cases are needed in \emph{MFS identification} activity (See the Column `Iden' of sequential approach under 2-way, 3-way and 4-way coverage).  This is because the possibility that failures are triggered is increased if there are more test cases without forbidding the appearance of these MFS.
 
-And this result are relatively small when compared to sequential CT.  The reason that is so many test cases in identification, is that it did not identify the MFS at early iteration, so that they are appear in latter test cases. As a result, these test cases fail, and needs more test cases to identify , which are redundance.
+
+%And this is why that when the coverage critier increases, the number . This is because the test cases generated in CT generation increased, and the possibility they trigger fault increase, which result in more test cases in the identification activity.
+%
+%And this result are relatively small when compared to sequential CT.  The reason that is so many test cases in identification, is that As a result, these test cases fail, and needs more test cases to identify , which are redundance.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
