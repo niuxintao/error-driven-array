@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  22 JAN 2015 02:55
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  22 JAN 2015 03:38
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -396,6 +396,9 @@ Overfull \hbox (6.50392pt too wide) in paragraph at lines 478--479
 /9 t$\T1/aer/m/n/9 -degree schemas,
  []
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [6]
 LaTeX Font Info:    Try loading font information for T1+aett on input line 612.
 
@@ -415,8 +418,13 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 789--790
 [10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-) [11]
-(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
+[12
+
+] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
  2911 strings out of 430478
  33231 string characters out of 3191502
@@ -426,4 +434,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  39i,10n,26p,2057b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ErrorLocatingDrivenArray.pdf (11 pages).
+Output written on ErrorLocatingDrivenArray.pdf (12 pages).
