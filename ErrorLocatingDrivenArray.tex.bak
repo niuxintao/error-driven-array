@@ -422,8 +422,8 @@ Third, those \textbf{implicit forbidden} schemas, which was first introduced in 
 As we all know, the terminating condition of the CT framework is to cover all the $t$-degree schemas. Then since the three types of schemas will never be covered in our new CT framework, we can set them as covered after the execution of the identification module, so that the overall process can stop.
 
 \subsection{The augmentation of the two CT activities}
+More details of the augmentation of these two important CT activities are as follows:
 
-%More details of these two important parts are as follows:
 (1) \emph{Generation} :
 We adopt the \emph{one test case one time} method as the basic skeleton of the generation process. Originally, the generation of one test case can be formulated as \ref{eq1}.
 \begin{displaymath} t \leftarrow  select (\mathcal{T}_{all}, \Omega ,  \xi) \tag{EQ1} \label{eq1} \end{displaymath}
@@ -518,7 +518,7 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
   \end{algorithmic}
 \end{algorithm}
 
- In this algorithm, we firstly check each MFS (line 1) to see if it is $t$-degree schema (line 2). We will set those $t$-degree MFS as covered and remove them from the uncovered schemas set $\Omega$ (line 3). This is the first type of schemas --\emph{themselves}. For each $t$-degree super-schema of these MFS, it is removed from the uncovered schemas set (line 5 - 9), as they are the second type of schemas --  \emph{super-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 11), and check if it is the implicit forbidden schema (line 12). The checking process involves solving a satisfiability problem. Specifically, if we can not find a test case from  the set ($\mathcal{T}_{all} - \mathcal{T}_{MFS}$) (excluding those that contain MFS), such that it contains the schema under checking, then we can determine the schema is the implicit forbidden schema and it needs to be removed from uncovered schemas set (line 13). This is because in this case, the schema under checking can only appear in $\mathcal{T}_{MFS}$, which we will definitely not generate in later iterations. In this paper, a SAT solver will be utilized to do this checking process.
+ In this algorithm, we firstly check each MFS (line 1) to see if it is $t$-degree schema (line 2). We will set those $t$-degree MFS as covered and remove them from the uncovered schemas set $\Omega$ (line 3). This is the first type of schemas --\emph{themselves}. For each $t$-degree super-schema of these MFS, it will also be removed from the uncovered schemas set (line 5 - 9), as they are the second type of schemas --  \emph{super-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 11), and check if it is the implicit forbidden schema (line 12). The checking process involves solving a satisfiability problem. Specifically, if we can not find a test case from  the set ($\mathcal{T}_{all} - \mathcal{T}_{MFS}$) (excluding those that contain MFS), such that it contains the schema under checking, then we can determine the schema is the implicit forbidden schema and it needs to be removed from uncovered schemas set (line 13). This is because in this case, the schema under checking can only appear in $\mathcal{T}_{MFS}$, which we will definitely not generate in later iterations. In this paper, a SAT solver will be utilized to do this checking process.
 
 % Specifically, it checks whether the schema must exists with at least one . Then this schema will be set as \emph{implicit forbidden schemas} and set as covered.and the Constraints must be appeared in one
 %
@@ -645,7 +645,7 @@ For each software except \emph{tcas}, a test case is determined to be passing if
 In this experiment, we focus on three coverage criteria, i.e., 2-way , 3-way and 4-way, respectively. It is known that the generated test cases vary for different runs of AETG algorithm. So to avoid the biases of randomness, we conduct each experiment 30 times and then evaluate the results.  In other word, for each subject software, we will repeatedly execute traditional approach and our approach 30 times to detect and identify the MFS.
 % For each %run of the experiment, we respectively set the coverage criteria, 2-way, 3-way and 4-way.
 
-To evaluate the results of the two approaches, one metric is the cost, i.e., the number of test cases that each approach needs. Apart from this, another important metric is the quality of their identified MFS. For this, we used standard metrics: \emph{precision} and \emph{recall}, which are defined as follows:
+To evaluate the results of the two approaches, one metric is the cost, i.e., the number of test cases that each approach needs. Specifically, the test cases that are generated in the CT generation and MFS identification, respectively, are recorded and compared for these two approaches.  Apart from this, another important metric is the quality of their identified MFS. For this, we used standard metrics: \emph{precision} and \emph{recall}, which are defined as follows:
 
 $$precision =  \frac{\#the\ num\ of\ correctly\ identified\  MFS}{\#the\ num\ of\ all\ the\ identified\ schemas}$$
 and
@@ -670,38 +670,64 @@ $$F-measure = \frac{2 \times precision \times recall}{precision + recall}$$
 
 
 \subsubsection{Result and discussion}
+Table \ref{cm_elda_fglt_test} presents the results for the number of test cases. In Column `Method', \emph{ict} indicates the interleaving CT approach and \emph{sct} indicates the sequential CT approach. The results of three covering criteria, i.e., 2-way, 3-way, and 4-way are shown in three main columns. In each of them, the number test cases that are generated in \emph{CT generation} activity (Column `Gen'), in \emph{MFS identification} activity (Column `Iden'), and the total number of test cases (Column `Total) are listed.
 
-The result is listed in Table \ref{cm_elda_fglt}. In Column `Method', \emph{ict} indicates the interleaving CT approach and \emph{sct} indicates the sequential CT approach. The results of three covering criteria, i.e., 2-way, 3-way, and 4-way are shown in three main columns. In each of them, the overall test cases (size), precision, recall, and f-measure are listed.
-
-
+One observation from this table is that the overall test cases generated by our approach are far less than that of the traditional approach. In fact, except for subject \emph{tcas}, our approach reduced about dozens of test cases for 2-way coverage, and hundreds of test cases for 3-way and 4-way coverage. For \emph{tcas}, however, as the MFS are hard to detect (all of them have degrees greater than 9), so both approaches nearly do not trigger errors (see the metric \emph{recall}). Under this condition, both approaches will be transferred to a normal covering array.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table*}[htbp]
 \center
-\caption{Comparison with traditional approach}
-\label{cm_elda_fglt}
-\setlength{\tabcolsep}{2pt}
-\begin{tabular}{|ll|llll|llll|llll|}
+\caption{Comparison of the number of test cases}
+\label{cm_elda_fglt_test}
+\begin{tabular}{|ll|lll|lll|lll|}
 \hline
-\multirow{2}{*}{Subject} & \multirow{2}{*}{Method} & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2-way}            & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3-way}            & \multicolumn{4}{l|}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4-way}               \\ \cline{3-14}
-                         &                         & Size   & Precision & Recall & F-measure & Size   & Precision & Recall & F-measure & Size    & Precision & Recall & F-measure   \\ \hline
-Tomcat                   & ict                    & 42.53   & 1    & 1    & \textbf{1}      &  64.67  &0.97    & 0.96   & \textbf{0.96}      & 114.23 &  0.93    &  0.91   &  \textbf{0.92 }       \\
-                         & sct                    & 114.33  & 0.73    & 0.74    & 0.73      & 289.97  & 0.75     & 1    & 0.86       & 676.83  & 0.75     & 1    & 0.86         \\ \hline
-Hsqldb                   & ict                    & 27.3   & 0.67    & 0.4    & \textbf{0.49}      & 63.07  & 0.37    & 0.37   & 0.37      & 144.93  & 0.37    & 0.37   & 0.37        \\
-                         & sct                    & 26.43  & 0.55    & 0.3    & 0.38      & 80.77  & 0.5     & 0.5    & 0.5       & 233.13  & 0.5     & 0.5    & 0.5         \\ \hline
-Gcc                      & ict                    & 32.73   & 0.47    & 0.28   & \textbf{0.34 }     & 72.5   & 0.46    & 0.37   &\textbf{ 0.40}      & 130.67  & 0.58    & 0.48  &\textbf{ 0.52 }       \\
-                         & sct                    & 34.17   & 0.33    & 0.18   & 0.23      & 114.5  & 0.36    & 0.43   & 0.39      & 243.37  & 0.33     & 0.5    & 0.40      \\ \hline
-Jflex                    & ict                    & 29.97  & 1       & 1      & 1         & 63.3   & 1       & 1      & 1         & 159.77  & 1       & 1      & 1           \\
-                         & sct                    & 48.27  & 1       & 1      & 1         & 187.93 & 1       & 1      & 1         & 580.23  & 1       & 1      & 1           \\ \hline
-Tcas                     & ict                    & 108.63 & 0       & 0      & 0         & 426.77 & 0.03    & 0.0007 & \textbf{0.001  }   & 1638.23 & 0.07    & 0.001  &\textbf{ 0.0027 }     \\
-                         & sct                    & 109    & 0       & 0      & 0         & 426.83 & 0       & 0      & 0         & 1638.57 & 0.03    & 0.001  & 0.0026 \\ \hline
+\multirow{2}{*}{Subjects} & \multirow{2}{*}{Method} & \multicolumn{3}{c|}{2-way} & \multicolumn{3}{c|}{3-way} & \multicolumn{3}{c|}{4-way} \\ \cline{3-11}
+                          &                         &Gen  & Iden & Total  &  Gen  & Iden & Total  & Gen  & Iden & Total   \\ \hline
+Tomcat                    & ict                     & 12.73    & \textbf{30}     & 42.73  & 34.97    & \textbf{29.67}  & 64.64  & 85.57   & \textbf{29.33}  & 114.9   \\
+                          & sct                     & 14.1     & 105.6  & 119.7  & 38.3     & 256.03 & 294.33 & 93.4    & 578.4  & 671.8   \\ \hline
+Hsqldb                    & ict                     & 14.87    & \textbf{12}     & 26.87  & 46.27    & \textbf{18.4}   & 64.67  & 128.87  & \textbf{14.4}   & 143.27  \\
+                          & sct                     & 15.83    & 10.8   & 26.63  & 47.8     & 33.6   & 81.4   & 130.07  & 103.23 & 233.3   \\ \hline
+Gcc                       & ict                     & 14.5     & \textbf{19.33}  & 33.83  & 47.9     & \textbf{21.33}  & 69.23  & 102.63  & \textbf{24.67}  & 127.3   \\
+                          & sct                     & 15.27    & 19.67  & 34.94  & 50.97    & 64.93  & 115.9  & 103.87  & 124.6  & 228.47  \\ \hline
+Jflex                     & ict                     & 15.8     & \textbf{14}     & 29.8   & 50.47    & \textbf{14}     & 64.47  & 145.17  & \textbf{14}     & 159.17  \\
+                          & sct                     & 15.83    & 28.93  & 44.76  & 49.63    & 134.74 & 184.37 & 142.1   & 433.47 & 575.57  \\ \hline
+Tcas                      & ict                     & 109.03   & \textbf{0}      & 109.03 & 426.8    & \textbf{0.8}    & 427.6  & 1629.83 & \textbf{3.2}    & 1633.03 \\
+                          & sct                     & 108.67   & 0      & 108.67 & 426.77   & 1.2    & 427.97 & 1633.2  & 2.8    & 1636    \\ \hline
 \end{tabular}
 \end{table*}
 
-One observation from this table is that the overall test cases generated by our approach are far less than that of the traditional approach. In fact, except for subject \emph{tcas}, our approach reduced about dozens of test cases for 2-way coverage, and hundreds of test cases for 3-way and 4-way coverage. For \emph{tcas}, however, as the MFS are hard to detect (all of them have degrees greater than 9), so both approaches nearly do not trigger errors (see the metric \emph{recall}). Under this condition, both approaches will be transferred to a normal covering array.
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
 
-As for the quality of the identified MFS, we find that there is no apparent gap between them. For example, there are 9 cases under which our approach performed better than traditional one (marked in bold). But among these cases, the maximal gap are  0.27 (2-way for Tomcat), and the average gap are around 0.1, which is trivial.
+With regarding to the quality of the identified MFS, the comparison of the two approaches are listed in Table \ref{cm_elda_fglt}. Based on this table, we find that there is no apparent gap between them. For example, there are 9 cases under which our approach performed better than traditional one (marked in bold). But among these cases, the maximal gap are  0.27 (2-way for Tomcat), and the average gap are around 0.1, which is trivial.
+% In each of them, the overall test cases (size), precision, recall, and f-measure are listed.
+
+\begin{table*}[htbp]
+\center
+\caption{Comparison of the quality of the identified MFS}
+\label{cm_elda_fglt}
+%\setlength{\tabcolsep}{2pt}
+\begin{tabular}{|ll|lll|lll|lll|}
+\hline
+\multirow{2}{*}{Subjects} & \multirow{2}{*}{Method} & \multicolumn{3}{c|}{2-way} & \multicolumn{3}{c|}{3-way} & \multicolumn{3}{c|}{4-way} \\ \cline{3-11}
+                         &                        & Precision & Recall & F-measure   & Precision & Recall & F-measure & Precision & Recall & F-measure   \\ \hline
+Tomcat                   & ict                    & 1    & 1    & \textbf{1}     &0.97    & 0.96   & \textbf{0.96}     &  0.93    &  0.91   &  \textbf{0.92 }       \\
+                         & sct                   & 0.73    & 0.74    & 0.73      & 0.75     & 1    & 0.86        & 0.75     & 1    & 0.86         \\ \hline
+Hsqldb                   & ict                    & 0.67    & 0.4    & \textbf{0.49}      & 0.37    & 0.37   & 0.37       & 0.37    & 0.37   & 0.37        \\
+                         & sct                    & 0.55    & 0.3    & 0.38       & 0.5     & 0.5    & 0.5      & 0.5     & 0.5    & 0.5         \\ \hline
+Gcc                      & ict                     & 0.47    & 0.28   & \textbf{0.34 }      & 0.46    & 0.37   &\textbf{ 0.40}        & 0.58    & 0.48  &\textbf{ 0.52 }       \\
+                         & sct                      & 0.33    & 0.18   & 0.23        & 0.36    & 0.43   & 0.39       & 0.33     & 0.5    & 0.40      \\ \hline
+Jflex                    & ict                     & 1       & 1      & 1           & 1       & 1      & 1          & 1       & 1      & 1           \\
+                         & sct                   & 1       & 1      & 1        & 1       & 1      & 1         & 1       & 1      & 1           \\ \hline
+Tcas                     & ict                    & 0       & 0      & 0          & 0.03    & 0.0007 & \textbf{0.001  }  & 0.07    & 0.001  &\textbf{ 0.0027 }     \\
+                         & sct                    & 0       & 0      & 0         & 0       & 0      & 0         & 0.03    & 0.001  & 0.0026 \\ \hline
+\end{tabular}
+\end{table*}
+
+
+
+%As for the quality of the identified MFS,
  %the better ones for the f-measure of our approach are marked in bold, form which we can learn that
 
 The reason of the similarity between the quality of these two approaches is that both of them have advantages and disadvantages. Specifically, our approach can reduce the impacts when a test case contain multiple MFS. Our previous study showed that multiple MFS in a test case can reduce the accuracy of the MFS identifying algorithms \cite{niu2013identifying}. As a result, our approach can improve the quality of the identified schemas. But as a side-effect, if the schemas identified at the early iteration of our approach are not correct, they will significantly impact the following iteration. This is because we will compute the coverage and  forbidden schemas based on previous identified MFS.  It was the other way around for the traditional approach. It suffers when a test case contain multiple MFS, but correspondingly, previous identified MFS has little influence on the traditional approach.
@@ -766,7 +792,7 @@ As both the cost (number of test cases) and the quality of the identified schema
 
 \begin{figure}[htbp]
  \includegraphics[width=3.4in]{result.eps}
-\caption{Comparison of the combination metric}
+\caption{Comparison of the combining metric}
 \label{cm_performance}
 \end{figure}
 
@@ -803,7 +829,7 @@ Although CT has been proven to be effective at detecting and identifying the int
 JieLi \cite{li2012improved} augmented the MFS identifying algorithm by selecting one previous passing test case for comparison, such that it can reduce some extra test cases when compared to another efficient MFS identifying algorithm \cite{zhang2011characterizing}. S.Fouch{\'e}  et al., \cite{fouche2009incremental} introduced the notion of incremental covering. Different from traditional covering array, it does not need a fixed strength to guide the generation; instead, it can dynamically generate high-degree covering array based on existing low-degree covering array, which can support a flexible tradeoff between covering array strength and testing resources. Cohen \cite{cohen2007exploiting,cohen2008constructing} studied the impacts of constraints for CT, and proposed an SAT-based approach that can handle those constraints.  Bryce and Colbourn \cite{bryce2006prioritized} proposed an one-test-case-one-time greedy technique to not only generate test cases to cover all the $t$-way interactions, but also prioritize them according their importance.  E. Dumlu et al., \cite{dumlu2011feedback} developed a feedback driven
 combinatorial testing approach that can assist traditional covering in avoiding the masking effects between multiple failures. Yilmaz \cite{yilmaz2013reducing} extended that work by refining the MFS diagnosing method. Additionally, Nie \cite{nie2013adaptive} constructed an adaptive combinatorial testing framework, which can dynamically adjust the inputs model, strength $t$ of covering array, and generation strategy during CT process.
 
-Our work differs from them mainly at that, our work focus on combining two important techniques in CT, i.e., test cases generation and MFS identification, such that the overall cost of CT will be reduced and the identified MFS will be of higher quality.
+Our work differs from them mainly in that we focus on combining two important techniques in CT, i.e., test cases generation and MFS identification, such that the overall cost of CT will be reduced and the identified MFS will be of higher quality.
 
 
 
