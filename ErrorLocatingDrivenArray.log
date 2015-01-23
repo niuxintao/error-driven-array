@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  22 JAN 2015 17:07
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  23 JAN 2015 22:02
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -371,12 +371,30 @@ Requested font "aeti9" at 9.0pt
 
 
 ]
+Overfull \hbox (3.93117pt too wide) in paragraph at lines 222--223
+\T1/aer/m/n/9 in-ter-ac-tion-s i-den-ti-fi-ca-tion mod-ules to make them bet-te
+r adap-
+ []
+
+
+Overfull \hbox (4.00099pt too wide) in paragraph at lines 222--223
+\T1/aer/m/n/9 tain a failure-inducing in-ter-ac-tion will fail by def-i-ni-tion
+, which
+ []
+
+
+Overfull \hbox (3.49744pt too wide) in paragraph at lines 222--223
+\T1/aer/m/n/9 failure-inducing i-den-ti-fi-ca-tion mod-ule, we aug-men-t it by 
+mak-
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 File: CT_lifecircle.eps Graphic file (type eps)
 
 <CT_lifecircle.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 234--235
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 248--249
 [][] 
  []
 
@@ -386,40 +404,33 @@ Requested font "aebxti10" at 9.0pt
  -> aebxti10
 File: baicOutline.eps Graphic file (type eps)
  <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 408--409
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 422--423
 [][] 
  []
 
-[4] [5]
-Overfull \hbox (6.50392pt too wide) in paragraph at lines 478--479
-[]\T1/aer/m/n/9 After the MF-S are i-den-ti-fied, some re-lat-ed $\OML/cmm/m/it
-/9 t$\T1/aer/m/n/9 -degree schemas,
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 612.
+[4] [5] [6]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 626.
 
  (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 Requested font "aett9" at 9.0pt
  -> aett9
- [7]
-Underfull \vbox (badness 1558) has occurred while \output is active []
+ [7] [8]
+Underfull \vbox (badness 1205) has occurred while \output is active []
 
- [8]
 File: result.eps Graphic file (type eps)
 
 <result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 805--806
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 819--820
 [][] 
  []
 
 [9] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 [10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11])
@@ -429,10 +440,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Here is how much of TeX's memory you used:
  2911 strings out of 430478
  33231 string characters out of 3191502
- 102390 words of memory out of 3000000
+ 103390 words of memory out of 3000000
  5999 multiletter control sequences out of 15000+200000
  41932 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,10n,26p,2057b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,26p,1599b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on ErrorLocatingDrivenArray.pdf (12 pages).
