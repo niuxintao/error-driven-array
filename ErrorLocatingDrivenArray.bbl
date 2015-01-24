@@ -78,13 +78,6 @@ B.~Garn and D.~E. Simos.
   (ICSTW), 2014 IEEE Seventh International Conference on}, pages 58--67. IEEE,
   2014.
 
-\bibitem{ghandehari2013applying}
-L.~S.~G. Ghandehari, M.~N. Bourazjany, Y.~Lei, R.~N. Kacker, and D.~R. Kuhn.
-\newblock Applying combinatorial testing to the siemens suite.
-\newblock In {\em Software Testing, Verification and Validation Workshops
-  (ICSTW), 2013 IEEE Sixth International Conference on}, pages 362--371. IEEE,
-  2013.
-
 \bibitem{tomcatconnector}
 K.~Kolinko.
 \newblock {The HTTP Connector}.
@@ -128,12 +121,6 @@ Y.~Lei, R.~Kacker, D.~R. Kuhn, V.~Okun, and J.~Lawrence.
 \newblock {\em Software Testing, Verification and Reliability}, 18(3):125--148,
   2008.
 
-\bibitem{li2012improved}
-J.~Li, C.~Nie, and Y.~Lei.
-\newblock Improved delta debugging based on combinatorial testing.
-\newblock In {\em Quality Software (QSIC), 2012 12th International Conference
-  on}, pages 102--105. IEEE, 2012.
-
 \bibitem{martinez2008algorithms}
 C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
 \newblock Algorithms to locate errors using covering arrays.
@@ -170,13 +157,6 @@ X.~Niu, C.~Nie, Y.~Lei, and A.~T. Chan.
   (ICSTW), 2013 IEEE Sixth International Conference on}, pages 271--280. IEEE,
   2013.
 
-\bibitem{qu2008configuration}
-X.~Qu, M.~B. Cohen, and G.~Rothermel.
-\newblock Configuration-aware regression testing: an empirical study of
-  sampling and prioritization.
-\newblock In {\em Proceedings of the 2008 international symposium on Software
-  testing and analysis}, pages 75--86. ACM, 2008.
-
 \bibitem{shakya2012isolating}
 K.~Shakya, T.~Xie, N.~Li, Y.~Lei, R.~Kacker, and R.~Kuhn.
 \newblock Isolating failure-inducing combinations in combinatorial testing
@@ -203,12 +183,5 @@ S.~Yoo, M.~Harman, and D.~Clark.
   and coverage-based approaches.
 \newblock {\em ACM Transactions on Software Engineering and Methodology
   (TOSEM)}, 22(3):19, 2013.
-
-\bibitem{zhang2011characterizing}
-Z.~Zhang and J.~Zhang.
-\newblock Characterizing failure-causing parameter interactions by adaptive
-  testing.
-\newblock In {\em Proceedings of the 2011 International Symposium on Software
-  Testing and Analysis}, pages 331--341. ACM, 2011.
 
 \end{thebibliography}

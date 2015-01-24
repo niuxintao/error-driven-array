@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  23 JAN 2015 22:02
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  24 JAN 2015 15:04
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -377,18 +377,6 @@ r adap-
  []
 
 
-Overfull \hbox (4.00099pt too wide) in paragraph at lines 222--223
-\T1/aer/m/n/9 tain a failure-inducing in-ter-ac-tion will fail by def-i-ni-tion
-, which
- []
-
-
-Overfull \hbox (3.49744pt too wide) in paragraph at lines 222--223
-\T1/aer/m/n/9 failure-inducing i-den-ti-fi-ca-tion mod-ule, we aug-men-t it by 
-mak-
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 File: CT_lifecircle.eps Graphic file (type eps)
@@ -430,20 +418,15 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 819--820
 [10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11])
-[12
-
-] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
+) [11]
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2911 strings out of 430478
- 33231 string characters out of 3191502
+ 2907 strings out of 430478
+ 33145 string characters out of 3191502
  103390 words of memory out of 3000000
- 5999 multiletter control sequences out of 15000+200000
+ 5995 multiletter control sequences out of 15000+200000
  41932 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,10n,26p,1599b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ErrorLocatingDrivenArray.pdf (12 pages).
+Output written on ErrorLocatingDrivenArray.pdf (11 pages).
