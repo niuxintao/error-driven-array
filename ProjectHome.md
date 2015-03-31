@@ -1,0 +1,1 @@
+A mutation of covering array which can effeicently detect and locate the errors in SUT
