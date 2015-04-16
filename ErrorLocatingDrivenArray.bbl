@@ -78,6 +78,13 @@ B.~Garn and D.~E. Simos.
   (ICSTW), 2014 IEEE Seventh International Conference on}, pages 58--67. IEEE,
   2014.
 
+\bibitem{jin2014configurations}
+D.~Jin, X.~Qu, M.~B. Cohen, and B.~Robinson.
+\newblock Configurations everywhere: Implications for testing and debugging in
+  practice.
+\newblock In {\em Companion Proceedings of the 36th International Conference on
+  Software Engineering}, pages 215--224. ACM, 2014.
+
 \bibitem{tomcatconnector}
 K.~Kolinko.
 \newblock {The HTTP Connector}.
@@ -157,12 +164,26 @@ X.~Niu, C.~Nie, Y.~Lei, and A.~T. Chan.
   (ICSTW), 2013 IEEE Sixth International Conference on}, pages 271--280. IEEE,
   2013.
 
+\bibitem{qu2008configuration}
+X.~Qu, M.~B. Cohen, and G.~Rothermel.
+\newblock Configuration-aware regression testing: an empirical study of
+  sampling and prioritization.
+\newblock In {\em Proceedings of the 2008 international symposium on Software
+  testing and analysis}, pages 75--86. ACM, 2008.
+
 \bibitem{shakya2012isolating}
 K.~Shakya, T.~Xie, N.~Li, Y.~Lei, R.~Kacker, and R.~Kuhn.
 \newblock Isolating failure-inducing combinations in combinatorial testing
   using test augmentation and classification.
 \newblock In {\em Software Testing, Verification and Validation (ICST), 2012
   IEEE Fifth International Conference on}, pages 620--623. IEEE, 2012.
+
+\bibitem{song2012itree}
+C.~Song, A.~Porter, and J.~S. Foster.
+\newblock itree: Efficiently discovering high-coverage configurations using
+  interaction trees.
+\newblock In {\em Proceedings of the 2012 International Conference on Software
+  Engineering}, pages 903--913. IEEE Press, 2012.
 
 \bibitem{yilmaz2006covering}
 C.~Yilmaz, M.~B. Cohen, and A.~A. Porter.

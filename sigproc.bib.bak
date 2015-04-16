@@ -455,10 +455,28 @@ ISSN={0098-5589}
   year={2002},
   organization={IEEE}
 }
+@article{kuhn2004software,
+  title={Software fault interactions and implications for software testing},
+  author={Kuhn, D Richard and Wallace, Dolores R and AM Gallo, Jr},
+  journal={Software Engineering, IEEE Transactions on},
+  volume={30},
+  number={6},
+  pages={418--421},
+  year={2004},
+  publisher={IEEE}
+}
 @misc{tomcatconnector,
   author = {Konstantin Kolinko},
   title = {{The HTTP Connector}},
   howpublished = "\url{http://tomcat.apache.org/tomcat-7.0-doc/config/http.html}",
   year = {2014},
   note = "[Online; accessed 3-Nov-2014]"
+}
+@inproceedings{jin2014configurations,
+  title={Configurations everywhere: Implications for testing and debugging in practice},
+  author={Jin, Dongpu and Qu, Xiao and Cohen, Myra B and Robinson, Brian},
+  booktitle={Companion Proceedings of the 36th International Conference on Software Engineering},
+  pages={215--224},
+  year={2014},
+  organization={ACM}
 }
