@@ -355,40 +355,34 @@ This identification process mutate one factor of the original test case at a tim
 \section{Motivating example}
 In this section, a motivating example is presented to show how traditional CT works as well as its limitations. This example is derived from our attempt to test a real-world software--HSQLDB, which is a pure-java relational database engine with large and complex configuration space. To extract and manipulate valid configurations of this highly-configurable system is important, as different configuration can result in significant different behaviours of the system \cite{jin2014configurations,qu2008configuration,song2012itree} (HSQLDB may normally works under some properly configurations, but crashes or throws exceptions under some other configurations, for example).
 
-Considering the large configuration space of HSQLDB, we chose CT to first generate a relatively small set of test cases. Each of them is actually a set of specific assignments to those options we cared. For each configuration, we tested HSQLDB by sending a excuting. We recorded the output of each run, but unfortunately, about half of them produced exceptions or warnings. Following the schedule of traditional CT, we started the identification process to isolate the failure-inducing option interactions of the configurations for those failing runs. Each failing run should be individually handled, in principle, as there may exist distinct failure-inducing option interactions among them. However, this successively identification process, although appealing, was hardly ever followed for this case study. This is because there are too many failing configurations and most of them contain the same failure-inducing option interactions, based on which it is wasteful and inefficient if applying MFS identification.
+Considering the large configuration space of HSQLDB, we firstly utilized CT to generate a relatively small set of test cases. Each of them is actually a set of specific assignments to those options we cared. For each configuration, HSQLDB is tested by sending prepared SQL commands. We recorded the output of each run, but unfortunately, about half of them produced exceptions or warnings. Following the schedule of traditional CT, we started the identification process to isolate the failure-inducing option interactions in those failing configurations. Each failing configuration should be individually handled, in principle, as there may exist distinct failure-inducing option interactions among them. However, this successively identification process, although appealing, was hardly ever followed for this case study. This is because there are too many failing configurations and most of them contain the same failure-inducing option interactions, based on which the MFS identification process is wasteful and inefficient.
 
-For the sake of convenience, we provide a highly simplified scenario of that testing as following. Consider we test the combinations of .  Possible values for each value is shown in Table \ref{tomcat-simplifiy}.
-For this particular example. $t_{1}$ is . And $t$ and $t$ is a real faulty we cared \footnote{details see: http://sourceforge.net/p/hsqldb/bugs/981/}. That is if a test case contain these two interactions, or schemas will surely crashed.
+For the sake of convenience, we provide a highly simplified scenario of that testing as following. Consider four options in HSQLDB -- \emph{Server type}, \emph{Scroll Type}, \emph{Parameterised SQL} and \emph{Statement Type}.  The possible values each option can take on are shown in Table \ref{tomcat-simplifiy}. Based on the report in the bug tracker of HSQLDB \footnote{details see: http://sourceforge.net/p/hsqldb/bugs/1173/}, an \emph{incompliant data exception} will be triggered if a \emph{parameterised sql} is executed as \emph{prepared statements} by HSQLDB. Hence, when $ parameterised SQL$ set \emph{true} and $Statmetents$ set \emph{prepared statemetns}, our testing will crash. Besides this failure, another option value can also crash this database engine is the value "sensitive" of \emph{Scroll Type}, as this feature is not supported by this version of HSQLDB \footnote{details see: http://hsqldb.org/doc/guide/guide.html}.  Without these knowledge at prior, we needed to detect and isolate these two failure-inducing option interactions by CT.
+
+%Table \ref{tradition-gi} presents such process. Note that every possible combinations of is covered by at least one test case, for example, every possible combination of the values for options can be find at least one test case. Then as expected, test case 1, 4, 7 are failed because they either contain failure-interaction or the contraint option .  Then we need to identify the failure-inducing interactions for each failing test case using OFOT. This procss is shown in  \emph{identification} part of Table \ref{tradition-gi}.
+%
+
+%Another option that can make . However, this . In this example, we deemed them as the same, as they all can make the testing unproceeball.
 
 \begin{table}[h]
-\caption{Highly simplified configurations of HSQLDB}
+\caption{Highly simplified configuration of HSQLDB}
 \label{tomcat-simplifiy}
 \center
 \begin{tabular}{c|ccccc}
  \hline
  \bfseries Option & \multicolumn{5}{c}{\bfseries Values} \\  \hline
- jsp-config  & \multicolumn{5}{c}{ Values} \\
- jsp-config & \multicolumn{5}{c}{ " ", $$} \\
- Option & \multicolumn{5}{c}{ Values} \\
- Option & \multicolumn{5}{c}{ Values} \\
+ Server type & \multicolumn{5}{c}{ server, web-server, in-process} \\
+ Scroll type & \multicolumn{5}{c}{ forward-only,insensitive,sensitive} \\
+ parameterised SQL & \multicolumn{5}{c}{true, false} \\
+ Statement Type & \multicolumn{5}{c}{ statement, preparedStatements} \\
  \hline
 \end{tabular}
 \end{table}
 
- Before we figure this out, we  a 2-way covering array is generated in the \emph{generation} part of Table \ref{tradition-gi}. Note that every possible combinations of is covered by at least one test case. As expected, we conduct the identification for each individal failing test cases.
 
+Table \ref{tradition-gi} illustrates the process of traditional CT on this subject. For simplicity of notation, we use consecutive symbols 0, 1, 2 to represent each assingment of each option (For parmeterised SQL and Statement, the symbol is up to 1). According to Table \ref{tradition-gi}, traditional CT first generated and executed the 2-way covering array ($t_{1}$ -- $t_{9}$ in the \emph{generation} part). Note that this covering array covered all the 2-degree schemas for the SUT. For example, all the possible values combiantion between parameter $c1$ and $c2$ appears at least one test case.
 
-From this example there are following observations that is the limitations of the traditional CT process.
-
-
-Like table, for \emph{generation} part, there are 9 test cases consists such a covering array. When we test them we found them fail. For this particalur seconerio, there are two MFS for these failures. Failure 1 is , i.e., . Failure 2 is .
-
-There
-
-When we study the . Hence, there are multiple failures in this . And which make many testing fail. As a consequent, we had to one by one , and unfortunately,
-
-
-As an example, Table \ref{tradition-gi} illustrates the process of traditional CT. The SUT has 4 parameters and each parameter has three values. Traditional CT first generated and executed the 2-way covering array ($t_{1}$ -- $t_{9}$). Note that this covering array covered all the 2-degree schemas for the SUT. And after finding that $t_{1}$, $t_{2}$, and $t_{7}$ failed during testing, it then respectively identified the MFS in $t_{1}$ ,$t_{2}$, and $t_{7}$. For $t_{1}$, it used the OFOT method to generate four additional test cases ($t_{10}$ -- $t_{13}$), and identified the MFS of $t_{1}$ is (-, 0, - , -) as only when changing the second factor of $t_{1}$ it will pass. Then it applied the same process to $t_{2}$ and $t_{7}$, and found that (-,0, -, -) is also the MFS of $t_{2}$ and $t_{7}$.  Finally, for detecting and identifying the MFS in this example SUT, we have generated 12 additional test cases(marked with star).
+ After finding that $t_{1}$, $t_{2}$, and $t_{7}$ failed during testing, it then respectively identified the MFS in $t_{1}$ ,$t_{2}$, and $t_{7}$. For $t_{1}$, it used the OFOT method to generate four additional test cases ($t_{10}$ -- $t_{13}$), and identified the MFS of $t_{1}$ is (-, 0, - , -) as only when changing the second factor of $t_{1}$ it will pass. Then it applied the same process to $t_{2}$ and $t_{7}$, and found that (-,0, -, -) is also the MFS of $t_{2}$ and $t_{7}$.  Finally, for detecting and identifying the MFS in this example SUT, we have generated 12 additional test cases(marked with star).
 
 \begin{table}[h]
 \caption{Traditional generation-identification life-cycle}
@@ -450,6 +444,7 @@ So in practice, we need to aviod the appreance. As to Sequet CT, however, does n
 \subsection{Masking effects}
 
 
+This is mainly caused after the second .
 
 
 %This section presents the .
