@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  21 APR 2015 06:08
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  21 APR 2015 20:04
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -390,31 +390,36 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 248--249
 [2] [3]
 Requested font "aer6" at 6.0pt
  -> aer6
+
+Overfull \hbox (9.95703pt too wide) in paragraph at lines 371--380
+ [] 
+ []
+
 Requested font "aebxti10" at 9.0pt
  -> aebxti10
- [4]
+[4]
 File: baicOutline.eps Graphic file (type eps)
  <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 466--467
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 470--471
 [][] 
  []
 
 [5] [6]
-Invalid UTF-8 byte or sequence at line 642 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 642 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 642 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 646 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 646 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 646 replaced by U+FFFD.
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
 Missing character: There is no ƽ in font aer9!
 Missing character: There is no � in font aer9!
-Invalid UTF-8 byte or sequence at line 648 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 648 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 648 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 652 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 652 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 652 replaced by U+FFFD.
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
  [7]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 724.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 728.
 
  (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
@@ -427,7 +432,7 @@ Underfull \vbox (badness 1205) has occurred while \output is active []
 File: result.eps Graphic file (type eps)
 
 <result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 917--918
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 921--922
 [][] 
  []
 
