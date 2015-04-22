@@ -230,14 +230,14 @@ We remodel the test cases generation and failure-inducing interactions identific
 %
 
 
-We conducted a series of empirical studies on several open-source software to evaluate our new framework. Specifically, we performed two comparisons studies. The first one is to compare our new framework with the traditional one, which first generates a complete set of test cases and then performs the fault localization. The second one is to compare our framework with the Error Locating Array \cite{martinez2008algorithms,martinez2009locating}, which is a well-designed set of test cases that can be used directly detect and identify the failure-inducing interactions. The results show that, in terms of test case generation and failure-inducing interactions identification, our approach can significantly reduce the overall needed test cases and as a result it can more quickly identify the failure-inducing interactions of the system under test.
+We conducted a series of empirical studies on several open-source software to evaluate our new framework. Specifically, we performed two comparisons studies. The first one is to compare our new framework with the traditional one, which first generates a complete set of test cases and then performs the fault localization. The second one is to compare our framework with the Feedback-driven CT \cite{dumlu2011feedback,yilmaz2013reducing}, which also adapts an iterative framework to generate test cases and identifying failure-inducing interactions, but to address the problem of inadequate testing. The results show that, in terms of test case generation and failure-inducing interactions identification, our approach can significantly reduce the overall needed test cases and as a result it can more quickly identify the failure-inducing interactions of the system under test. Additionally, when combining our approach with Feedback-driven CT, the results can be more effective than both approaches alone.
 
 The main contributions of this paper are as follows.
 
  \begin{enumerate}
  \item  We propose a new CT framework which combines the test cases generation and fault localization more closely.
  \item  We augment the traditional CT test cases generation and failure-inducing interactions identification process to make them adapt to the new framework.
- \item We perform a series of comparisons with traditional CT and Error Locating Array and the result of the empirical studies are discussed.
+ \item We perform a series of comparisons with traditional CT and Feedback-driven CT. The result of the empirical studies are discussed.
 \end{enumerate}
 
 
@@ -258,7 +258,7 @@ This section presents some definitions and propositions to give a formal model f
 
 %\subsection{Failure-inducing interactions in CT}
 
-Assume that the SUT is influenced by \emph{n} parameters, and each parameter $p_{i}$ can take the values from the finite set $V_{i}$ ($i$ = 1,2,..n). The definitions below are originally defined in \cite{nie2011minimal}.
+Assume that the Software Under Test (SUT) is influenced by \emph{n} parameters, and each parameter $p_{i}$ can take the values from the finite set $V_{i}$ ($i$ = 1,2,..n). The definitions below are originally defined in \cite{nie2011minimal}.
 
 \newdef{definition}{Definition}
 \begin{definition}
@@ -372,7 +372,7 @@ For the sake of convenience, we provide a highly simplified scenario to illustra
  \hline
  \multicolumn{2}{c}{\bfseries Option} & \multicolumn{5}{c}{\bfseries Values} \\  \hline
 $o_{1}$ & Server type & \multicolumn{5}{c}{ server, web-server, in-process} \\
-$o_{2}$ & Scroll type & \multicolumn{5}{c}{ forward-only,insensitive,sensitive} \\
+$o_{2}$ & Scroll type & \multicolumn{5}{c}{ sensitive,insensitive, forward-only} \\
 $o_{3}$ & parameterised SQL & \multicolumn{5}{c}{true, false} \\
 $o_{4}$ & Statement Type & \multicolumn{5}{c}{ statement, preparedStatement} \\
  \hline
@@ -382,7 +382,7 @@ $o_{4}$ & Statement Type & \multicolumn{5}{c}{ statement, preparedStatement} \\
 
 Table \ref{tradition-gi} illustrates the process of traditional CT on this subject. For simplicity of notation, we use consecutive symbols 0, 1, 2 to represent each value of each option (For $parameterised SQL$ and $Statement$, the symbol is up to 1). According to Table \ref{tradition-gi}, traditional CT first generated and executed the 2-way covering array ($t_{1}$ -- $t_{9}$ in the \emph{generation} part). Note that this covering array covered all the 2-degree schemas for the SUT. For example, all the possible values combinations between first and second parameters appear at least one test case.
 
-After detecting that $t_{3}$, $t_{6}$, and $t_{9}$ failed during testing, it then respectively identified the MFS of these test cases. For $t_{3}$, it used the OFOT method to generate four additional test cases ($t_{10}$ -- $t_{13}$), and identified the MFS of $t_{3}$ is (-, 2, - , -) as only when changing the second factor of $t_{1}$ it will pass. Then the same process is applied on $t_{6}$ and $t_{9}$. Finally, we found that the MFS of $t_{6}$ is (-, -, -, -), which is an invalidate schema (will be discussed later), and the MFS of $t_{9}$ is the same as $t_{3}$.  Totally, for detecting and identifying the MFS in this example SUT, we have generated 12 additional test cases(marked with star).
+After detecting that $t_{1}$, $t_{4}$, and $t_{7}$ failed during testing, it is desired to respectively identify the MFS of these failing test cases. For $t_{1}$, OFOT method is used to generate four additional test cases ($t_{10}$ -- $t_{13}$), and the MFS (-, 0, - , -) of $t_{1}$ is identified (\emph{Scroll Type} is assigned to \emph{sensitive}, respectively). This is because only when changing the second factor of $t_{1}$, the extra-generated test case will pass. Then the same process is applied on $t_{4}$ and $t_{7}$. Finally, we found that the MFS of $t_{4}$ is (-, -, -, -), indicating that OFOT failed to determine the MFS (will be discussed later), and the MFS of $t_{7}$ is the same as $t_{1}$. Totally, for detecting and identifying the MFS in this example, we have generated 12 additional test cases(marked with star).
 
 \begin{table}[h]
 \caption{Traditional generation-identification life-cycle}
@@ -393,65 +393,80 @@ After detecting that $t_{3}$, $t_{6}$, and $t_{9}$ failed during testing, it the
                                        & \multicolumn{6}{c}{\bfseries \emph{Generation}}                                                                                                                                                                                                                                  \\ \cline{2-7}
                                        & \multicolumn{5}{c|}{\bfseries test case}                                                                                                                                                                                                              & \bfseries Outcome \\
                                        & &$o_{1}$ & $o_{2}$& $o_{3}$& \multicolumn{1}{c|}{$o_{4}$}&  \\    \cline{2-7}
-                                       & \multicolumn{1}{l|}{$t_{1}$}   & 0 & 0& 0& \multicolumn{1}{l|}{0}     & Pass              \\
+                                       & \multicolumn{1}{l|}{$t_{1}$}   & 0& \textbf{0}& 0& \multicolumn{1}{l|}{0}     & Fail              \\
                                        & \multicolumn{1}{l|}{$t_{2}$}   & 0& 1& 1& \multicolumn{1}{l|}{1}     & Pass              \\
-                                       & \multicolumn{1}{l|}{$t_{3}$}   & 0& \textbf{2}& 0& \multicolumn{1}{l|}{0}     & Fail              \\
-                                       & \multicolumn{1}{l|}{$t_{4}$}   & 1& 0& 1& \multicolumn{1}{l|}{0}     & Pass              \\
+                                       & \multicolumn{1}{l|}{$t_{3}$}   & 0& 2& 1& \multicolumn{1}{l|}{0}     & Pass              \\
+                                       & \multicolumn{1}{l|}{$t_{4}$}   & 1& \textbf{0}& \textbf{0}& \multicolumn{1}{l|}{\textbf{1}}     & Fail              \\
                                        & \multicolumn{1}{l|}{$t_{5}$}   & 1& 1& 0& \multicolumn{1}{l|}{0}     & Pass              \\
-                                       & \multicolumn{1}{l|}{$t_{6}$}   & 1& \textbf{2}& \textbf{0}& \multicolumn{1}{l|}{\textbf{1}}     & Fail              \\
-                                       & \multicolumn{1}{l|}{$t_{7}$}   & 2& 0& 1& \multicolumn{1}{l|}{1}     & Pass              \\
+                                       & \multicolumn{1}{l|}{$t_{6}$}   & 1& 2& 1& \multicolumn{1}{l|}{1}     & Fail              \\
+                                       & \multicolumn{1}{l|}{$t_{7}$}   & 2& \textbf{0}& 1& \multicolumn{1}{l|}{1}     & Pass              \\
                                        & \multicolumn{1}{l|}{$t_{8}$}   & 2& 1& 0& \multicolumn{1}{l|}{0}     & Pass              \\
-                                       & \multicolumn{1}{l|}{$t_{9}$}   & 2& \textbf{2}& 1& \multicolumn{1}{l|}{0}     & Fail              \\ \cline{2-7}
+                                       & \multicolumn{1}{l|}{$t_{9}$}   & 2& 2& 0& \multicolumn{1}{l|}{0}     & Fail              \\ \cline{2-7}
                                        \multicolumn{6}{c}{} \\
                                        & \multicolumn{6}{c}{\bfseries \emph{Identification}}                                                                                                                                                                                                                              \\ \cline{2-7}
-\multicolumn{1}{l|}{\multirow{5}{*}{\rotatebox{90}{$t_{3}$ (0,2,0,0)}}} & \multicolumn{1}{l|}{$t_{10}$*} & 1& 2& 0& \multicolumn{1}{l|}{0} & Fail              \\
+\multicolumn{1}{l|}{\multirow{5}{*}{\rotatebox{90}{$t_{1}$ (0,0,0,0)}}} & \multicolumn{1}{l|}{$t_{10}$*} & 1& 0& 0& \multicolumn{1}{l|}{0} & Fail              \\
 \multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{11}$*} & 0& 1& 0& \multicolumn{1}{l|}{0} & Pass              \\
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{12}$*} & 0& 2& 1& \multicolumn{1}{l|}{0} & Fail              \\
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{13}$*} & 0& 2& 0& \multicolumn{1}{l|}{1} & Fail              \\ \cline{2-7}
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{\bfseries MFS} & \multicolumn{5}{c}{\bfseries   (-, 2, -, -)}                                                                                                                                                                                                                 \\  \cline{2-7}
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{12}$*} & 0& 0& 1& \multicolumn{1}{l|}{0} & Fail              \\
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{13}$*} & 0& 0& 0& \multicolumn{1}{l|}{1} & Fail              \\ \cline{2-7}
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{\bfseries MFS} & \multicolumn{5}{c}{\bfseries   (-, 0, -, -)}                                                                                                                                                                                                                 \\  \cline{2-7}
                                    %    \multicolumn{6}{c}{} \\
                                        %\cline{2-7}
-\multicolumn{1}{l|}{\multirow{5}{*}{\rotatebox{90}{$t_{6}$ (1,2,0,1)}}} & \multicolumn{1}{l|}{$t_{14}$*} & 2& 2& 0& \multicolumn{1}{l|}{1} & Fail              \\
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{15}$*} & 1& 1& 0& \multicolumn{1}{l|}{1} & Fail              \\
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{16}$*} & 1& 2& 1& \multicolumn{1}{l|}{1} & Fail              \\
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{17}$*} & 1& 2& 0& \multicolumn{1}{l|}{0} & Fail              \\ \cline{2-7}
+\multicolumn{1}{l|}{\multirow{5}{*}{\rotatebox{90}{$t_{4}$ (1,0,0,1)}}} & \multicolumn{1}{l|}{$t_{14}$*} & 2& \textbf{0}& \textbf{0}& \multicolumn{1}{l|}{\textbf{1}} & Fail              \\
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{15}$*} & 1& 1& \textbf{0}& \multicolumn{1}{l|}{\textbf{1}} & Fail              \\
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{16}$*} & 1& \textbf{0}& 1& \multicolumn{1}{l|}{1} & Fail              \\
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{17}$*} & 1& \textbf{0}& 0& \multicolumn{1}{l|}{0} & Fail              \\ \cline{2-7}
 \multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{\bfseries MFS} & \multicolumn{5}{c}{\bfseries   (-, -, -, -)}                                                                                                                                                                                                                 \\  \cline{2-7}
                                       %  \multicolumn{6}{c}{} \\
                                 %        \cline{2-7}
-\multicolumn{1}{l|}{\multirow{5}{*}{\rotatebox{90}{$t_{9}$ (2,2,1,0)}}} & \multicolumn{1}{l|}{$t_{18}$*} & 0& 2& 1& \multicolumn{1}{l|}{0} & Fail              \\
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{19}$*} & 2& 0& 1& \multicolumn{1}{l|}{0} & Pass              \\
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{20}$*} & 2& 2& 0& \multicolumn{1}{l|}{0} & Fail              \\
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{21}$*} & 2& 2& 1& \multicolumn{1}{l|}{0} & Fail              \\ \cline{2-7}
-\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{\bfseries MFS} & \multicolumn{5}{c}{\bfseries   (-, 2, -, -)}                                                                                                                                                                                                                 \\  \cline{2-7}
+\multicolumn{1}{l|}{\multirow{5}{*}{\rotatebox{90}{$t_{7}$ (2,0,1,1)}}} & \multicolumn{1}{l|}{$t_{18}$*} & 0& 0& 1& \multicolumn{1}{l|}{1} & Fail              \\
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{19}$*} & 2& 1& 1& \multicolumn{1}{l|}{1} & Pass              \\
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{20}$*} & 2& 0& 0& \multicolumn{1}{l|}{1} & Fail              \\
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{$t_{21}$*} & 2& 0& 1& \multicolumn{1}{l|}{0} & Fail              \\ \cline{2-7}
+\multicolumn{1}{l|}{}                  & \multicolumn{1}{l|}{\bfseries MFS} & \multicolumn{5}{c}{\bfseries   (-, 0, -, -)}                                                                                                                                                                                                                 \\  \cline{2-7}
 \end{tabular}
 \end{table}
 
 
-We refer to such traditional life-cycle as \emph{\textbf{sequential CT}}. However, we believe this may not be the best choice in practice. The first reason is that the engineers normally do not want to wait for fault localization after all the test cases are executed. The early bug fixing is appealing and can give the engineers confidence to keep on improving the quality of the software. The second reason, which is also the most important, is such life-cycle can generate many redundant and unnecessary test cases. This can be reflected in the following three aspects:
+We refer to such traditional life-cycle as \emph{\textbf{Sequential CT}} (SCT). However, we believe this may not be the best choice in practice. The first reason is that the engineers normally do not want to wait for fault localization after all the test cases are executed. The early bug fixing is appealing and can give the engineers confidence to keep on improving the quality of the software. The second reason, which is also the most important, is such life-cycle can generate many redundant and unnecessary test cases, which negatively impacted on both test cases generation and MFS identification.
+The most obvious negative effect in this example is that we did not identify the expected failure-inducing interaction (-, -, 0, 1), which corresponds that option $ parameterised SQL$ is set to be \emph{true} and $Statmetent$ to be \emph{preparedStatement}. More shortcomings of the sequential CT are discussed as following:
 
 \subsection{Redundant test cases}
-There are two reasons that can result in generating redundant test cases:
+The first shortcoming of SCT is that it may generate redundant test cases, such that some of them do not cover as more uncovered schemas as possible. As a consequent, SCT may generate more test cases than actually needed. This can be reflected in the following two aspects:
 
-1) The test cases generated in the identification stage can also contribute some coverage, i.e., the schemas appear in the passing test cases in the identification stage may have already been covered in the test cases generation stage.  For example, when we identify the MFS of $t_{3}$ in Table \ref{tradition-gi}, the schema (0, 1, -, -) contained in the extra passing test case $t_{11}$ -- (0, 1, 0, 0) has already been appeared in the passing test case $t_{2}$ -- (0, 1, 1, 1). In other word, if we firstly identify the MFS of $t_{1}$, then $t_{2}$ is not a good choice as it does not covered as many 2-degree schemas as possible. For example, (1, 1, 1, 1) is better than this test case at contributing more coverage.
+1) The test cases generated in the identification stage can also contribute some coverage, i.e., the schemas appear in the passing test cases in the identification stage may have already been covered in the test cases generation stage. For example, when we identify the MFS of $t_{1}$ in Table \ref{tradition-gi}, the schema (0, 1, -, -) contained in the extra passing test case $t_{11}$ -- (0, 1, 0, 0) has already been appeared in the passing test case $t_{2}$ -- (0, 1, 1, 1). In other word, if we firstly identify the MFS of $t_{1}$, then $t_{2}$ is not a good choice as it does not covered as many 2-degree schemas as possible. For example, (1, 1, 1, 1) is better than this test case at contributing more coverage.
 
-2)The identified MFS should not appear in the following generated test cases.  This is because according to the definition of MFS, each test case containing this schema will trigger a failure, i.e., to generate and execute more than one test case contained the MFS makes no sense for the failure detecting. Take the example in Table \ref{tradition-gi}, after identifying the MFS -- (-, 2, -, -) of $t_{3}$, we should not generate the test case $t_{6}$ and $t_{9}$. This is because they also contain the identified MFS (-, 2, -, -), which will result in them failing as expected. Surely the expected failure caused by MFS (-, 0, -, -) makes $t_{4}$ and $t_{7}$ superfluous for error-detection, And since we should not generate $t_{4}$ and $t_{7}$,  the additional test cases ($t_{14}$ to $t_{21}$)generated for identifying the MFS in $t_{4}$ and $t_{7}$ are also not necessary.
-\subsection{mulitple MFS in one test case}
-non overlap
+2)The identified MFS should not appear in the following generated test cases.  This is because according to the definition of MFS, each test case containing this schema will trigger a failure, i.e., to generate and execute more than one test case contained the MFS makes no sense for the failure detection. Take the example in Table \ref{tradition-gi}, after identifying the MFS -- (-, 0, -, -) of $t_{1}$, we should not generate the test case $t_{4}$ and $t_{7}$. This is because they also contain the identified MFS (-, 0, -, -), which will result in them failing as expected. Since the expected failure caused by MFS (-, 0, -, -) makes $t_{7}$ and $t_{9}$ superfluous for error-detection, the additional test cases ($t_{14}$ to $t_{21}$) generated for identifying the MFS in $t_{4}$ and $t_{7}$ are also not necessary.
 
-overlap
+\subsection{Multiple MFS in one test case}
+Multiple MFS will negatively affect the accurateness of MFS identification -- and even make it hardly obtain a validate schema. For example, there are two MFS in $t_{4}$ in Table \ref{tradition-gi}, i.e., (-, 0, -, -) and (-, -, 0, 1) (in bold). When we use OFOT method, we found all the extra-generated test cases ($t_{14}$ to $t_{17}$) failed. These outcomes give OFOT a false indication that all the failure-inducing factors are not broken by mutating those four parameter values.  As a result, OFOT cannot determine which schemas are MFS, which is denoted as (-, -, -, -).
 
-Other MFS isolation was proposed to handle multiple MFS in one test case. But either cannot handle or needs too much extra test cases.
+The reason why OFOT cannot properly work is that this approach can only break one MFS at a time. If there are multiple MFS in one test case, the extra-generated test cases will always fail as they contain other non-broken MFS (see bold parts of $t_{14}$ to $t_{17}$). Some approaches are proposed to handle this problem, but either can not handle multiple MFS that have overlapping parts \cite{zhang2011characterizing}, or consume too many extra-generated test cases \cite{wang2010adaptive,niu2013identifying}. So in practice, to make MFS identification more effective and efficient, we need to avoid the appearance of multiple MFS in one test case.
 
-So in practice, we need to aviod the appreance. As to Sequet CT, however, does not give much support for this concern.
-
+SCT, however, does not offer much support for this concern. This is mainly because it is essentially a post-analysis framework, i.e., the analysis for MFS comes after the completion of test cases generation and execution. As a result, in the generation stage, testers have no knowledge of the possible MFS, and surely it has opportunities that multiple MFS appear in one test case.
+%
+%SCT, however, will increase the chance that multiple MFS appear in one test case. This is because the .
+%
 \subsection{Masking effects}
+Traditional covering array usually offer an inadequate testing due to \emph{Masking effects} \cite{dumlu2011feedback,yilmaz2013reducing}. A masking effect\cite{yilmaz2013reducing}  that prevents a test case from testing all valid schemas in a test case, which the test case is normally expected to test. Hence, to get an adequate testing, we should not only generate test cases. This coverage, however, is called \emph{t-} coverage.
 
+This problem can be more. Take example , the covering arry $t_{1}$ to $t_{9}$. So 
 
-This is mainly caused after the second .
+But with MFS identification, this problem can be relived. For single MFS, however, this can.
 
- Even worse, such test case may suffer from the \emph{masking effects} \cite{yilmaz2013reducing}, as failures caused by the already identified MFS can prevent the test case from normally checked (e.g., failures that can trigger an unexpected halt of the execution). As a result, some schemas in these test cases that are supposed to be examined will actually skip the testing.
- 
-  and even worse some other schemas in $t_{4}$ or $t_{7}$  may be masked, as those schemas can potentially trigger other failures but will not be observed.
+But for multiple MFS, however, this problem is worse. 
+
+This is mainly caused after the second. 
+
+Thus, although the technique can conclude that the desired
+interaction coverage is achieved, many option combinations may actually not be
+tested. The approach in [10] also uses feedback from fault localization, but to
+address the problem of inadequate testing. This approach can give false
+confidence that the desired t-way testing is completed.
+
+Even worse, such test case may suffer from the \emph{masking effects} \cite{yilmaz2013reducing}, as failures caused by the already identified MFS can prevent the test case from normally checked (e.g., failures that can trigger an unexpected halt of the execution). As a result, some schemas in these test cases that are supposed to be examined will actually skip the testing.
+
+and even worse some other schemas in $t_{4}$ or $t_{7}$  may be masked, as those schemas can potentially trigger other failures but will not be observed.
+
 
 %This section presents the .
 %As discussed previously, the generation and identification are the most important stages in CT life-cycle. How to enhance these two activities in the CT life-cycle is of importance as it greatly impacts on the quality and cost of overall software testing. In fact, most studies in CT focus on these two fields. But rather than as a whole, generation and identification are applied independently. The justification for not discussing how to cooperate these two activities is that the first-generation-then-identification is so natural and straightforward. As we will show below, however, that the generation and identification is so tightly correlated that they have a significant impact on the effectiveness and efficiencies of testing.
@@ -597,6 +612,17 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
 %Then the generation should not include, the characterization is should.
 
 %To implement such framework, the most important is to share the information. In specific, to, we use the SAT solver. And when , we should change the coverage information. Our detail implementation for this framework is list in Algorithm.
+
+\subsection{Problems that solved}
+(1) redundant test cases
+
+as we have compute the coverage.
+
+
+(2) As we label them as forbidden schemas
+
+(3) Masking effects
+
 \subsection{Example}
 
 With this new framework, when we re-consider the example in Table \ref{tradition-gi} in section 3,  we can get the result listed in Table \ref{new-gi}.
@@ -642,7 +668,9 @@ Note that this example only lists the condition of a single MFS, under which som
 
 
 \section{Limitations of our approach}
-\subsection{incorrectly identified schemas}
+Alougth our approach provides a more adaptive and flexible framework for CT, there are several issues that needs to be concerned.
+
+\subsection{Incorrectly identified schemas}
 incorrect schemas can give us unrelieble results. However, this is inavoid. To definely get exact MFS, according to charle courblun and Nie , we need to exhaustive condunct every possible test cases, which is however, not possible. So in practice, we get an ½üËÆ½â [Zeller's paper to show how global minimal is not possible].
 
 Based on this, if our algorithm get an wrong MFS, then it can be .
@@ -656,7 +684,7 @@ Based on this, if our algorithm get an wrong MFS, then it can be .
 
 
 
-\subsection{constraints handling}
+\subsection{Constraints handling}
 
 As to avoid the idenified MFS is needed. In this paper, we handle this as constraints, which needs to get an solver to aviod the following result. This handling, however, obviously increase the cost of the whole CT process. As constraints satification (SAT) problem and optimcal problem (covering array) is both tough [][][][][], the increasing is possible.
 
@@ -956,7 +984,7 @@ Although CT has been proven to be effective at detecting and identifying the int
 %the methodology, notions and in CT.
 %On this filed, most works separately discussed , such as.
 
-%JieLi \cite{li2012improved} augmented the MFS identifying algorithm by selecting one previous passing test case for comparison, such that it can reduce some extra test cases when compared to another efficient MFS identifying algorithm \cite{zhang2011characterizing}.
+JieLi \cite{li2012improved} augmented the MFS identifying algorithm by selecting one previous passing test case for comparison, such that it can reduce some extra test cases when compared to another efficient MFS identifying algorithm \cite{zhang2011characterizing}.
 
 S.Fouch{\'e}  et al., \cite{fouche2009incremental} introduced the notion of incremental covering. Different from traditional covering array, it does not need a fixed strength to guide the generation; instead, it can dynamically generate high-way covering array based on existing low-way covering array, which can support a flexible tradeoff between covering array strength and testing resources. Cohen \cite{cohen2007exploiting,cohen2008constructing} studied the impacts of constraints for CT, and proposed an SAT-based approach that can handle those constraints.  Bryce and Colbourn \cite{bryce2006prioritized} proposed an one-test-case-one-time greedy technique to not only generate test cases to cover all the $t$-degree interactions, but also prioritize them according their importance.  E. Dumlu et al., \cite{dumlu2011feedback} developed a feedback driven
 combinatorial testing approach that can assist traditional covering in avoiding the masking effects between multiple failures. Yilmaz \cite{yilmaz2013reducing} extended that work by refining the MFS diagnosing method. Specifically, this feedback driven approach firstly generate a $t$-way covering array, and after executing them, the MFS will be identified by utilizing a classification tree method. It then forbidden these MFS and generate additional test cases to cover the interactions that are masked by the MFS. This process continues until all the interactions are covered. Additionally, Nie \cite{nie2013adaptive} constructed an adaptive combinatorial testing framework, which can dynamically adjust the inputs model, strength $t$ of covering array, and generation strategy during CT process.

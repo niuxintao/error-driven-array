@@ -128,6 +128,12 @@ Y.~Lei, R.~Kacker, D.~R. Kuhn, V.~Okun, and J.~Lawrence.
 \newblock {\em Software Testing, Verification and Reliability}, 18(3):125--148,
   2008.
 
+\bibitem{li2012improved}
+J.~Li, C.~Nie, and Y.~Lei.
+\newblock Improved delta debugging based on combinatorial testing.
+\newblock In {\em Quality Software (QSIC), 2012 12th International Conference
+  on}, pages 102--105. IEEE, 2012.
+
 \bibitem{martinez2008algorithms}
 C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
 \newblock Algorithms to locate errors using covering arrays.
@@ -185,6 +191,12 @@ C.~Song, A.~Porter, and J.~S. Foster.
 \newblock In {\em Proceedings of the 2012 International Conference on Software
   Engineering}, pages 903--913. IEEE Press, 2012.
 
+\bibitem{wang2010adaptive}
+Z.~Wang, B.~Xu, L.~Chen, and L.~Xu.
+\newblock Adaptive interaction fault location based on combinatorial testing.
+\newblock In {\em Quality Software (QSIC), 2010 10th International Conference
+  on}, pages 495--502. IEEE, 2010.
+
 \bibitem{yilmaz2006covering}
 C.~Yilmaz, M.~B. Cohen, and A.~A. Porter.
 \newblock Covering arrays for efficient fault characterization in complex
@@ -204,5 +216,12 @@ S.~Yoo, M.~Harman, and D.~Clark.
   and coverage-based approaches.
 \newblock {\em ACM Transactions on Software Engineering and Methodology
   (TOSEM)}, 22(3):19, 2013.
+
+\bibitem{zhang2011characterizing}
+Z.~Zhang and J.~Zhang.
+\newblock Characterizing failure-causing parameter interactions by adaptive
+  testing.
+\newblock In {\em Proceedings of the 2011 International Symposium on Software
+  Testing and Analysis}, pages 331--341. ACM, 2011.
 
 \end{thebibliography}

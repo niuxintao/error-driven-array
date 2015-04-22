@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  21 APR 2015 20:04
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  22 APR 2015 22:21
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -391,7 +391,7 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 248--249
 Requested font "aer6" at 6.0pt
  -> aer6
 
-Overfull \hbox (9.95703pt too wide) in paragraph at lines 371--380
+Overfull \hbox (13.7998pt too wide) in paragraph at lines 371--380
  [] 
  []
 
@@ -400,26 +400,25 @@ Requested font "aebxti10" at 9.0pt
 [4]
 File: baicOutline.eps Graphic file (type eps)
  <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 470--471
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 485--486
 [][] 
  []
 
-[5] [6]
-Invalid UTF-8 byte or sequence at line 646 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 646 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 646 replaced by U+FFFD.
+[5] [6] [7]
+Invalid UTF-8 byte or sequence at line 674 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 674 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 674 replaced by U+FFFD.
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
 Missing character: There is no ƽ in font aer9!
 Missing character: There is no � in font aer9!
-Invalid UTF-8 byte or sequence at line 652 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 652 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 652 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 680 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 680 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 680 replaced by U+FFFD.
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
- [7]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 728.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 756.
 
  (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
@@ -427,31 +426,24 @@ File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 Requested font "aett9" at 9.0pt
  -> aett9
  [8] [9]
-Underfull \vbox (badness 1205) has occurred while \output is active []
-
 File: result.eps Graphic file (type eps)
-
-<result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 921--922
+ <result.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 949--950
 [][] 
  []
 
-[10] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
-[11]
+[10] [11]
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
+[12]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12])
-[13
-
-] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
+) [13]
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2913 strings out of 430478
- 33238 string characters out of 3191502
- 103390 words of memory out of 3000000
- 6000 multiletter control sequences out of 15000+200000
+ 2916 strings out of 430478
+ 33297 string characters out of 3191502
+ 104390 words of memory out of 3000000
+ 6003 multiletter control sequences out of 15000+200000
  43435 words of font info for 54 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,26p,1599b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
