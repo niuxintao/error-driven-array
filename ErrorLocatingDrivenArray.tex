@@ -447,15 +447,19 @@ SCT, however, does not offer much support for this concern. This is mainly becau
 %SCT, however, will increase the chance that multiple MFS appear in one test case. This is because the .
 %
 \subsection{Masking effects}
-Traditional covering array usually offer an inadequate testing due to \emph{Masking effects} \cite{dumlu2011feedback,yilmaz2013reducing}. A masking effect\cite{yilmaz2013reducing}  that prevents a test case from testing all valid schemas in a test case, which the test case is normally expected to test. Hence, to get an adequate testing, we should not only generate test cases. This coverage, however, is called \emph{t-} coverage.
+Traditional covering array usually offer an inadequate testing due to \emph{Masking effects} \cite{dumlu2011feedback,yilmaz2013reducing}. A masking effect\cite{yilmaz2013reducing} is an effect that some failures or exceptions prevent a test case from testing all valid schemas in that test case, which the test case is normally expected to test. For example in Table \ref{tradition-gi}, $t_{1}$ is initially expected to cover all the 2-degree schemas --(0, 0, - , -), (0, -, 0, -), (0, -, -, 0), (-, 0, 0, -), (-, 0, -, 0), (-, -, 0, 0), but when we found that it failed during testing, this conclusion is no longer that sure. This is because, the failing of $t_{1}$ ($Scroll Type$ is set to be $sensitive$) crashed HSQLDB, and as a result, it did not go on executing the remaining test code, which may be related to some interactions of $t_{1}$. Hence, we cannot ensure we thoroughly exercise all the interactions in this failing test case.
 
-This problem can be more. Take example , the covering arry $t_{1}$ to $t_{9}$. So 
+Since traditional covering array cannot reach a adequate testing, as an alternative,  as a more rigorous coverage standard is proposed \cite{yilmaz2013reducing}.
+
+ Hence, to get an adequate testing, we should not only generate test cases. This coverage, however, is called \emph{t-} coverage.
+
+This problem can be more. Take example , the covering arry $t_{1}$ to $t_{9}$. So
 
 But with MFS identification, this problem can be relived. For single MFS, however, this can.
 
-But for multiple MFS, however, this problem is worse. 
+But for multiple MFS, however, this problem is worse.
 
-This is mainly caused after the second. 
+This is mainly caused after the second.
 
 Thus, although the technique can conclude that the desired
 interaction coverage is achieved, many option combinations may actually not be
@@ -470,9 +474,9 @@ and even worse some other schemas in $t_{4}$ or $t_{7}$  may be masked, as those
 
 %This section presents the .
 %As discussed previously, the generation and identification are the most important stages in CT life-cycle. How to enhance these two activities in the CT life-cycle is of importance as it greatly impacts on the quality and cost of overall software testing. In fact, most studies in CT focus on these two fields. But rather than as a whole, generation and identification are applied independently. The justification for not discussing how to cooperate these two activities is that the first-generation-then-identification is so natural and straightforward. As we will show below, however, that the generation and identification is so tightly correlated that they have a significant impact on the effectiveness and efficiencies of testing.
-
-
-Based on these observations, a more effective and efficient framework is desired.
+%\subsection{Summary of the motivation example}
+%
+%Based on these observations, a more effective and efficient framework is desired.
 
 \section{Interleaving Approach}
 

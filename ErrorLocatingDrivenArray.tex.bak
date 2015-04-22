@@ -230,14 +230,14 @@ We remodel the test cases generation and failure-inducing interactions identific
 %
 
 
-We conducted a series of empirical studies on several open-source software to evaluate our new framework. Specifically, we performed two comparisons studies. The first one is to compare our new framework with the traditional one, which first generates a complete set of test cases and then performs the fault localization. The second one is to compare our framework with the Error Locating Array \cite{martinez2008algorithms,martinez2009locating}, which is a well-designed set of test cases that can be used directly detect and identify the failure-inducing interactions. The results show that, in terms of test case generation and failure-inducing interactions identification, our approach can significantly reduce the overall needed test cases and as a result it can more quickly identify the failure-inducing interactions of the system under test.
+We conducted a series of empirical studies on several open-source software to evaluate our new framework. Specifically, we performed two comparisons studies. The first one is to compare our new framework with the traditional one, which first generates a complete set of test cases and then performs the fault localization. The second one is to compare our framework with the Feedback-driven CT \cite{dumlu2011feedback,yilmaz2013reducing}, which also adapts an iterative framework to generate test cases and identifying failure-inducing interactions, but to address the problem of inadequate testing. The results show that, in terms of test case generation and failure-inducing interactions identification, our approach can significantly reduce the overall needed test cases and as a result it can more quickly identify the failure-inducing interactions of the system under test. Additionally, when combining our approach with Feedback-driven CT, the results can be more effective than both approaches alone.
 
 The main contributions of this paper are as follows.
 
  \begin{enumerate}
  \item  We propose a new CT framework which combines the test cases generation and fault localization more closely.
  \item  We augment the traditional CT test cases generation and failure-inducing interactions identification process to make them adapt to the new framework.
- \item We perform a series of comparisons with traditional CT and Error Locating Array and the result of the empirical studies are discussed.
+ \item We perform a series of comparisons with traditional CT and Feedback-driven CT. The result of the empirical studies are discussed.
 \end{enumerate}
 
 
@@ -447,15 +447,15 @@ SCT, however, does not offer much support for this concern. This is mainly becau
 %SCT, however, will increase the chance that multiple MFS appear in one test case. This is because the .
 %
 \subsection{Masking effects}
-Traditional covering array usually offer an inadequate testing due to \emph{Masking effects} \cite{dumlu2011feedback,yilmaz2013reducing}. A masking effect\cite{yilmaz2013reducing}  that prevents a test case from testing all valid schemas in a test case, which the test case is normally expected to test. Hence, to get an adequate testing, we should not only generate test cases. This coverage, however, is called \emph{t-} coverage.
+Traditional covering array usually offer an inadequate testing due to \emph{Masking effects} \cite{dumlu2011feedback,yilmaz2013reducing}. A masking effect\cite{yilmaz2013reducing} is an effect  that prevents a test case from testing all valid schemas in a test case, which the test case is normally expected to test. Hence, to get an adequate testing, we should not only generate test cases. This coverage, however, is called \emph{t-} coverage.
 
-This problem can be more. Take example , the covering arry $t_{1}$ to $t_{9}$. So 
+This problem can be more. Take example , the covering arry $t_{1}$ to $t_{9}$. So
 
 But with MFS identification, this problem can be relived. For single MFS, however, this can.
 
-But for multiple MFS, however, this problem is worse. 
+But for multiple MFS, however, this problem is worse.
 
-This is mainly caused after the second. 
+This is mainly caused after the second.
 
 Thus, although the technique can conclude that the desired
 interaction coverage is achieved, many option combinations may actually not be
@@ -470,9 +470,9 @@ and even worse some other schemas in $t_{4}$ or $t_{7}$  may be masked, as those
 
 %This section presents the .
 %As discussed previously, the generation and identification are the most important stages in CT life-cycle. How to enhance these two activities in the CT life-cycle is of importance as it greatly impacts on the quality and cost of overall software testing. In fact, most studies in CT focus on these two fields. But rather than as a whole, generation and identification are applied independently. The justification for not discussing how to cooperate these two activities is that the first-generation-then-identification is so natural and straightforward. As we will show below, however, that the generation and identification is so tightly correlated that they have a significant impact on the effectiveness and efficiencies of testing.
-
-
-Based on these observations, a more effective and efficient framework is desired.
+%\subsection{Summary of the motivation example}
+%
+%Based on these observations, a more effective and efficient framework is desired.
 
 \section{Interleaving Approach}
 
