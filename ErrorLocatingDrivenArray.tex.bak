@@ -333,7 +333,7 @@ To detect the existence of MFS in the SUT is still far from figuring out the roo
 A typical MFS identification process is shown in Table \ref{ofot-identify}. This example assumes the SUT has 3 parameters, each can take 2 values, and the test case (1, 1, 1) fails. Then in Table \ref{ofot-identify}, as test case \emph{t} failed, we mutate one factor of the \emph{t} one time to generate new test cases: $t_{1}$ -- $t_{3}$, It turns out that test case $t_{1}$ passed, which indicates that this test case break the MFS in the original test case \emph{t}. So (1,-,-) should be a failure-causing factor, and as other mutating process all failed, which means no other failure-inducing factors were broken, therefore, the MFS in \emph{t} is (1,-,-).
 
 \begin{table}[h]
-\caption{OFOT with our strategy}
+\caption{OFOT example}
 \label{ofot-identify}
 \center
 \begin{tabular}{llllll}
@@ -440,32 +440,53 @@ The first shortcoming of SCT is that it may generate redundant test cases, such 
 \subsection{Multiple MFS in one test case}
 Multiple MFS will negatively affect the accurateness of MFS identification -- and even make it hardly obtain a validate schema. For example, there are two MFS in $t_{4}$ in Table \ref{tradition-gi}, i.e., (-, 0, -, -) and (-, -, 0, 1) (in bold). When we use OFOT method, we found all the extra-generated test cases ($t_{14}$ to $t_{17}$) failed. These outcomes give OFOT a false indication that all the failure-inducing factors are not broken by mutating those four parameter values.  As a result, OFOT cannot determine which schemas are MFS, which is denoted as (-, -, -, -).
 
-The reason why OFOT cannot properly work is that this approach can only break one MFS at a time. If there are multiple MFS in one test case, the extra-generated test cases will always fail as they contain other non-broken MFS (see bold parts of $t_{14}$ to $t_{17}$). Some approaches are proposed to handle this problem, but either can not handle multiple MFS that have overlapping parts \cite{zhang2011characterizing}, or consume too many extra-generated test cases \cite{wang2010adaptive,niu2013identifying}. So in practice, to make MFS identification more effective and efficient, we need to avoid the appearance of multiple MFS in one test case.
+The reason why OFOT cannot properly work is that this approach can only break one MFS at a time. If there are multiple MFS in one test case, the extra-generated test cases will always fail as they contain other non-broken MFS (see bold parts of $t_{14}$ to $t_{17}$). Some approaches are proposed to handle this problem, but either can not handle multiple MFS that have overlapping parts \cite{zhang2011characterizing}, or consumes too many extra-generated test cases \cite{wang2010adaptive,niu2013identifying}. So in practice, to make MFS identification more effective and efficient, we need to avoid the appearance of multiple MFS in one test case.
 
 SCT, however, does not offer much support for this concern. This is mainly because it is essentially a post-analysis framework, i.e., the analysis for MFS comes after the completion of test cases generation and execution. As a result, in the generation stage, testers have no knowledge of the possible MFS, and surely it has opportunities that multiple MFS appear in one test case.
 %
 %SCT, however, will increase the chance that multiple MFS appear in one test case. This is because the .
 %
 \subsection{Masking effects}
-Traditional covering array usually offer an inadequate testing due to \emph{Masking effects} \cite{dumlu2011feedback,yilmaz2013reducing}. A masking effect\cite{yilmaz2013reducing} is an effect  that prevents a test case from testing all valid schemas in a test case, which the test case is normally expected to test. Hence, to get an adequate testing, we should not only generate test cases. This coverage, however, is called \emph{t-} coverage.
+Traditional covering array usually offer an inadequate testing due to \emph{Masking effects} \cite{dumlu2011feedback,yilmaz2013reducing}. A masking effect\cite{yilmaz2013reducing} is an effect that some failures or exceptions prevent a test case from testing all valid schemas in that test case, which the test case is normally expected to test. For example in Table \ref{tradition-gi}, $t_{1}$ is initially expected to cover all the 2-degree schemas --(0, 0, - , -), (0, -, 0, -), (0, -, -, 0), (-, 0, 0, -), (-, 0, -, 0), (-, -, 0, 0), but when we found that it failed during testing, this conclusion is no longer that sure. This is because, the failing of $t_{1}$ ($Scroll Type$ is set to be $sensitive$) crashed HSQLDB, and as a result, it did not go on executing the remaining test code, which may affect the examination of some interactions of $t_{1}$. Hence, we cannot ensure we thoroughly exercise all the interactions in this failing test case.
 
-This problem can be more. Take example , the covering arry $t_{1}$ to $t_{9}$. So
+Since traditional covering array cannot reach a adequate testing, as an alternative, \emph{tested t-way interaction criterion} as a more rigorous coverage standard is proposed \cite{yilmaz2013reducing}. This criterion, to be simply, shows that a $t$-degree schema is covered iff (1) it appears in a passing test case (2)it is identified as MFS or faulty schema. Now it is surely that this criteria is not satisfied with traditional covering array alone, next let us examine whether this criterion can be satisfied with SCT, i.e., the combination of traditional covering array and MFS identification.
 
-But with MFS identification, this problem can be relived. For single MFS, however, this can.
+One obvious insight is that if there is only single MFS in each failing test case, this criterion is satisfied. This conclusion is based on the fact that the MFS identification is actually a process to isolate the failure-inducing interaction among other interactions in the failing test case,  and since there is only single MFS, then other schemas can be determined as non-MFS.
 
-But for multiple MFS, however, this problem is worse.
+For example in Table \ref{tradition-gi}, $t_{1}$ contained a single MFS (-, 0, -, -), and we identified this MFS by generating four extra test cases ($t_{10}$ to $t_{13}$). As for $t_{1}$, the schema (-, 0, -, -) is determined to be MFS, but since the target of that testing is $2$-way coverage, i.e., to cover all the 2-degree schemas, this $1$-degree schema do not contribute any more coverage. Based on the fact (-, 0, -, -) is MFS, all the test cases contain this schema will fail by definition, and surely the super-schemas of (-, 0, -, -) in this test case -- (0, 0, -, -), (-, 0, 0, -) and (-, 0, -, 0) are also faulty schemas as all the test cases contain these schemas must contain the MFS (-, 0, -, -), which will fail after execution. The remaining 2-degree schemas (0, -, 0, -), (0, -, -, 0), (-, -, 0, 0) are contained in the extra-generated test case $t_{11}$ (0, 1, 0, 0) (Note that for single MFS, there will be at least one passing extra-generated test case ), which are of course non-faulty schemas.  After all, all the 2-degree schemas in the failing test case $t_{1}$ are satisfied the \emph{tested t-way interaction criterion}.
 
-This is mainly caused after the second.
+% we can determine other 2-degree schemas based on MFS (-, 0, -, -).
+%
+%Other schemas can be found the passing test case $t_{11}$ .
+%
+%More critically,
 
-Thus, although the technique can conclude that the desired
-interaction coverage is achieved, many option combinations may actually not be
-tested. The approach in [10] also uses feedback from fault localization, but to
-address the problem of inadequate testing. This approach can give false
-confidence that the desired t-way testing is completed.
+When problem comes to a failing test case with multiple MFS, however, SCT fails not meet that criterion. As discussed previously, SCT cannot properly work on test cases with multiple MFS--and even cannot obtain a validate schema. With this in mind, we cannot determine which schemas in this failing test case are MFS or not, consequntly, . For example, $t_{4}$ has two MFS--(-, 0, -, -), (-, -, 0, 1), which did not been identified with OFOT approach (In fact, there is no passing extra-generated test case). As a result, there are two 2-degree schemas (1, 0, -, -) (-, -, 0, 1) in this test case that, are neither contained in a passing test case nor determined as MFS or faulty schemas.  Hence, \emph{tested t-way interaction criterion} is not satisfied.
 
-Even worse, such test case may suffer from the \emph{masking effects} \cite{yilmaz2013reducing}, as failures caused by the already identified MFS can prevent the test case from normally checked (e.g., failures that can trigger an unexpected halt of the execution). As a result, some schemas in these test cases that are supposed to be examined will actually skip the testing.
+Since, we have discussed previously, we believe SCT will have a effects on the approach.
 
-and even worse some other schemas in $t_{4}$ or $t_{7}$  may be masked, as those schemas can potentially trigger other failures but will not be observed.
+%\begin{table}[h]
+%\caption{The satisfaction of tested t-way interaction criterion}
+%\label{ofot-proof}
+%\center
+%\begin{tabular}{llllll}
+% \hline
+%\multicolumn{5}{c}{\bfseries Original test case} & \bfseries Outcome \\  \hline
+% $t$ & \multicolumn{4}{l}{1 \ \ \ \ 1 \ \ \ \  1 } & Fail \\
+% \hline
+%\multicolumn{5}{c}{\bfseries Additional  test cases} &  \\  \hline
+%$t_{1}$ &\multicolumn{4}{l}{0  \ \ \ \  1 \ \ \ \  1 }& Pass \\
+%$t_{2}$ &\multicolumn{4}{l}{1  \ \ \ \  0 \ \ \ \  1 } & Fail \\
+%$t_{3}$ &\multicolumn{4}{l}{1  \ \ \ \  1 \ \ \ \  0 } & Fail \\
+% \hline
+%\end{tabular}
+%\end{table}
+
+%This is mainly caused after the second.
+%
+%Even worse, such test case may suffer from the \emph{masking effects} \cite{yilmaz2013reducing}, as failures caused by the already identified MFS can prevent the test case from normally checked (e.g., failures that can trigger an unexpected halt of the execution). As a result, some schemas in these test cases that are supposed to be examined will actually skip the testing.
+%
+%and even worse some other schemas in $t_{4}$ or $t_{7}$  may be masked, as those schemas can potentially trigger other failures but will not be observed.
 
 
 %This section presents the .
@@ -613,7 +634,7 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
 
 %To implement such framework, the most important is to share the information. In specific, to, we use the SAT solver. And when , we should change the coverage information. Our detail implementation for this framework is list in Algorithm.
 
-\subsection{Problems that solved}
+\subsection{Problems solved}
 (1) redundant test cases
 
 as we have compute the coverage.
@@ -671,7 +692,7 @@ Note that this example only lists the condition of a single MFS, under which som
 Alougth our approach provides a more adaptive and flexible framework for CT, there are several issues that needs to be concerned.
 
 \subsection{Incorrectly identified schemas}
-incorrect schemas can give us unrelieble results. However, this is inavoid. To definely get exact MFS, according to charle courblun and Nie , we need to exhaustive condunct every possible test cases, which is however, not possible. So in practice, we get an 近似解 [Zeller's paper to show how global minimal is not possible].
+incorrect schemas can give us unreliable results. However, this is inevitable. To definitely get exact MFS, according to charle courblun and Nie , we need to exhaustive condunct every possible test cases (based on the definition of MFS, every possible test cases contain this schema will fail), which is however, not possible. So in practice, we get an 近似解 [Zeller's paper to show how global minimal is not possible].
 
 Based on this, if our algorithm get an wrong MFS, then it can be .
 
