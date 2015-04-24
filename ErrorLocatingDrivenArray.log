@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  23 APR 2015 19:50
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  24 APR 2015 23:13
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -409,21 +409,24 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 498--499
  []
 
 [6] [7]
-Invalid UTF-8 byte or sequence at line 687 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 687 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 687 replaced by U+FFFD.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Invalid UTF-8 byte or sequence at line 695 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 695 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 695 replaced by U+FFFD.
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
 Missing character: There is no ƽ in font aer9!
 Missing character: There is no � in font aer9!
-Invalid UTF-8 byte or sequence at line 693 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 693 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 693 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 701 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 701 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 701 replaced by U+FFFD.
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
- [8]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 769.
+[8]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 777.
 
  (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
@@ -431,25 +434,18 @@ File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 Requested font "aett9" at 9.0pt
  -> aett9
  [9]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1558) has occurred while \output is active []
 
  [10]
 File: result.eps Graphic file (type eps)
 
 <result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 962--963
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 970--971
 [][] 
  []
 
-
-Underfull \vbox (badness 6708) has occurred while \output is active []
-
- [11]
+[11] [12]
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
-[12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [13])
@@ -457,10 +453,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2916 strings out of 430478
- 33297 string characters out of 3191502
- 104390 words of memory out of 3000000
- 6003 multiletter control sequences out of 15000+200000
+ 2929 strings out of 430478
+ 33473 string characters out of 3191502
+ 102390 words of memory out of 3000000
+ 6016 multiletter control sequences out of 15000+200000
  43435 words of font info for 54 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,26p,1599b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
