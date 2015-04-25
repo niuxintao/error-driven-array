@@ -635,11 +635,11 @@ Two facts of our framework support this improvement: (1) The schemas appeared in
 
 (2)\emph{\textbf{The appearance of multiple MFS in one test case is limited, improving the effectiveness of MFS identification}}
 
-This is mainly because we forbidden the appearance of MFS that has been identified. Consequently, as our approach progresses, the number of remaining MFS decreases one by one by one. Correspondingly, the probability that multiple MFS appear in one test case will also decrease. Since multiple MFS has a negative effect on MFS identification as discussed in Section \ref{sec:moti}, the reduction of the appearance of multiple MFS in one test case obviously improve the effectiveness of MFS identification.
+This is mainly because we forbidden the appearance of MFS that has been identified. Consequently, with the progress of our approach, the number of remaining MFS decreases one by one. Correspondingly, the probability that multiple MFS appear in one test case will also decrease. Since multiple MFS has a negative effect on MFS identification as discussed in Section \ref{sec:moti}, the reduction of the appearance of multiple MFS in one test case obviously improve the effectiveness of MFS identification.
 
 (3)\emph{\textbf{The Masking effects is reduced, hence adequate testing is better satisfied}}
 
-As discussed in Section \ref{sec:moti}, masking effects affects SCT when there are multiple MFS in one failing test case. Since our approach theoretically reduce the probability of such case, we believe our framework can alleviate the masking effects. In fact, with our increment one by one, we can better determine which MFS are and which schemas are failure-irrelevant, which supports a better adequate testing than SCT.
+As discussed in Section \ref{sec:moti}, SCT is suffering from masking effects when there are multiple MFS in one failing test case. Since our approach theoretically reduce the probability of the case that multiple MFS appear in one test case, we believe our framework can alleviate the masking effects. In fact, our framework conforms to \emph{tested t-way interaction criterion} because we only update t-way coverage for two types of schemas : (1) $t$-degree schemas in those passing test cases and (2) $t$-degree schemas \emph{related} to MFS. Hence, our framework \emph{\textbf{Interleaving CT}}(ICT) supports a better adequate testing than SCT.
 
 \subsection{Example}\label{sec:app:example}
 
