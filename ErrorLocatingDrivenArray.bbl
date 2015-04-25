@@ -78,6 +78,13 @@ B.~Garn and D.~E. Simos.
   (ICSTW), 2014 IEEE Seventh International Conference on}, pages 58--67. IEEE,
   2014.
 
+\bibitem{ghandehari2012identifying}
+L.~S.~G. Ghandehari, Y.~Lei, T.~Xie, R.~Kuhn, and R.~Kacker.
+\newblock Identifying failure-inducing combinations in a combinatorial test
+  set.
+\newblock In {\em Software Testing, Verification and Validation (ICST), 2012
+  IEEE Fifth International Conference on}, pages 370--379. IEEE, 2012.
+
 \bibitem{jin2014configurations}
 D.~Jin, X.~Qu, M.~B. Cohen, and B.~Robinson.
 \newblock Configurations everywhere: Implications for testing and debugging in
