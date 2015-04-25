@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  24 APR 2015 23:13
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  25 APR 2015 13:14
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -433,32 +433,24 @@ File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 Requested font "aett9" at 9.0pt
  -> aett9
- [9]
-Underfull \vbox (badness 1558) has occurred while \output is active []
+ [9] [10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [10]
-File: result.eps Graphic file (type eps)
-
-<result.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 970--971
-[][] 
- []
-
-[11] [12]
+ [11]
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13])
-[14
+ [12])
+[13
 
 ] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2929 strings out of 430478
- 33473 string characters out of 3191502
+ 2927 strings out of 430478
+ 33453 string characters out of 3191502
  102390 words of memory out of 3000000
- 6016 multiletter control sequences out of 15000+200000
+ 6015 multiletter control sequences out of 15000+200000
  43435 words of font info for 54 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,26p,1599b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ErrorLocatingDrivenArray.pdf (14 pages).
+Output written on ErrorLocatingDrivenArray.pdf (13 pages).
