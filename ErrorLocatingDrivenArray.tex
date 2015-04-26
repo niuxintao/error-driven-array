@@ -709,16 +709,15 @@ Based on the insight that incorrectly identifying MFS is inevitable, our approac
 2) \textbf{More rigorous validation with feedback}. This needs to cooperate with developers of the SUT. Specifically, when a MFS is identified. Not only should we send it to developers of the SUT, but also we need to get the feedback from them to see whether this MFS are the root cause of failure or not. Although this process may be time-consuming and delay the testing for the remaining bugs, but it is the most effective way to determine the correct MFS .
 
 \subsection{Constraints handling}
+To forbidden the identified MFS as well as the three types of schemas in the latter test cases, \emph{constraints handling} technique is needed. That is, these schemas are regarded as \emph{bad pattern} that following test cases should never contain. Existing approaches usually utilize a constraint solver to handle it (SAT \cite{cohen2008constructing}, for example) This handling approach, although effective, however, significantly increase the cost of the whole CT process. There are several methods can make such cost decease to a tolerable level.
+%As constraints satisfaction (SAT) problem and optimal problem (covering array) is both tough [][][][][], the increasing is possible
 
-As to avoid the identified MFS is needed. In this paper, we handle this as constraints, which needs to get an solver to avoid the following result. This handling, however, obviously increase the cost of the whole CT process. As constraints satisfaction (SAT) problem and optimal problem (covering array) is both tough [][][][][], the increasing is possible.
+1) \textbf{Illustrate history to reduction}
 
-\emph{Possible solution}
-
-1) Illustrate history to reducation
-
-2) better practical stop [Zeller' paper saied a good term, to show why isolation)
-
-3) better constratins modeling
+2) \textbf{Pragmatic approaches}
+In practice, we can delay the constraints handling, so that it will not . For example, we can utlize to some fixed numebr of facotrs. Or more coarsest, util some test cases are generated. Then to just give the search. 
+%
+%3) \textbf{Better constrains modeling}
 
 
 \section{empirically study}
