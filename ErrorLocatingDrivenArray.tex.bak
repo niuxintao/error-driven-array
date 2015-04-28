@@ -609,7 +609,7 @@ After the MFS are identified, some related $t$-degree schemas, i.e., \emph{MFS t
 \end{algorithm}
 
  In this algorithm, we firstly check each MFS (line 1) to see if it is $t$-degree schema (line 2). We will set those $t$-degree MFS as covered and remove them from the uncovered schemas set $\Omega$ (line 3). This is the first type of schemas --\emph{themselves}. For each $t$-degree super-schema of these MFS, it will also be removed from the uncovered schemas set (line 5 - 9), as they are the second type of schemas --  \emph{super-schemas}. The last type, i.e., \emph{implicit forbidden schemas}, is the toughest one. To remove them, we need to search through each potential schema in the uncovered schemas set (line 11), and check if it is the implicit forbidden schema (line 12). The checking process involves solving a satisfiability problem. Specifically, if we can not find a test case from  the set ($\mathcal{T}_{all} - \mathcal{T}_{MFS}$) (excluding those that contain MFS), such that it contains the schema under checking, then we can determine the schema is the implicit forbidden schema and it needs to be removed from uncovered schemas set (line 13). This is because in this case, the schema under checking can only appear in $\mathcal{T}_{MFS}$, which we will definitely not generate in later iterations.
-% In this paper, a SAT solver will be utilized to do this checking process.
+ In this paper, a SAT solver will be utilized to do this checking process.
 
 % Specifically, it checks whether the schema must exists with at least one . Then this schema will be set as \emph{implicit forbidden schemas} and set as covered.and the Constraints must be appeared in one
 %
@@ -691,11 +691,9 @@ Above all, when using the interleaving CT approach,  the overall generated test 
 %\subsection{A case study}
 
 
-\section{Limitations of our approach}
-Although our approach provides a more adaptive and flexible framework for CT, there are several issues that needs to be concerned.
-
-\subsection{Incorrectly identified MFS}
-To forbidden identified MFS in the latter generated test cases is efficient for CT, as it will reduce many unnecessary test cases. On the other hand, our framework has strict requirements in accuracy of the identified MFS. This is obviously, as if the schemas identified is not a MFS, latter generated test cases will forbidden a non-MFS schema, which will have two impacts: (1)If this non-MFS schema is the sub-schema of some actual MFS, then the corresponding MFS will never appear and surely we will not detect and identify it. (2)If this non-MFS schema is a sub-schema of some $t$-degree uncovered schemas, then these schemas will never be covered and a adequate testing will not be reached.
+\section{Limitation of our approach}
+%Although our approach provides a more adaptive and flexible framework for CT, there are several issues that needs to be concerned.
+ To forbidden identified MFS in the latter generated test cases is efficient for CT, as it will reduce many unnecessary test cases. On the other hand, our framework has strict requirements in accuracy of the identified MFS. This is obviously, as if the schemas identified is not a MFS, latter generated test cases will forbidden a non-MFS schema, which will have two impacts: (1)If this non-MFS schema is the sub-schema of some actual MFS, then the corresponding MFS will never appear and surely we will not detect and identify it. (2)If this non-MFS schema is a sub-schema of some $t$-degree uncovered schemas, then these schemas will never be covered and a adequate testing will not be reached.
 
 For example, suppose we incorrectly regard (-, -, 0, -) as MFS of the failing test case $t_{1}$ in Table \ref{new-gi}, then we will never generate test cases contain the real MFS (-, -, 0, 1) ($t_{8}$ in Table \ref{new-gi}, for example). Hence, (-, -, 0, 1) will be never detected and identified. Additionally, the uncovered 2-degree schemas like (1, -, 0, -) (-, 2, 0, -), (-, 1, 0, -), etc, will never be covered in the latter generated test cases.
 
@@ -703,60 +701,27 @@ To definitely correctly identify the MFS in one failing test case, if possible, 
 
 Based on the insight that incorrectly identifying MFS is inevitable, our approach surely suffer from the two problems discussed previously, but the following measures can help to alleviate such impacts:
 
-1)\textbf{Combination of different approaches}:  Utilizing different approaches is appealing for our framework, as it can improve the robustness of the MFS identification and hence render a more reliable result. There are two levels of approaches combination granularity. The first one is ``MFS identification level ", i.e., utilizing multiple MFS identification approaches to obtain a more comprehensive identified schema (adopting a voting system) , such that the MFS is more reliable that of these MFS identification approaches alone and the latter generated test cases are less affected by the incorrect MFS.  Second one is ``Framework level", i.e., we directly take the results of different CT frameworks (SCT and ICT, for example) into account, such that, even though we have forbidden a non-MFS in the ICT, it can re-appear in the test cases generated by other CT frameworks, which supports a more robustness result. In fact, as we will see later in the the empirical study, both these two types can enhance the quality of the result of CT and make the testing more adequate.
+1)\textbf{Combination of different approaches}:  Utilizing different approaches is appealing for our framework, as it can improve the robustness of the MFS identification and hence render a more reliable result. Specifically, when a failure is triggered by a test case, instead of only using OFOT, we apply multiple MFS identification approaches (FIC\_BS \cite{zhang2011characterizing}, classification tree \cite{yilmaz2006covering}, for example) to identify the MFS. Subsequently, we filters out obtained schemas unless at least two identification approaches produce them as MFS.  This simple voting mechanism can improve both precise and robustness of identified MFS. Particularly, the incorrectly MFS can be eliminated if it is obtained by only one identification approach, and MFS that are omitted by one approach can be identified by other approaches. We refer to this mutation version of ICT as \emph{ICT\_CB} later.
+%There are two levels of approaches combination granularity. The first one is ``MFS identification level ", i.e., utilizing multiple MFS identification approaches to obtain a more comprehensive identified schema (adopting a voting system) , such that the MFS is more reliable that of these MFS identification approaches alone and the latter generated test cases are less affected by the incorrect MFS.  Second one is ``Framework level", i.e., we directly take the results of different CT frameworks (SCT and ICT, for example) into account, such that, even though we have forbidden a non-MFS in the ICT, it can re-appear in the test cases generated by other CT frameworks, which supports a more robustness result. In fact, as we will see later in the the empirical study, both these two types can enhance the quality of the result of CT and make the testing more adequate.
+
+2)\textbf{Tolerating mechanism}: Unlike our basic \emph{ICT} framework that rigorously forbidden the identified MFS, we can permit some identified MFS to appear in the latter generated test cases incidentally. This extension make ICT tolerant of incorrect MFS identification to some extent, as it increases the chance that covering array check them again and re-identify whether they are MFS or not. To select which identified MFS to be covered again is important, as it affects the efficiency of our framework. For example, if a schema is identified to be MFS once again, we should not let them appear again as it .
+ In our approach, . Besides this, 
+This measure is inspiring from jump out of local optimization of heuristic searching. For each generated test case, We compute a small probability that select one MFS to re-appear. If it fails, we .  We refer this ICT as \emph{ICT\_TL}.
+%that is, when a MFS is identified, we compute some probality, this will give an it can re-appear in the following test cases, and kick it out to the .  for latter confirm.
 
 
-2) \textbf{More rigorous validation with feedback}. This needs to cooperate with developers of the SUT. Specifically, when a MFS is identified. Not only should we send it to developers of the SUT, but also we need to get the feedback from them to see whether this MFS are the root cause of failure or not. Although this process may be time-consuming and delay the testing for the remaining bugs, but it is the most effective way to determine the correct MFS .
+%3)\textbf{More rigorous validation with feedback}. This needs to cooperate with developers of the SUT. Specifically, when a MFS is identified. Not only should we send it to developers of the SUT, but also we need to get the feedback from them to see whether this MFS are the root cause of failure or not. Although this process may be time-consuming and delay the testing for the remaining bugs, but it is the most effective way to determine the correct MFS.
 
-\subsection{Constraints handling}
-To forbidden the identified MFS as well as those three types of schemas in the latter test cases, \emph{constraints handling} technique is needed. That is, these schemas are regarded as \emph{bad pattern} that following test cases should never contain. Existing approaches usually utilize a constraint solver to handle it (SAT \cite{cohen2008constructing}, for example) This handling approach, although effective, however, significantly increase the cost of the whole CT process. There are several methods can make such cost decease to a tolerable level.
-%As constraints satisfaction (SAT) problem and optimal problem (covering array) is both tough [][][][][], the increasing is possible
-
-1) \textbf{Illustrate history to reduction}
-
-2) \textbf{Pragmatic approaches}
-In practice, we can delay the constraints handling, so that it will not . For example, we can utlize to some fixed numebr of facotrs. Or more coarsest, util some test cases are generated. Then to just give the search.
+%\subsection{Constraints handling}
+%To forbidden the identified MFS as well as those three types of schemas in the latter test cases, \emph{constraints handling} technique is needed. That is, these schemas are regarded as \emph{bad pattern} that following test cases should never contain. Existing approaches usually utilize a constraint solver to handle it (SAT \cite{cohen2008constructing}, for example) This handling approach, although effective, however, significantly increase the cost of the whole CT process. This is mainly because we should search for , we need to determine whether this factor value will trigger some constraints, which is time-consuming. This .  badly when there are multiple constraints. There are several methods can make such cost decease to a tolerable level.
+%%As constraints satisfaction (SAT) problem and optimal problem (covering array) is both tough [][][][][], the increasing is possible
 %
-%3) \textbf{Better constrains modeling}
-
-
-\section{empirically study}
-
-\subsection{Software subjects}
-
-\subsection{compare with traditional test cases}
-
-test cases
-
-redundant test cases (generate and identify)
-
-
-\subsection{multiple MFS}
-
-multiple failures in one test case
-
-f-measure
-
-overlap and non overallp
-
-
-\subsection{Time cost}
-Mainly for the constriants handling,
-
-later for the test cases generation .
-
-
-\subsection{masking effects}
-masking effects condition.
-
-integrated. using FDA-CIT to make it adequte testing
-
-
-
-\subsection{Combination of two approaches}
-identification level
-
-framework level
+%1) \textbf{Illustrate history to reduction}
+%
+%2) \textbf{Pragmatic approaches}
+%In practice, we can delay the constraints handling, so that it will not . For example, we can utlize to some fixed numebr of facotrs. Or more coarsest, util some test cases are generated. Then to just give the search.
+%%
+%%3) \textbf{Better constrains modeling}
 
 \section{empirical studies}
 To evaluate the effectiveness and efficiency of the interleaving CT approach, we conducted a series of empirical studies on several open-source software subjects.
@@ -812,7 +777,7 @@ Tcas     &  $2^{7} \times 3^{2} \times 4^{1} \times 10^{2} $ &9(16)\ 10(8)\ 11(1
 \end{table}
 In this table, Column ``inputs" depicts the input model for each version of the software, presented in the abbreviated form $\#values^{\#number\ of\ parameters} \times ...$, e.g., $2^{9} \times 3^{2} \times 4^{1}$ indicates the software has 9 parameters that can take 2 values, 2 parameters can take 3 values, and only one parameter that can take 4 values. Column ``MFS" shows the degrees of each MFS and the number of MFS (in the parentheses) with that corresponding degree.
 
-\subsection{Comparing with sequential CT}
+\subsection{Comparing basic ICT with SCT}
 
 After preparing the subjects software, next we constructed the experiment to evaluate the efficiency and effectiveness of our approach. To this aim, we need to compare our framework with the traditional sequential CT approach to see if interleaving CT approach has any advantage.
 
@@ -927,6 +892,33 @@ The reason of the similarity between the quality of these two approaches is that
 %As not forbidden them, there is a chance that a test case will contain multiple MFS, which makes the identifying work challenging than single ones.
 
 In summary, our approach needs much less test cases than traditional sequential CT approach, and there is no decline in the quality of the identified MFS when comparing with traditional approach.
+
+\subsection{multiple MFS}
+
+multiple failures in one test case
+
+f-measure
+
+%overlap and non overlap
+
+
+\subsection{Time cost}
+Mainly for the constraints handling,
+
+later for the test cases generation .
+
+
+\subsection{masking effects}
+masking effects condition.
+
+integrated. using FDA-CIT to make it adequate testing
+
+
+
+\subsection{Combination of two approaches}
+identification level
+
+framework level
 
 %  comparing there are two shortcomings for the traditional, first, it needed much more test cases that ours, second, it has an lower quality of the identified MFS .
 %\subsection{Compare with the FDA-CIT}
