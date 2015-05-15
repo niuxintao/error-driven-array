@@ -12,6 +12,12 @@ R.~C. Bryce and C.~J. Colbourn.
   and constraints.
 \newblock {\em Information and Software Technology}, 48(10):960--970, 2006.
 
+\bibitem{bryce2007density}
+R.~C. Bryce and C.~J. Colbourn.
+\newblock The density algorithm for pairwise interaction testing.
+\newblock {\em Software Testing, Verification and Reliability}, 17(3):159--182,
+  2007.
+
 \bibitem{cohen1997aetg}
 D.~M. Cohen, S.~R. Dalal, M.~L. Fredman, and G.~C. Patton.
 \newblock The aetg system: An approach to testing based on combinatorial
@@ -62,6 +68,12 @@ E.~Dumlu, C.~Yilmaz, M.~B. Cohen, and A.~Porter.
 \newblock Feedback driven adaptive combinatorial testing.
 \newblock In {\em Proceedings of the 2011 International Symposium on Software
   Testing and Analysis}, pages 243--253. ACM, 2011.
+
+\bibitem{een2004extensible}
+N.~E{\'e}n and N.~S{\"o}rensson.
+\newblock An extensible sat-solver.
+\newblock In {\em Theory and applications of satisfiability testing}, pages
+  502--518. Springer, 2004.
 
 \bibitem{fouche2009incremental}
 S.~Fouch{\'e}, M.~B. Cohen, and A.~Porter.
