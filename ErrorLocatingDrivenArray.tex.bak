@@ -939,13 +939,18 @@ We design three metrics for each of the three problems. First, to measure the \e
 
 1)redundant test cases.
 
+Our result is shown in Fig.\ref{ex1_result}, which lists the results for 2-4 way
+
 This is due to two modifications : reuse the test cases in identification. and forbidden the appearance of existed MFS to reduce the test cases that are used to identify the same MFS.
 
-\begin{figure}
- \includegraphics[width=3.4in]{CT_lifecircle.eps}
-\caption{The life cycle of CT}
-\label{ct-life}
-\end{figure}
+\begin{figure*}
+ \includegraphics[width=7.0in]{ex1.eps}
+\caption{Result of ex1}
+\label{ex1_result}
+\end{figure*}
+
+
+in our result, it can maximal up to (not show in this figure)
 
 
 
@@ -954,10 +959,46 @@ This is due to two modifications : reuse the test cases in identification. and f
 
 2) multiple MFS
 
+\begin{table}[h]
+\center
+\caption{Number of test cases that contain multiple MFS}
+\label{cm_elda_fglt}
+\begin{tabular}{|ll|lll|}
+\hline
+Subject & Alg & 2-way       & 3-way       & 4-way       \\ \hline
+Tomcat  & ict  & 0           & 0           & 0           \\
+        & sct  & 1.13 & 4.4         & 10.77 \\ \hline
+Hsqldb & ict  & 0           & 0           & 0           \\
+        & sct  & 0.33 & 1.87 & 4.67 \\ \hline
+Gcc     & ict  & 0.37 & 0.87 & 0.47 \\
+        & sct  & 0.37 & 1.6         & 3.73 \\ \hline
+Jflex   & ict  & 0           & 0           & 0           \\
+        & sct  & 0           & 0           & 0           \\ \hline
+Tcas    & ict  & 0           & 0           & 0           \\
+        & sct  & 0           & 0           & 0           \\ \hline
+\end{tabular}
+\end{table}
+
 table
 
 3) masking effects.
 
+\begin{table}[h]
+\begin{tabular}{|ll|lll|}
+\hline
+Sub& Alg & 2-way           & 3-way            & 4-way             \\ \hline
+Tom  & ict  & 236(100.00\%)   & 1411.17(99.10\%) & 5459.47(97.49\%)  \\
+        & sct  & 230.23(97.56\%) & 1404.7(98.65\%)  & 5550.7(99.12\%)   \\ \hline
+Hsq  & ict  & 356.63(99.90\%) & 2729.57(99.55\%) & 14051.37(99.40\%) \\
+        & sct  & 354.5(99.30\%)  & 2717.63(99.11\%) & 14065.47(99.50\%) \\ \hline
+Gcc    & ict  & 249.43(98.98\%) & 1490.6(97.04\%)  & 5825.43(96.32\%)  \\
+        & sct  & 251.83(99.93\%) & 1533.47(99.84\%) & 6015.8(99.47\%)   \\ \hline
+Jfle   & ict  & 473(100.0\%)    & 4282(100.0\%)    & 26532(100.0\%)    \\
+        & sct  & 473(100.0\%)    & 4282(100.0\%)    & 26532(100.0\%)    \\ \hline
+Tcas    & ict  & 837(100.0\%)    & 9158(100.0\%)    & 64696(100.0\%)    \\
+        & sct  & 837(100.0\%)    & 9158(100.0\%)    & 64696(100.0\%)    \\ \hline
+\end{tabular}
+\end{table}
 yige tu
 
 
@@ -980,7 +1021,11 @@ We use FDA-CIT to identify.  We conunt the overall test cases (we donot sepately
 
 
 1)redundant test cases.
-
+\begin{figure*}
+ \includegraphics[width=7.0in]{ex2.eps}
+\caption{Result of ex2}
+\label{ex2_result}
+\end{figure*}
 
 2) multiple MFS
 
