@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  18 MAY 2015 04:29
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  20 MAY 2015 17:25
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -298,11 +298,7 @@ Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box35
 \fn@width=\dimen129
 )
-(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux
-
-LaTeX Warning: Label `cm_elda_fglt' multiply defined.
-
-)
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
 LaTeX Font Info:    ... okay on input line 77.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
@@ -332,7 +328,8 @@ Requested font "cmex7" at 6.0pt
 Requested font "cmex7" at 5.0pt
  -> cmex7
 LaTeX Font Info:    Try loading font information for U+msa on input line 193.
- (C:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
+
+(C:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 Requested font "msam10" at 9.0pt
@@ -428,62 +425,60 @@ File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 Requested font "aett9" at 9.0pt
  -> aett9
- [9]
-Requested font "aebx6" at 6.0pt
- -> aebx6
-Requested font "aer5" at 5.0pt
- -> aer5
-Requested font "aebx5" at 5.0pt
- -> aebx5
- [10]
-Overfull \hbox (5.15836pt too wide) in paragraph at lines 931--931
+ [9] [10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (5.15836pt too wide) in paragraph at lines 935--935
 []\secfnt Does our ap-proach al-le-vi-ate the three prob-
  []
 
 File: ex1.eps Graphic file (type eps)
 <ex1.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 948--949
+Overfull \hbox (1.89pt too wide) in paragraph at lines 942--943
 [][] 
- []
-
-
-Overfull \hbox (57.2124pt too wide) in paragraph at lines 989--1003
- [] 
  []
 
 [11]
+Underfull \vbox (badness 1067) has occurred while \output is active []
+
+ [12]
+Overfull \hbox (3.75836pt too wide) in paragraph at lines 1009--1011
+\T1/aer/m/n/9 ing ef-fect-s is not se-vere. Ac-tu-al-ly, the low-est tested-t-c
+overage
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 File: ex2.eps Graphic file (type eps)
  <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1027--1028
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1038--1039
 [][] 
  []
 
-Invalid UTF-8 byte or sequence at line 1044 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1044 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1055 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1055 replaced by U+FFFD.
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
-[12] [13]
+[13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14]
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
-[14]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
+ [15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15])
-[16
-
-] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+) [16]
+(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2943 strings out of 430478
- 33635 string characters out of 3191502
- 106390 words of memory out of 3000000
- 6026 multiletter control sequences out of 15000+200000
- 47950 words of font info for 57 fonts, out of 3000000 for 9000
+ 2939 strings out of 430478
+ 33608 string characters out of 3191502
+ 103390 words of memory out of 3000000
+ 6025 multiletter control sequences out of 15000+200000
+ 43435 words of font info for 54 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,26p,1599b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
 
