@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  21 MAY 2015 16:32
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  21 MAY 2015 21:10
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -446,35 +446,44 @@ overage
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-File: ex2.eps Graphic file (type eps)
- <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1039--1040
+File: fd-cit.eps Graphic file (type eps)
+
+<fd-cit.eps>
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1021--1022
 [][] 
  []
 
-Invalid UTF-8 byte or sequence at line 1056 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1056 replaced by U+FFFD.
-Missing character: There is no � in font aer9!
-Missing character: There is no � in font aer9!
 [13]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+File: ex2.eps Graphic file (type eps)
+ <ex2.eps>
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1053--1054
+[][] 
+ []
 
- [14]
-(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
+Invalid UTF-8 byte or sequence at line 1070 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1070 replaced by U+FFFD.
+Missing character: There is no � in font aer9!
+Missing character: There is no � in font aer9!
+[14] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-) [16]
-(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16])
+[17
+
+] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2939 strings out of 430478
- 33608 string characters out of 3191502
+ 2942 strings out of 430478
+ 33642 string characters out of 3191502
  103390 words of memory out of 3000000
- 6025 multiletter control sequences out of 15000+200000
+ 6027 multiletter control sequences out of 15000+200000
  43435 words of font info for 54 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,26p,1599b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ErrorLocatingDrivenArray.pdf (16 pages).
+Output written on ErrorLocatingDrivenArray.pdf (17 pages).
