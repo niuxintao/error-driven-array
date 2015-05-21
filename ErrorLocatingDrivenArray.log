@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  20 MAY 2015 17:25
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  21 MAY 2015 16:32
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -418,7 +418,7 @@ ess
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [8]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 776.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 777.
 
  (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
@@ -428,14 +428,9 @@ Requested font "aett9" at 9.0pt
  [9] [10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Overfull \hbox (5.15836pt too wide) in paragraph at lines 935--935
-[]\secfnt Does our ap-proach al-le-vi-ate the three prob-
- []
-
 File: ex1.eps Graphic file (type eps)
-<ex1.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 942--943
+ <ex1.eps>
+Overfull \hbox (1.89pt too wide) in paragraph at lines 943--944
 [][] 
  []
 
@@ -443,7 +438,7 @@ Overfull \hbox (1.89pt too wide) in paragraph at lines 942--943
 Underfull \vbox (badness 1067) has occurred while \output is active []
 
  [12]
-Overfull \hbox (3.75836pt too wide) in paragraph at lines 1009--1011
+Overfull \hbox (3.75836pt too wide) in paragraph at lines 1010--1012
 \T1/aer/m/n/9 ing ef-fect-s is not se-vere. Ac-tu-al-ly, the low-est tested-t-c
 overage
  []
@@ -453,12 +448,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 File: ex2.eps Graphic file (type eps)
  <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1038--1039
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1039--1040
 [][] 
  []
 
-Invalid UTF-8 byte or sequence at line 1055 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1055 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1056 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1056 replaced by U+FFFD.
 Missing character: There is no � in font aer9!
 Missing character: There is no � in font aer9!
 [13]

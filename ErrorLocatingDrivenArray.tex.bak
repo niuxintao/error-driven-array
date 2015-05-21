@@ -992,7 +992,7 @@ Hsqldb  & ict  & \textbf{356.63(99.90\%)} & \textbf{2729.57(99.55\%)} & 14051.37
         & sct  & 354.5(99.30\%)  & 2717.63(99.11\%) & 14065.47(99.50\%) \\ \hline
 Gcc    & ict  & 249.43(98.98\%) & 1490.6(97.04\%)  & 5825.43(96.32\%)  \\
         & sct  & 251.83(99.93\%) & 1533.47(99.84\%) & 6015.8(99.47\%)   \\ \hline
-Jflex   & ict  & \emph{473(100.0\%)}    & 4282(100.0\%)    & 26532(100.0\%)    \\
+Jflex   & ict  & 473(100.0\%)    & 4282(100.0\%)    & 26532(100.0\%)    \\
         & sct  & 473(100.0\%)    & 4282(100.0\%)    & 26532(100.0\%)    \\ \hline
 Tcas    & ict  & 837(100.0\%)    & 9158(100.0\%)    & 64696(100.0\%)    \\
         & sct  & 837(100.0\%)    & 9158(100.0\%)    & 64696(100.0\%)    \\ \hline
@@ -1009,20 +1009,16 @@ The \emph{tested-t-way} coverage for each approach is shown in Table \ref{tested
 First, the extent to which \emph{sct} and \emph{ict} suffered from masking effects is not severe. Actually, the lowest tested-t-coverage of \emph{ict} is 96.32\% (4-way for Gcc) and \emph{sct} is 97.56\% (2-way for Tomcat). This is an evidence that combing MFS identification with covering array (either in the sequential way or interleaving way) can make testing more adequate than using covering array alone.
 % MFS identification into CT process, the is not very/ may be the subjects we handled are . If there are more than , may very .
 
-Second, there is not apparent gap between. This is not , as we said. 
+Second, there is not apparent gap between \emph{ict} and \emph{sct} at restricting the masking effects. In our case studies, there are four cases (in bold) that \emph{ict} are better than \emph{sct}, 6 cases that they are equal (for subjects \emph{Jflex} and \emph{Tcas}) and remaining 5 cases that \emph{sct} is better. This gap is trivial. As we discussed before, \emph{ict} forbidden the appearance of identified MFS and can improve the performance at handling masking effects. The results, however, do not show this advantage. One possible explanation for this is that \emph{sct} generate more test cases, which can contribute more passing test cases and may cover more schemas which can  bridge the gap with \emph{ict}.
 
-One possible reason for this is that even \emph{sct} , but its much more test cases can somehow complete this shortcomings
-
-
-Third, if there is only single , The is 100\%. This
-
+Third, if there is only single MFS or not detecting MFS, The teste-t-coverage is 100\%. This can be observed in subjects \emph{Jflex} and \emph{Tcas}, in which all the t-way schemas are covered. For single MFS, as MFS identification can accurately identify it out, then all the t-degree schemas can be \emph{tested}. For MFS cannot be detected (high degree), the t-way covering array is enough to get a adequate testing, as all the test cases will pass if there is not MFS detected.
 
 To summary, the answer to \textbf{EQ 2} is we can learn that our approach can do somewhat relif to the three problems.
 
 \subsection{Comparison with FDA-CIT}
 FDA-CIT \cite{yilmaz2013reducing} is a technique that. The overall process is to first . There are too main difference between our approach and its approach.
 
-First, it use classification tree to. Differet from our OFOT approach, it does not needs additional test cases, but it perfomes worse in high degree,  and its need b
+First, it use classification tree to. Different from our OFOT approach, it does not needs additional test cases, but it perfomes worse in high degree,  and its need b
 
 Second,  the graunette of the adaptiveness. Our frame work will one test cases at a time, and if . Different from our approach, this framework one covering array at a time, then identificatiuon, then additional test cases.
 
