@@ -230,7 +230,8 @@ We remodel the test cases generation and failure-inducing interactions identific
 %
 
 
-We conducted a series of empirical studies on several open-source software to evaluate our new framework. Specifically, we performed two comparisons studies. The first one is to compare our new framework with the traditional one, which first generates a complete set of test cases and then performs the fault localization. The second one is to compare our framework with the Feedback-driven CT \cite{dumlu2011feedback,yilmaz2013reducing}, which also adapts an iterative framework to generate test cases and identifying failure-inducing interactions, but to address the problem of inadequate testing. The results show that, in terms of test case generation and failure-inducing interactions identification, our approach can significantly reduce the overall needed test cases and as a result it can more quickly identify the failure-inducing interactions of the system under test. Additionally, when combining our approach with Feedback-driven CT, the results can be more effective than both approaches alone.
+We conducted a series of empirical studies on several open-source software to evaluate our new framework. Specifically, we performed two comparisons studies. The first one is to compare our new framework with the traditional one, which first generates a complete set of test cases and then performs the fault localization. The second one is to compare our framework with the Feedback-driven CT \cite{dumlu2011feedback,yilmaz2013reducing}, which also adapts an iterative framework to generate test cases and identifying failure-inducing interactions, but to address the problem of inadequate testing. The results show that, in terms of test case generation and failure-inducing interactions identification, our approach can significantly reduce the overall needed test cases and as a result it can more quickly identify the failure-inducing interactions of the system under test.
+% Additionally, when combining our approach with Feedback-driven CT, the results can be more effective than both approaches alone.
 
 The main contributions of this paper are as follows.
 
@@ -241,7 +242,7 @@ The main contributions of this paper are as follows.
 \end{enumerate}
 
 
-The rest of the paper is organised as follows: Section 2 presents the preliminary background of CT.  Section 3 describes our new framework and a simple case study is also given. Section 4 presents the empirical studies and the results are discussed. Section 5 shows the related works. Section 6 concludes the paper and proposes some further work.
+The rest of the paper is organised as follows: Section \ref{sec:back} presents the preliminary background of CT. Section \ref{sec:moti} presents an motivating example. Section \ref{sec:app} describes our new framework and a simple case study is also given. Section \ref{sec:limit} gives the limitation of our approach as well as some corresponding measures to handle it. Section \ref{sec:subject} describes the experiment subjects and its input model. Section \ref{sec:emprical} presents the empirical studies and the results are discussed. Section \ref{sec:related} shows the related works. Section \ref{sec:conclusion} concludes the paper and proposes some further work.
 
 
 \begin{figure}
@@ -807,11 +808,11 @@ To evaluate the effectiveness and efficiency of the interleaving CT approach, i.
 \emph{\textbf{Q1}:} Does our approach \emph{ICT}  perform better than traditional CT process \emph{SCT} at the overall cost and the accurateness of MFS identification?
 % do our approach less test cases and more accurateness of MFS identification
 
-\emph{\textbf{Q2}:} Does \emph{ICT} alleviates the three problems proposed in section \ref{sec:moti}. Specifically, $(1)$ does ICT reduce generating redundant and useless test cases , $(2)$ does ICT reduce the appearance of test cases which contains multiple MFS,  and $(3)$ does ICT reduce the impacts of masking effects?
+\emph{\textbf{Q2}:} Does \emph{ICT} alleviates the three problems proposed in Section \ref{sec:moti}. Specifically, $(1)$ does ICT reduce generating redundant and useless test cases , $(2)$ does ICT reduce the appearance of test cases which contains multiple MFS,  and $(3)$ does ICT reduce the impacts of masking effects?
 
 \emph{\textbf{Q3}:} Does our approach \emph{ICT} have any advantages over the existed masking effects handling technique --- FDA-CIT \cite{yilmaz2013reducing}?
 
-\emph{\textbf{Q4}:}  Is it possible to combine ICT with FDA-CIT to obtain a better result than both alone?
+%\emph{\textbf{Q4}:}  Is it possible to combine ICT with FDA-CIT to obtain a better result than both alone?
 
 \subsection{Comparing ICT with SCT}
 
@@ -939,7 +940,7 @@ Section \ref{sec:moti} shows three problems that impacts the performance of trad
 \subsubsection{Study setup}
 We design three metrics for each of the three problems. First, to measure the \emph{redundant test cases generation}, we gather the number of times that each schema is covered. This metric can directly indicate the redundance of generated test cases, as it is obvious that if there are too many schemas that are repeated being covered by different test cases, then the CT process is inefficiency as if one schema is covered and tested, it is unnecessary to check them again with other test cases.  Second, to measure \emph{multiple MFS in one test case} is simple, we just directly search for each generated test case and examine if it contains more than one MFS. Third, we use the \emph{tested-t-way} coverage criteria \cite{yilmaz2013reducing} to the measure the masking effects. Specifically, we re-compute the coverage of the test cases generated by ICT and SCT by counting all the $t$-degree schemas that is either covered in a passing test case or identified as MFS or faulty schema. For ICT and SCT, the more is the \emph{tested-t-way} coverage, the more the testing is adequate and hence the less is the masking effects.
 %Hence, the number of times that each schema are covered can indicate that the extent to which redundant test cases are generated.
-\begin{figure*}
+\begin{figure*}[ht]
  \includegraphics[width=7.0in]{ex1.eps}
 \caption{The redundance of test cases}
 \label{ex1_result}
@@ -960,7 +961,7 @@ This result shows that our two modifications of traditional approach, i.e., taki
 
 The result is shown in Table \ref{multi_mfs}, which lists the number of test cases (on average) which contains more than one MFS.
 
-\begin{table}[h]
+\begin{table}[ht]
 \center
 \caption{Number of test cases that contain multiple MFS}
 \label{multi_mfs}
@@ -1017,15 +1018,21 @@ Third, if there is only single MFS or MFS is not detected, the teste-t-coverage 
 To summary, the answer to \textbf{EQ 2} is we can learn that our approach can alleviate the three problem discussed in Section \ref{sec:moti}, especially on reducing the redundance of test cases and limiting the test cases with multiple MFS. Additionally, both \emph{ict} and \emph{sct} have a good performance on reducing the masking effects.
 
 \subsection{Comparison with FDA-CIT}
-FDA-CIT \cite{yilmaz2013reducing} is a feedback framework that can augment the traditional covering array that can iteratively handle the masking effects. The overall process can be illustrated in Fig \ref{fda-cit-life}. Specifically, it will first generate a t-way covering array and executed all the test cases in it. After that it will utilize the classification tree method to identify the MFS. Then it will forbidden the identified MFS to be appeared and compute the tested-t-coverage. If it is satified, it will re-generated a bench of test cases to cover the uncovered schemas and re-identify the MFS. Like our ICT approach, FDA-CIT is also a feedback approach and also forbidden the schemas.  There are too main difference between our approach and its approach.
-
-\begin{figure}[ht]
+\begin{figure}
  \includegraphics[width=3.4in]{fd-cit.eps}
 \caption{The Framework of FDA-CIT}
 \label{fda-cit-life}
 \end{figure}
+FDA-CIT \cite{yilmaz2013reducing} is a feedback framework that can augment the traditional covering array to iteratively identify the MFS, and can handle the masking effects. The overall process can be illustrated in Fig \ref{fda-cit-life}. Specifically, it will first generate a t-way covering array and executed all the test cases in it. After that it will utilize the classification tree method to identify the MFS. Then it will forbidden the identified MFS to be appeared and compute the tested-t-coverage. If the tested-t-coverage is not satisfied, it will repeat the previous process, i.e., generating additional test cases and identifying MFS. Like our \emph{ict} approach, FDA-CIT is also an adaptive approach which iteratively generate test cases and identify the MFS. Besides these commonalities, there are several important difference between our approach and FDA-CIT (marked with darker background in Fig \ref{fda-cit-life}):
 
-The main difference of FDA-CIT with our approach ICT are several components (in the darker background in Fig \ref{fda-cit-life}).
+First, the \textbf{granularity} of adaptation. Instead of handling one test case one time as \emph{ict}, FDA-CIT tries to generate a batch of test cases at each iteration (A complete covering array will be generated at first iteration, and more test cases will be supplemented to cover those t-degree schemas which are masked at latter iterations). To generate a batch of test cases may improve the degree of parallelism of testing, but this coarser granularity may also introduce some problems, e.g., some test cases generated at one iteration may fail with the same MFS, which is a potential waste because one type of MFS is enough to analysis with one failing.
+
+Second, the \textbf{MFS identification} approach is different.
+
+Third, the coverage is not the same.
+
+
+The main difference of FDA-CIT with our approach ICT are several components (in ).
 
 First, it use classification tree to. Different from our OFOT approach, it does not needs additional test cases, but it performs worse in high degree,  and its need b
 
@@ -1043,7 +1050,7 @@ We use FDA-CIT to identify.  We conunt the overall test cases (we don't separate
 
 
 1)redundant test cases.
-\begin{figure*}
+\begin{figure*}[ht]
  \includegraphics[width=7.0in]{ex2.eps}
 \caption{Result of ex2}
 \label{ex2_result}
@@ -1055,17 +1062,17 @@ We use FDA-CIT to identify.  We conunt the overall test cases (we don't separate
 
 
 
-\subsection{Combination of two approaches}
-To combine two approaches . However, not all combination is good. For example, if two approaches get the similar results. The combination of them does not improve the result, but will cost more as we does two approaches, indicating more test cases are generated. Hence, we needs to the results of two approaches as difference as possible. The ideal scenario, is , one MFS cannot be identified by this approach, but can identified by another approach.
-
-\subsubsection{Study setup}
-We count each MFS identified by each approach. To count the . To measure the difference of two approaches, we introduce the ratio . that is . the.  which are .
-
-The more the . the more difference are , and indicating the better the complementary of two approaches (»¥²¹ÐÔ). Latter we will compare the complentary from the combination of ICT and SCT with  the combination of ICT and FDA-CIT.
-
-
-\subsubsection{Result and discussion}
-
+%\subsection{Combination of two approaches}
+%To combine two approaches . However, not all combination is good. For example, if two approaches get the similar results. The combination of them does not improve the result, but will cost more as we does two approaches, indicating more test cases are generated. Hence, we needs to the results of two approaches as difference as possible. The ideal scenario, is , one MFS cannot be identified by this approach, but can identified by another approach.
+%
+%\subsubsection{Study setup}
+%We count each MFS identified by each approach. To count the . To measure the difference of two approaches, we introduce the ratio . that is . the.  which are .
+%
+%The more the . the more difference are , and indicating the better the complementary of two approaches (»¥²¹ÐÔ). Latter we will compare the complentary from the combination of ICT and SCT with  the combination of ICT and FDA-CIT.
+%
+%
+%\subsubsection{Result and discussion}
+%
 
 
 %  comparing there are two shortcomings for the traditional, first, it needed much more test cases that ours, second, it has an lower quality of the identified MFS .
@@ -1092,7 +1099,7 @@ Second, there have been many more generation algorithms and MFS identification a
 %Third, these empirical studies are all on the deterministic condition, i.e., the output of the software are deterministic if their inputs are given. When the output are affected by random events such that we can not determine the output by only one-time execution of the test case, then both the traditional CT process and our new framework do not work. In such a case, to conduct a test case multiple times or introduce some probability in the framework will be of interest.
 
 
-\section{related works}
+\section{related works}\label{sec:related}
 Combinatorial testing has been widely applied in practice \cite{kuhn2010practical}, especially on domains like configuration testing \cite{yilmaz2006covering,cohen2006testing,fouche2009incremental} and software inputs testing \cite{cohen1997aetg,borazjany2012combinatorial,garn2014eris}. A recent survey \cite{nie2011survey} comprehensively studied existing works in CT and classified those works into eight categories according to the testing procedure. Based on which, we can learn that test cases generation and MFS identification are two most important parts in CT studies.
 
 %###################qu2008configuration, ghandehari2013applying,
@@ -1116,7 +1123,7 @@ Our work differs from them mainly in that we proposed a highly interactive frame
 %
 
 
-\section{Conclusions}
+\section{Conclusions}\label{sec:conclusion}
 Combinatorial testing is an effective testing technique at detecting and diagnosis the failure-inducing interactions in the SUT. Traditional CT separately studies test cases generation and MFS identification. In this paper, we proposed a new CT framework, i.e., \emph{interleaving CT}, that integrates these two important stages, which allows for both generation and identification better share each other's information. As a result, interleaving CT approach can provide a more efficient testing than traditional sequential CT.
 
 Empirical studies were conducted on five open-source software subjects. The results show that with our new CT framework, there is a significant reduction on the number of generated test cases when compared to the traditional sequential CT approach, while there is no decline in the quality of the identified MFS. Further, when comparing with the ELA \cite{martinez2009locating,martinez2008algorithms}, our approach also performed better, especially with fewer test cases.

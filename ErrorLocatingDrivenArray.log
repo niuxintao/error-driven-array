@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  21 MAY 2015 21:10
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  22 MAY 2015 17:28
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -382,7 +382,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: CT_lifecircle.eps Graphic file (type eps)
 
 <CT_lifecircle.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 248--249
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 249--250
 [][] 
  []
 
@@ -391,7 +391,7 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 248--249
 Requested font "aer6" at 6.0pt
  -> aer6
 
-Overfull \hbox (13.7998pt too wide) in paragraph at lines 371--380
+Overfull \hbox (13.7998pt too wide) in paragraph at lines 372--381
  [] 
  []
 
@@ -404,12 +404,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: baicOutline.eps Graphic file (type eps)
 
 <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 498--499
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 499--500
 [][] 
  []
 
 [6] [7]
-Overfull \hbox (6.61018pt too wide) in paragraph at lines 639--640
+Overfull \hbox (6.61018pt too wide) in paragraph at lines 640--641
 \T1/aer/m/n/9 MF-S that has been i-den-ti-fied. Con-se-quent-ly, with the progr
 ess
  []
@@ -418,7 +418,7 @@ ess
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [8]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 777.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 778.
 
  (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
@@ -430,7 +430,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 File: ex1.eps Graphic file (type eps)
  <ex1.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 943--944
+Overfull \hbox (1.89pt too wide) in paragraph at lines 944--945
 [][] 
  []
 
@@ -438,7 +438,7 @@ Overfull \hbox (1.89pt too wide) in paragraph at lines 943--944
 Underfull \vbox (badness 1067) has occurred while \output is active []
 
  [12]
-Overfull \hbox (3.75836pt too wide) in paragraph at lines 1010--1012
+Overfull \hbox (3.75836pt too wide) in paragraph at lines 1011--1013
 \T1/aer/m/n/9 ing ef-fect-s is not se-vere. Ac-tu-al-ly, the low-est tested-t-c
 overage
  []
@@ -449,21 +449,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: fd-cit.eps Graphic file (type eps)
 
 <fd-cit.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 1021--1022
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1022--1023
 [][] 
  []
 
 [13]
 File: ex2.eps Graphic file (type eps)
  <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1053--1054
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1049--1050
 [][] 
  []
 
-Invalid UTF-8 byte or sequence at line 1070 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1070 replaced by U+FFFD.
-Missing character: There is no � in font aer9!
-Missing character: There is no � in font aer9!
+Invalid UTF-8 byte or sequence at line 1066 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1066 replaced by U+FFFD.
 [14] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -478,10 +476,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2942 strings out of 430478
- 33642 string characters out of 3191502
+ 2944 strings out of 430478
+ 33671 string characters out of 3191502
  103390 words of memory out of 3000000
- 6027 multiletter control sequences out of 15000+200000
+ 6029 multiletter control sequences out of 15000+200000
  43435 words of font info for 54 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,26p,1599b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
