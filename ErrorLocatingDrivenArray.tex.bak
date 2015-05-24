@@ -452,11 +452,11 @@ Traditional covering array usually offer an inadequate testing due to \emph{Mask
 
 Since traditional covering array cannot reach a adequate testing, as an alternative, \emph{tested t-way interaction criterion} as a more rigorous coverage standard is proposed \cite{yilmaz2013reducing}. This criterion, to be simply, shows that a $t$-degree schema is covered iff (1) it appears in a passing test case (2)it is identified as MFS or faulty schema. Now it is surely that this criteria is not satisfied with traditional covering array alone, next let us examine whether this criterion can be satisfied with SCT, i.e., the combination of traditional covering array and MFS identification.
 
-One obvious insight is that if there is only single MFS in each failing test case, this criterion is satisfied. This conclusion is based on the fact that the MFS identification is actually a process to isolate the failure-inducing interaction among other interactions in the failing test case,  and since there is only single MFS, then other schemas can be determined as non-MFS.
+One obvious insight is that if there is only \textbf{single} MFS in each failing test case, this criterion is satisfied. This conclusion is based on the fact that the MFS identification is actually a process to isolate the failure-inducing interaction among other interactions in the failing test case,  and since there is only single MFS, then other schemas can be determined as non-MFS.
 
 For example in Table \ref{tradition-gi}, $t_{1}$ contained a single MFS (-, 0, -, -), and we identified this MFS by generating four extra test cases ($t_{10}$ to $t_{13}$). As for $t_{1}$, the schema (-, 0, -, -) is determined to be MFS, but since the target of that testing is $2$-way coverage, i.e., to cover all the 2-degree schemas, this $1$-degree schema do not contribute any more coverage. Based on the fact (-, 0, -, -) is MFS, all the test cases contain this schema will fail by definition, and surely the super-schemas of (-, 0, -, -) in this test case -- (0, 0, -, -), (-, 0, 0, -) and (-, 0, -, 0) are also faulty schemas as all the test cases contain these schemas must contain the MFS (-, 0, -, -), which will fail after execution. The remaining 2-degree schemas (0, -, 0, -), (0, -, -, 0), (-, -, 0, 0) are contained in the extra-generated test case $t_{11}$ (0, 1, 0, 0) (Note that for single MFS, there will be at least one passing extra-generated test case ), which are of course non-faulty schemas.  After all, all the 2-degree schemas in the failing test case $t_{1}$ are satisfied the \emph{tested t-way interaction criterion}.
 
-When problem comes to a failing test case with multiple MFS, however, SCT fails not meet that criterion. As discussed previously, SCT cannot properly work on test cases with multiple MFS--and even cannot obtain a validate schema. With this in mind, we cannot determine which schemas in this failing test case are MFS or not, consequently, we cannot ensure we have examined all the $t$-degree schemas in this failing test case. For example, $t_{4}$ has two MFS--(-, 0, -, -), (-, -, 0, 1), which did not been identified with OFOT approach (In fact, there is no passing extra-generated test case). As a result, there are two 2-degree schemas (1, 0, -, -) (-, -, 0, 1) in this test case that, are neither contained in a passing test case nor determined as MFS or faulty schemas.  Hence, \emph{tested t-way interaction criterion} is not satisfied.  Since multiple MFS in a test case can introduce masking effects, SCT must be negatively affected by this effect as it lacks mechanisms to avoid the appearance of multiple MFS in failing test cases.
+When problem comes to a failing test case with \textbf{multiple} MFS, however, SCT fails not meet that criterion. As discussed previously, SCT cannot properly work on test cases with multiple MFS--and even cannot obtain a validate schema. With this in mind, we cannot determine which schemas in this failing test case are MFS or not, consequently, we cannot ensure we have examined all the $t$-degree schemas in this failing test case. For example, $t_{4}$ has two MFS--(-, 0, -, -), (-, -, 0, 1), which did not been identified with OFOT approach (In fact, there is no passing extra-generated test case). As a result, there are two 2-degree schemas (1, 0, -, -) (-, -, 0, 1) in this test case that, are neither contained in a passing test case nor determined as MFS or faulty schemas.  Hence, \emph{tested t-way interaction criterion} is not satisfied.  Since multiple MFS in a test case can introduce masking effects, SCT must be negatively affected by this effect as it lacks mechanisms to avoid the appearance of multiple MFS in failing test cases.
 
 %\begin{table}[h]
 %\caption{The satisfaction of tested t-way interaction criterion}
@@ -797,8 +797,8 @@ Tcas     &  $2^{7} \times 3^{2} \times 4^{1} \times 10^{2} $ &9(16)\ 10(8)\ 11(1
 
 \end{table}
 In this table, Column ``inputs" depicts the input model for each version of the software, presented in the abbreviated form $\#values^{\#number\ of\ parameters} \times ...$, e.g., $2^{9} \times 3^{2} \times 4^{1}$ indicates the software has 9 parameters that can take 2 values, 2 parameters can take 3 values, and only one parameter that can take 4 values. Column ``MFS" shows the degrees of each MFS and the number of MFS (in the parentheses) with that corresponding degree.
-
-\subsubsection{testing}
+%
+%\subsubsection{testing}
 
 
 
@@ -864,8 +864,8 @@ Table \ref{cm_elda_fglt_test} presents the results for the number of test cases.
                           &                         &Gen  & Iden & Total  &  Gen  & Iden & Total  & Gen  & Iden & Total   \\ \hline
 Tomcat                    & ict                     & 12.73    & \textbf{30}     & 42.73  & 34.97    & \textbf{29.67}  & 64.64  & 85.57   & \textbf{29.33}  & 114.9   \\
                           & sct                     & 14.1     & 105.6  & 119.7  & 38.3     & 256.03 & 294.33 & 93.4    & 578.4  & 671.8   \\ \hline
-Hsqldb                    & ict                     & 14.87    & \textbf{12}     & 26.87  & 46.27    & \textbf{18.4}   & 64.67  & 128.87  & \textbf{14.4}   & 143.27  \\
-                          & sct                     & 15.83    & 10.8   & 26.63  & 47.8     & 33.6   & 81.4   & 130.07  & 103.23 & 233.3   \\ \hline
+Hsqldb                    & ict                     & 14.93    & \textbf{23.2}     & 38.13  & 45.3    & \textbf{28.0}   & 73.3  & 118.33  & \textbf{30.4}   & 148.73  \\
+                          & sct                     & 15.63    & 133.13   & 148.76  & 47.37     & 356.7   & 404.07  & 122.7  & 876.37 & 999.07   \\ \hline
 Gcc                       & ict                     & 14.5     & \textbf{19.33}  & 33.83  & 47.9     & \textbf{21.33}  & 69.23  & 102.63  & \textbf{24.67}  & 127.3   \\
                           & sct                     & 15.27    & 19.67  & 34.94  & 50.97    & 64.93  & 115.9  & 103.87  & 124.6  & 228.47  \\ \hline
 Jflex                     & ict                     & 15.8     & \textbf{14}     & 29.8   & 50.47    & \textbf{14}     & 64.47  & 145.17  & \textbf{14}     & 159.17  \\
@@ -886,8 +886,8 @@ Tcas                      & ict                     & 109.03   & \textbf{0}     
                          &                        & Precision & Recall & F-measure   & Precision & Recall & F-measure & Precision & Recall & F-measure   \\ \hline
 Tomcat                   & ict                    & 1    & 1    & \textbf{1}     &0.97    & 0.96   & \textbf{0.96}     &  0.93    &  0.91   &  \textbf{0.92 }       \\
                          & sct                   & 0.73    & 0.74    & 0.73      & 0.75     & 1    & 0.86        & 0.75     & 1    & 0.86         \\ \hline
-Hsqldb                   & ict                    & 0.67    & 0.4    & \textbf{0.49}      & 0.37    & 0.37   & 0.37       & 0.37    & 0.37   & 0.37        \\
-                         & sct                    & 0.55    & 0.3    & 0.38       & 0.5     & 0.5    & 0.5      & 0.5     & 0.5    & 0.5         \\ \hline
+Hsqldb                   & ict                    & 0.52    & 0.82    & \textbf{0.61}      & 0.56    & \textbf{0.67}   & 0.6       & 0.69    & \textbf{0.77}   & 0.72        \\
+                         & sct                    & 0.46    & 0.82    & 0.57       & 0.49     & 0.5    & 0.49      & 0.67     & 0.5    & 0.57         \\ \hline
 Gcc                      & ict                     & 0.47    & 0.28   & \textbf{0.34 }      & 0.46    & 0.37   &\textbf{ 0.40}        & 0.58    & 0.48  &\textbf{ 0.52 }       \\
                          & sct                      & 0.33    & 0.18   & 0.23        & 0.36    & 0.43   & 0.39       & 0.33     & 0.5    & 0.40      \\ \hline
 Jflex                    & ict                     & 1       & 1      & 1           & 1       & 1      & 1          & 1       & 1      & 1           \\
@@ -917,7 +917,7 @@ However, this is not the case for the sequential approach. As discussed before, 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 
-With regarding to the quality of the identified MFS, the comparison of the two approaches are listed in Table \ref{cm_elda_fglt}. Based on this table, we find that there is no apparent gap between them. For example, there are 9 cases under which our approach performed better than traditional one (marked in bold). But among these cases, the maximal gap is  0.27 (2-way for Tomcat), and the average gap is around 0.1, which is trivial.
+With regarding to the quality of the identified MFS, the comparison of the two approaches are listed in Table \ref{cm_elda_fglt}. Based on this table, we find that there is no apparent gap between them. For example, there are 11 cases under which our approach performed better than traditional one (marked in bold). But among these cases, the maximal gap is  0.27 (2-way for Tomcat), and the average gap is around 0.1, which is trivial.
 % In each of them, the overall test cases (size), precision, recall, and f-measure are listed.
 
 
@@ -1025,40 +1025,46 @@ To summary, the answer to \textbf{EQ 2} is we can learn that our approach can al
 \end{figure}
 FDA-CIT \cite{yilmaz2013reducing} is a feedback framework that can augment the traditional covering array to iteratively identify the MFS, and can handle the masking effects. The overall process can be illustrated in Fig \ref{fda-cit-life}. Specifically, it will first generate a t-way covering array and executed all the test cases in it. After that it will utilize the classification tree method to identify the MFS. Then it will forbidden the identified MFS to be appeared and compute the tested-t-coverage. If the tested-t-coverage is not satisfied, it will repeat the previous process, i.e., generating additional test cases and identifying MFS. Like our \emph{ict} approach, FDA-CIT is also an adaptive approach which iteratively generate test cases and identify the MFS. Besides these commonalities, there are several important difference between our approach and FDA-CIT (marked with darker background in Fig \ref{fda-cit-life}):
 
-First, the \textbf{granularity} of adaptation. Instead of handling one test case one time as \emph{ict}, FDA-CIT tries to generate a batch of test cases at each iteration (A complete covering array will be generated at first iteration, and more test cases will be supplemented to cover those t-degree schemas which are masked at latter iterations). To generate a batch of test cases may improve the degree of parallelism of testing, but this coarser granularity may also introduce some problems, e.g., some test cases generated at one iteration may fail with the same MFS, which is a potential waste because one type of MFS is enough to analysis with one failing.
+First, the \textbf{granularity} of adaptation. Instead of handling one test case one time as \emph{ict}, FDA-CIT tries to generate a batch of test cases at each iteration (A complete covering array will be generated at first iteration, and more test cases will be supplemented to cover those t-degree schemas which are masked at latter iterations). To generate a batch of test cases may improve the degree of parallelism of testing, but this coarser granularity may also introduce some problems, e.g., some test cases generated at one iteration may fail with the same MFS, which is a potential waste because it is better to use one failing test case to reveal one particular MFS.
 
-Second, the \textbf{MFS identification} approach is different.
+Second, the \textbf{MFS identification} approach is different. FDA-CIT uses classification tree on existed executed test cases to characterize the MFS. Different from our OFOT approach, this post-analysis technique does not need additional test cases, but as a side effect it cannot precisely find the MFS. What's worse, the effectiveness of this post-analysis approach depends greatly on how the covering array is, e.g., if there is large number of failing tests, and small size of the test suite, there is little information to exclude the particular MFS \cite{zhang2011characterizing}.
 
-Third, the coverage is not the same.
+Third, the \textbf{coverage criteria} is not the same. FDA-CIT directly use the tested-t-way coverage to guide their process. This support a better adequate testing and reduce the impacts of masking effects. As we will see later in our experiments, however, the incorrectly MFS identification may negatively affected the achievement of this type of coverage.
 
-
-The main difference of FDA-CIT with our approach ICT are several components (in ).
-
-First, it use classification tree to. Different from our OFOT approach, it does not needs additional test cases, but it performs worse in high degree,  and its need b
-
-Second,  the graunette of the adaptiveness. Our frame work will one test cases at a time, and if . Different from our approach, this framework one covering array at a time, then identification, then additional test cases.
+Next, we will design experiments to measure the performance of FDA-CIT when handling the MFS in those subjects in Table \ref{subject}.
 
 \subsubsection{Study setup}
-We use FDA-CIT to identify.  We conunt the overall test cases (we don't separately count the identification test cases and generation test cases as FDA-CIT does not need to additional test cases to generate ), MFS identification(including re-call, precise and f-measure), the t-tested-coverage, multiple MFS and the rate of schemas coverage.
-
+The design of this case study is similar as previous two. For each subject in Table \ref{subject}, we apply FDA-CIT to generate test cases and identify the MFS in it. After that, we gather the overall test cases generated (FDA-CIT does not need to additional test cases to identify the MFS), MFS identification results(including re-call, precise and f-measure), and other two metrics, i.e., covered times of schemas, the t-tested-coverage. Note that in this study, we do not gather the test cases which contain multiple MFS, as the post-analysis classification tree method are not affected by this factor. The same as previous experiments, we will repeated executing each experiment 30 times for different coverage (2, 3, and 4 way), and then gather and analyse the average data.
 
 \subsubsection{Result and discussion}
 
 1) overall test cases
+\begin{table}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    ~      & 2-way                     & 3-way                     & 4-way                       \\ \hline
+    Tomcat & 27.93 (52.97\%, 328.52\%) & 66.57 (-2.89\%, 342.16\%) & 201.1 (-42.86\%, 234.06\%)  \\
+    HSQLDB & 28.67 (33.02\%, 416.74\%) & 86 (-14.77\%, 367.60\%)   & 179.77 (-17.26\%, 454.24\%) \\
+    GCC    & 20.63 (63.96\%, 69.34\%)  & 63.07 (9.77\%, 83.77\%)   & 125.1 (1.76\%, 82.63\%)     \\
+    Jflex  & 19.57 (52.30\%, 128.76\%) & 65.4 (-1.42\%, 181.91\%)  & 181.3 (-12.21\%, 217.47\%)  \\
+    Tcas   & 19.57 (0.89\%, 0.56\%)    & 65.4 (2.76\%, 2.84\%)     & 181.3 (4.62\%, 4.81\%)      \\ \hline
+    \end{tabular}
+\end{table}
 
 2) MFS identification
 
+High degree is not well.
 
-1)redundant test cases.
+
+3)redundant test cases.
 \begin{figure*}[ht]
  \includegraphics[width=7.0in]{ex2.eps}
 \caption{Result of ex2}
 \label{ex2_result}
 \end{figure*}
 
-2) multiple MFS
 
-3) masking effects.
+4) masking effects.
 
 
 

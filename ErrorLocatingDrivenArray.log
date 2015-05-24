@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  22 MAY 2015 17:28
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  24 MAY 2015 16:57
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -456,12 +456,12 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 1022--1023
 [13]
 File: ex2.eps Graphic file (type eps)
  <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1049--1050
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1075--1076
 [][] 
  []
 
-Invalid UTF-8 byte or sequence at line 1066 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1066 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1102 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1102 replaced by U+FFFD.
 [14] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 

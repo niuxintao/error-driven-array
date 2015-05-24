@@ -797,8 +797,8 @@ Tcas     &  $2^{7} \times 3^{2} \times 4^{1} \times 10^{2} $ &9(16)\ 10(8)\ 11(1
 
 \end{table}
 In this table, Column ``inputs" depicts the input model for each version of the software, presented in the abbreviated form $\#values^{\#number\ of\ parameters} \times ...$, e.g., $2^{9} \times 3^{2} \times 4^{1}$ indicates the software has 9 parameters that can take 2 values, 2 parameters can take 3 values, and only one parameter that can take 4 values. Column ``MFS" shows the degrees of each MFS and the number of MFS (in the parentheses) with that corresponding degree.
-
-\subsubsection{testing}
+%
+%\subsubsection{testing}
 
 
 
@@ -864,8 +864,8 @@ Table \ref{cm_elda_fglt_test} presents the results for the number of test cases.
                           &                         &Gen  & Iden & Total  &  Gen  & Iden & Total  & Gen  & Iden & Total   \\ \hline
 Tomcat                    & ict                     & 12.73    & \textbf{30}     & 42.73  & 34.97    & \textbf{29.67}  & 64.64  & 85.57   & \textbf{29.33}  & 114.9   \\
                           & sct                     & 14.1     & 105.6  & 119.7  & 38.3     & 256.03 & 294.33 & 93.4    & 578.4  & 671.8   \\ \hline
-Hsqldb                    & ict                     & 14.87    & \textbf{12}     & 26.87  & 46.27    & \textbf{18.4}   & 64.67  & 128.87  & \textbf{14.4}   & 143.27  \\
-                          & sct                     & 15.83    & 10.8   & 26.63  & 47.8     & 33.6   & 81.4   & 130.07  & 103.23 & 233.3   \\ \hline
+Hsqldb                    & ict                     & 14.93    & \textbf{23.2}     & 38.13  & 45.3    & \textbf{28.0}   & 73.3  & 118.33  & \textbf{30.4}   & 148.73  \\
+                          & sct                     & 15.63    & 133.13   & 148.76  & 47.37     & 356.7   & 404.07  & 122.7  & 876.37 & 999.07   \\ \hline
 Gcc                       & ict                     & 14.5     & \textbf{19.33}  & 33.83  & 47.9     & \textbf{21.33}  & 69.23  & 102.63  & \textbf{24.67}  & 127.3   \\
                           & sct                     & 15.27    & 19.67  & 34.94  & 50.97    & 64.93  & 115.9  & 103.87  & 124.6  & 228.47  \\ \hline
 Jflex                     & ict                     & 15.8     & \textbf{14}     & 29.8   & 50.47    & \textbf{14}     & 64.47  & 145.17  & \textbf{14}     & 159.17  \\
@@ -886,8 +886,8 @@ Tcas                      & ict                     & 109.03   & \textbf{0}     
                          &                        & Precision & Recall & F-measure   & Precision & Recall & F-measure & Precision & Recall & F-measure   \\ \hline
 Tomcat                   & ict                    & 1    & 1    & \textbf{1}     &0.97    & 0.96   & \textbf{0.96}     &  0.93    &  0.91   &  \textbf{0.92 }       \\
                          & sct                   & 0.73    & 0.74    & 0.73      & 0.75     & 1    & 0.86        & 0.75     & 1    & 0.86         \\ \hline
-Hsqldb                   & ict                    & 0.67    & 0.4    & \textbf{0.49}      & 0.37    & 0.37   & 0.37       & 0.37    & 0.37   & 0.37        \\
-                         & sct                    & 0.55    & 0.3    & 0.38       & 0.5     & 0.5    & 0.5      & 0.5     & 0.5    & 0.5         \\ \hline
+Hsqldb                   & ict                    & 0.52    & 0.82    & \textbf{0.61}      & 0.56    & \textbf{0.67}   & 0.6       & 0.69    & \textbf{0.77}   & 0.72        \\
+                         & sct                    & 0.46    & 0.82    & 0.57       & 0.49     & 0.5    & 0.49      & 0.67     & 0.5    & 0.57         \\ \hline
 Gcc                      & ict                     & 0.47    & 0.28   & \textbf{0.34 }      & 0.46    & 0.37   &\textbf{ 0.40}        & 0.58    & 0.48  &\textbf{ 0.52 }       \\
                          & sct                      & 0.33    & 0.18   & 0.23        & 0.36    & 0.43   & 0.39       & 0.33     & 0.5    & 0.40      \\ \hline
 Jflex                    & ict                     & 1       & 1      & 1           & 1       & 1      & 1          & 1       & 1      & 1           \\
@@ -917,7 +917,7 @@ However, this is not the case for the sequential approach. As discussed before, 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 
-With regarding to the quality of the identified MFS, the comparison of the two approaches are listed in Table \ref{cm_elda_fglt}. Based on this table, we find that there is no apparent gap between them. For example, there are 9 cases under which our approach performed better than traditional one (marked in bold). But among these cases, the maximal gap is  0.27 (2-way for Tomcat), and the average gap is around 0.1, which is trivial.
+With regarding to the quality of the identified MFS, the comparison of the two approaches are listed in Table \ref{cm_elda_fglt}. Based on this table, we find that there is no apparent gap between them. For example, there are 11 cases under which our approach performed better than traditional one (marked in bold). But among these cases, the maximal gap is  0.27 (2-way for Tomcat), and the average gap is around 0.1, which is trivial.
 % In each of them, the overall test cases (size), precision, recall, and f-measure are listed.
 
 
@@ -1034,28 +1034,64 @@ Third, the \textbf{coverage criteria} is not the same. FDA-CIT directly use the 
 Next, we will design experiments to measure the performance of FDA-CIT when handling the MFS in those subjects in Table \ref{subject}.
 
 \subsubsection{Study setup}
-We use FDA-CIT to identify.  We gather the overall test cases (we don't separately count the identification test cases and generation test cases as FDA-CIT does not need to additional test cases to identify the MFS), MFS identification(including re-call, precise and f-measure), the t-tested-coverage, multiple MFS and the rate of schemas coverage.
-
+The design of this case study is similar as previous two. For each subject in Table \ref{subject}, we apply FDA-CIT to generate test cases and identify the MFS in it. After that, we gather the overall test cases generated (FDA-CIT does not need to additional test cases to identify the MFS), MFS identification results(including re-call, precise and f-measure), and other two metrics, i.e., covered times of schemas, the t-tested-coverage. Note that in this study, we do not gather the test cases which contain multiple MFS, as the post-analysis classification tree method are not affected by this factor. The same as previous experiments, we will repeated executing each experiment 30 times for different coverage (2, 3, and 4 way), and then gather and analyse the average data.
 
 \subsubsection{Result and discussion}
 
 1) overall test cases
+\begin{table*}[ht]
+\center
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    ~      & 2-way                     & 3-way                     & 4-way                       \\ \hline
+    Tomcat & 27.93 (52.97\%, 328.52\%) & 66.57 (-2.89\%, 342.16\%) & 201.1 (-42.86\%, 234.06\%)  \\
+    HSQLDB & 28.67 (33.02\%, 416.74\%) & 86 (-14.77\%, 367.60\%)   & 179.77 (-17.26\%, 454.24\%) \\
+    GCC    & 20.63 (63.96\%, 69.34\%)  & 63.07 (9.77\%, 83.77\%)   & 125.1 (1.76\%, 82.63\%)     \\
+    Jflex  & 19.57 (52.30\%, 128.76\%) & 65.4 (-1.42\%, 181.91\%)  & 181.3 (-12.21\%, 217.47\%)  \\
+    Tcas   & 19.57 (0.89\%, 0.56\%)    & 65.4 (2.76\%, 2.84\%)     & 181.3 (4.62\%, 4.81\%)      \\ \hline
+    \end{tabular}
+\end{table*}
 
 2) MFS identification
 
+\begin{table*}[ht]
+\center
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+           & 2-way                   & 3-way                   & 4-way                   \\ \hline
+    Tomcat & 0.26 (73.56\%, 46.56\%) & 0.31 (64.62\%, 54.62\%) & 0.33 (58.67\%, 52.67\%) \\
+    HSQLDB & 0.33 (27.80\%, 24.02\%) & 0.26 (33.94\%, 22.70\%) & 0.31 (40.77\%, 25.91\%) \\
+    GCC    & 0.08 (25.83\%, 14.83\%) & 0.44 (-4.44\%, -5.44\%) & 0.47 (5.45\%, -6.55\%)  \\
+    Jflex  & 1 (0.00\%, 0.00\%)      & 1 (0.00\%, 0.00\%)      & 1 (0.00\%, 0.00\%)      \\
+    Tcas   & 0 (0.00\%, 0.00\%)      & 0 (0.10\%, 0.00\%)      & 0 (0.27\%, 0.26\%)      \\ \hline
+    \end{tabular}
+\end{table*}
 
-1)redundant test cases.
+High degree is not well.
+
+
+3)redundant test cases.
 \begin{figure*}[ht]
  \includegraphics[width=7.0in]{ex2.eps}
 \caption{Result of ex2}
 \label{ex2_result}
 \end{figure*}
 
-2) multiple MFS
 
-3) masking effects.
+4) masking effects.
 
-
+\begin{table*}[ht]
+\center
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+           & 2-way                    & 3-way                      & 4-way                       \\ \hline
+    Tomcat & 208.2 (11.78\%, 9.34\%)  & 1387.3 (1.68\%, 1.22\%)    & 5378 (1.46\%, 3.08\%)       \\
+    HSQLDB & 342.1 (4.07\%, 3.47\%)   & 2732.43 (-0.11\%, -0.54\%) & 14093.17 (-0.30\%, -0.20\%) \\
+    GCC    & 250.37 (-0.37\%, 0.58\%) & 1532.03 (-2.70\%, 0.09\%)  & 6016.97 (-3.17\%, -0.02\%)  \\
+    Jflex  & 473 (0.00\%, 0.00\%)     & 4282 (0.00\%, 0.00\%)      & 26532 (0.00\%, 0.00\%)      \\
+    Tcas   & 837 (0.00\%, 0.00\%)     & 9158 (0.00\%, 0.00\%)      & 64696 (0.00\%, 0.00\%)      \\ \hline
+    \end{tabular}
+\end{table*}
 
 %\subsection{Combination of two approaches}
 %To combine two approaches . However, not all combination is good. For example, if two approaches get the similar results. The combination of them does not improve the result, but will cost more as we does two approaches, indicating more test cases are generated. Hence, we needs to the results of two approaches as difference as possible. The ideal scenario, is , one MFS cannot be identified by this approach, but can identified by another approach.
