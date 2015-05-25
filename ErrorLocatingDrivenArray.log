@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  25 MAY 2015 15:58
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  25 MAY 2015 21:43
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -428,56 +428,57 @@ Requested font "aett9" at 9.0pt
  [9] [10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [11]
 File: ex1.eps Graphic file (type eps)
- <ex1.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 944--945
+
+<ex1.eps>
+Overfull \hbox (1.89pt too wide) in paragraph at lines 950--951
 [][] 
  []
 
-[11]
-Underfull \vbox (badness 1067) has occurred while \output is active []
 
- [12]
-Overfull \hbox (3.75836pt too wide) in paragraph at lines 1011--1013
+Overfull \hbox (3.75836pt too wide) in paragraph at lines 1016--1018
 \T1/aer/m/n/9 ing ef-fect-s is not se-vere. Ac-tu-al-ly, the low-est tested-t-c
 overage
  []
 
 File: fd-cit.eps Graphic file (type eps)
 <fd-cit.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 1022--1023
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1027--1028
 [][] 
  []
 
 
-Underfull \vbox (badness 3492) has occurred while \output is active []
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+ [12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [13]
 File: ex2.eps Graphic file (type eps)
 
 <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1090--1091
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1097--1098
 [][] 
  []
 
-Invalid UTF-8 byte or sequence at line 1121 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1121 replaced by U+FFFD.
-[14]
+Invalid UTF-8 byte or sequence at line 1130 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1130 replaced by U+FFFD.
+[14] [15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
-[15]
+[16]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [16]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [17])
+[18
 
-) [17]
-(C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
+] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
  2947 strings out of 430478
  33730 string characters out of 3191502
@@ -487,4 +488,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  39i,12n,26p,1599b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ErrorLocatingDrivenArray.pdf (17 pages).
+Output written on ErrorLocatingDrivenArray.pdf (18 pages).
