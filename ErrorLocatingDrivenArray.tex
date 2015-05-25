@@ -762,7 +762,7 @@ Among these subjects, Tomcat is a web server for java servlet; Hsqldb is a pure-
 As the target of our empirical studies is to compare the ability of fault defection between our approach with traditional ones, we firstly must know these faults and their corresponding MFS in prior, so that we can determine whether the schemas identified by those approaches are accurate or not.  For this, we looked through the bug tracker of each software and focused on the bugs which are caused by the interaction of configuration options. Then for each such bug, we derive its MFS by analysing the bug description report and the associated test file which can reproduce the bug. For Tcas, as it does not contain any fault for the original source file, we took an mutation version for that file with injected fault. The mutation was the same as that in \cite{kuhn2006pseudo}, which is used as a experimental object for the fault detection studies.
 
 %To make the testing process can definitely find failing test cases (otherwise we may not detect any fault and then there is no difference between our approach with traditional approach), we prepared fault version of these software in prior. There are four software, we take the real failures, for each failure, there bug tracker can be find .  The last one is the injected failure, which is originally injected in
-\subsection{Testing buliding}.
+%\subsection{Testing buliding}.
 %\subsection{Tomcat}
 %
 %\subsection{JFlex}
@@ -927,7 +927,7 @@ With regarding to the quality of the identified MFS, the comparison of the two a
 %As for the quality of the identified MFS,
  %the better ones for the f-measure of our approach are marked in bold, form which we can learn that
 
-The reason of the similarity between the quality of these two approaches is that both of them have advantages and disadvantages. Specifically, our approach can reduce the impacts when a test case contains multiple MFS. Our previous study showed that multiple MFS in a test case can reduce the accuracy of the MFS identifying algorithms \cite{niu2013identifying}. As a result, our approach can improve the quality of the identified schemas (details are in the next study). But as a side-effect, if the schemas identified at the early iteration of our approach are not correct, they will significantly impact the following iteration. This is because we will compute the coverage and  forbidden schemas based on previous identified MFS.  It was the other way around for the traditional approach. It suffers when a test case contains multiple MFS, but correspondingly, previous identified MFS has little influence on the traditional approach. Notes that in the case studies, we do not apply on the measures proposed in Section \ref{sec:limit}, we believe we can if we can obtain a better result if we apply them.
+The reason of the similarity between the quality of these two approaches is that both of them have advantages and disadvantages. Specifically, our approach can reduce the impacts when a test case contains multiple MFS. Our previous study showed that multiple MFS in a test case can reduce the accuracy of the MFS identifying algorithms \cite{niu2013identifying}. As a result, our approach can improve the quality of the identified schemas (details are in the next study). But as a side-effect, if the schemas identified at the early iteration of our approach are not correct, they will significantly impact the following iteration. This is because we will compute the coverage and  forbidden schemas based on previous identified MFS.  It was the other way around for the traditional approach. It suffers when a test case contains multiple MFS, but correspondingly, previous identified MFS has little influence on the traditional approach. Notes that in the case studies, we do not apply the measures proposed in Section \ref{sec:limit}, we believe we can obtain a better result if we apply them.
 %This is just the opposite of the traditional First-gen-then-identifying approach.
 
 %As not forbidden them, there is a chance that a test case will contain multiple MFS, which makes the identifying work challenging than single ones.
@@ -950,7 +950,7 @@ We design three metrics for each of the three problems. First, to measure the \e
 
 1) \textbf{Redundant test cases}.
 
-Our result is shown in Fig.\ref{ex1_result}. This figure consists of nine sub-figures, one for each subject with specific testing coverage (ranged from 2 - 4 way). For each sub-figure, the x-axis represents the number of times a schema is covered in total, the y-axis represents the number of schemas.  For example in the first sub-figure (2-way for Tomcat), two bars with x-coordinate equal to 2 indicates that \emph{ICT} approach have 2.8 schemas in average which are covered twice and \emph{SCT} have 0.4 schemas.
+Our result is shown in Figure \ref{ex1_result}. This figure consists of nine sub-figures, one for each subject with specific testing coverage (ranged from 2 - 4 way). For each sub-figure, the x-axis represents the number of times a schema is covered in total, the y-axis represents the number of schemas.  For example in the first sub-figure (2-way for Tomcat), two bars with x-coordinate equal to 2 indicates that \emph{ICT} approach have 2.8 schemas in average which are covered twice and \emph{SCT} have 0.4 schemas.
 
 
 As we discussed previously, the more schemas that are covered low-frequency, the less redundant the generated test cases are. Hence it implies a effective testing if the number of schemas (y-axis) decrease with the increase of the covered times (x-axis). Most of the nine sub-figures indicates that our approach \emph{ict} performs better than \emph{sct}. In fact. for \emph{ict}, the bars decrease rapidly with the increase of x-axis, while  \emph{sct}, the trend is more smooth. See subject tomcat with 4-way coverage for example, \emph{ict} have about 80 schemas which are only covered once,  about 25 schemas covered twice, latter are decreased to less than 10 schemas when the covered times are bigger than 8.  For \emph{sct}, however, for most covered times, it all has about 10 schemas, which indicates a very low effectiveness.  The interesting exception is subject Tcas, on which \emph{ict} and \emph{sct} show a similar trend.both \emph{ict} and \emph{sct} does not detect the high-degree MFS in Tcas, and consequently they are both transformed to normal covering arrays.
@@ -1023,7 +1023,7 @@ To summary, the answer to \textbf{EQ 2} is we can learn that our approach can al
 \caption{The Framework of FDA-CIT}
 \label{fda-cit-life}
 \end{figure}
-FDA-CIT \cite{yilmaz2013reducing} is a feedback framework that can augment the traditional covering array to iteratively identify the MFS, and can handle the masking effects. The overall process can be illustrated in Fig \ref{fda-cit-life}. Specifically, it will first generate a t-way covering array and executed all the test cases in it. After that it will utilize the classification tree method to identify the MFS. Then it will forbidden the identified MFS to be appeared and compute the tested-t-coverage. If the tested-t-coverage is not satisfied, it will repeat the previous process, i.e., generating additional test cases and identifying MFS. Like our \emph{ict} approach, FDA-CIT is also an adaptive approach which iteratively generate test cases and identify the MFS. Besides these commonalities, there are several important difference between our approach and FDA-CIT (marked with darker background in Fig \ref{fda-cit-life}):
+FDA-CIT \cite{yilmaz2013reducing} is a feedback framework that can augment the traditional covering array to iteratively identify the MFS, and can handle the masking effects. The overall process can be illustrated in Figure \ref{fda-cit-life}. Specifically, it will first generate a t-way covering array and executed all the test cases in it. After that it will utilize the classification tree method to identify the MFS. Then it will forbidden the identified MFS to be appeared and compute the tested-t-coverage. If the tested-t-coverage is not satisfied, it will repeat the previous process, i.e., generating additional test cases and identifying MFS. Like our \emph{ict} approach, FDA-CIT is also an adaptive approach which iteratively generate test cases and identify the MFS. Besides these commonalities, there are several important difference between our approach and FDA-CIT (marked with darker background in Figure \ref{fda-cit-life}):
 
 First, the \textbf{granularity} of adaptation. Instead of handling one test case one time as \emph{ict}, FDA-CIT tries to generate a batch of test cases at each iteration (A complete covering array will be generated at first iteration, and more test cases will be supplemented to cover those t-degree schemas which are masked at latter iterations). To generate a batch of test cases may improve the degree of parallelism of testing, but this coarser granularity may also introduce some problems, e.g., some test cases generated at one iteration may fail with the same MFS, which is a potential waste because it is better to use one failing test case to reveal one particular MFS.
 
@@ -1038,8 +1038,12 @@ The design of this case study is similar as previous two. For each subject in Ta
 
 \subsubsection{Result and discussion}
 
-1) overall test cases
-\begin{table*}[ht]
+1)\textbf{Overall number of test cases}
+The overall number of test cases generated by FDA-CIT for each subject is shown in Table \ref{num-fda-cit}. To better evaluate the performance of FDA-CIT, we list the gaps between FDA-CIT with ict and sct respectively in the parentheses (the first one is ict, latter one is sct). The computation of this gap between two approaches result is by .
+
+\begin{table*}[htbp]
+\caption{Number of test cases generated by FDA-CIT}
+\label{num-fda-cit}
 \center
     \begin{tabular}{|l|l|l|l|}
     \hline
@@ -1052,9 +1056,15 @@ The design of this case study is similar as previous two. For each subject in Ta
     \end{tabular}
 \end{table*}
 
-2) MFS identification
+From this table, one observation is that FDA-CIT are better than \emph{sct} at all these cases. Combining the results of previous studies for \emph{sct} and \emph{ict}, we can conclude that the \emph{sct} is most inefficient approach at test cases generation. Second for approach \emph{ict} and \emph{FDA-CIT}, there are ups and downs on both sides. In detail, \emph{FDA-CIT} needs less test cases at lower coverage (Except \emph{tcas}, fda-cit reduce about 50\% number of test cases when comparing with \emph{ict} for 2-way coverage), while \emph{ict} performs better at higher coverage (Except \emph{tcas} and \emph{gcc} which two approaches have similar results, \emph{fda-cit} increases about 10\% number of test cases).
+
+This result is reasonable. First, \emph{FDA-CIT} does not need additional test cases to identify the MFS, which will reduce some cost when comparing with \emph{ict}, especially when the coverage is low (For low coverage, the test cases generated by \emph{ict} in the MFS identification stage accounts for a considerable proportion of the overall test cases). One the other hand, as we said before, the coarse grained generation will make fda-cit generate some unnecessary test cases.
+
+2)\textbf{the F-measure of MFS identification} The results of the quality of MFS identification by FDA-CIT is listed in Table \ref{f-measure-fda-cit}. Then same as previous metric, we also list the comparison between fda-cit with \emph{ict} and \emph{sct} are also attached.
 
 \begin{table*}[ht]
+\caption{The F-measure of MFS identification for FDA-CIT}
+\label{f-measure-fda-cit}
 \center
     \begin{tabular}{|l|l|l|l|}
     \hline
@@ -1067,10 +1077,15 @@ The design of this case study is similar as previous two. For each subject in Ta
     \end{tabular}
 \end{table*}
 
+This table shows a very clear gap between. In fact, 
+
 High degree is not well.
 
 
-3)redundant test cases.
+3)\textbf{Redundant test cases}.
+
+The result is listed in Figure \ref{ex2_result}.
+
 \begin{figure*}[ht]
  \includegraphics[width=7.0in]{ex2.eps}
 \caption{Result of ex2}
@@ -1078,9 +1093,13 @@ High degree is not well.
 \end{figure*}
 
 
-4) masking effects.
+4)\textbf{Masking effects}.
+
+The results is listed in Table \ref{tested-t-coverage-fda-cit}.
 
 \begin{table*}[ht]
+\caption{The tested-t-way coverage for FDA-CIT}
+\label{tested-t-coverage-fda-cit}
 \center
     \begin{tabular}{|l|l|l|l|}
     \hline
