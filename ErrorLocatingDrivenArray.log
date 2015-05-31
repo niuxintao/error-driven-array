@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  25 MAY 2015 21:43
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  31 MAY 2015 17:44
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -432,19 +432,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: ex1.eps Graphic file (type eps)
 
 <ex1.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 950--951
+Overfull \hbox (1.89pt too wide) in paragraph at lines 954--955
 [][] 
  []
 
 
-Overfull \hbox (3.75836pt too wide) in paragraph at lines 1016--1018
+Underfull \vbox (badness 3460) has occurred while \output is active []
+
+
+Overfull \hbox (3.75836pt too wide) in paragraph at lines 1020--1022
 \T1/aer/m/n/9 ing ef-fect-s is not se-vere. Ac-tu-al-ly, the low-est tested-t-c
 overage
  []
 
 File: fd-cit.eps Graphic file (type eps)
 <fd-cit.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 1027--1028
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1031--1032
 [][] 
  []
 
@@ -454,20 +457,33 @@ Underfull \vbox (badness 1558) has occurred while \output is active []
  [12]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [13]
 File: ex2.eps Graphic file (type eps)
 
 <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1097--1098
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1102--1103
 [][] 
  []
 
-Invalid UTF-8 byte or sequence at line 1130 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1130 replaced by U+FFFD.
-[14] [15]
+
+Overfull \hbox (2.03996pt too wide) in paragraph at lines 1112--1113
+\T1/aer/m/n/9 proach-es work nor-mal-ly with-out mask-ing ef-fect-s, the schema
+s
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [14]
+Invalid UTF-8 byte or sequence at line 1137 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1137 replaced by U+FFFD.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15]
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.bbl
 [16]
 Underfull \vbox (badness 10000) has occurred while \output is active []
