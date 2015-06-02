@@ -159,12 +159,6 @@ C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
 \newblock In {\em LATIN 2008: Theoretical Informatics}, pages 504--519.
   Springer, 2008.
 
-\bibitem{martinez2009locating}
-C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
-\newblock Locating errors using elas, covering arrays, and adaptive testing
-  algorithms.
-\newblock {\em SIAM Journal on Discrete Mathematics}, 23(4):1776--1799, 2009.
-
 \bibitem{nie2011minimal}
 C.~Nie and H.~Leung.
 \newblock The minimal failure-causing schema of combinatorial testing.

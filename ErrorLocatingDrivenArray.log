@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  31 MAY 2015 17:44
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  2 JUN 2015 22:17
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -437,7 +437,7 @@ Overfull \hbox (1.89pt too wide) in paragraph at lines 954--955
  []
 
 
-Underfull \vbox (badness 3460) has occurred while \output is active []
+Underfull \vbox (badness 1558) has occurred while \output is active []
 
 
 Overfull \hbox (3.75836pt too wide) in paragraph at lines 1020--1022
@@ -451,10 +451,7 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 1031--1032
 [][] 
  []
 
-
-Underfull \vbox (badness 1558) has occurred while \output is active []
-
- [12]
+[12]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -464,12 +461,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: ex2.eps Graphic file (type eps)
 
 <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1102--1103
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1100--1101
 [][] 
  []
 
 
-Overfull \hbox (2.03996pt too wide) in paragraph at lines 1112--1113
+Overfull \hbox (2.03996pt too wide) in paragraph at lines 1110--1111
 \T1/aer/m/n/9 proach-es work nor-mal-ly with-out mask-ing ef-fect-s, the schema
 s
  []
@@ -478,8 +475,8 @@ s
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14]
-Invalid UTF-8 byte or sequence at line 1137 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1137 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1138 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1138 replaced by U+FFFD.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -496,10 +493,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ] (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.aux) ) 
 Here is how much of TeX's memory you used:
- 2947 strings out of 430478
- 33730 string characters out of 3191502
- 102390 words of memory out of 3000000
- 6032 multiletter control sequences out of 15000+200000
+ 2946 strings out of 430478
+ 33708 string characters out of 3191502
+ 103390 words of memory out of 3000000
+ 6031 multiletter control sequences out of 15000+200000
  43435 words of font info for 54 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  39i,12n,26p,1599b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
