@@ -159,6 +159,12 @@ C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
 \newblock In {\em LATIN 2008: Theoretical Informatics}, pages 504--519.
   Springer, 2008.
 
+\bibitem{martinez2009locating}
+C.~Mart{\'\i}nez, L.~Moura, D.~Panario, and B.~Stevens.
+\newblock Locating errors using elas, covering arrays, and adaptive testing
+  algorithms.
+\newblock {\em SIAM Journal on Discrete Mathematics}, 23(4):1776--1799, 2009.
+
 \bibitem{nie2011minimal}
 C.~Nie and H.~Leung.
 \newblock The minimal failure-causing schema of combinatorial testing.
@@ -183,6 +189,11 @@ X.~Niu, C.~Nie, Y.~Lei, and A.~T. Chan.
   (ICSTW), 2013 IEEE Sixth International Conference on}, pages 271--280. IEEE,
   2013.
 
+\bibitem{nurmela2004upper}
+K.~J. Nurmela.
+\newblock Upper bounds for covering arrays by tabu search.
+\newblock {\em Discrete applied mathematics}, 138(1):143--152, 2004.
+
 \bibitem{qu2008configuration}
 X.~Qu, M.~B. Cohen, and G.~Rothermel.
 \newblock Configuration-aware regression testing: an empirical study of
@@ -203,6 +214,13 @@ C.~Song, A.~Porter, and J.~S. Foster.
   interaction trees.
 \newblock In {\em Proceedings of the 2012 International Conference on Software
   Engineering}, pages 903--913. IEEE Press, 2012.
+
+\bibitem{tung2000automating}
+Y.-W. Tung and W.~S. Aldiwan.
+\newblock Automating test case generation for the new generation mission
+  software system.
+\newblock In {\em Aerospace Conference Proceedings, 2000 IEEE}, volume~1, pages
+  431--437. IEEE, 2000.
 
 \bibitem{wang2010adaptive}
 Z.~Wang, B.~Xu, L.~Chen, and L.~Xu.
