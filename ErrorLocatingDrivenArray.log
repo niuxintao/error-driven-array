@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  11 JUN 2015 17:31
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  24 JUN 2015 21:58
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -359,8 +359,8 @@ Requested font "lasy9" at 9.0pt
 Requested font "lasy5" at 5.0pt
  -> lasy5
 
-Overfull \hbox (24.49828pt too wide) in paragraph at lines 193--193
- []\eaddfnt cshleung@comp.polyu.edu.hk| 
+Overfull \hbox (17.59798pt too wide) in paragraph at lines 193--193
+ []\eaddfnt hareton.leung@polyu.edu.hk| 
  []
 
 Requested font "aebx9" at 9.0pt
@@ -391,14 +391,11 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 249--250
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [3]
 Requested font "aer6" at 6.0pt
  -> aer6
 
-Overfull \hbox (13.7998pt too wide) in paragraph at lines 392--401
+Overfull \hbox (13.7998pt too wide) in paragraph at lines 396--405
  [] 
  []
 
@@ -408,20 +405,20 @@ Requested font "aebxti10" at 9.0pt
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4]
-Underfull \vbox (badness 1558) has occurred while \output is active []
+Underfull \vbox (badness 5359) has occurred while \output is active []
 
  [5]
 File: baicOutline.eps Graphic file (type eps)
 
 <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 519--520
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 524--525
 [][] 
  []
 
 [6] [7] [8]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Font Info:    Try loading font information for T1+aett on input line 802.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 807.
 
 
 (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
@@ -429,12 +426,18 @@ File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 Requested font "aett9" at 9.0pt
  -> aett9
- [9] [10]
+ [9]
+Overfull \hbox (7.30577pt too wide) in paragraph at lines 850--851
+\T1/aer/m/n/9 case-one-time gen-er-a-tion al-go-rith-m. An-oth-er rea-son for c
+hoos-
+ []
+
+[10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 File: ex1.eps Graphic file (type eps)
  <ex1.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 980--981
+Overfull \hbox (1.89pt too wide) in paragraph at lines 983--984
 [][] 
  []
 
@@ -445,39 +448,27 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 6094) has occurred while \output is active []
 
  [12]
-Overfull \hbox (3.75836pt too wide) in paragraph at lines 1046--1048
-\T1/aer/m/n/9 ing ef-fect-s is not se-vere. Ac-tu-al-ly, the low-est tested-t-c
-overage
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 File: fd-cit.eps Graphic file (type eps)
 
 <fd-cit.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 1057--1058
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1060--1061
 [][] 
  []
 
 [13] [14]
 File: ex2.eps Graphic file (type eps)
  <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1126--1127
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1129--1130
 [][] 
- []
-
-
-Overfull \hbox (2.03996pt too wide) in paragraph at lines 1136--1137
-\T1/aer/m/n/9 proach-es work nor-mal-ly with-out mask-ing ef-fect-s, the schema
-s
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Invalid UTF-8 byte or sequence at line 1164 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1164 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1167 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1167 replaced by U+FFFD.
  [15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -497,6 +488,6 @@ Here is how much of TeX's memory you used:
  6035 multiletter control sequences out of 15000+200000
  43435 words of font info for 54 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 39i,12n,26p,1711b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,12n,26p,1718b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on ErrorLocatingDrivenArray.pdf (18 pages).
