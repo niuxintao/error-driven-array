@@ -8,8 +8,8 @@ def readFile(ax, inputFile):
     line = inf.readline()
     bar_inc = [0, 0.35, 0.7];
     a = ['ICT','SCT','FD']
-    color = ['b','r','y']
-    dot = ['--', '-.']
+    color = ['k','k','w']
+    dot = ['-', '-.']
     mark = ['o','d']
     i = 0
     lengthMin = 0
@@ -20,6 +20,46 @@ def readFile(ax, inputFile):
             #get ride of bigger than 100
             if(inputFile.find('tcas') != -1):
                 z = [(x[i],y[i]) for i in range(len(x)) if x[i] < 50]
+                x = np.array([i[0] for i in z])
+                y = np.array([i[1] for i in z])
+
+            if(inputFile.find('2-way tomcat.txt') != -1):
+                z = [(x[i],y[i]) for i in range(len(x)) if x[i] < 15]
+                x = np.array([i[0] for i in z])
+                y = np.array([i[1] for i in z])
+
+            if(inputFile.find('3-way tomcat.txt') != -1):
+                z = [(x[i],y[i]) for i in range(len(x)) if x[i] < 25]
+                x = np.array([i[0] for i in z])
+                y = np.array([i[1] for i in z])
+
+            if(inputFile.find('2-way HSQLDB.txt') != -1):
+                z = [(x[i],y[i]) for i in range(len(x)) if x[i] < 15]
+                x = np.array([i[0] for i in z])
+                y = np.array([i[1] for i in z])
+                
+            if(inputFile.find('3-way HSQLDB.txt') != -1):
+                z = [(x[i],y[i]) for i in range(len(x)) if x[i] < 30]
+                x = np.array([i[0] for i in z])
+                y = np.array([i[1] for i in z])
+                
+            if(inputFile.find('4-way HSQLDB.txt') != -1):
+                z = [(x[i],y[i]) for i in range(len(x)) if x[i] < 40]
+                x = np.array([i[0] for i in z])
+                y = np.array([i[1] for i in z])
+
+            if(inputFile.find('2-way JFlex.txt') != -1):
+                z = [(x[i],y[i]) for i in range(len(x)) if x[i] < 15]
+                x = np.array([i[0] for i in z])
+                y = np.array([i[1] for i in z])
+                
+            if(inputFile.find('3-way JFlex.txt') != -1):
+                z = [(x[i],y[i]) for i in range(len(x)) if x[i] < 25]
+                x = np.array([i[0] for i in z])
+                y = np.array([i[1] for i in z])
+
+            if(inputFile.find('4-way JFlex.txt') != -1):
+                z = [(x[i],y[i]) for i in range(len(x)) if x[i] < 35]
                 x = np.array([i[0] for i in z])
                 y = np.array([i[1] for i in z])
                 
@@ -57,7 +97,7 @@ def dealLine(str):
     return [x, y]
 
 if __name__ == "__main__":
-    fig = plt.figure(figsize=(27, 10))
+    fig = plt.figure(figsize=(27, 18))
     ax = fig.add_subplot(111)    # The big subplot
 
     ax1 = fig.add_subplot(5,3,1) #gas1
@@ -118,7 +158,7 @@ if __name__ == "__main__":
     ax.set_ylabel('number of schemas', fontsize=20)
     ax.yaxis.set_label_coords(-0.03, 0.5)
 
-    fig.legend([rectc1, rectc2, rectc2], ['ICT', 'SCT', 'FD'], (0.06, 0.96),
+    fig.legend([rectc1, rectc2, rectc3], ['ICT', 'SCT', 'FD'], (0.06, 0.96),
            ncol = 3, prop={'size':10})
     plt.tight_layout()
     plt.show()
