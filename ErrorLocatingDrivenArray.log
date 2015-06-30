@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  27 JUN 2015 18:31
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2014.9.10)  30 JUN 2015 16:44
 entering extended mode
 **ErrorLocatingDrivenArray.tex
 (C:\Users\xintao\Desktop\error-driven-array\ErrorLocatingDrivenArray.tex
@@ -382,7 +382,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: CT_lifecircle.eps Graphic file (type eps)
 
 <CT_lifecircle.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 249--250
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 250--251
 [][] 
  []
 
@@ -395,7 +395,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Requested font "aer6" at 6.0pt
  -> aer6
 
-Overfull \hbox (13.7998pt too wide) in paragraph at lines 397--406
+Overfull \hbox (10.33238pt too wide) in paragraph at lines 387--387
+[][]\T1/aer/m/n/9 For de-tail-s, see: http://sourceforge.net/p/hsqldb/bugs/1173
+/| 
+ []
+
+
+Overfull \hbox (13.7998pt too wide) in paragraph at lines 398--407
  [] 
  []
 
@@ -407,7 +413,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [4] [5]
 File: baicOutline.eps Graphic file (type eps)
  <baicOutline.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 525--526
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 526--527
 [][] 
  []
 
@@ -415,7 +421,7 @@ Overfull \hbox (5.71754pt too wide) in paragraph at lines 525--526
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 808.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 820.
 
 
 (C:\CTEX\MiKTeX\tex\latex\ae\t1aett.fd
@@ -424,7 +430,7 @@ File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 Requested font "aett9" at 9.0pt
  -> aett9
 
-Overfull \hbox (7.30577pt too wide) in paragraph at lines 851--852
+Overfull \hbox (7.30577pt too wide) in paragraph at lines 863--864
 \T1/aer/m/n/9 case-one-time gen-er-a-tion al-go-rith-m. An-oth-er rea-son for c
 hoos-
  []
@@ -434,7 +440,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 File: ex1.eps Graphic file (type eps)
  <ex1.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 984--985
+Overfull \hbox (1.89pt too wide) in paragraph at lines 996--997
 [][] 
  []
 
@@ -450,22 +456,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: fd-cit.eps Graphic file (type eps)
 
 <fd-cit.eps>
-Overfull \hbox (5.71754pt too wide) in paragraph at lines 1061--1062
+Overfull \hbox (5.71754pt too wide) in paragraph at lines 1073--1074
 [][] 
  []
 
 [13] [14]
 File: ex2.eps Graphic file (type eps)
  <ex2.eps>
-Overfull \hbox (1.89pt too wide) in paragraph at lines 1130--1131
+Overfull \hbox (1.89pt too wide) in paragraph at lines 1142--1143
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Invalid UTF-8 byte or sequence at line 1168 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1168 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1180 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1180 replaced by U+FFFD.
  [15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -481,7 +487,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Here is how much of TeX's memory you used:
  2950 strings out of 430478
  33780 string characters out of 3191502
- 103406 words of memory out of 3000000
+ 103410 words of memory out of 3000000
  6035 multiletter control sequences out of 15000+200000
  43435 words of font info for 54 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
